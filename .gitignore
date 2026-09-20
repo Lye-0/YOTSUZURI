@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.work/
+.playwright-mcp/
+.vite/
+*.log
+.kilo/

@@ -1,0 +1,292 @@
+[
+  {
+    "id": "reception",
+    "path": "assets/rooms/reception.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 157094,
+    "source": "exec-ac03a3ab-0662-491d-93fa-a50652f5e404.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "office",
+    "path": "assets/rooms/office.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 243260,
+    "source": "exec-4a36663a-31a7-4a8d-b14f-c4d9cae71828.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "proof",
+    "path": "assets/rooms/proof.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 264184,
+    "source": "exec-acd3cfd7-416f-4799-b75b-0d83b24531d5.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "press",
+    "path": "assets/rooms/press.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 276410,
+    "source": "exec-fadcbf0b-f504-4ca5-8632-f3a7db04316c.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "binding",
+    "path": "assets/rooms/binding.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 259932,
+    "source": "exec-42954b18-a3e4-4a0c-98a0-8d3681c5adf3.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "west",
+    "path": "assets/rooms/west.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 227616,
+    "source": "exec-bae6626a-d20d-4780-a473-0e2e4f5f9fc5.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "east",
+    "path": "assets/rooms/east.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 221612,
+    "source": "exec-69405136-892e-4190-be49-ed0c5c58a774.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "repair",
+    "path": "assets/rooms/repair.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 249278,
+    "source": "exec-fd225f67-56f4-457a-9753-6daf96a0468e.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "vault",
+    "path": "assets/rooms/vault.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 254374,
+    "source": "exec-490d4831-8701-43a1-ac31-9ca533082796.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "exit",
+    "path": "assets/rooms/exit.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 171622,
+    "source": "exec-97608407-2b7c-4e6a-9c6c-6743cd58e80d.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "workbench",
+    "path": "assets/materials/workbench.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 344878,
+    "source": "exec-401ed602-6a9f-499e-8f3a-be0830f20c33.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "paper",
+    "path": "assets/materials/paper.webp",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 148168,
+    "source": "exec-0a440e4f-2f03-4daa-80bd-3940793e0425.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "foreedge",
+    "path": "assets/details/foreedge.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 398764,
+    "source": "exec-642f49e3-63b4-4035-8f32-215ae728e783.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "type",
+    "path": "assets/rooms/type.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 190824,
+    "source": "exec-681ea6b1-7026-4a51-8515-50f237ffd78f.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "reception-open",
+    "path": "assets/rooms/reception-open.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 158552,
+    "source": "exec-a0736d08-b82e-49ae-bed9-b38c0fb32572.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "west-open",
+    "path": "assets/rooms/west-open.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 208968,
+    "source": "exec-12ebfb31-24d6-4f9d-bdb3-6a99528f7039.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "repair-open",
+    "path": "assets/rooms/repair-open.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 226394,
+    "source": "exec-b45e7155-234b-4ded-a330-046a9b22398b.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "ending",
+    "path": "assets/rooms/ending.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 302882,
+    "source": "exec-4aa55a7f-1c73-4bb0-892d-520f9ecb5a20.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "office-state",
+    "path": "assets/rooms/office-state.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 204174,
+    "source": "exec-5c19a1ee-facc-4353-bb47-dcd56903fef0.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "proof-state",
+    "path": "assets/rooms/proof-state.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 232554,
+    "source": "exec-43dc9568-36fe-46e4-b8d0-ab8443b09b0d.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "binding-state",
+    "path": "assets/rooms/binding-state.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 227086,
+    "source": "exec-f71933a2-2fc1-48bd-a73a-dbae8a0134e7.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "east-state",
+    "path": "assets/rooms/east-state.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 198376,
+    "source": "exec-51e55ecc-d198-47ce-a269-455bc46f073a.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "vault-state",
+    "path": "assets/rooms/vault-state.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 214966,
+    "source": "exec-a7be3707-f9de-4cef-b8b1-05755b56f96e.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "ring",
+    "path": "assets/details/ring.webp",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 263746,
+    "source": "exec-4d3df891-b567-466d-9406-9792ccd99ff9.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "knife",
+    "path": "assets/items/knife.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 64142,
+    "source": "exec-d0387e16-3e96-4a3e-9210-49ba143139f7.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "lens",
+    "path": "assets/items/lens.webp",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 180064,
+    "source": "exec-699cc8ee-45bd-4453-a25c-88980f392f36.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "key",
+    "path": "assets/items/key.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 135028,
+    "source": "exec-f37f20df-9d63-4a47-ae09-d5df88dd9e40.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "thread",
+    "path": "assets/items/thread.webp",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 317676,
+    "source": "exec-12020987-28b3-457a-b980-43063d787446.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "type-open",
+    "path": "assets/rooms/type-open.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 210216,
+    "source": "exec-7aa98062-2430-4d63-858a-1b31ca123102.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  }
+]
