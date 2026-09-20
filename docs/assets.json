@@ -288,5 +288,45 @@
     "source": "exec-7aa98062-2430-4d63-858a-1b31ca123102.png",
     "generator": "OpenAI imagegen",
     "accepted": true
+  },
+  {
+    "id": "office-cabinet",
+    "path": "assets/rooms/office-cabinet.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 192328,
+    "source": "exec-5e624889-85ff-4a15-ad96-5e2a1fd6ee91.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "type-state",
+    "path": "assets/rooms/type-state.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 179666,
+    "source": "exec-2c1f4f15-f8a4-44c1-880c-182feba20dfb.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "west-envelope",
+    "path": "assets/rooms/west-envelope.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 188116,
+    "source": "exec-c44dfe46-bb83-42be-a719-b34299466fe3.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
+  },
+  {
+    "id": "repair-parts",
+    "path": "assets/rooms/repair-parts.webp",
+    "width": 1672,
+    "height": 941,
+    "bytes": 198998,
+    "source": "exec-2e16c7c1-a764-4a35-af81-9c8e73f025e4.png",
+    "generator": "OpenAI imagegen",
+    "accepted": true
   }
 ]

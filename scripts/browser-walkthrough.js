@@ -25,7 +25,7 @@ const completed=[];
 for(let id=1;id<=30;id++){
 g=await read();if(g.solved.includes(id)&&([7,15].includes(id)?g.opened.includes(id):true)){completed.push(id);continue;}
 if(id===23){await go(8);await click('壁の図面の縁');}
-await go(pr[id]);await click(names[id]);
+await go(pr[id]);await activate(page.locator('.hotspot').filter({has:page.locator('span',{hasText:names[id]})}));
 await page.screenshot({path:out+'p'+String(id).padStart(2,'0')+'-before.png',fullPage:true});
 switch(id){
 case 1:case 15:case 18:for(const n of id===1?[2,4,1,3]:id===15?[2,3,1]:[3,1,2])await click(n+'枚目を引く');break;
@@ -34,14 +34,14 @@ case 3:await range('控え1の位置',0);await range('控え2の位置',2);await
 case 4:case 11:for(const [i,n] of (id===4?[3,6]:[2,4]).entries())for(let j=0;j<n;j++)await click((i===0?'外':'内')+'の環を回す');break;
 case 5:await click('6目盛');await click('紙ナイフで切り離す');break;
 case 6:await activate(page.locator('.paper-samples>button').nth(1));await click('表を見ている ↻');await click('見本と重ねる');break;
-case 7:for(const n of ['丸','二本線','菱形','三日月'])await click(n);break;
+case 7:for(const n of ['菱形','丸','三日月','二本線'])await click(n);break;
 case 8:await activate(page.getByRole('button',{name:'左皿',exact:true}).nth(0));await activate(page.getByRole('button',{name:'左皿',exact:true}).nth(1));await activate(page.getByRole('button',{name:'右皿',exact:true}).nth(2));break;
 case 9:await swap([2,0,3,1],'seal');break;
 case 10:await activate(page.locator('.plate-choices>button').nth(0));await activate(page.locator('.plate-choices>button').nth(3));await click('二枚を取り出す');break;
 case 12:await click('版Aを回す');for(let n=0;n<3;n++)await click('版Bを回す');await click('ハンドルを下ろす');break;
 case 13:await click('台を裏返す');await page.screenshot({path:out+'p13-thread.png',fullPage:true});await click('台を表へ戻す');for(const n of [5,2,6,3])await click(n+'番の穴を外す');break;
 case 14:await swap([2,0,3,1],'scraps');break;
-case 16:for(const [name,n] of [['棚3を左へ',2],['棚2を下へ',3],['棚4を下へ',2],['棚1を右へ',4]])for(let j=0;j<n;j++)await click(name);break;
+case 16:for(const [i,n] of [3,1,2,0].entries())for(let j=0;j<n;j++)await click('書架'+(i+1)+'の留めを回す');for(const [name,n] of [['棚3を左へ',2],['棚2を下へ',3],['棚4を下へ',2],['棚1を右へ',4]])for(let j=0;j<n;j++)await click(name);break;
 case 17:for(const n of [1,3,5])await activate(page.locator('.watermarks>button').nth(n));await click('同じ紙を取り分ける');break;
 case 19:await activate(page.locator('.weighed-books>button').nth(2));await click('背を開く');break;
 case 20:await click('左の反射片を回す');await click('中央の反射片を回す');await click('中央の反射片を回す');break;
