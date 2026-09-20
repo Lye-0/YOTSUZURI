@@ -1,0 +1,2 @@
+import {useEffect,useState} from 'react';
+export function usePhoto(source:string){const [shown,setShown]=useState(source),[loaded,setLoaded]=useState(false),[failed,setFailed]=useState(false);useEffect(()=>{let active=true;const photo=new Image();photo.onload=()=>{if(active){setShown(source);setLoaded(true);setFailed(false)}};photo.onerror=()=>{if(active)setFailed(true)};photo.src=source;if(photo.complete&&photo.naturalWidth){setShown(source);setLoaded(true);setFailed(false)}return()=>{active=false}},[source]);return{shown,ready:shown===source&&loaded&&!failed,failed};}

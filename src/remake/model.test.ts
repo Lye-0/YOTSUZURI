@@ -1,0 +1,11 @@
+import {describe,it,expect} from 'vitest';
+import {initial,apply,readSave,boxState,SAVE,type Action,type World} from './model';
+const run=(g:World,...actions:Action[])=>actions.reduce((s,a)=>apply(s,a).world,g);
+describe('受渡口の物と視点',()=>{
+it('四回の右向きで同じ場所へ戻り、選択を持ち越さない',()=>{let g=initial();for(let n=0;n<4;n++)g=apply(g,{type:'turn',delta:1}).world;expect(g.facing).toBe(0);expect(g.selected).toBeNull()});
+it('留め金・開蓋・一部取得・空を別々に保存する',()=>{let g=run(initial(),{type:'focus',focus:'box'},{type:'lid'});expect(g.boxOpen).toBe(false);g=run(g,{type:'latch'},{type:'lid'});expect(boxState(g)).toBe('full');g=run(g,{type:'take',item:'key'},{type:'take',item:'key'});expect(boxState(g)).toBe('card');expect(g.inventory).toEqual(['key']);expect(readSave(JSON.stringify(g))).toEqual(g);g=run(g,{type:'take',item:'card'});expect(boxState(g)).toBe('empty')});
+it('取得順は自由で、先に札を取ると鍵だけが現場へ残る',()=>{const g=run(initial(),{type:'focus',focus:'box'},{type:'latch'},{type:'lid'},{type:'take',item:'card'});expect(boxState(g)).toBe('key');expect(g.inventory).toEqual(['card'])});
+it('見るだけで鍵は使われず、選択して差した鍵は現場へ移る',()=>{let g=run(initial(),{type:'focus',focus:'box'},{type:'latch'},{type:'lid'},{type:'take',item:'key'},{type:'back'},{type:'turn',delta:1},{type:'focus',focus:'lock'});expect(g.inventory).toEqual(['key']);g=run(g,{type:'keyhole'});expect(g.keyInserted).toBe(false);g=run(g,{type:'select',item:'key'},{type:'keyhole'});expect(g.inventory).toEqual([]);expect(g.keyInserted).toBe(true);expect(g.doorUnlocked).toBe(false);g=run(g,{type:'turn-key'},{type:'door'});expect(g.doorOpen).toBe(true);expect(readSave(JSON.stringify(g))?.doorOpen).toBe(true)});
+it('視点を戻しても箱・本の物理状態を初期化しない',()=>{const g=run(initial(),{type:'focus',focus:'box'},{type:'latch'},{type:'lid'},{type:'back'},{type:'turn',delta:1},{type:'turn',delta:-1},{type:'focus',focus:'box'});expect(g.boxOpen).toBe(true);const b=run(g,{type:'back'},{type:'focus',focus:'book'},{type:'back'});expect(b.bookOpen).toBe(true)});
+it('旧版のセーブは読まず、矛盾した新セーブも拒否する',()=>{expect(SAVE).not.toBe('yotsuzuri:save:v1');expect(readSave(JSON.stringify({version:1}))).toBeNull();expect(readSave(JSON.stringify({...initial(),doorOpen:true}))).toBeNull();expect(readSave(JSON.stringify({...initial(),inventory:['key']}))).toBeNull()});
+});
