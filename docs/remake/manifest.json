@@ -3393,5 +3393,22 @@
       1435,
       907
     ]
+  },
+  {
+    "id": "model",
+    "group": "parts/cutaway",
+    "path": "remake/parts/cutaway/model.webp",
+    "width": 1435,
+    "height": 1096,
+    "alpha": true,
+    "bytes": 439994,
+    "source": "exec-1037bcbb-5242-45d0-ac12-e2a76697ee59.png",
+    "master": "parts/cutaway/model.png",
+    "bounds": [
+      21,
+      26,
+      1386,
+      1029
+    ]
   }
 ]

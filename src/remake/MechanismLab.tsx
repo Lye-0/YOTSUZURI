@@ -1,6 +1,6 @@
 import {useRef,useState} from 'react';
 import {apply,initial,type Action,type World} from './campaign';
-import {CutawayLock} from './CutawayLock';
+import {CutawayScene} from './CutawayScene';
 import {ForeedgeScene} from './ForeedgeScene';
 import {PressScene,type PressView} from './PressScene';
 import {usePhoto} from './usePhoto';
@@ -14,7 +14,7 @@ export default function MechanismLab(){
  const photo=usePhoto(sceneFiles(g)),visible=useRef(g);if(photo.ready)visible.current=g;
  const act=(a:Action)=>setG(s=>apply(s,a).world);
  return <main className="remake" data-book-order={g.book.order.join(',')} data-solved={g.solved.join(',')} data-impressions={JSON.stringify(g.print.layers)} style={{'--light':1} as React.CSSProperties}>
- <div className={'r-stage '+(edge?(zoom?'r-foreedge-detail':''):press?(pressView==='bed'?'r-press-bed':pressView==='paper'?'r-press-paper':''):'r-cutaway-reading')} aria-busy={!photo.ready}>
- {edge?<><img className="r-photo" src={photo.shown} alt="小口の支持台"/><ForeedgeScene g={visible.current} act={act} enabled={photo.ready} zoom={zoom} onZoom={setZoom}/></>:press?<><img className="r-photo" src={photo.shown} alt="刷り機"/><PressScene g={visible.current} act={act} enabled={photo.ready} view={pressView} onView={setPressView}/></>:<CutawayLock g={visible.current} act={act} enabled={photo.ready}/>}
+ <div className={'r-stage '+(edge?(zoom?'r-foreedge-detail':''):press?(pressView==='bed'?'r-press-bed':pressView==='paper'?'r-press-paper':''):'r-optical-reading')} aria-busy={!photo.ready}>
+ {edge?<><img className="r-photo" src={photo.shown} alt="小口の支持台"/><ForeedgeScene g={visible.current} act={act} enabled={photo.ready} zoom={zoom} onZoom={setZoom}/></>:press?<><img className="r-photo" src={photo.shown} alt="刷り機"/><PressScene g={visible.current} act={act} enabled={photo.ready} view={pressView} onView={setPressView}/></>:<CutawayScene g={visible.current} act={photo.ready?act:undefined}/>}
  </div><footer className="r-inventory"/></main>;
 }

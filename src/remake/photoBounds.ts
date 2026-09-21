@@ -1239,5 +1239,15 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       1435,
       907
     ]
+  },
+  "parts/cutaway/model": {
+    "width": 1435,
+    "height": 1096,
+    "bounds": [
+      21,
+      26,
+      1386,
+      1029
+    ]
   }
 };
