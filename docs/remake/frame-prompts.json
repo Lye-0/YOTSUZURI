@@ -1,0 +1,22 @@
+{
+  "initial": [
+    {
+      "id": "frame-rail-face",
+      "prompt": "Photorealistic isolated orthographic straight-down photograph of one antique dark honey-brown oak woodworking rail. Long narrow horizontal rectangle,36cm long and3cm wide. Plain flat TOP face with fine continuous lengthwise grain and lightly rubbed round edges, slight age staining. No notches, cuts, holes, joints, numbers, text, hardware or other objects. All four edges visible. True transparent alpha outside wood silhouette, completely opaque wood, no checkerboard, no cast shadow or matte. Diffuse neutral light. This is a reusable material photograph for a small binding frame, not a graphic."
+    },
+    {
+      "id": "frame-rail-side",
+      "prompt": "Photorealistic isolated orthographic exact SIDE elevation of a straight antique oak woodworking rail,36cm long and1.8cm thick. A very long thin horizontal rectangular wood strip, dark honey-brown oak, lightly worn edges, fine lengthwise grain. The entire full strip in frame. Flat and straight, no perspective. No joints, cuts, holes, printed words, symbols, hardware or other objects. Genuine transparent alpha background; wood completely opaque. No matte, checkerboard or external shadow. Neutral diffuse light; real macro carpentry photography."
+    },
+    {
+      "id": "frame-tray-top",
+      "prompt": "Photorealistic isolated perfectly orthographic TOP photograph of an EMPTY shallow antique oak assembly tray,46cm wide40cm deep, horizontal landscape rectangle. Narrow1.5cm raised wooden rim on all four sides, flat worn dark oak inner floor, subtly lighter clean patches at four corners inside. Entire tray all corners visible. No pieces, tools, posts, pins, fasteners, inset shapes, puzzle diagram, printed markings, text or symbols. Diffuse workshop lighting, real wood grain and age, genuine transparent alpha outside silhouette, opaque wood inside. No checkerboard, background matte, cast outer shadow. A physical component photograph for an old bookbinding workshop."
+    },
+    {
+      "id": "return-sheet",
+      "prompt": "Photorealistic isolated orthographic straight-down photograph of one antique administrative record sheet,28cm wide20cm tall landscape. Warm ivory paper with subdued fibres, light rubbed edges, tiny foxing spots and two small punched filing holes near LEFT edge. Flat single sheet, complete corners, no folds. Completely BLANK with no words, stamps, lines, drawings, numbers or labels; printing will be added later. True transparent alpha background, paper fully opaque. Neutral diffuse light, no outer cast shadow or checkerboard. Real archival document photography."
+    }
+  ],
+  "alphaCorrection": "Keep exactly the same photographed oak rail, its fine grain, worn edges, lighting and complete horizontal silhouette. Remove all the gray and white checkerboard outside the wood and replace it with REAL transparent alpha pixels. Fully opaque wood. No checkerboard, gray matte, background, shadow or new objects. Do not change the rail or crop its ends. This is an alpha correction, not a new design.",
+  "trayRebate": "Preserve the same antique oak tray photo, exact top-down camera and transparent outside silhouette. Change only the interior floor: add one shallow empty rectangular RING-SHAPED recess carved into the wood, centred precisely. Tray outer dimensions46cm wide40cm tall. The rectangular recessed ring outer dimensions36cm wide30cm tall, border band width3cm. Thus the outside of the recess is5cm from every tray outer edge; inner uncut raised central rectangle is30cm wide24cm tall. Recess depth about1.8cm with visibly dark vertical walls and real cut wood. A shallow frame-shaped channel ready to receive four wooden rails. Do not put any rails, loose pieces, tools, pegs, letters, arrows or numerical dimensions in the tray. Keep all existing outer rim, colour, wood grain, lighting and real transparent alpha background. Physical carpentry photograph, not drawn diagram."
+}

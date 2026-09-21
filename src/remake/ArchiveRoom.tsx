@@ -8,7 +8,7 @@ import {archiveLookAt,canMoveShelf,shelfFootPoint} from './archiveSpace';
 import {archiveTraceEye} from './archivePlan';
 import {envelopeValues} from './envelope';
 import {envelopeEye,ENVELOPE_FRAME} from './envelopeGeometry';
-export type ArchiveDetail={kind:'study-leaf';index:number}|{kind:'foot';index:number;end:number}|{kind:'trace';index:number}|{kind:'envelope'}|{kind:'watermark'}|WeighingDetail|{kind:'optics';view:'light'|'catch'}|{kind:'cradle-side'}|{kind:'foreedge';view:'edge'|'painting'}|{kind:'repair-panel';index:number}|null;
+export type ArchiveDetail={kind:'joinery-piece';index:number}|{kind:'study-leaf';index:number}|{kind:'foot';index:number;end:number}|{kind:'trace';index:number}|{kind:'envelope'}|{kind:'watermark'}|WeighingDetail|{kind:'optics';view:'light'|'catch'}|{kind:'cradle-side'}|{kind:'foreedge';view:'edge'|'painting'}|{kind:'repair-panel';index:number}|null;
 export function ArchiveRoom({g,act,enabled,detail,onDetail,onBoundary}:{g:World;act:(a:Action)=>void;enabled:boolean;detail:ArchiveDetail;onDetail:(d:ArchiveDetail)=>void;onBoundary:()=>void}){
  const [selected,setSelected]=useState(-1),[keyboard,setKeyboard]=useState(false),[busy,setBusy]=useState(false),timer=useRef<ReturnType<typeof setTimeout>|null>(null),values=archiveValues(g);
  useEffect(()=>{setSelected(-1);},[g.room,g.facing,g.focus]);

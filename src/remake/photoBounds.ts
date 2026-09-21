@@ -1199,5 +1199,45 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       258,
       1473
     ]
+  },
+  "parts/joinery/frame-rail-face": {
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      40,
+      233,
+      2093,
+      232
+    ]
+  },
+  "parts/joinery/frame-rail-side": {
+    "width": 1774,
+    "height": 887,
+    "bounds": [
+      37,
+      396,
+      1702,
+      92
+    ]
+  },
+  "parts/joinery/frame-tray-top": {
+    "width": 1345,
+    "height": 1169,
+    "bounds": [
+      24,
+      126,
+      1298,
+      926
+    ]
+  },
+  "parts/joinery/return-sheet": {
+    "width": 1484,
+    "height": 1060,
+    "bounds": [
+      25,
+      77,
+      1435,
+      907
+    ]
   }
 };
