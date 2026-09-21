@@ -25,7 +25,7 @@ export const portals:Portal[]=[
 {from:6,facing:1,to:8,gate:'shelves',rect:[38,15,24,65]}, {from:8,facing:3,to:6,gate:'shelves',rect:[38,15,24,65]},
 {from:8,facing:0,to:9,gate:'secret',rect:[38,15,24,65]}, {from:9,facing:2,to:8,rect:[38,15,24,65]},
 ];
-export const itemNames={key:'真鍮の鍵',card:'丸印の札','card-diamond':'菱形の札','card-moon':'三日月の札',cards:'二枚の返却札',receipts:'三枚の複写控え',folios:'両面の校正紙',knife:'紙ナイフ',lens:'拡大鏡',register:'紙の位置決め片',weights:'刷り機の押さえ',corner:'金属の角当て',threadchart:'綴じ糸の見本',plates:'原版',pin:'紙止めのピン',proof:'試し刷りの紙',needle:'綴じ針',thread:'綴じ糸',oldplan:'旧書庫の見取り図',gatherings:'原本の束',tissue:'薄い保護紙',blanks:'白紙の束',wedge:'斜面の木片',cradle:'小口の支持具',frame:'綴じ枠',returnrecord:'返却の記録',keyparts:'六枚歯の保守鍵',clamp:'束の締め具'} as const;
+export const itemNames={key:'真鍮の鍵',card:'丸印の札','card-diamond':'菱形の札','card-moon':'三日月の札',cards:'二枚の返却札',receipts:'三枚の複写控え',folios:'両面の校正紙',knife:'紙ナイフ',lens:'拡大鏡',register:'紙の位置決め片',weights:'刷り機の押さえ',corner:'金属の角当て',threadchart:'綴じ糸の見本',plates:'原版',pin:'紙止めのピン',proof:'試し刷りの紙',needle:'綴じ針',thread:'綴じ糸',oldplan:'旧書庫の見取り図',gatherings:'紙の束',tissue:'薄い保護紙',blanks:'白紙の束',wedge:'斜面の木片',cradle:'小口の支持具',frame:'綴じ枠',returnrecord:'返却の記録',keyparts:'六枚歯の保守鍵',clamp:'束の締め具'} as const;
 export type CampaignItem=keyof typeof itemNames;
 export type Mechanism='layers'|'digits'|'receipts'|'rings'|'measure'|'paper-face'|'folios'|'balance'|'seals'|'plates'|'loops'|'press'|'thread'|'scraps'|'latches'|'shelves'|'watermarks'|'envelope'|'books'|'mirrors'|'assemble'|'foreedge'|'blanks'|'frame'|'rubbing'|'pins'|'cams'|'masters'|'bind';
 export type ObjectSpec={id:number;name:string;room:number;facing:0|1|2|3;kind:Mechanism;rect:[number,number,number,number];physical:CampaignItem[];rewards:CampaignItem[];box:boolean};
@@ -48,7 +48,7 @@ o(13,'綴じ見本',5,0,'thread',[29,48,45,15],[],['needle','thread'],false),
 o(14,'断裁片',5,2,'scraps',[25,42,50,33],['corner'],['oldplan'],false),
 o(15,'書庫の保守戸',3,0,'latches',[38,15,24,65],[],[]),
 o(16,'可動書架',6,1,'shelves',[12,18,76,65],[],[],false),
-o(17,'透かしの束',7,0,'watermarks',[22,44,50,32],[],['gatherings']),
+o(17,'透かしの束',7,0,'watermarks',[22,44,50,32],[],['gatherings'],false),
 o(18,'封筒',6,0,'envelope',[28,47,43,25],['knife'],['tissue','blanks']),
 o(19,'重さの違う本',7,3,'books',[23,44,53,32],[],['wedge']),
 o(20,'見本台の灯り',8,2,'mirrors',[20,32,54,44],[],[],false),

@@ -1,3 +1,4 @@
+import {watermarkFiles} from './watermarkAssets';
 import {envelopeFiles} from './envelopeAssets';
 import {archivePhotoFiles} from './archiveAssets';
 import {keeperValues} from './keeper';
@@ -31,8 +32,8 @@ return close(id===4?open?'p04-open-empty':'p04-base':id===5?'p05-base':id===6?'p
 /** Decode every photographic layer before presenting a new frame. */
 export function sceneFiles(g:World):string[]{
 const files=[mainPhoto(g)],add=(n:string,group='closeups')=>files.push(photoPath(n,group));
-if(g.room===6||g.room===7||g.room===3&&g.facing===0&&g.focus==='room'&&g.opened.includes(15))files.push(...archivePhotoFiles,...envelopeFiles);
-for(const item of g.inventory){if(item==='oldplan'){add('trimming-paper','parts');continue;}if(item==='proof'){add('print-paper','parts');continue;}if(item==='plates'){for(const i of g.itemValues.plates??[])add(`plate-${i}`,'parts');continue;}add(item==='register'?'paper-strip':item,'items');if(item==='folios')for(const n of ['folio-open','folio-folded','folio-book'])add(n,'items');if(item==='receipts')add('receipt-single','items')}
+if(g.room===6||g.room===7||g.room===3&&g.facing===0&&g.focus==='room'&&g.opened.includes(15))files.push(...archivePhotoFiles,...envelopeFiles,...watermarkFiles);
+for(const item of g.inventory){if(item==='gatherings'){add('book-edge-closed','parts');add('folded-paper','parts/watermark');continue;}if(item==='oldplan'){add('trimming-paper','parts');continue;}if(item==='proof'){add('print-paper','parts');continue;}if(item==='plates'){for(const i of g.itemValues.plates??[])add(`plate-${i}`,'parts');continue;}add(item==='register'?'paper-strip':item,'items');if(item==='folios')for(const n of ['folio-open','folio-folded','folio-book'])add(n,'items');if(item==='receipts')add('receipt-single','items')}
 if(g.inventory.includes('keyparts')||g.focus==='object:26'&&g.opened.includes(26))for(const n of ['key-shaft','key-tooth','key-blade'])add(n,'parts');
 if(g.room===5&&g.facing===2&&(g.focus==='room'||g.focus==='object:14')){add('trimming-paper','parts');if(g.placed[14]?.includes('corner')||g.focus==='object:14')add('corner-flat','parts');}
 if(g.room===3&&g.facing===0&&(g.focus==='room'||g.focus==='object:15')){add('p15-keeper-base');add('keeper-pin-front','parts');const count=keeperValues(g).slice(3).filter(Boolean).length;if(count&&!g.flags['keeper:leaf'])add(`p15-tray-${count}`);if(g.flags['keeper:leaf']||g.focus==='object:15')add('p15-keeper-open');if(g.focus==='object:15')for(const n of [1,2,3])add(`p15-tray-${n}`);}
@@ -45,6 +46,7 @@ if(g.room===4&&g.facing===2&&(g.focus==='room'||g.focus==='object:11')){add('p11
 if(g.focus==='object:13'||g.room===5&&g.facing===0&&g.focus==='room'){const n=threadProgress(g);add(threadPhoto(g));add(n===5?'thread-anchor-empty':'thread-anchor-tied','parts');if(n<5){if(g.flags['thread:back'])add('p13-front');else if(n)add('p13-front-empty');}else{if(!g.collected.includes('needle'))add('needle','items');if(!g.collected.includes('thread'))add('thread','items');}}
 if(g.focus==='object:12'||g.room===4&&g.facing===0&&g.focus==='room'){add('p12-empty-shelf');for(const n of ['print-paper','press-weight',...((g.itemValues.plates??[]).map(i=>`plate-${i}`))])add(n,'parts');add('pin','items');add('paper-strip','items')}
 if(g.focus==='object:27'){add('steel-pin','parts');add('key-blade','parts');if(g.flags['attempt:27']&&value(g,27).every((n,i)=>n+[2,1,4][i]===5))add('p27-open')}
+if(g.focus==='object:22')add('folded-paper','parts/watermark');
 if(g.focus==='object:22')for(const n of ['book-edge-closed','book-edge-left','book-edge-right'])add(n,'parts');
 if(g.room===3&&g.facing===1){if(g.focus==='room')add('east','scenes/press');for(const n of ['balance-beam','balance-pan','balance-weight-small','balance-weight-medium','balance-weight-large','balance-pin'])add(n,'parts');if(g.focus==='room')add('east-pin-clear','scenes/type');else add('p08-pin-clear');if(g.opened.includes(8)){add('weights','items');if(g.focus==='room')add('east-open','scenes/type');else add('p08-open-empty')}}
 if(g.room===3&&g.facing===3){if(g.focus==='room')add('west','scenes/binding');add('p10-closed');for(const i of [0,1,2,3])add(`plate-${i}`,'parts');const open=[0,1,2,3].find(i=>g.flags[`drawer:10:${i}`]);if(open!==undefined)add(`p10-open-${open}`)}

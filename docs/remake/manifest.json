@@ -2555,5 +2555,107 @@
       973,
       1305
     ]
+  },
+  {
+    "id": "folded-paper",
+    "group": "parts/watermark",
+    "path": "remake/parts/watermark/folded-paper.webp",
+    "width": 1086,
+    "height": 1448,
+    "alpha": true,
+    "bytes": 261448,
+    "source": "exec-d6bf3471-e5ff-48cc-b59e-51a50f31fc61.png",
+    "master": "parts/watermark/folded-paper.png",
+    "bounds": [
+      92,
+      98,
+      904,
+      1252
+    ]
+  },
+  {
+    "id": "lightbox",
+    "group": "parts/watermark",
+    "path": "remake/parts/watermark/lightbox.webp",
+    "width": 1951,
+    "height": 806,
+    "alpha": true,
+    "bytes": 316678,
+    "source": "exec-8bf64979-74a2-4a77-bc4a-739e32facb2e.png",
+    "master": "parts/watermark/lightbox.png",
+    "bounds": [
+      60,
+      89,
+      1833,
+      638
+    ]
+  },
+  {
+    "id": "sorting-cloth",
+    "group": "parts/watermark",
+    "path": "remake/parts/watermark/sorting-cloth.webp",
+    "width": 2068,
+    "height": 760,
+    "alpha": true,
+    "bytes": 399966,
+    "source": "exec-cdb7004c-d8ed-4241-9c47-93b7d69dacd9.png",
+    "master": "parts/watermark/sorting-cloth.png",
+    "bounds": [
+      32,
+      105,
+      2003,
+      544
+    ]
+  },
+  {
+    "id": "bench-front",
+    "group": "parts/archive",
+    "path": "remake/parts/archive/bench-front.webp",
+    "width": 1801,
+    "height": 873,
+    "alpha": true,
+    "bytes": 204788,
+    "source": "exec-3579f8d3-41fd-4f71-831a-7bbca4d9bd18.png",
+    "master": "parts/archive/bench-front.png",
+    "bounds": [
+      34,
+      76,
+      1733,
+      720
+    ]
+  },
+  {
+    "id": "bench-top",
+    "group": "parts/archive",
+    "path": "remake/parts/archive/bench-top.webp",
+    "width": 1997,
+    "height": 787,
+    "alpha": true,
+    "bytes": 530254,
+    "source": "exec-eab01336-6cc3-437d-9c82-ce2ee04bde67.png",
+    "master": "parts/archive/bench-top.png",
+    "bounds": [
+      29,
+      73,
+      1942,
+      635
+    ]
+  },
+  {
+    "id": "bench-side",
+    "group": "parts/archive",
+    "path": "remake/parts/archive/bench-side.webp",
+    "width": 1131,
+    "height": 1391,
+    "alpha": true,
+    "bytes": 209516,
+    "source": "exec-b91e035f-c3d4-4406-a54a-9561b854645d.png",
+    "master": "parts/archive/bench-side.png",
+    "bounds": [
+      40,
+      104,
+      1051,
+      1193
+    ]
   }
 ]

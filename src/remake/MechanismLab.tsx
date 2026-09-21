@@ -8,9 +8,9 @@ import {sceneFiles} from './sceneFiles';
 import './remake.css';
 /** Development-only photographic mechanism study; excluded from production routing. */
 export default function MechanismLab(){
- const mode=new URLSearchParams(location.search).get('lab'),edge=mode==='foreedge',press=mode==='press';
+ const query=new URLSearchParams(location.search),mode=query.get('lab'),edge=mode==='foreedge',press=mode==='press',sources=query.get('stock')==='mixed'?[0,1,6,7,2,3]:query.get('stock')==='reordered'?[0,1,4,5,2,3]:[0,1,2,3,4,5];
  const [zoom,setZoom]=useState(false);const [pressView,setPressView]=useState<PressView>('all');
- const [g,setG]=useState<World>(():World=>edge?{...initial(),started:true,room:8,facing:2,focus:'object:22',solved:[20],placed:{22:['gatherings','cradle']}}:press?{...initial(),started:true,room:4,facing:0,focus:'object:12',placed:{12:['plates','pin','weights','register']},itemValues:{plates:[0,3],register:[6]}}:{...initial(),started:true,room:9,facing:0,focus:'object:27'});
+ const [g,setG]=useState<World>(():World=>edge?{...initial(),started:true,room:8,facing:2,focus:'object:22',solved:[20],placed:{22:['gatherings','cradle']},itemValues:{gatherings:sources}}:press?{...initial(),started:true,room:4,facing:0,focus:'object:12',placed:{12:['plates','pin','weights','register']},itemValues:{plates:[0,3],register:[6]}}:{...initial(),started:true,room:9,facing:0,focus:'object:27'});
  const photo=usePhoto(sceneFiles(g)),visible=useRef(g);if(photo.ready)visible.current=g;
  const act=(a:Action)=>setG(s=>apply(s,a).world);
  return <main className="remake" data-book-order={g.book.order.join(',')} data-solved={g.solved.join(',')} data-impressions={JSON.stringify(g.print.layers)} style={{'--light':1} as React.CSSProperties}>

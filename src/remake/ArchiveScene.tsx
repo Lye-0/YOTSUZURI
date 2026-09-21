@@ -1,24 +1,20 @@
+import {WatermarkWorld} from './WatermarkWorld';
+import {WatermarkInputs,type WatermarkPresentation} from './WatermarkInputs';
 import {separateTarget} from './screenTargets';
 import {envelopeOrigin,envelopeScreenCentre} from './envelopeGeometry';
 import {EnvelopeHotspots} from './EnvelopeHotspots';
 import {EnvelopeArt,type EnvelopeArtProps} from './EnvelopeArt';
 import {EnvelopeControls} from './EnvelopeControls';
-import {useLayoutEffect,useRef,useState,type ReactNode} from 'react';
+import {useLayoutEffect,useRef,useState} from 'react';
 import {archiveCamera,archiveRoom,archiveEye,archiveRoomEye,archiveProjectEye,archiveFloorPoint,archivePickShelf,archiveRayClear,archiveDoorPoint,archivePassable,shelfHandlePoint,shelfNames,shelfSpecs,shelfRect,type ShelfState,type ArchiveEye} from './archiveSpace';
 import {ArchiveControls} from './ArchiveControls';
 import './archive.css';
 import {archiveOldPlan,oldFootprint} from './archivePlan';
 import {photoBounds} from './photoBounds';
 const M=archiveCamera.scale;
-type UV=readonly [number,number,number,number];
-import {archivePhotoUrl as url} from './archiveAssets';
+import {Face,Photograph,type UV} from './ArchivePhotos';
 export {archivePhotoFiles} from './archiveAssets';
-function Photograph({id,group='parts/archive',crop,mirror=false,clip}:{id:string;group?:string;crop?:UV;mirror?:boolean;clip?:string}){
- const info=photoBounds[`${group}/${id}`],v:UV=crop??(info?[info.bounds[0]/info.width,info.bounds[1]/info.height,info.bounds[2]/info.width,info.bounds[3]/info.height]:[0,0,1,1]);
- return <div className="archive-photo-window" style={{transform:mirror?'scaleX(-1)':undefined,clipPath:clip}}><img src={url(id,group)} alt="" draggable={false} style={{width:`${100/v[2]}%`,height:`${100/v[3]}%`,left:`${-v[0]/v[2]*100}%`,top:`${-v[1]/v[3]*100}%`}}/></div>;
-}
 function Rails(){const tracks=[[1.69,.1,1.68,90],[2.96,.1,1.68,90],[3.6,0,5.2,90],[4.1,0,5.2,90],[1,.96,3.15,0],[1,2.16,3.15,0],[0,.14,4.17,0],[0,.7,4.17,0]],info=photoBounds['parts/archive/rail'],[x,y,w,h]=info.bounds,uv=(start:number,end:number):UV=>[(x+w*start)/info.width,y/info.height,w*(end-start)/info.width,h/info.height];return <Face x={0} y={0} z={.004} width={4.2} height={5.2} tilt={90} floor>{tracks.map(([x,y,length,angle],i)=>{const cap=.04,middle=length-2*cap,count=Math.ceil(middle/.8);return <div key={i} style={{position:'absolute',left:x*M,top:y*M,width:length*M,height:.055*M,transform:`rotate(${angle}deg) translateY(-50%)`,transformOrigin:'0 0',pointerEvents:'none'}}><div className="archive-wall-tile" style={{left:0,top:0,width:cap*M,height:'100%'}}><Photograph id="rail" crop={uv(0,.03)}/></div>{Array.from({length:count},(_,j)=><div key={j} className="archive-wall-tile" style={{left:(cap+j*middle/count)*M,top:0,width:middle/count*M+.1,height:'100%'}}><Photograph id="rail" crop={uv(.03,.97)}/></div>)}<div className="archive-wall-tile" style={{right:0,top:0,width:cap*M,height:'100%'}}><Photograph id="rail" crop={uv(.97,1)}/></div></div>;})}</Face>;}
-function Face({x,y,z,width,height,turn=0,tilt=0,floor=false,children}:{x:number;y:number;z:number;width:number;height:number;turn?:number;tilt?:number;floor?:boolean;children:ReactNode}){return <div className="archive-face" data-archive-floor={floor||undefined} style={{width:width*M,height:height*M,transform:`translate3d(${x*M}px,${-z*M}px,${y*M}px) rotateY(${turn}deg) rotateX(${tilt}deg)`}}>{children}</div>;}
 const walls={
  north:{width:4.2,x:0,y:0,turn:0,sx:[0,489/1536,918/1536,1],dx:[0,1.4,2.45,4.2],sy:[0,131/1024,529/1024,615/1024,1],dy:[0,.41,1.49,1.7,2.8],hole:false},
  east:{width:5.2,x:4.2,y:0,turn:-90,sx:[0,946/1709,1289/1709,1],dx:[0,2.925,4.0625,5.2],sy:[0,220/920,550/920,1],dy:[0,.72,1.7,2.8],hole:true},
@@ -69,7 +65,7 @@ function Doors({open}:{open:boolean}){
  <Face x={1.38} y={5.16} z={.012} width={1.09} height={.08} tilt={90}><Photograph id="wall-south" group="scenes/archive-east" crop={[620/1536,216/1024,380/1536,25/1024]}/></Face>
  </>;
 }
-export function ArchiveScene({values,facing,room=6,doorOpen=false,camera,selected=-1,busy=false,keyboard=false,onSelect,onMove,onInspect,onDoor,onPortal,onTrace,envelope,frame={width:1672,height:941}}:{values:ShelfState;envelope?:EnvelopeArtProps;frame?:{width:number;height:number};facing:number;room?:6|7;doorOpen?:boolean;camera?:Partial<ArchiveEye>;selected?:number;busy?:boolean;keyboard?:boolean;onSelect?:(index:number,keyboard:boolean)=>void;onMove?:(index:number,position:number)=>void;onInspect?:(index:number,end:number)=>void;onDoor?:()=>void;onPortal?:(room:number)=>void;onTrace?:(index:number)=>void}){
+export function ArchiveScene({values,facing,room=6,doorOpen=false,camera,selected=-1,busy=false,keyboard=false,onSelect,onMove,onInspect,onDoor,onPortal,onTrace,envelope,watermark,frame={width:1672,height:941}}:{values:ShelfState;envelope?:EnvelopeArtProps;watermark?:WatermarkPresentation;frame?:{width:number;height:number};facing:number;room?:6|7;doorOpen?:boolean;camera?:Partial<ArchiveEye>;selected?:number;busy?:boolean;keyboard?:boolean;onSelect?:(index:number,keyboard:boolean)=>void;onMove?:(index:number,position:number)=>void;onInspect?:(index:number,end:number)=>void;onDoor?:()=>void;onPortal?:(room:number)=>void;onTrace?:(index:number)=>void}){
  const host=useRef<HTMLDivElement>(null),[scale,setScale]=useState(1),eye=archiveEye(facing,{...archiveRoomEye(room,facing),...camera});
  const ep=envelopeOrigin(values),ec=envelopeScreenCentre(values,eye),paperPeer=envelope?.onInspect&&archiveRayClear(values,[ep[0]+.215,ep[1]+.14,ep[2]],2,eye)?[ec[0]*scale,ec[1]*scale] as const:null;
  useLayoutEffect(()=>{const update=()=>setScale(host.current!.clientWidth/frame.width);update();const resize=new ResizeObserver(update);resize.observe(host.current!);return()=>resize.disconnect();},[frame.width]);
@@ -80,8 +76,10 @@ export function ArchiveScene({values,facing,room=6,doorOpen=false,camera,selecte
  {(['north','east','south','west'] as const).map(side=><div key={side} style={{display:'contents'}}><Wall side={side}/><Wall side={side} west/></div>)}
  <Face x={-4.2} y={5.2} z={2.8} width={4.2} height={5.2} tilt={-90}><Photograph id="ceiling" group="scenes/archive-east"/></Face>
  <Doors open={doorOpen}/>
+ {watermark?<WatermarkWorld g={watermark.g}/>:null}
  {shelfSpecs.map((_,i)=><Shelving key={i} index={i} values={values} envelope={envelope} onSelect={busy?undefined:onSelect}/>)}
  </div></div></div>
+ {watermark?<WatermarkInputs {...watermark} eye={eye} scale={scale}/>:null}
  {envelope?<><EnvelopeHotspots {...envelope} eye={eye} scale={scale} values={values}/><EnvelopeControls {...envelope} eye={eye} scale={scale} values={values}/></>:null}
  {onPortal?<ArchivePortals room={room} facing={facing} eye={eye} scale={scale} values={values} open={doorOpen} onPortal={onPortal}/>:null}
  {onTrace?archiveOldPlan.map((s,i)=>{if(s.room!==room)return null;const r=oldFootprint(i),point:[number,number,number]=[r.x+r.width/2+(room===7?-4.2:0),r.y+r.depth/2,.01],p=archiveProjectEye(point,eye);return p[2]>.1&&p[0]>0&&p[0]<1672&&p[1]>0&&p[1]<941&&archiveRayClear(values,point,-1,eye)?<button key={s.key} className="archive-handle" style={{left:p[0]*scale-22,top:p[1]*scale-22}} aria-label="床の跡を観察する" onClick={()=>onTrace(i)}/>:null;}):null}

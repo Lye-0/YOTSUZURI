@@ -9,7 +9,16 @@ import {validKeeper} from './keeper';
 import {initialTrim} from './trimming';
 import {validEnvelope} from './envelope';
 import {envelopePhoto,envelopeUrl} from './envelopeAssets';
+import {gatheringPairs} from './gatherings';
 describe('写真フレームの依存',()=>{
+it('原紙の観察・整理・誤紙の持ち出しと小口へ同じ写真資産を渡す',()=>{
+ for(const values of [[-1,-1,-1,-1],[2,-1,-1,-1],[-1,0,2,4],[1,0,4,2],[-1,0,1,2]])for(const taken of [false,true]){
+  if(taken&&values.slice(1).some(n=>n<0))continue;const sources=taken?values.slice(1).flatMap(i=>[...gatheringPairs[i]]):[];
+  const g:World={...initial(),room:7,focus:'object:17',values:{17:values},flags:{'gatherings:taken':taken,'gatherings:layout':true},inventory:taken?['gatherings']:[],itemValues:taken?{gatherings:sources}:{}};
+  const files=sceneFiles(g);expect(files).toContain('/remake/parts/watermark/folded-paper.webp');expect(files).toContain('/remake/parts/archive/bench-front.webp');expect(files).not.toContain('/remake/items/gatherings.webp');for(const path of files)expect(existsSync(resolve('public',path.replace(/^\//,''))),path).toBe(true);
+ }
+ const files=sceneFiles({...initial(),room:8,focus:'object:22',itemValues:{gatherings:[0,1,6,7,2,3]}});expect(files).toContain('/remake/parts/watermark/folded-paper.webp');for(const path of files)expect(existsSync(resolve('public',path.replace(/^\//,''))),path).toBe(true);
+});
 it('封筒の表裏・全展開段階・内袋・部分取得の写真を先読みする',()=>{
  for(const face of [0,1])for(const loose of [0,1])for(const mask of [0,1,3,7])for(const slide of [0,1,2]){const values=[face,loose,mask,slide];if(!validEnvelope(values))continue;for(const collected of [[],['tissue'],['blanks'],['tissue','blanks']]){
   const g:World={...initial(),room:6,focus:'object:18',values:{18:values},collected:collected as World['collected']};const files=sceneFiles(g);expect(files).toContain(envelopeUrl(envelopePhoto(g)));expect(files).toContain('/remake/parts/envelope/inner-tray.webp');for(const path of files)expect(existsSync(resolve('public',path.replace(/^\//,''))),path).toBe(true);

@@ -759,5 +759,65 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       973,
       1305
     ]
+  },
+  "parts/watermark/folded-paper": {
+    "width": 1086,
+    "height": 1448,
+    "bounds": [
+      92,
+      98,
+      904,
+      1252
+    ]
+  },
+  "parts/watermark/lightbox": {
+    "width": 1951,
+    "height": 806,
+    "bounds": [
+      60,
+      89,
+      1833,
+      638
+    ]
+  },
+  "parts/watermark/sorting-cloth": {
+    "width": 2068,
+    "height": 760,
+    "bounds": [
+      32,
+      105,
+      2003,
+      544
+    ]
+  },
+  "parts/archive/bench-front": {
+    "width": 1801,
+    "height": 873,
+    "bounds": [
+      34,
+      76,
+      1733,
+      720
+    ]
+  },
+  "parts/archive/bench-top": {
+    "width": 1997,
+    "height": 787,
+    "bounds": [
+      29,
+      73,
+      1942,
+      635
+    ]
+  },
+  "parts/archive/bench-side": {
+    "width": 1131,
+    "height": 1391,
+    "bounds": [
+      40,
+      104,
+      1051,
+      1193
+    ]
   }
 };
