@@ -5,10 +5,10 @@ import {cradleSlope,CRADLE_THICKNESS} from './cradle';
 import {foreedgeMounted,foreedgeHeight} from './foreedge';
 export const foreedgeHome={u:1.18,v:.10,z:.823},bareGatherings={u:1.72,v:.16,z:.823};
 export type ForeedgeView='all'|'edge'|'painting';
-export const foreedgeFrame=(view:ForeedgeView)=>view==='edge'?{width:600,height:900}:view==='painting'?{width:1000,height:500}:{width:1000,height:900};
+export const foreedgeFrame=(view:ForeedgeView)=>view==='edge'?{width:600,height:900}:view==='painting'?{width:1000,height:600}:{width:1000,height:900};
 /** Paper coordinates start at the back-left bottom of the very same six gatherings. */
-export function foreedgePoint(g:World,[x,y,z]:ShelfPoint):ShelfPoint{
- if(!foreedgeMounted(g))return repairSouthPoint([bareGatherings.u+x,bareGatherings.v+y,bareGatherings.z+z]);
+export function foreedgePoint(g:World,[x,y,z]:ShelfPoint,mounted=foreedgeMounted(g)):ShelfPoint{
+ if(!mounted)return repairSouthPoint([bareGatherings.u+x,bareGatherings.v+y,bareGatherings.z+z]);
  const a=cradleSlope*Math.PI/180,v=.06+y,h=CRADLE_THICKNESS+z;
  return repairSouthPoint([foreedgeHome.u+.06+x,foreedgeHome.v+v*Math.cos(a)-h*Math.sin(a),foreedgeHome.z+CRADLE_THICKNESS+v*Math.sin(a)+h*Math.cos(a)]);
 }

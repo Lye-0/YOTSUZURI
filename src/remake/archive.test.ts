@@ -3,6 +3,12 @@ import {apply,gateOpen,initial,readSave,value,type World} from './campaign';
 const room=():World=>({...initial(),room:6,facing:1,started:true,visited:[0,3,6]});
 const moved=()=>{let g=room();for(const [index,position] of [[1,9],[2,4],[0,3],[3,0],[0,0],[2,0],[1,2]])g=apply(g,{type:'p-slide',index,position}).world;return g;};
 describe('書架と戸の現在状態',()=>{
+ it('修復室側でも同じ戸を閉じて開け、閉じた戸や棚越しには戻らない',()=>{
+  let g:World={...apply(moved(),{type:'archive-door'}).world,room:8,facing:3};
+  expect(apply(g,{type:'p-slide',index:1,position:9}).world).toBe(g);
+  g=apply(g,{type:'archive-door'}).world;expect(g.flags['archive:door']).toBe(false);expect(apply(g,{type:'go',room:6}).world.room).toBe(8);
+  g=apply(g,{type:'archive-door'}).world;expect(g.flags['archive:door']).toBe(true);expect(apply(g,{type:'go',room:6}).world.room).toBe(6);
+ });
  it('未読の見取り図に依存せず、物理的な移動と戸の操作で通れる',()=>{
   let g=moved();expect(value(g,16)).toEqual([0,2,0,0]);expect(gateOpen(g,'shelves')).toBe(false);
   g=apply(g,{type:'archive-door'}).world;expect(gateOpen(g,'shelves')).toBe(true);expect(g.solved).toContain(16);

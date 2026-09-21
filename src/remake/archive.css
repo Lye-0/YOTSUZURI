@@ -14,4 +14,8 @@
 
 .r-held-cradle{position:relative;width:100%;height:100%;pointer-events:none}.r-held-cradle.inspection{width:min(86vw,900px);height:min(66svh,600px)}
 
-.r-stage.r-book-edge{width:min(96vw,calc((100svh - 90px)*.666667));aspect-ratio:600/900}.r-stage.r-book-painting{width:min(96vw,calc((100svh - 90px)*2));aspect-ratio:1000/500}
+.r-stage.r-book-edge{width:min(96vw,calc((100svh - 90px)*.666667));aspect-ratio:600/900}.r-stage.r-book-painting{width:min(96vw,calc((100svh - 90px)*1.666667));aspect-ratio:1000/600}
+
+.foreedge-selected{background:#eadfb91a;box-shadow:inset 0 0 0 1px #e3cca5b0}
+
+.r-stage.r-repair-panel{width:min(96vw,calc((100svh - 90px)*.7));aspect-ratio:700/1000}

@@ -1,0 +1,36 @@
+import {useRef,useState,type CSSProperties,type PointerEvent} from 'react';
+import type {World,Action} from './campaign';
+import {archiveProjectEye,type ArchiveEye,type ShelfPoint} from './archiveSpace';
+import {foreedgePoint,foreedgeHome,bareGatherings,foreedgeFrame,type ForeedgeView} from './foreedgeGeometry';
+import {repairSouthPoint} from './repairSpace';
+import {foreedgeBands,foreedgeMounted,foreedgeHeight,foreedgeView as fanView} from './foreedge';
+import {Icon} from './Icons';
+import {MagnifyingLens} from './MagnifyingLens';
+export type ForeedgePresentation={g:World;onAct?:(a:Action)=>void;onInspectForeedge?:()=>void;bookView?:ForeedgeView;onBookView?:(view:ForeedgeView)=>void};
+export function ForeedgeInputs({g,onAct,onInspectForeedge,bookView='all',onBookView,eye,scale}:ForeedgePresentation&{eye:ArchiveEye;scale:number}){
+ const [selected,setSelected]=useState<number|null>(null),[lens,setLens]=useState<readonly [number,number]|null>(null),drag=useRef<{pointer:number;index:number;y:number}|null>(null),lensDrag=useRef<number|null>(null),suppress=useRef(false);
+ const papers=!!g.placed[22]?.includes('gatherings'),cradle=!!g.placed[22]?.includes('cradle'),mounted=foreedgeMounted(g),height=foreedgeHeight(g),bands=foreedgeBands(g),frame=foreedgeFrame(bookView),width=frame.width*scale,screenHeight=frame.height*scale,lensActive=g.selected==='lens'&&papers&&bookView!=='all';
+ const project=(p:ShelfPoint)=>archiveProjectEye(p,eye),paper=(p:ShelfPoint,mount=mounted)=>project(foreedgePoint(g,p,mount));
+ const polygon=(points:readonly ShelfPoint[]):CSSProperties=>{const ps=points.map(project),x=Math.min(...ps.map(p=>p[0])),y=Math.min(...ps.map(p=>p[1])),w=Math.max(...ps.map(p=>p[0]))-x,h=Math.max(...ps.map(p=>p[1]))-y;return {left:x*scale,top:y*scale,width:w*scale,height:h*scale,clipPath:`polygon(${ps.map(p=>`${(p[0]-x)/w*100}% ${(p[1]-y)/h*100}%`).join(',')})`};};
+ const table=(u:number,v:number,w:number,d:number,z=.84)=>polygon([[u,v,z],[u+w,v,z],[u+w,v+d,z],[u,v+d,z]].map(p=>repairSouthPoint([p[0],p[1],p[2]])));
+ if(onInspectForeedge)return <button className="env-screen-hit" aria-label="小口の見本台を調べる" style={table(1.16,.08,.92,.34,1.00)} onClick={onInspectForeedge}/>;
+ if(!onAct||g.focus!=='object:22')return null;
+ const switchView=(view:ForeedgeView)=>{setSelected(null);setLens(null);onBookView?.(view);};
+ const choose=(index:number)=>{if(selected===null)setSelected(index);else{const order=[...g.book.order];[order[selected],order[index]]=[order[index],order[selected]];onAct({type:'p-set',id:22,values:[...order,fanView(g)]});setSelected(null);}};
+ const up=(e:PointerEvent<HTMLButtonElement>)=>{const start=drag.current;if(!start||start.pointer!==e.pointerId)return;drag.current=null;if(Math.abs(e.clientY-start.y)>18){const box=e.currentTarget.closest('.archive-view')!.getBoundingClientRect(),y=(e.clientY-box.top)/scale;const target=bands.reduce((a,b)=>Math.abs(paper([.1,.15,(b.top+b.bottom)/2])[1]-y)<Math.abs(paper([.1,.15,(a.top+a.bottom)/2])[1]-y)?b:a).index;const order=[...g.book.order];[order[start.index],order[target]]=[order[target],order[start.index]];onAct({type:'p-set',id:22,values:[...order,fanView(g)]});setSelected(null);}else choose(start.index);};
+ const lensAt=(e:PointerEvent<HTMLButtonElement>)=>{const box=e.currentTarget.getBoundingClientRect();setLens([Math.max(0,Math.min(frame.width,(e.clientX-box.left)/scale)),Math.max(0,Math.min(frame.height,(e.clientY-box.top)/scale))]);};
+ return <div className="envelope-hit-layer" onPointerDownCapture={()=>{suppress.current=false;}} onClickCapture={e=>{if(suppress.current&&e.detail!==0){e.preventDefault();e.stopPropagation();}}}>
+ {bookView==='all'?<>
+ {g.selected==='cradle'?<button className="env-screen-hit" aria-label="支持具を見本台へ置く" style={table(foreedgeHome.u,foreedgeHome.v,.32,.28)} onClick={()=>onAct({type:'p-place',id:22,target:'cradle'})}/>:null}
+ {g.selected==='gatherings'?<button className="env-screen-hit" aria-label={cradle?'紙束を支持具へ載せる':'紙束を作業台へ置く'} style={cradle?polygon([[0,0,0],[.2,0,0],[.2,.15,0],[0,.15,0]].map(p=>foreedgePoint(g,[p[0],p[1],p[2]],true))):table(bareGatherings.u,bareGatherings.v,.2,.15)} onClick={()=>onAct({type:'p-place',id:22,target:'gatherings'})}/>:null}
+ {papers?<button className="env-screen-hit" aria-label="紙束の小口を近くで見る" style={polygon([[0,0,height],[.2,0,height],[.2,.15,0],[0,.15,0]].map(p=>foreedgePoint(g,[p[0],p[1],p[2]])))} onClick={()=>switchView('painting')}/>:null}
+ {cradle&&g.selected!=='gatherings'?<button className="env-screen-hit" aria-label="支持具を手元へ戻す" style={table(foreedgeHome.u,foreedgeHome.v+.23,.32,.05,.84)} onClick={()=>onAct({type:'p-retrieve',id:22,item:'cradle'})}/>:null}
+ </>:<>
+ {!lensActive&&papers?bands.map(b=>{const top=paper([0,.15,b.top]),bottom=paper([.2,.15,b.bottom]),left=paper([0,.15,(b.top+b.bottom)/2])[0],right=paper([.2,.15,(b.top+b.bottom)/2])[0],cy=(top[1]+bottom[1])/2,rh=Math.max(24,Math.abs(bottom[1]-top[1])*scale),prev=b.index>0?paper([.1,.15,(bands[b.index-1].top+bands[b.index-1].bottom)/2])[1]:-Infinity,next=b.index<5?paper([.1,.15,(bands[b.index+1].top+bands[b.index+1].bottom)/2])[1]:Infinity,cutTop=Math.max(0,(prev+cy)*scale/2-(cy*scale-rh/2)),cutBottom=Math.max(0,(cy*scale+rh/2)-(next+cy)*scale/2);return <button key={b.index} className={'env-screen-hit'+(selected===b.index?' foreedge-selected':'')} aria-label={`${b.index+1}番目の束を入れ替える`} aria-pressed={selected===b.index} style={{left:left*scale,top:cy*scale-Math.max(24,Math.abs(bottom[1]-top[1])*scale)/2,width:(right-left)*scale,height:rh,clipPath:`inset(${cutTop}px 0 ${cutBottom}px 0)`}} onPointerDown={e=>{suppress.current=true;drag.current={pointer:e.pointerId,index:b.index,y:e.clientY};e.currentTarget.setPointerCapture(e.pointerId);}} onPointerUp={up} onPointerCancel={()=>{drag.current=null;}} onKeyDown={e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();choose(b.index);}}}/>;}):null}
+ {lensActive?<><button className="env-screen-hit" aria-label="拡大鏡を動かす" style={{inset:0,width:'100%',height:'100%'}} onPointerDown={e=>{suppress.current=true;lensDrag.current=e.pointerId;e.currentTarget.setPointerCapture(e.pointerId);lensAt(e);}} onPointerMove={e=>{if(lensDrag.current===e.pointerId)lensAt(e);}} onPointerUp={()=>{lensDrag.current=null;}} onPointerCancel={()=>{lensDrag.current=null;}}/><MagnifyingLens g={g} eye={eye} scale={scale} point={lens??[frame.width*.27,frame.height*.5]}/></>:null}
+ {mounted?<div className="r-edge-views" style={{left:8,top:8,bottom:'auto',transform:'none',gap:4,pointerEvents:'auto'}}>{[0,1,2].map(view=><button key={view} aria-label={['左へ傾ける','まっすぐに戻す','右へ傾ける'][view]} aria-pressed={fanView(g)===view} onClick={()=>{setSelected(null);onAct({type:'p-set',id:22,values:[...g.book.order,view]});}}><Icon name={view===0?'left':view===1?'eye':'right'}/></button>)}</div>:null}
+ <button className="watermark-command" aria-label={bookView==='edge'?'小口の絵全体を見る':'束の継ぎ目を近くで見る'} style={{left:8,top:screenHeight-52}} onClick={()=>switchView(bookView==='edge'?'painting':'edge')}><Icon name="inspect"/></button>
+ <button className="watermark-command" aria-label="紙束を手元へ戻す" style={{left:width-52,top:screenHeight-52}} onClick={()=>{onAct({type:'p-retrieve',id:22,item:'gatherings'});switchView('all');}}><Icon name="bag"/></button>
+ </>}
+ </div>;
+}

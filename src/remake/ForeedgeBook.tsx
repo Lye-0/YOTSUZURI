@@ -1,3 +1,4 @@
+import {RepairPanelInk} from './RepairPanelInk';
 import {useId,useRef,useState} from 'react';
 import {BOOK_ORDER,BUNDLE_THICKNESS} from './book';
 import {Icon} from './Icons';
@@ -8,10 +9,9 @@ const unit=26;
 const originalTop:number[]=[];let originalHeight=0;for(const id of BOOK_ORDER){originalTop[id]=originalHeight;originalHeight+=BUNDLE_THICKNESS[id]*unit;}
 export const paintedJoin=(id:number)=>[110+originalTop[id]*.6,110+(originalTop[id]+BUNDLE_THICKNESS[id]*unit)*.6];
 function HiddenDoorPainting(){return <g stroke="#464139" fill="none" strokeWidth="2.4" opacity=".74">
-<path d="M110 0L312.8 338M122 0L324.8 338M75 306H855M365 306V40H690V306M379 306V53H676V306M379 112H676M379 255H676M408 72V92M408 146V166M408 219V239"/>
-<path d="M650 53l-36 58 43 17-28 42M515 40Q540 12 564 40M690 138l32 22v28l-32 12M690 233l32 8v27l-32 9"/>
-<circle cx="639" cy="205" r="10"/><path d="M640 205h-30v12M462 55V110M551 55V110M630 55V110M382 305l-20 23M676 305l24 23"/>
-<path d="M720 40V306M730 40V306M60 80h60M77 95h54M78 150h88M112 201h70M131 254h80" strokeWidth="1" opacity=".5"/>
+<path d="M110 0L312.8 338M122 0L324.8 338M75 306H855"/>
+<g transform="translate(430 25) scale(.13)" style={{color:'#464139'}}><RepairPanelInk/></g>
+<path d="M432 298l-12 24M560 298l12 24M620 40V306M630 40V306M60 80h60M77 95h54M78 150h88M112 201h70M131 254h80" strokeWidth="1" opacity=".5"/>
 </g>}
 function OtherBookPainting({variant}:{variant:number}){return <g stroke="#594a3b" fill="none" strokeWidth="3" opacity=".67"><path d={variant?'M60 40Q250 270 440 55T860 50M70 280Q280 70 480 280T880 275':'M60 165Q260 5 460 170T850 155M80 70Q280 300 480 70T860 75'}/>{[150,340,530,720].map((x,i)=><g key={x} transform={`translate(${x} ${90+(i%2)*125})`}><path d="M0 0q-50 -70 -75 -25q20 45 75 25q20 -65 65 -35q-10 40 -65 35v90"/><circle cy="-5" r="14"/></g>)}</g>;}
 export function ForeedgeBook({order,view,sources=[0,1,2,3,4,5],blanks=[],onOrder,onView,showPainting=true,surfaceOnly=false,solidFace=false}:{order:number[];view:number;sources?:readonly number[];blanks?:number[];onOrder?:(order:number[])=>void;onView?:(view:number)=>void;showPainting?:boolean;surfaceOnly?:boolean;solidFace?:boolean}){

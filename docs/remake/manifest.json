@@ -3121,5 +3121,90 @@
       1476,
       692
     ]
+  },
+  {
+    "id": "panel-target",
+    "group": "parts/repair",
+    "path": "remake/parts/repair/panel-target.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "bytes": 366006,
+    "source": "exec-601a94be-4964-4d0f-9778-999eb5c4b628.png",
+    "master": "parts/repair/panel-target.png",
+    "bounds": [
+      194,
+      7,
+      630,
+      1508
+    ]
+  },
+  {
+    "id": "panel-three-straps",
+    "group": "parts/repair",
+    "path": "remake/parts/repair/panel-three-straps.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "bytes": 293506,
+    "source": "exec-e8d1faac-a5df-4e17-98d2-76003776a14f.png",
+    "master": "parts/repair/panel-three-straps.png",
+    "bounds": [
+      193,
+      7,
+      632,
+      1509
+    ]
+  },
+  {
+    "id": "panel-left-split",
+    "group": "parts/repair",
+    "path": "remake/parts/repair/panel-left-split.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "bytes": 319960,
+    "source": "exec-83e2497d-0d62-49ed-89d2-1c2b842af285.png",
+    "master": "parts/repair/panel-left-split.png",
+    "bounds": [
+      193,
+      8,
+      633,
+      1508
+    ]
+  },
+  {
+    "id": "lamp-shade",
+    "group": "parts/repair",
+    "path": "remake/parts/repair/lamp-shade.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": true,
+    "bytes": 162658,
+    "source": "exec-c743b7a8-8267-4ad3-a23d-1c85895a6370.png",
+    "master": "parts/repair/lamp-shade.png",
+    "bounds": [
+      67,
+      199,
+      1402,
+      654
+    ]
+  },
+  {
+    "id": "cover-short",
+    "group": "parts/repair",
+    "path": "remake/parts/repair/cover-short.webp",
+    "width": 1933,
+    "height": 813,
+    "alpha": true,
+    "bytes": 329920,
+    "source": "exec-31c83dad-80fa-44b7-be56-a214ef745d0a.png",
+    "master": "parts/repair/cover-short.png",
+    "bounds": [
+      43,
+      191,
+      1846,
+      427
+    ]
   }
 ]

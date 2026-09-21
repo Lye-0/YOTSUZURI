@@ -1,0 +1,35 @@
+[
+  {
+    "id": "repair-secret-panel",
+    "prompt": "Photorealistic isolated architectural asset, perfectly straight-on orthographic FRONT photograph of one narrow antique dark oak service door panel in its simple wooden frame. Physical outer size1.0m wide2.1m tall, rectangular and tall, full panel and frame visible. Quiet abandoned book-restoration workshop, fine worn medium-dark brown oak grain, subtle aged finish, neutral diffuse cool light. IMPORTANT identifying details: three short old dark hinge plates equally spaced down the LEFT stile; exactly two small irregular dark iron repair straps crossing the RIGHT outer frame, one at about48% height, one at76%; a thin natural zigzag split in the UPPER RIGHT panel descending from20% to45%; a tiny shallow arched carved crest centered just above the top horizontal rail. Four vertical narrow boards in the top panel above a crossrail at28%height; main middle panel plain wood; another crossrail at82%. A small round low-profile bronze pull at x84% y64%, diameter4cm, unobtrusive. No keyhole, symbols, numbers, writing, padlock or decorations. No wall or floor; genuine transparent alpha background with generous margin. Not illustration, physically photographed wood and hardware."
+  },
+  {
+    "id": "repair-cover-batten",
+    "prompt": "Photorealistic isolated orthographic front photograph of one long slender dark oak cover batten from an antique wooden service-door panel. Physical dimensions13cm wide and2.0m long, vertically upright in image, rectangular straight strip, subtly worn softened edges, fine dark brown oak grain matching an old book-restoration workshop door. One tiny old pry nick near the lower LEFT edge at80%height, no other holes, screws, lettering or ornaments. Complete full length with generous transparent alpha margin on all sides, exactly perpendicular camera with no perspective, neutral cool diffuse light. Real detailed photograph of the entire wood strip, not a diagram. No surrounding scene, no floor, no shadows outside silhouette."
+  },
+  {
+    "id": "repair-lamp-shade",
+    "prompt": "Photorealistic isolated FRONT elevation of one old rotationally symmetric shallow factory pendant lamp shade, black enamel over metal, diameter26cm height12cm. Dome/bell silhouette, small circular neck at top, wide rolled metal rim around bottom, age chips and fine scratches, a narrow warm ivory underside visible at the bottom edge. Exact frontal horizontal camera, no perspective distortion. Shade ONLY, no wire, suspension, arm, bulb, pole, wall, table or other objects. No text. The entire shade is visible with ample genuine transparent alpha margin. Real old workshop light fitting in neutral diffuse illumination, not a render or illustration."
+  },
+  {
+    "id": "repair-panel-three-straps",
+    "referenced_image_paths": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-601a94be-4964-4d0f-9778-999eb5c4b628.png"
+    ],
+    "prompt": "Create a matching SECOND physical wooden wall/service panel using the reference. Preserve the exact orthographic front camera, outer dimensions, tall rectangular frame with subtle centered crest, three left hinges, two crossrails, four upper planks, and round low-profile bronze pull at the same position. Same neutral diffuse illumination and age. Change the wood grain and individual scratches so this is a different physical panel in the same workshop. Keep a natural split in its upper-right planks, with a slightly different natural zigzag. CRITICAL change: there are exactly THREE short dark iron repair straps on the right outer stile instead of two, equally separated at44%,62%,80% of panel height. No writing, symbols, padlocks, added decorations, wall or floor. Genuine transparent alpha around the complete panel; no matte or checkerboard."
+  },
+  {
+    "id": "repair-panel-left-split",
+    "referenced_image_paths": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-601a94be-4964-4d0f-9778-999eb5c4b628.png"
+    ],
+    "prompt": "Create a matching THIRD physical wooden wall/service panel using the reference. Preserve exact orthographic front camera, outer dimensions, frame with shallow centered crest, three left hinges, two crossrails, four upper planks, round low-profile bronze pull at same position, exactly TWO iron repair straps on right outer stile at same positions. Same neutral diffuse light and weathered oak material, but new individual wood grain and scratches so this is a different physical panel. CRITICAL change: the thin zigzag split is in the UPPER LEFT planks, not the upper right. Upper right planks intact. No writing, symbols, padlocks, extra objects, wall or floor. Entire panel and frame visible with genuine transparent alpha background, no matte or checkerboard."
+  },
+  {
+    "id": "repair-short-batten",
+    "referenced_image_paths": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-0ee3caae-a1d3-460b-8592-7c328f9acf4b.png"
+    ],
+    "prompt": "Create a shortened matching oak cover strip from the reference: retain its width13cm and exact aged dark brown oak material, but the new physical strip is only55cm long, not2meters. A complete short rectangular wood cover with finished squared top and bottom ends and subtly softened corners, natural lengthwise grain, one small existing pry nick at the left edge near its lower end. Front surface plain, no screw heads or holes. Perfectly frontal orthographic photograph with the same neutral diffuse lighting. Complete object with generous genuine transparent alpha margin all around, no brown halo matte, no checkerboard pattern, no floor or other objects. Portrait object proportion13:55; do not compress the old long grain unnaturally, show plausible actual shortened timber."
+  }
+]

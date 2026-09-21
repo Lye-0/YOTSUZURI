@@ -1079,5 +1079,55 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       1476,
       692
     ]
+  },
+  "parts/repair/panel-target": {
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      194,
+      7,
+      630,
+      1508
+    ]
+  },
+  "parts/repair/panel-three-straps": {
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      193,
+      7,
+      632,
+      1509
+    ]
+  },
+  "parts/repair/panel-left-split": {
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      193,
+      8,
+      633,
+      1508
+    ]
+  },
+  "parts/repair/lamp-shade": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      67,
+      199,
+      1402,
+      654
+    ]
+  },
+  "parts/repair/cover-short": {
+    "width": 1933,
+    "height": 813,
+    "bounds": [
+      43,
+      191,
+      1846,
+      427
+    ]
   }
 };

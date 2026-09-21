@@ -54,6 +54,7 @@ export function archiveRayClear(values:ShelfState,target:ShelfPoint,exclude=-1,e
 }
 export const archiveDoorHandle:ShelfPoint=[4.19,3.965,1.12];
 export const archiveDoorPoint=(open:boolean):ShelfPoint=>open?[4.2+3.965-archiveRoom.eastDoor[0],archiveRoom.eastDoor[0]+.005,1.12]:archiveDoorHandle;
+export const archiveDoorBackPoint=(open:boolean):ShelfPoint=>open?[4.2+3.965-archiveRoom.eastDoor[0],archiveRoom.eastDoor[0]-.03,1.12]:[4.23,3.965,1.12];
 export const shelfNames=['低い書架','補修板のある長い書架','奥行きのある棚','赤い本の書架'] as const;
 export function shelfHandlePoint(v:ShelfState,i:number):ShelfPoint{const r=shelfRect(v,i),z=[.93,1.04,1.19,1.34][i];return shelfSpecs[i].handleFace==='west'?[r.x-.005,r.y+r.depth/2,z]:[r.x+r.width/2,r.y+r.depth+.005,z];}
 export function shelfFootPoint(v:ShelfState,i:number,end:number):ShelfPoint{const r=shelfRect(v,i),ratio=end?1-[.03,.04,.075,.03][i]:[.03,.04,.075,.03][i],z=i===1?.11:.04;return shelfSpecs[i].handleFace==='west'?[r.x,r.y+r.depth*ratio,z]:[r.x+r.width*ratio,r.y+r.depth,z];}

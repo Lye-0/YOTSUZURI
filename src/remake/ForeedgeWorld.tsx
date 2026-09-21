@@ -12,11 +12,11 @@ import {foreedgeHome as home,bareGatherings as bare} from './foreedgeGeometry';
 const M=500,metal:PhotoTexture={id:'iron-face',group:'parts/optics'};
 function PaperStack({g}:{g:World}){const h=foreedgeHeight(g),w=foreedgePaper.width,d=foreedgePaper.depth,sources=gatheringSources(g),view=foreedgeView(g),edge=<ForeedgeBook order={g.book.order} sources={sources} view={view} surfaceOnly solidFace showPainting={false}/>;
  return <>
- <Face resolution={12} x={0} y={d} z={h} width={w} height={h}><ForeedgeBook order={g.book.order} sources={sources} view={view} surfaceOnly/></Face>
- <Face resolution={12} x={w} y={0} z={h} width={w} height={h} turn={180}>{edge}</Face>
- <Face resolution={12} x={w} y={d} z={h} width={d} height={h} turn={90}>{edge}</Face>
- <Face resolution={12} x={0} y={0} z={h} width={d} height={h} turn={-90}>{edge}</Face>
- <Face resolution={12} x={0} y={0} z={h} width={w} height={d} tilt={90}><GatheringTop/></Face>
+ <Face resolution={g.selected==='lens'?24:12} x={0} y={d} z={h} width={w} height={h}><ForeedgeBook order={g.book.order} sources={sources} view={view} surfaceOnly/></Face>
+ <Face resolution={g.selected==='lens'?24:12} x={w} y={0} z={h} width={w} height={h} turn={180}>{edge}</Face>
+ <Face resolution={g.selected==='lens'?24:12} x={w} y={d} z={h} width={d} height={h} turn={90}>{edge}</Face>
+ <Face resolution={g.selected==='lens'?24:12} x={0} y={0} z={h} width={d} height={h} turn={-90}>{edge}</Face>
+ <Face resolution={g.selected==='lens'?24:12} x={0} y={0} z={h} width={w} height={d} tilt={90}><GatheringTop/></Face>
  </>;
 }
 /** Mounted and unmounted materials keep separate physical positions. */
