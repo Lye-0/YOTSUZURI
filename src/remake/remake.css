@@ -3,3 +3,7 @@
 
 .r-reset{margin-top:20px;font-size:13px}.r-reset button{margin-right:12px}.r-panel .r-reset-link{display:block;margin-top:25px;padding:5px 0;background:none;border:0;font-size:12px;color:#aeb098}
 .r-orientation-hint{display:none}@media(max-width:700px) and (orientation:portrait){.r-orientation-hint{display:block;font-size:11px;color:#9b9e8b;letter-spacing:.08em;padding-top:12px}}
+.r-drum-ink{position:absolute;z-index:3;pointer-events:none;mix-blend-mode:multiply;color:#38291b;opacity:.86}.r-drum-ink svg{display:block;width:100%;height:100%;overflow:hidden;filter:blur(.15px)}.r-drum-ink text{fill:currentColor;font-family:Georgia,serif;font-size:58px;font-weight:600}.r-drum-ink button{position:absolute;inset:-15% -30%;border:0;padding:0;background:transparent;pointer-events:auto}.r-drum-ink button:focus-visible{outline:1px solid #f2dda9}.r-inventory{overflow-x:auto;justify-content:safe center}.r-item{flex:none}
+.r-object-photo{position:absolute;object-fit:fill;pointer-events:none;user-select:none}
+.r-receipt-papers{width:min(1100px,95vw);max-height:80svh;overflow:visible}.r-paper-grab{cursor:grab;touch-action:none;outline:none}.r-paper-grab:focus-visible{filter:drop-shadow(0 0 2px #dfc995)}.r-paper-ink{mix-blend-mode:multiply;opacity:.8}
+.r-printed-ink{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:multiply;opacity:.83}

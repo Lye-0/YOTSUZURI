@@ -1,0 +1,289 @@
+{
+  "generator": "image_gen builtin",
+  "reception": [
+    {
+      "id": "north",
+      "prompt": "Use case: photorealistic-natural. Asset: north-facing fixed-camera view of reception room in a Japanese bookbinding workshop escape game. One single 16:9 realistic photograph, not UI. Canonical room is 4 metres square, grey ivory plaster above dark walnut wainscot, aged dark wood flooring, square exposed ceiling beams. Camera at room center 1.55m high, straight level view, 35mm lens, clearly sees only NORTH wall with narrow corner margins. Old low walnut reception counter spans left two thirds. On counter LEFT sits a single small low rectangular walnut document chest 38cm wide, flat hinged lid CLOSED, exactly ONE simple aged brass hinged clasp centered on front (no padlock, no combinations, no rings). Chest front faces the camera. On counter RIGHT sits one black clothbound book, closed, worn cream page edges and no writing. A small lit brass desk lamp is at far left of counter. At RIGHT side of NORTH wall is an open plain walnut doorway, walkable floor threshold, looking into an internal proofreading room with cream paper hanging on a rack; no outside view. Behind counter plain plaster wall with one small faded rectangular paper notice, no invented legible writing. Cool reflected rainy-night light from behind camera with warm lamp fill. Bright enough to see all surfaces, restrained film realism, tactile paper and worn wood. No people, no UI, no borders, no extra boxes, no ornate decoration. The chest, lamp, book, doorway and furniture placement are exact invariants for subsequent views and close-ups."
+    },
+    {
+      "id": "east",
+      "prompt": "Reference image is the NORTH wall of a 4m square Japanese bookbinding reception room. Generate one photoreal 16:9 view from SAME room center and SAME eye height/35mm lens after rotating RIGHT exactly 90 degrees, facing EAST wall. Preserve grey ivory plaster, dark walnut wainscot, dark posts, aged boards, ceiling beams, rainy night light and wear. EAST wall has ONE CLOSED plain dark walnut door at center, full doorway and floor threshold clearly visible, small tarnished brass round knob and an old fashioned keyhole on its right stile. Above it a small dark wood lintel, no signs/text. Door leads to internal office. A low narrow wooden bench stands along the right part of wall, no objects on it. Mostly front-on wall, narrow side margins only: north counter and objects are outside field of view to left, do not duplicate them. Floor boards run LEFT TO RIGHT in this rotated view. Warm light spills from north counter lamp offscreen left, cooler night illumination behind right. No UI no people no boxes no bookcases. True view change, same room and scale.",
+      "reference": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-0a38b648-ce16-4b2a-8b4d-de22cd47fd12.png"
+    },
+    {
+      "id": "south",
+      "prompt": "Reference is NORTH wall of a 4m square Japanese bookbinding reception room. Generate one 16:9 photoreal view from SAME room center eye height1.55m,35mm lens, rotated180deg to SOUTH wall. Exact same grey ivory plaster, dark walnut wainscot, dark posts, floorboard width and ceiling beams. SOUTH wall center has a CLOSED double timber street entrance with tall narrow glass panes and sturdy vertical timber lattice. Through center panes visibly see a heavy iron chain and padlock secured OUTSIDE across the two door handles, making it clear this way is shut. Outside only a narrow dark rain-wet alley, no people. Door threshold intact. A small empty coat peg on left wall, small umbrella stand at bottom right. No desk, no chest, no bookcase. Floorboards run into depth. Cool rainy night light through glass, faint warm light behind camera right from north lamp. Not overly dark. No text or UI. This is the opposite wall of the reference, not a separate bigger room.",
+      "reference": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-0a38b648-ce16-4b2a-8b4d-de22cd47fd12.png"
+    },
+    {
+      "id": "west",
+      "prompt": "Reference is NORTH wall of 4m square Japanese bookbinding reception room. Create16:9 photoreal view from SAME center eyeheight1.55m35mm rotatedLEFT90deg to WEST wall. Same ivorygrey plaster/dark walnut wainscot, posts/floor/ceiling. WEST wall has a closed simple wooden internal door on LEFT half, and on RIGHT half a waist-high 90cm wide rectangular clear glass service window with dark wood frame. Through window see interior packing vestibule, few crates and closed old timber exit door beyond. Window is small and above a sill, unmistakably NOT a human passage. No counter on this wall, no extra box/books. Same subtle wear and scale asreference. Floorboards run LEFT TO RIGHT in frame. Warm light from north lamp offscreen RIGHT, cool night fill from south window offscreen LEFT. No signs, no text, no UI, no people. Entire wall front-on with narrow corner margins.",
+      "reference": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-0a38b648-ce16-4b2a-8b4d-de22cd47fd12.png"
+    },
+    {
+      "id": "box-closed",
+      "prompt": "Move camera closer to the EXACT small walnut chest on LEFT of counter in reference photograph. Photoreal16:9 first-person close-up, same room object not a new model. Chest fills middle 65% of frame, entire chest visible from slightly above front, lens50mm, counter surface below and grey plaster/darkwood wainscot behind still visible. Preserve the exact rectangular flat lid, dark wood grain, corner joint construction and SINGLE centered vertical aged brass hinged clasp seen inreference. Lamp warm glow from left. Lid CLOSED and clasp DOWN fastening front. No padlock or rings, no text no UI. Right background may show blurred edge of black book far across counter; do not put book next to box. Keep tactile photoreal detail and grounded contact shadow.",
+      "reference": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-0a38b648-ce16-4b2a-8b4d-de22cd47fd12.png"
+    },
+    {
+      "id": "book-open",
+      "prompt": "Move camera close to the EXACT black cloth book at RIGHT of counter in reference. It is now OPEN flat on that SAME walnut counter. Photo16:9 first person closeup looking down about45degrees, entire book fills central65%, black cover edges clearly visible. Opening reveals most of text block carefully cut out: only ragged cream paper stubs and six frayed binding cords remain along spine, worn cream endpapers otherwise blank. This is a book awaiting rebinding, not a hollow secretbox with items. Preserve small black cloth hardcover rectangularshape/material ofreference, room plaster behind, warm lamp light from distant left and cool nightfill. No invented writing, no hands, no UI. Chest remains far offscreen to left.",
+      "reference": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-0a38b648-ce16-4b2a-8b4d-de22cd47fd12.png"
+    },
+    {
+      "id": "box-released",
+      "refs": [
+        "box-closed"
+      ],
+      "prompt": "Edit ONLY the brass clasp on the chest. Lift the hinged hasp flap UP so its lower hole disengages from the small peg on front; flap rests against lid, exposing front peg. The lid itself remains fully CLOSED, same exact chest, woodgrain, corners, lamp, book edge, table, shadows, camera. Do not add anything, no text. This is the intermediate released-but-not-open state, not a different model."
+    },
+    {
+      "id": "box-full",
+      "refs": [
+        "box-closed"
+      ],
+      "prompt": "Edit the exact chest photograph, same fixed camera. OPEN the hinged lid upward toward back about100degrees. Keep chest base, front claspplate, table lamp/background and all edges in exact positions. Clasp disengaged. Inside on worn dark moss-green cloth liner lie EXACTLY two objects: LEFT one small antique brass key with a simple oval ring bow, straight shaft and ONE rectangular tooth pointing down at tip; key lies horizontally bow at left, occupies left half. RIGHT a single old ivory rectangular return ticket, landscape, printed with one small black outline circle at left and EXACTLY TWO round punch holes on right. No numbers, no words, no other objects. Both fully visible separated, suitable for picking individually. Do not zoom/reframe. Entire open lid must be visible without cropping."
+    },
+    {
+      "id": "lock-empty",
+      "refs": [
+        "east"
+      ],
+      "prompt": "Move camera close to the SAME brass doorknob and keyhole on east door in reference. One photoreal16:9 image, not UI. Keep exactly same rectangular vertical brass plate and round brass knob above old fashioned keyhole. Entire knob plate visible at center-right x55%, knob at y35%, keyhole at y60%, wood grain field occupies frame, rightdoorjamb visible near x80%. View front on, same warm light from LEFT, no newmechanism. No key inserted. No symbols/numbers/text. Material and tarnish must match reference, lens50mm."
+    },
+    {
+      "id": "front-chain",
+      "refs": [
+        "south"
+      ],
+      "prompt": "Close up of SAME center of double glazed lattice street door inreference, photo16:9. Critical correction: iron chain and padlock are secured on the OUTSIDE handles beyond intact glass. Show the inside wood mullions in front of the chain partially occluding its edges, subtle glass reflections between camera and chain, raindrops on outside glass. A hand from this side cannot reach lock. Same darkwood stile geometry, no newdoor no text no hand. Center chain with narrow rain alley behind. Natural closeup, readable and photographic."
+    },
+    {
+      "id": "service-window",
+      "refs": [
+        "west"
+      ],
+      "prompt": "Move camera closer to the SAME small rectangular service window on right of reference. Photo16:9. Preserve frame and wallmaterial and exact room beyond: dark old exitdoor straight ahead, book crates left/right. Window frame fills margins, lower sill visibly waistheight separating rooms. Clear glass subtle reflection, no openhumanpassage. Keep perspective direction and reference furniture, camera has only moved forward. No addedlabels, no text, no people."
+    },
+    {
+      "id": "north-book",
+      "refs": [
+        "north",
+        "book-open"
+      ],
+      "prompt": "Edit FIRST image only: open the small black book on RIGHT end of counter to match the empty cover and bindingcords in SECOND reference image. Keep camera framing EVERYTHING else in first image pixel-consistent: chest CLOSED, lamp, counter, wall notice, doorway. Open book lies flat across counter where closed book was, properly scaled much smaller than closeupreference. No extra objects."
+    },
+    {
+      "id": "west-fixed",
+      "refs": [
+        "west"
+      ],
+      "prompt": "Edit ONLY floorboard direction in this exact reception WEST wall photograph. The floor planks must run horizontally LEFT TO RIGHT across the frame, not away into depth, because this camera is rotated90degrees from north view. Keep door, glass service window, scene beyond, walls, posts, lampglow, ceiling, everyobject and all camera framing identical. Natural aged floor, no text."
+    },
+    {
+      "id": "box-card",
+      "refs": [
+        "box-full"
+      ],
+      "prompt": "Edit this exact image by removing ONLY the brass key lying at left inside the open box. Keep the ivory ticket at RIGHT exactly unchanged, same outline circle and two punch holes. Keep the green cloth under removed key natural. Same open lid, clasp, lamp, book edge, woodgrain, camera and all shadows. No other changes."
+    },
+    {
+      "id": "box-key",
+      "refs": [
+        "box-full"
+      ],
+      "prompt": "Edit this exact image by removing ONLY the ivory ticket at right inside open box. Keep brass key at LEFT absolutely unchanged. Reveal natural green cloth where card was. Same open lid, clasp, lamp, book edge, woodgrain, camera and all shadows. No other changes."
+    },
+    {
+      "id": "box-empty",
+      "refs": [
+        "box-full"
+      ],
+      "prompt": "Remove only BOTH loose items inside box (brasskey and ivorycard). Leave the same open box with empty dark mossgreen cloth liner. Keep all edges, hinges, clasp, woodgrain, lamp, book edge, camera and lighting precisely unchanged. No newitems."
+    },
+    {
+      "id": "key",
+      "refs": [
+        "box-full"
+      ],
+      "prompt": "Extract/recreate ONLY the small brass key from inside this box, as one standalone photorealistic object on genuinely transparent background. Preserve its exact identity: simple OVAL ring bow at LEFT, short straight shaft running RIGHT, one rectangular single tooth pointing downward near tip, same tarnished warm brass. Center whole key in landscape canvas, broadside, no box, no cloth, no background shadowrectangle, no text. It must be the exact same key when picked up, not a modern key or ornate skeleton key."
+    },
+    {
+      "id": "card",
+      "refs": [
+        "box-full"
+      ],
+      "prompt": "Extract ONLY the ivory return ticket from right side of this box. One isolated realistic paper ticket on genuinely transparent background, landscape rectangle. Keep EXACT same identity: aged ivory mottledpaper, round-ish worn corners, one thin black OUTLINE CIRCLE on LEFT, exactly TWO round punched holes vertically stacked at RIGHT, no text or othermarks. Straighten to a front view for held-item inspection, same paper andmarks. No box/cloth/shadowrectangle."
+    },
+    {
+      "id": "north-released",
+      "refs": [
+        "north",
+        "box-released"
+      ],
+      "prompt": "Change ONLY tiny brass latch on chest in FIRST fullroom image to lifted released position shown by SECOND closeup. Lid stays CLOSED. Everything else in first image and camera unchanged. Match exact small scale at distance. Do not enlarge chest or addobjects."
+    },
+    {
+      "id": "north-full",
+      "refs": [
+        "north",
+        "box-full"
+      ],
+      "prompt": "Change ONLY the chest on left counter in FIRST image to OPEN with raisedlid and two contents as in SECOND closeup: small brasskey LEFT and ivory punchedcard RIGHT on dark green lining. Preserve first image camera, exact chest base size and placement, lamp, book CLOSED at right, wallnotice and doorway. Openlid extends up behind original base. Contents appropriately small at distance, no enlargement. No otherchanges."
+    },
+    {
+      "id": "lock-fixed",
+      "refs": [
+        "lock-empty"
+      ],
+      "prompt": "Remove ONLY the erroneous hinge visible immediately to RIGHT of doorknob plate in the gap, around x64%, y34%. Replace with natural dark doorjamb gap. This is the LATCH edge of door; there must NOT be a hinge next to lock. Keep exact brass knobplate,keyhole,woodgrain,light,camera and ALL other pixels unchanged."
+    },
+    {
+      "id": "south-fixed",
+      "refs": [
+        "south"
+      ],
+      "prompt": "Keep exactly the same camera, room, doorframe, lattice, floor and lighting. Correct ONLY the lock hardware: remove the two near-side metal handle plates and foreground central padlock/chain. Show the locking chain instead BEYOND the continuous glass plane, outside: a short section of chain and small padlock visible through glass pane immediately LEFT of center woodstile (x44%,y52%), partly occluded by vertical woodlattice in front and with rain streak reflections over it. Center woodstile must remain visible IN FRONT of chain. No metal lock hardware on interior-facing timber. It must clearly be inaccessible from inside through intact glass. No other changes."
+    },
+    {
+      "id": "notice",
+      "refs": [
+        "exec-0a38b648-ce16-4b2a-8b4d-de22cd47fd12.png"
+      ],
+      "prompt": "Closeup of the SINGLE small old notice pinned on plaster behind counter inreference. One16:9 photoreal photograph. The old rectangular vertical ivory paper fills central60% of frame, paper is truly fixed to grey plaster with two tiny rusty pins, no hands. A simple worn INK evacuation floorplan is printed on it: three rectangular rooms in a horizontal row. CENTER room label Japanese exactly「受渡」, RIGHT room「帳場」, LEFT room「搬出」. A simple arrow from center toward left, then out left boundary, with tiny street symbol at farleft. Lower edge of centerroom has barred double door symbol with small cross indicating blocked front exit. No other text,numbers,lettering. Keep true oldpaper color and tears fromreference, realistic light fromleft, crisp enough toread, noUI or surroundingframe."
+    },
+    {
+      "id": "north-empty",
+      "refs": [
+        "north-full"
+      ],
+      "prompt": "Remove ONLY two tiny loose objects inside open chest on LEFT counter: brasskey and ivoryticket. Leave same open chest and green emptyliner. All woodgrain, chestbase/lid, lamp, blackbook CLOSED, wallnotice, doorway, perspective and exact camera unchanged. Do not alter anything outside chest interior."
+    },
+    {
+      "id": "lock-key",
+      "refs": [
+        "lock-fixed",
+        "key"
+      ],
+      "prompt": "Edit FIRST photo by inserting the exact brasskey from SECOND reference into keyhole below knob. Shaft goes physically INTO the door perpendicular to its plane, tooth disappears into lock; oval bow remains visible in front of keyhole, standing vertically, modest realistic size smaller than knob. Not a large flat key pasted sideways acrossdoor. Key asreal3D insertedobject with foreshortening and contactshadow. Exact same plate,knob,woodgrain,camera,light; no hinge added onlatchside."
+    },
+    {
+      "id": "east-key",
+      "refs": [
+        "east",
+        "key"
+      ],
+      "prompt": "Edit FIRST wide eastwall photograph only: insert the small brasskey fromSECOND reference into keyhole under doorknob oncloseddoor. Door remains CLOSED, knobplate unchanged. Key is appropriately tiny at thisdistance with vertical ovalbow in front of keyhole. Keep camera, wall,bench,floor,light everyotherdetail pixel-consistent."
+    },
+    {
+      "id": "east-open",
+      "refs": [
+        "east",
+        "key"
+      ],
+      "prompt": "Edit FIRST wide eastwall photo only the central door. OPEN door inward into office, hinged on LEFT edge, showing warm dim office with walnut desk and oldledger. Doorleaf lies toLEFT inside doorway. Keep same brassknobplate and SECOND reference smallbrass key left in keyhole onmovingdoorleaf, in appropriately foreshortened view. Reception walls,bench,rightwall,floor/camera/lighting unchanged. Show believable walkable threshold, no outside, no newroomdoor elsewhere."
+    },
+    {
+      "id": "front-chain-fixed",
+      "refs": [
+        "south-fixed"
+      ],
+      "prompt": "Move camera FORWARD toward chain visible THROUGH LEFT glass pane next to central woodstile in this exact reference. Photoreal16:9 closeup. Show EXACT chain section and small lock outside, partially hidden behind foreground inside wooden mullions with glass raindrops/reflections infront. Keep central woodstile bare: NO interior metal handleplates or interior lock. Do not move chain to front. The chain is unreachable behindintactglass, same padlock location left ofcenter. Alley/background and door construction remain same. No hands,no text,no addeddoor."
+    },
+    {
+      "id": "notice-fixed",
+      "refs": [
+        "notice",
+        "north"
+      ],
+      "prompt": "Create a corrected dedicated reading photograph of the notice in SECOND roomreference. Portrait2:3 image. Paper must be a TALL narrow vertical rectangle, width:height about0.62, matching smallnoticeonwall inSECOND. Keep wornivorypaper, two rustypins at topcorners, greyplaster, warmleftlighting. Onpaper retain FIRST reference floorplan content: LEFT room「搬出」CENTER「受渡」RIGHT「帳場」. Add a small WALKABLE GAP at sharedwall between centerandrightroom. Keep leftward escape arrow, left external lane symbol, blocked southdoor withcross. Diagram is smallcentered withinpaperwithlargeblanktop/bottom. All text exactly three labels, no othertext. Actual photographic print onpaper notdigitalUI. Paper nearlyfills portraitframe, no decorativeborder."
+    },
+    {
+      "id": "lock-turned",
+      "refs": [
+        "lock-key"
+      ],
+      "prompt": "Edit ONLY the small inserted brass key in this exact image. Rotate key90 degrees about its SHAFT going into keyhole, so oval ring bow is now horizontal rather than vertical. Shaft remains inserted at the same keyhole, knob and brass plate absolutely unchanged. No newkey, no hinges, no door movement, no text. Keep all woodgrain/camera/lighting identical. This is unlocked key position."
+    },
+    {
+      "id": "east-unlocked",
+      "refs": [
+        "east-key"
+      ],
+      "prompt": "Edit ONLY the tiny inserted brass key under knob of closed central door. Turn its oval bow90degrees into horizontal unlocked position; keep key inserted, closed door, plate, knob, bench, walls,camera,lights identical. No other changes."
+    },
+    {
+      "id": "north-notice",
+      "refs": [
+        "north",
+        "notice-fixed"
+      ],
+      "prompt": "Edit ONLY the small pinnedpaper on wall in FIRST image to show same tiny printed evacuation diagram as SECOND reference: left搬出 center受渡 right帳場, arrowleft. Preserve its original narrow rectangle size and location x56-61% y21-34%, correctly scaled at distance, faded but consistent, not enlarged. Keep chestCLOSED, bookCLOSED, lamp,wallgrain,camera,lighting and allotherobjects unchanged."
+    }
+  ],
+  "campaign": [
+    {
+      "id": "office-east",
+      "refs": [
+        "east-open"
+      ],
+      "prompt": "Asset: EAST-facing roomwide photograph from inside the OFFICE visible through doorway in reference. Same exact historic Japanese bookbinding workshop, photoreal16:9, eyeheight1.55m,35mmlens, 4m square room. We have walked through that doorway and stand at officecenter facing same EAST direction. Preserve visible furnishings: low darkwalnut desk in front, open old ledger on desktop, a small oil lamp on RIGHT desktop, tall bookcase behind toRIGHT, framed old map on LEFT wall behinddesk. Desk FRONT center has one CLOSED shallow drawer with three tiny circular brass NUMBER DRUM apertures horizontally aligned, aged mechanism seated into drawerfront (empty beige numeral surfaces, NO legible digits). Center drawer has one real curved brass pull handle below apertures. Right desktop is a small CLOSED darkwood key-parts case withfour similar tiny number apertures onfront, one smallbrasscatch. Background ivorygreyplaster anddarkwainscot, samefloorwear/color. Floorboards runLEFTtoRIGHT. Warmoil lamp/cool reflectednightlight, no people, no interface, no signs, no additional doors on this wall. Exact same room geometry/materials as seen throughreference."
+    },
+    {
+      "id": "proof-north",
+      "refs": [
+        "north"
+      ],
+      "prompt": "Asset: NORTH-facing fullroom photograph INSIDE proofreading room seen through right doorway in reference. We have walked norththrough doorway and stand at itscenter lookingnorth. Photoreal16:9 same darkwalnut/ivoryplaster workshop, eyeheight1.55m 35mmlens. On NORTH wall RIGHT half preserve the cream sheets hanging on darkwood drying rack and broad lowworktable visiblethrough reference doorway. On tabletop belowrack sits one closed darkwalnut toolbox, its front centered brass lock consists of exactly TWO concentric thick brass C-shaped rings withgaps, attachedto the boxnotringhandles. Toolbox small butidentifiable. NORTH wall LEFT half has CLOSED timberworkshopdoor, four smallroundbrass pushbuttons in horizontalrow on narrow brassplate at eyelevel. No digits or text. Floorboards into depth. Lamp far right giveswarm light. No room exitoutside, no UI, no people, no newunrelatedpuzzleobjects. Distinguish door and toolbox clearly, preserve reference racks/table as the same things."
+    },
+    {
+      "id": "loading-west",
+      "refs": [
+        "service-window"
+      ],
+      "prompt": "Asset: WEST-facing fullroom view INSIDE packing/loading room seen through the servicewindow reference. We are now at center of that room, looking toward same WEST exitdoor. Single photoreal16:9, eyeheight1.55m35mmlens. Preserve exact central CLOSED walnut plank door, left-side antique brass LEVER handle, darktimber frame, shelves and wrappedbooks atLEFT, woodcrates toRIGHT as reference. Door has small real brass KEYHOLE escutcheon below lever, distinctive clipped upperrightcorner but no symbols/numbers. At right foreground a low sturdy packing workbench with empty book press and a blackclothcover ready for assembly. Not an unrecognizable modernworkshop. Warm dim practical lamp/cool nightfill, ivorygreyplaster/darkwainscot andsamewoodfloor; floorboards runLEFTtoRIGHT. No people,noUI,noextra doors,no text. Sourcewindowframe is behindcamera and NOT part ofthisview."
+    },
+    {
+      "id": "p02-closed",
+      "refs": [
+        "office-east"
+      ],
+      "prompt": "Precise object photograph, dedicated closeup of SAME desk front drawer from reference office, viewlevel slightly above handle. Photoreal16:9 chestwood fillsframe, deskupperedge and openledger edge partly visibleattop. Correct the drawer lock: in center ofdrawerfront is a flush tarnished brass plate containing EXACTLY THREE adjacent vertical rectangular openings, each showing a blank IVORY rotary NUMBER DRUM surface. Windows horizontally at roughly x40%,50%,60%,y45%, each tallovalrect opening with darkrim and inside shadow. NO engraved numbers yet: clean blank ivorysurfaces for precise printed digits. Below this plate atx50%,y65% is SAME curved brass DRAWERPULL from reference. Real screws atplatecorners. No extra lock, no freefloating dials, no circles pretending to be windows. Camera squareon, material/light sameoil lampright. DrawerCLOSED. NoUI,nohands,noletters."
+    },
+    {
+      "id": "p26-closed",
+      "refs": [
+        "office-east"
+      ],
+      "prompt": "Dedicated16:9 photorealcloseup of small walnut key-parts CASE on right of office desk inreference. Whole samebox fillsmiddle65%, tabletop andoil lampbasebehindleft stillvisible, consistentcamera slightlyabovefront. Correct lock on itsfront: ONE narrow insetbrassplate with EXACTLY FOUR separate vertical rectangular apertures, four BLANK IVORY number drum faces inside, evenly spaced horizontally. No printednumerals yet. Centerbrasslatch is above plate, small movable hasp, lidCLOSED. Do notmake3windows, count4. Keycasewood/corners/material sameasreference; agedwornwarmrealphotograph noUI nohands notan abstractboard."
+    },
+    {
+      "id": "p04-closed",
+      "refs": [
+        "proof-north"
+      ],
+      "prompt": "Dedicated16:9 photorealcloseup of the small TOOLBOX on rightworktable inreference proofreading room. Preservebox darkwalnut lowrectangle, lamp onright, hangingcream sheetsbehindblurred, grounded tabletop. Correctitsfront mechanism: exactlyTWO CONCENTRIC thick C-shaped brass rings sharing ONE CENTER, outerdiameterabout16cm innerdiameter10cm, onevisiblegap ineach ring at differentangles. These are a REALROTATING mechanical LOCK mountedflushinto frontofbox, NOT two sidebyside hanging ringpullhandles. A short horizontal steelcatch is immediately toRIGHT ofrings. Rings centerimagex50%,y55%, box fillsx18..83%,y30..80%. No numbers,noletters,noUI. CLOSED flatlid, noextraobjects."
+    },
+    {
+      "id": "office-north",
+      "refs": [
+        "office-east"
+      ],
+      "prompt": "NORTH-facing view of same4m square OFFICE inreference, cameraatcenter turnedLEFT90deg from referenceEASTview. Photoreal16:9 sameeyelevel1.55m35mmlens, floorboardsintoDEPTH. Onnorthwallcenter a waistheight walnut PROOF CABINET, wide closed front door with small brasspanel of exactlyFOUR ivory vertical rectangular numberdrum apertures, belowthem curvedbrasspull. Oncabinettop three narrowaged receipts lie sidebyside under a horizontalbrasspaperrail withclips. Behindcabinet a framedyellowworkledger sheet, blank/unreadable fromdistance. ToLEFT simplepaper pigeonholes. No passage on thiswall. Rightedge may show edgeofeastdesk butno duplicate desk/lamp. Lightfrom oil lamp offscreenRIGHT(eastwall), reflectedcoolnightfill. Same roomappearance, nopeople,noUI,nolegibletext."
+    },
+    {
+      "id": "proof-east",
+      "refs": [
+        "proof-north"
+      ],
+      "prompt": "EAST-facing view of same proofreadingroom reference, cameraatcenter rotatedRIGHT90deg,1.55mhigh35mm16:9. Maintainplaster,darkwoodpanels,scale,ceiling; floorboardsLEFTtoRIGHT. Eastwall has a long narrow cuttingbench. Onit center a visibly chipped aged wooden measuringruler with itszeroendmissing, a slimcardstockstrip spanningbetween engravedticks, and five smallpaper offcuts inlinedtray. Abovebench a simplepaper diagram heldbytwoironpins. RIGHT a small leadedglass windowwithironbars, rainyblueoutside. No doorsonthiswall. Leftnarrowedge may hintatnorthdryingrack, notduplicate fullrack. Warm lamp fromnorthLEFT, softcoolwindowright. NoUI,nolegitext, photoreal wornmaterials. The ruler andpaper are meaningfulobjectsnotscenic clutter."
+    },
+    {
+      "id": "proof-west",
+      "refs": [
+        "proof-north"
+      ],
+      "prompt": "WEST-facing view of same proofreadingroomreference, cameraatcenter rotatedLEFT90deg,1.55m35mm16:9photograph. Same ivoryplaster/darkwalnut/ceilingboards andwear. FloorboardsLEFTtoRIGHT. Westwallcenter a low oldwood LIGHT TABLE withthree separate cream testprint sheets undera translucentglassy tray; sheetcorners visiblynotched andpaperfibers. Largeblankprinted sample sheet pinnedabove atcenter. Smallbrass lamp toright oftable, otherwise sparseandcalm. No doors,noadditionalchests,no text, noUI. Coollightfromeastbehindcamera plus warmnorthlightfromRIGHT. Viewis ofsamecontinuousroom, do not copy northdoor ontohere."
+    }
+  ]
+}

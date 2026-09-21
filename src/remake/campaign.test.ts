@@ -1,0 +1,17 @@
+import {describe,it,expect} from 'vitest';
+import {apply,initial,readSave,gateOpen,route,type World,type Action} from './campaign';
+import {portals,rooms} from './catalog';
+const run=(g:World,...a:Action[])=>a.reduce((s,a)=>apply(s,a).world,g);
+describe('全室の空間・物品契約',()=>{
+it('すべての通路が反対側の面へ接続する',()=>{for(const p of portals){expect(portals.some(q=>q.from===p.to&&q.to===p.from&&q.facing===(p.facing+2)%4)).toBe(true);const a=rooms[p.from].at,b=rooms[p.to].at;const vectors=[[0,-1],[1,0],[0,1],[-1,0]];expect([b[0]-a[0],b[1]-a[1]]).toEqual(vectors[p.facing]);}});
+it('通常の入室は通過方向を維持する',()=>{const g=run(initial(),{type:'go',room:2});expect(g.room).toBe(2);expect(g.facing).toBe(0);const back=run(g,{type:'turn',delta:1},{type:'turn',delta:1},{type:'go',room:0});expect(back.room).toBe(0);expect(back.facing).toBe(2)});
+it('写真の戸が閉じている間は隣室へ入れない',()=>{const g=run(initial(),{type:'turn',delta:1},{type:'go',room:1});expect(g.room).toBe(0);expect(gateOpen(g,'office')).toBe(false)});
+it('開いた戸を通って帳場の実物を操作できる',()=>{let g=run(initial(),{type:'focus',focus:'box'},{type:'latch'},{type:'lid'},{type:'take',item:'key'},{type:'back'},{type:'turn',delta:1},{type:'focus',focus:'lock'},{type:'select',item:'key'},{type:'keyhole'},{type:'turn-key'},{type:'door'},{type:'go',room:1},{type:'focus',focus:'object:2'},{type:'p-set',id:2,values:[6,8,4]});expect(g.solved).toContain(2);g=run(g,{type:'p-open',id:2},{type:'p-take',id:2,item:'receipts'});expect(g.inventory).toContain('receipts');expect(g.inventory).not.toContain('key');expect(readSave(JSON.stringify(g))?.room).toBe(1)});
+it('別室から値を送っても装置は変わらない',()=>{expect(apply(initial(),{type:'p-set',id:2,values:[6,8,4]}).world.solved).toEqual([])});
+it('未訪問・物理的に通れない場所へ地図で飛ばない',()=>{expect(route(initial(),9)).toBeNull();expect(apply(initial(),{type:'go',room:9,map:true}).world.room).toBe(0)});
+it('錠が解けても引出しを引くまでは中身を取れない',()=>{let g:World={...initial(),room:1,facing:1,focus:'object:2'};g=run(g,{type:'p-set',id:2,values:[6,8,4]},{type:'p-take',id:2,item:'receipts'});expect(g.inventory).not.toContain('receipts');g=run(g,{type:'p-open',id:2},{type:'p-take',id:2,item:'receipts'},{type:'p-take',id:2,item:'receipts'});expect(g.inventory.filter(x=>x==='receipts')).toHaveLength(1);});
+it('見本の知識を既に持つ人は糸見本を持たなくても操作できる',()=>{const g:World={...initial(),room:5,facing:0,focus:'object:13'};const solved=run(g,...[4,1,5,2].map(button=>({type:'p-button',id:13,button} as Action)));expect(solved.sequences[13]).toEqual([4,1,5,2]);});
+it('設置中の物を持ち歩かず、取り外して別室へ運べる',()=>{let g:World={...initial(),room:8,facing:2,focus:'object:22',inventory:['gatherings']};g=run(g,{type:'select',item:'gatherings'},{type:'p-place',id:22});expect(g.inventory).toEqual([]);expect(g.placed[22]).toEqual(['gatherings']);g=run(g,{type:'p-retrieve',id:22,item:'gatherings'},{type:'p-retrieve',id:22,item:'gatherings'});expect(g.inventory).toEqual(['gatherings']);expect(g.placed[22]).toEqual([])});
+it('取り出した鍵の歯は本を再調整しても変わらない',()=>{let g:World={...initial(),room:10,facing:3,focus:'object:30',solved:[30],placed:{30:['keyparts']},values:{30:[4,2,1,3,1,4]}};g=run(g,{type:'p-retrieve',id:30,item:'keyparts'},{type:'p-set',id:30,values:[1,1,1,1,1,1]},{type:'select',item:'keyparts'},{type:'exit-insert'},{type:'exit-turn'});expect(g.flags.exitUnlocked).toBe(true);expect(g.itemValues.keyparts).toEqual([4,2,1,3,1,4]);});
+it('別室の操作では裏口を開錠しない',()=>{const g:World={...initial(),flags:{exitKey:true},itemValues:{keyparts:[4,2,1,3,1,4]}};expect(run(g,{type:'exit-turn'}).flags.exitUnlocked).toBeUndefined()});
+});

@@ -1,0 +1,177 @@
+[
+  {
+    "id": "office-east-corrected",
+    "prompt": "Edit target first image. Preserve identical wide room camera, every piece of furniture, map, lighting, floor and ledger. Correct only two lock fixtures to match supporting closeups: desk drawer must have the three ivory drum aperture brass plate ABOVE its curved pull exactly as reference 2; desktop wooden case to right of lamp has FOUR ivory drum apertures below clasp exactly as reference 3. Proper small scale in wide view. No other changes, photorealistic, 16:9.",
+    "refs": [
+      "exec-79e5b2d5-f21a-41b1-8cd4-7499b2ac1a25.png",
+      "exec-a81b306b-5d51-42cb-8d54-93ce4f9baff5.png",
+      "exec-bec8b652-0b40-4505-9f9e-c983ca9aec1e.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-80745531-f47f-4f5e-af1e-699ec4ef648c.png"
+  },
+  {
+    "id": "p02-open-empty",
+    "prompt": "Edit same camera photograph: pull this exact desk drawer toward camera to fully open state. Show its empty worn wood interior from slightly elevated SAME camera, retain desk ledger and lamp position, brass three-window plate and curved pull on front face now nearer bottom frame. No contents. Photorealistic same warm lamp illumination. Landscape16:9.",
+    "refs": [
+      "exec-a81b306b-5d51-42cb-8d54-93ce4f9baff5.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-49a93c4e-d6af-4929-a8fd-32008f73859f.png"
+  },
+  {
+    "id": "office-south",
+    "prompt": "Create photorealistic south-facing view from SAME central standing position in small old Japanese printing office reference. Reference faces EAST: rotate camera90 degrees RIGHT. East desk now only partial edge on LEFT margin, lamp glow from left. SOUTH wall solid warm cracked plaster above dark wood wainscot, small closed barred frosted window centered high, narrow dark wooden bench beneath, no doors or additional puzzle objects, no text. Dark floorboards run INTO depth since east-facing image boards run horizontally. Same ceilingheight furniture scale warm and dim natural exposure, 16:9, no stylization.",
+    "refs": [
+      "exec-79e5b2d5-f21a-41b1-8cd4-7499b2ac1a25.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-aca98583-5881-4031-b5cf-4738ec2c1ffe.png"
+  },
+  {
+    "id": "office-west",
+    "prompt": "Photorealistic same old Japanese printing office, standing central camera looking WEST back toward entrance. Reference1 shows door from reception facing east into office. Now show reverse side from within office: centered OPEN wooden door, hinged on RIGHT in this reverse view, dark door leaf extending into reception, opening reveals reception WEST wall (see ref2 for visual of that wall). Not another office! Preserve dark beams cream plaster waist-high wood paneling. Floor boards horizontally left-to-right. No furniture in center, edges of north cabinet far right only. Warm oil lamp behind camera and cooler light from reception. Wide16:9. Reference2 directly specifies distant wall seen through opening, same loading door on left and service window on right at small scale.",
+    "refs": [
+      "exec-74f6a59c-ebe6-40da-b62e-5e201af6583c.png",
+      "exec-46796139-8048-45b4-bbcb-72295b553038.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-b8375810-f8bc-4506-b2f8-a2aaf21ccf73.png"
+  },
+  {
+    "id": "office-south-fixed",
+    "prompt": "Edit target same exact camera, window bench walls floor. The desk clipped on far left must be viewed FROM ITS SIDE at 90degrees, not from its front. Replace ONLY visible desk vertical side with plain solid wood panel, NO drawer, NO handle. Desktop case must also be seen from its plain right side with no locks visible, since its lock faces west not south. Lamp stays. No other change.",
+    "refs": [
+      "exec-aca98583-5881-4031-b5cf-4738ec2c1ffe.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-b81e9039-7373-4f4a-83d9-4125fab6d6a6.png"
+  },
+  {
+    "id": "p02-open-full",
+    "prompt": "Edit this exact open drawer photograph. Preserve every existing pixel outside inside drawer bottom. Add THREE old ivory rectangular duplicate receipt papers together in middle of drawer bottom, neatly slightly fanned, blank aged paper faces with fine red carboncopy ruled lines only, no words or numerals. They lie flat following perspective, occupy central x40–61percent and y44–58percent approximately. Same warm light and real contact shadows. Not floating. Landscape.",
+    "refs": [
+      "exec-49a93c4e-d6af-4929-a8fd-32008f73859f.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-b11d555c-b8bf-4b14-a915-4792ee731a23.png"
+  },
+  {
+    "id": "p03-closed",
+    "prompt": "Camera move straight close to center cabinet in reference. Photoreal dedicated front-on closeup same cabinet occupying frame. Four blank ivory rotating numeral drums in rectangular brass plate above curved brass pull. Cabinet drawer front across lower two thirds, clipped three receipt papers and brass clip rail on top visible upper edge, background same wall. No other objects. EXACTLY FOUR ivory windows, NO marks or numbers on them (will print ink later). Same warm lamp illumination from right, wood grain brass materials match source.16:9.",
+    "refs": [
+      "exec-cd1f7d86-fddb-4193-b64f-6be43349d23b.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-763daf72-95f6-436d-8afc-5c02f1d164ba.png"
+  },
+  {
+    "id": "office-east-drawer-open",
+    "prompt": "Edit exact wide office target. Pull only central desk drawer fully open toward camera. Must correspond to reference2 closeup open drawer: three ivory drums above curved brass pull, empty wood inside, same front width, sliding horizontal straight out. Keep all room, case, lamp, ledger, light, camera unchanged. Desk front drawer now protrudes naturally. No contents.16:9.",
+    "refs": [
+      "exec-80745531-f47f-4f5e-af1e-699ec4ef648c.png",
+      "exec-49a93c4e-d6af-4929-a8fd-32008f73859f.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-bfbf7886-71d1-4013-9445-e8c0d3c6b0cc.png"
+  },
+  {
+    "id": "p03-open-empty",
+    "prompt": "Edit target exact cabinet closeup. Pull the large single drawer forward fully open revealing EMPTY wooden interior. Preserve same camera, wall, clip rail and papers on top fixed in place. Front panel with four ivory numeral drums and curved brass handle now projected lower down toward camera. Same photographic materials light perspective.16:9.",
+    "refs": [
+      "exec-763daf72-95f6-436d-8afc-5c02f1d164ba.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-ea5fec3f-c4a7-4d59-a8e2-d2ac7c8613d2.png"
+  },
+  {
+    "id": "receipts",
+    "prompt": "Photographic cutout game inventory asset on genuinely transparent background. Three antique ivory horizontal rectangular carbon-copy slips, fine faded red ruled columns and rows with NO text/numerals, slightly fanned overlapped same as reference papers inside drawer, softly lit warm upperright. Only THREE sheets of real thin worn paper, no wood, no frame or surface, no backdrop. Fairly front-on overhead so readable, fills canvas with transparent margins. Material and shapes match reference.",
+    "refs": [
+      "exec-b11d555c-b8bf-4b14-a915-4792ee731a23.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-29da21e5-d610-49a7-b53b-dba707265dc3.png"
+  },
+  {
+    "id": "p26-open-empty",
+    "prompt": "Edit this exact wooden case photograph. Raise its lid upright on rear hinges to reveal empty dark red felt-lined case interior. Same camera and case position on desk, lamp left bookshelfbehind, keep four-drum brass plate on stationary box front at exactly original position. Clasp now up on raised lid. No keys or contents, photoreal16:9.",
+    "refs": [
+      "exec-bec8b652-0b40-4505-9f9e-c983ca9aec1e.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-2de36dfe-ae4c-4f2c-a8c6-7c26da1b6de9.png"
+  },
+  {
+    "id": "office-east-case-open",
+    "prompt": "Edit exact wide room target only desktop small case right of lamp: open its lid on rear hinge to vertical, with dark red felt interior matching reference2. Preserve size width and base fixed, camera entire room and desk closed unchanged. No contents.16:9.",
+    "refs": [
+      "exec-80745531-f47f-4f5e-af1e-699ec4ef648c.png",
+      "exec-2de36dfe-ae4c-4f2c-a8c6-7c26da1b6de9.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-ca4a1fea-90e2-4e06-8196-7d5b84cbb95a.png"
+  },
+  {
+    "id": "office-north-open",
+    "prompt": "Edit exact wide room target only cabinet central drawer: pull fully toward camera showing empty wood interior. Reference2 defines same drawer open closeup. Retain top cliprail and sheets fixed on cabinet top. Whole room light furniture camera identical, no contents.16:9.",
+    "refs": [
+      "exec-cd1f7d86-fddb-4193-b64f-6be43349d23b.png",
+      "exec-ea5fec3f-c4a7-4d59-a8e2-d2ac7c8613d2.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-3ffa6a86-c6ac-47fc-8675-d53bd71fade6.png"
+  },
+  {
+    "id": "p03-open-full",
+    "prompt": "Edit target same open drawer, add two cream sheets of thin antique print paper folded exactly once in half each, side-by-side within drawer middle bottom. Each folded rectangle lies flat, no words, fine fibers and visible folded edges, distinct natural contact shadows; occupy x33–46percent and54–67percent, y43–52percent. Everything else unchanged,16:9.",
+    "refs": [
+      "exec-ea5fec3f-c4a7-4d59-a8e2-d2ac7c8613d2.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-f407ae3e-980d-44c4-ad8b-084b38614180.png"
+  },
+  {
+    "id": "receipt-single",
+    "prompt": "Photorealistic isolated ONE old ivory thin horizontal rectangular paper carbon copy slip. Same material, age and fine red ruled lines as source, but straight-on orthographic overhead, perfectly horizontal and rectangular with natural worn edge. Landscape paper fills80percent frame with transparent margins. Genuine transparent background, no wood, no other papers, NO letters or numbers. Will overlay exact puzzle ink digitally.",
+    "refs": [
+      "exec-29da21e5-d610-49a7-b53b-dba707265dc3.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-6b569843-d292-46a8-8008-cd8923ca2c80.png"
+  },
+  {
+    "id": "office-tickets",
+    "prompt": "Move camera closer and above THREE blank papers clipped on wooden board and brass rail on top of cabinet in reference. Dedicated overhead close view, rails across top behind papers, all three papers fully visible lying side by side, worn ivory blank paper rectangles same as reference. Their four corners easy to identify for later precise printing. Do NOT add any letters numbers or symbols. Crop out cabinet lock/front, only real wood board and three papers brassclips. Photoreal warm light from right,16:9.",
+    "refs": [
+      "exec-763daf72-95f6-436d-8afc-5c02f1d164ba.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-a34f60d1-1a50-4f62-b3c8-d313d0167bb1.png"
+  },
+  {
+    "id": "folios",
+    "prompt": "Photographic inventory cutout on genuinely transparent background: TWO small folded cream paper bifolia lying side by side, each folded exactlyonce, matching reference two sheets inside cabinet drawer. Each sheet old thin ivoryfibers, slightlyworn edges, blank print surface, no text. Mild topdown view. No cabinet,no backdrop. Soft warm light. Realobjects.",
+    "refs": [
+      "exec-f407ae3e-980d-44c4-ad8b-084b38614180.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-d6486bbf-0073-4c64-a010-bde28c8b05af.png"
+  },
+  {
+    "id": "proof-south",
+    "prompt": "Create photoreal SOUTH facing view inside same proofreadingroom from reference1, rotate standingcentral camera180degrees. SOUTH wall opening toward reception atLEFTquarter x20percent, door is OPEN and through opening see reception SOUTH front glass double doors reference2 at smallscale. Warmgray plaster dark wood paneling samebeams floorboardsruninto depth. Some edge of cuttingbench onleft imageedge and lighttable rightedge, no otherdoors no text no invented puzzles. Same photographic scale/exposure and16:9.",
+    "refs": [
+      "exec-e0b4fe55-6ffe-4a06-8e29-15db715da229.png",
+      "exec-d20f04a5-2468-4ccf-a8a6-068120f66e47.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-00988fc0-4db1-46a0-a673-e9a45df39f2b.png"
+  },
+  {
+    "id": "p04-base",
+    "prompt": "Edit target photograph: REMOVE both brass concentric rings entirely, reveal dark round steel backing disk in same position. Replace horizontal catch right of rings with unmarked wood. Add a narrow vertical dark iron bolt attached to lid at center x50percent going down to the central round hub x50 y55.8. Bolt is narrow3percent width and its head1.6percent width, mounted behind where concentric rings were, physically will escape upward when ring gaps align upward. Backing circle remains at x43..56 y44..67. Same camera furniture light. No rings, no symbols, no text.16:9.",
+    "refs": [
+      "exec-c11e4509-54d5-4dd8-8cea-e6d4e3d78397.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-cd964f69-0510-4cc4-8d50-f83edfe2b6ea.png"
+  },
+  {
+    "id": "ring-outer",
+    "prompt": "Single photorealistic brass flat C-shaped locking ring cutout isolated on genuinely transparent background, straight-on orthographic face view. Antique scratched brass matching rings in source. Perfect circle outside diameter800px, innerdiameter640px, one and ONLY ONE gap at12oclock, opening angle25degrees. Ring atcenter withtransparent margins. Uniform soft warm illumination for rotatable game component. No central disk, no wood, no other ring, no markings. Real beveled metal thickness and aged patina, not vector.",
+    "refs": [
+      "exec-c11e4509-54d5-4dd8-8cea-e6d4e3d78397.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-3b093c3a-db28-41a4-ab0a-d5e50df95dd7.png"
+  },
+  {
+    "id": "ring-inner",
+    "prompt": "Single photorealistic brass flat C-shaped locking ring cutout isolated on genuinely transparent background, straight-on orthographic face view. Antique scratched brass matching inner ring in source. Perfect circle outside diameter800px, innerdiameter560px, one and ONLY ONE gap at12oclock, opening angle32degrees. Centerwithtransparent margins. Uniform soft warm illumination for rotatable game component. No central disk, no wood, no other ring, no markings. Real beveled metal thickness and aged patina, not vector.",
+    "refs": [
+      "exec-c11e4509-54d5-4dd8-8cea-e6d4e3d78397.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-4c86a6bc-561e-468a-b567-e7f6488dcd98.png"
+  }
+]
