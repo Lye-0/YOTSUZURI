@@ -1,0 +1,197 @@
+[
+  {
+    "id": "proof-north-base",
+    "prompt": "Edit exact wide room first image: change ONLY small tool box lock face to exactly matching reference2 closeup base: round dark steel disk, thin vertical hasp from lid to center hub, NO brass rings (composited later). Leave box position,size,camera,light,allotherobjects untouched.16:9.",
+    "refs": [
+      "exec-e0b4fe55-6ffe-4a06-8e29-15db715da229.png",
+      "exec-cd964f69-0510-4cc4-8d50-f83edfe2b6ea.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-c3bfcc8a-3a12-4f73-95ac-d548837b3cdd.png"
+  },
+  {
+    "id": "proof-west-fixed",
+    "prompt": "Edit exact photograph: change ONLY wooden floorboards so they run horizontally LEFT TO RIGHT across frame (camera faces west). Keep walls,table,light,camera,allfurniture fixed. Also replace three papers on table with blank cream papers same shapes locations without printed diagrams; leave wall blueprint unchanged.16:9.",
+    "refs": [
+      "exec-e45b2f93-a2a6-45d1-b2d6-af7cf048f7fa.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-3199d1fc-ab67-4792-8693-122345c8ce7b.png"
+  },
+  {
+    "id": "p05-close",
+    "prompt": "Dedicated photoreal closeup looking down onto cuttingbench from reference, SAME aged darkwood tabletop and warm lightfromleft. Centerlong broken WOODEN ruler horizontal has jagged missing lefttip, scratched surface but NO printed/engraved numbers or ticks (exact markings added separately). Nextto it a long cream cardstock strip blank, five short ivory offcuts in little wooden tray upperleft, heavy darkpaperweight upperright. No hands/no knife. Ruler fillsx15to85percent andy43to55percent, cardstock parallelbelowy60to70. Slightlyelevatedcamera so all surfaces readable.16:9.",
+    "refs": [
+      "exec-ff32c8a6-4e76-42bb-9221-f614e2802f61.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-0d71e6ba-1eb8-4111-ab45-a444dc816f51.png"
+  },
+  {
+    "id": "p06-close",
+    "prompt": "Dedicated photoreal elevated closeup of glass-topped lighttable in reference: three separate aged translucent ivory paper sheets sidebyside takingmostframe with clearcorners, no printed diagrams or words yet, delicate paperfibers; middle sheet has tiny triangular notch at topLEFT corner, other sheets with different notches. Soft glancing desk lamp light fromupperright, real dark woodtable visibleallaround. No fake interface.16:9.",
+    "refs": [
+      "exec-e45b2f93-a2a6-45d1-b2d6-af7cf048f7fa.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-0f10238e-f60e-42cc-a97b-ee81f064a63b.png"
+  },
+  {
+    "id": "keyparts",
+    "prompt": "Photoreal game item cutout genuine transparentbackground. Antique adjustable locksmith master key: oval brass bow left, straight darkbrass shaft extendingright, six individually adjustable short rectangular brass teeth aligned sidebyside pointingDOWN from shaft alongright end, each with a tiny slotted screw. Exactly SIX teeth, all initially equalshortlength, no ordinary skeleton-key singleward. Clearfrontside view soall6 visible. 1930s handmachined wornbrass precisefunctionalobject, warm diffuse light, no text no background. Landscape.",
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-265eb763-34ac-4775-a0ee-3ef59392a970.png"
+  },
+  {
+    "id": "p04-open-empty",
+    "prompt": "Edit target exact photograph: lift tool box lid upright onrearhinges showing EMPTY plain wood inside. Thin iron hasp attached tofrontoflid now lifted withlid, dark round steel backingdisk stays onstationaryfront. Same camera desk lamp anddryingpapers, woodgrainlight stable. No tools, no rings (rings are separate components).16:9.",
+    "refs": [
+      "exec-cd964f69-0510-4cc4-8d50-f83edfe2b6ea.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-c3ca1aea-2cb8-42ef-9f5d-c03669caa0b9.png"
+  },
+  {
+    "id": "knife",
+    "prompt": "Photorealistic game inventory cutout genuine transparent background, antique PAPER KNIFE letter opener, short cream bone handle left attachedto long narrow dullsilver blunt tapered blade right, old printingworkshop tool, wholeobject horizontal fills90percentwidth, subtlewornpatina and warm diffuse illumination. No hand,no table,no text,no shadow backdrop. Simple distinctive cream handlewithtwo tiny brasspins. Landscape.",
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-27b8f09c-ac84-49bf-8da0-996352c26e15.png"
+  },
+  {
+    "id": "lens",
+    "prompt": "Photorealistic game inventory cutout genuine transparentbackground. Antique small magnifying glass, roundthinbrassrim withclearconvexglass on left, short dark wooden handle pointingright, subtlewarm illumination andglasscatchlight, entireobject centeredwithtransparentmargin. No hands no surface no text. Used Japanese printingworkshop1930s.",
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-de8b1df2-b764-452a-bad4-0e55a8320d9b.png"
+  },
+  {
+    "id": "p07-close",
+    "prompt": "Move camera closer to wooden workshop door in reference. Dedicated photoreal straight-on closeup containing its horizontal brass plate with EXACTLY FOUR round blank brass pushbuttons spaced equally, and rounddarkiron doorknob lower-right. Entirewooddoorfillsframe, samegrain andillumination, no words or symbols engraved (addedpreciselylater). Buttonplateacrossx25..75percent y35..50percent; knob x78y70.16:9.",
+    "refs": [
+      "exec-c3bfcc8a-3a12-4f73-95ac-d548837b3cdd.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-eca27b6b-76e2-4cbc-bbe4-34588523656f.png"
+  },
+  {
+    "id": "p04-open-fixed",
+    "prompt": "Precise localized edit TARGET image1 CLOSED tool box. Lift ONLY lid, showing its inside and raised iron hasp. ABSOLUTELY KEEP stationary FRONT PANEL y44..74percent exactly unchanged, circular black lock disk center x49.2 y55.8 unchanged, box lower edge y74unchanged, table andlamp unchanged. Open lid hinges at rear y31 and extends UP towardy5. Visible empty interior occupies narrow y32..43 band behind stationaryfront. Do NOT slide boxforward or down. Samecamera. No rings/no tools.16:9.",
+    "refs": [
+      "exec-cd964f69-0510-4cc4-8d50-f83edfe2b6ea.png",
+      "exec-c3ca1aea-2cb8-42ef-9f5d-c03669caa0b9.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-1e518760-2ef6-4a52-b533-10adf90ae16b.png"
+  },
+  {
+    "id": "lens-fixed",
+    "prompt": "Edit isolated magnifyingglass target. Keep exact objectshape andwoodhandle. Remove ALL backdrop, haze, glow and shadow outside silhouette, make background genuinely TRANSPARENT alpha, including space aroundhandle. Glassinside rim clear lightlyreflective, notwhiteopaque. Retain realisticglasssubtlereflection. Entireobjectonly withclean transparentmargin.",
+    "refs": [
+      "exec-de8b1df2-b764-452a-bad4-0e55a8320d9b.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-97fa1fba-46d3-4954-b12a-4302f498d63c.png"
+  },
+  {
+    "id": "folio-open",
+    "prompt": "Photorealistic gameasset genuine transparentbackground. A single antique cream thinpaper bifolium from reference, now UNFOLDED lyingfullyflat open like one landscape sheet withvertical centerfold. Straight overhead orthographic view, blank frontface, subtlefibers andagededges. Rectangle fills90%canvas, two halves equal, slightly torn nick TOPLEFTcorner andtwo minuscule sewingholes alongcentercrease. No text diagrams symbols,page numbers or table. Same warm paper texture as reference.",
+    "refs": [
+      "exec-d6486bbf-0073-4c64-a010-bde28c8b05af.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-4f3e1a2d-219d-484a-9848-c38e03c3e0e0.png"
+  },
+  {
+    "id": "folio-book",
+    "prompt": "Photorealistic genuine transparentbackground gameasset. Tiny EIGHT PAGE unbound booklet formedby nesting two folded cream papers fromreference. Open to a middle spread, two blankpages and centercrease facingcamera slightlyoverhead, onlyfewthin sheetedges visible. No bindingthread(no sewnspine), nohardcover, notthickbook. Blank oldivoryfibers, no text ordiagrams, no hands orsurface. Landscape2:1 openbook fillsframewithtransparentmargins.",
+    "refs": [
+      "exec-d6486bbf-0073-4c64-a010-bde28c8b05af.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-9ad2394a-8250-4545-ad7b-9fa449a28da9.png"
+  },
+  {
+    "id": "p04-open-locked-camera",
+    "prompt": "LOCALIZED EDIT, camera fully locked. In this photograph lift the lid of this box open. The front darkwood panel with roundsteel disk must remain pixel-aligned with source. DO NOT REFRAME or move box. Keep loweredge at same originalheight and circularlock SAME exact position. Only alter lid/regionabovefrontedge. Lid swings upward revealingitsplainwoodinside, thinhasponthelidraiseswithit. There is only a shallow visible strip of empty box interior because camera angle remains the same. Backgroundlamp anddryingpapers fixed. Emptybox, no contents, no brassrings. Preserveallwoodtextureoutsideeditedlid.",
+    "refs": [
+      "exec-cd964f69-0510-4cc4-8d50-f83edfe2b6ea.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-e8dcdf44-396a-4511-b98f-983aad8306de.png"
+  },
+  {
+    "id": "lens-clean",
+    "prompt": "An antique small magnifying glass as a clean PNG inventory cutout with fully TRANSPARENT background. Only the object: round brass rim diameter5cm atleft, short turned darkwoodhandle toright. No glow, NO cast shadow, NO halo, no haze, no light spill, no colored background. Glass is transparent with a faint glint only at upperleft rim. Photorealistic scratches onbrass andusedwood. Straight overheadobject photograph, horizontallycentered, objectfills80%canvas.",
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-dc741411-ddd0-4bdc-a26f-2fc44b7960ef.png"
+  },
+  {
+    "id": "type-west-fixed",
+    "prompt": "Edit type-setting room photograph: REMOVE entire drying rack and papers on center wall and REMOVE little lockbox and lamp oncenterdesk: these objects belongto DIFFERENTROOM andmustnotduplicate. Replacecenterdeskwith stacked flat metaltypesetting trays filledtinyletterpress blocks, no puzzleshere. Plainplasterwallabove. Preserve left4specimendrawercabinet, rightopendoorbookbindingroom, floor camera light. No repeated proofreading props.16:9.",
+    "refs": [
+      "exec-b4dc94cd-68cf-4f78-9161-722792205024.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-2155e8df-afed-425f-92be-4c0f45b2f518.png"
+  },
+  {
+    "id": "type-east-threeweights",
+    "prompt": "Edit ONLY weights beside the balance on right ofphotograph. Need EXACTLY THREE freestanding dark metal weights: small, medium, large, all withsame knobtop. Present imagehas2; addthirdsmallerweight atx79.4y51besidecurrenttwo. Preserve scale pans andeveryotherdetail. No text.16:9.",
+    "refs": [
+      "exec-c1fc61db-1432-4012-aea7-54eecb78195e.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-bfe090ad-5e3a-4a61-8f6b-ac324621ad09.png"
+  },
+  {
+    "id": "proof-north-box-open",
+    "prompt": "Edit exact wide proofroom onlytoolboxonright: raiseitslid withfrontpanelremainingfixed. Reference2definesthisopenstate. Closedfrontwithroundlockcenter x75.8y54.5 stayssameposition. Lidraisesupwardbehind, interior empty, same camera everythingelseuntouched. No rings (latercomposite), no tools.16:9.",
+    "refs": [
+      "exec-c3bfcc8a-3a12-4f73-95ac-d548837b3cdd.png",
+      "exec-e8dcdf44-396a-4511-b98f-983aad8306de.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-10d35522-92f9-4d3f-bf14-699ba3e1b54c.png"
+  },
+  {
+    "id": "p04-open-full",
+    "prompt": "Edit only shallow visible interior ofopenboxfromreference1. Put the EXACT ivory-handled paperknife reference2 lyinghorizontal inside leftmiddle, handleleftbladeright; put samebrasswoodhandlemagnifier reference3 onrightinside, theirbackedges visibleabove frontlip. Objectsinbox mustocclude naturally behindfrontpanel, notappearontopofrim. Keep everyotherpixel andgeometryunchanged. No othercontents.16:9.",
+    "refs": [
+      "exec-e8dcdf44-396a-4511-b98f-983aad8306de.png",
+      "exec-27b8f09c-ac84-49bf-8da0-996352c26e15.png",
+      "exec-dc741411-ddd0-4bdc-a26f-2fc44b7960ef.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-f91099e4-3984-4312-a43a-a4483afdb8a0.png"
+  },
+  {
+    "id": "folio-folded",
+    "prompt": "Photoreal isolated single folded paper bifolium, folded in half on a VERTICAL crease along its LEFT edge. Open loose sheet edges visible on RIGHT edge, absolutely NOT folded alongbottom. Viewedstraightoverhead: single landscape-ish rectangularface aspect ratio1.4width to1height, clean blank antiqueivory paperfibers same as reference. Onefold, onlytwoleaves, nohardcover,nothread, notthick. Genuine transparentbackground, objectfills90percentframe, no table,no text, no shadowoutsideobject. Lightwarmfromupperright.",
+    "refs": [
+      "exec-4f3e1a2d-219d-484a-9848-c38e03c3e0e0.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-a054a9d1-8f4f-4f5a-a8fc-5347d53cd492.png"
+  },
+  {
+    "id": "type-south",
+    "prompt": "New SOUTH-facing photograph from center oftype-settingroom reference1, reverseviewtoward proofreadingroom. Central openwooddoor revealsproofreadingroom southwall doorwayoffsetleft anddim creamplasterwoodpanel behind (reference2 forwhatliesbeyond). Talltypecabinet only tinyedgeRIGHT (northwestcorneroffscreen), tableedgeLEFT withmetaltypecases. Same4mroom, beamheight, dimwarm light frombehind, weatheredfloorboards runintodepth. No duplicate dryingracksortoolboxes on thiswall.16:9.",
+    "refs": [
+      "exec-f9713acd-928c-43d1-a504-c945db9c1fa4.png",
+      "exec-00988fc0-4db1-46a0-a673-e9a45df39f2b.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-553fc269-285f-4edc-aa0f-95495ce8b613.png"
+  },
+  {
+    "id": "proof-north-door-open",
+    "prompt": "Edit target1 proofroom northwall, open ONLY leftwoodworkshopdoor inward on left hinge. It reveals type-settingroom fromreference2: itsclosednortharchive door withthreebrasslatches incenterfarwall, typecabinetleft, lowtabletypecasesright, atnaturalsmallscale. Allproofroom benchtoolboxdryingpapers stayunchanged. Doorleafpushesawayleft, fourbrassbuttonsonleaf move appropriately. Camera unchanged.16:9.",
+    "refs": [
+      "exec-c3bfcc8a-3a12-4f73-95ac-d548837b3cdd.png",
+      "exec-f9713acd-928c-43d1-a504-c945db9c1fa4.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-e70ed51e-07df-4a47-a61c-7ad4c44389c5.png"
+  },
+  {
+    "id": "type-north",
+    "prompt": "Photorealistic new room in same abandoned Japanese printingworkshop as reference (style/material reference only). NORTH facing central fixedcamera eyeheight1.55, modest4m squaretype-settingroom. Northwall darkwood door centered x43..60 leadingtoarchive but CLOSED, three short sliding brass retaining latches mountedinverticalgroup atchestheight on door. Tall wooden letterpress type drawer cabinet on LEFT atx10..34, pilesof darkmetal type cases on lowrighttable x68..90. Dim warmbrasslightupperleft, grayplasterwoodbeamswoodwaistpanels. Weathered floorboards runinto depth. No people,no words, no otherdoorsvisibleonthiswall.16:9.",
+    "refs": [
+      "exec-c3bfcc8a-3a12-4f73-95ac-d548837b3cdd.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-f9713acd-928c-43d1-a504-c945db9c1fa4.png"
+  },
+  {
+    "id": "type-east",
+    "prompt": "Photorealistic EAST-facing view of modest4m Japanese1930stype-setting room, same darkwoodgrayplasterprintshopstyle reference. Wide OPEN doorway leftthird x18..39 y15..80 leads into printroom where a large black castiron antique proofprintingpress isvisible. On right x57..86 a waistheightwornwood box/cabinet with functional antique equal-arm balance mountedontop, two realbrasspans hangingfroma darkbeam. Three loose metalweights beside it. Floorboards run horizontally left-to-right. Warmlightfromnorth (leftofcamera), coolshadowright. No textlabels,no modernobjects.16:9.",
+    "refs": [
+      "exec-c3bfcc8a-3a12-4f73-95ac-d548837b3cdd.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-c1fc61db-1432-4012-aea7-54eecb78195e.png"
+  },
+  {
+    "id": "type-west",
+    "prompt": "Photorealistic WEST-facing view of modest4m Japanese1930stype-settingroom same stylematerialreference. OPEN door on RIGHT atx70..88 y15..80 reveals bookbindingroom wooden bench and threadspools. LEFT x20..58waistheight darkwood typecabinet with four shallow metalplate specimen drawers on top and one large closedlowerdrawer withplainbrasspull. Grayplasterdarkwoodwaistpanels. Floorboards run horizontallyleftright. Warmlightfromnorth(rightside). No textlabels,no modernobjects,nopeople.16:9.",
+    "refs": [
+      "exec-c3bfcc8a-3a12-4f73-95ac-d548837b3cdd.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-b4dc94cd-68cf-4f78-9161-722792205024.png"
+  }
+]

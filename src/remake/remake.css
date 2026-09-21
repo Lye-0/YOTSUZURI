@@ -7,3 +7,12 @@
 .r-object-photo{position:absolute;object-fit:fill;pointer-events:none;user-select:none}
 .r-receipt-papers{width:min(1100px,95vw);max-height:80svh;overflow:visible}.r-paper-grab{cursor:grab;touch-action:none;outline:none}.r-paper-grab:focus-visible{filter:drop-shadow(0 0 2px #dfc995)}.r-paper-ink{mix-blend-mode:multiply;opacity:.8}
 .r-printed-ink{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:multiply;opacity:.83}
+.r-folio-papers{width:min(1000px,95vw);max-height:85svh;overflow:visible}.r-paper-hit{fill:transparent;cursor:pointer;touch-action:none}g[role=button]:focus-visible{outline:none}g[role=button]:focus-visible>.r-paper-hit{stroke:#d3b97b;stroke-width:1.4}.r-target[aria-label$="の押し金"]:active{box-shadow:inset 0 2px 6px #0009;border-radius:50%;background:#0002}
+.r-folio-papers [role=button],.r-receipt-papers [role=button]{outline:none!important}
+.r-proof-papers{position:absolute;inset:0;width:100%;height:100%;z-index:2}.r-proof-papers [role=button]{outline:none!important}.r-proof-papers [role=button]:focus-visible>.r-paper-hit{stroke:#d3b97b;stroke-width:1.4}
+.r-ticket-case{position:absolute;inset:0;width:100%;height:100%;z-index:2}.r-ticket-case-wide{position:absolute;left:8%;top:24%;width:20%;height:30%;pointer-events:none;overflow:hidden}.r-ticket-case [role=button]{outline:none!important}.r-ticket-case [role=button]:focus-visible>.r-paper-hit{stroke:#d3b97b;stroke-width:2}
+.r-proof-papers-wide{position:absolute;left:29.6%;top:51.5%;width:40.4%;height:13%;pointer-events:none}.r-proof-papers-wide svg{pointer-events:none}
+.r-ticket-case,.r-ticket-case-wide,.r-proof-papers{filter:brightness(var(--light))}
+.r-ticket-case-wide{left:15.15%;top:24.3%;width:12.6%;height:20.8%;clip-path:inset(0 0 19%)}
+.r-stage.r-case-reading{width:min(96vw,calc((100svh - 90px)*1.16));aspect-ratio:835/720}
+.r-inventory{overflow-y:hidden}.r-case-reading+.r-orientation-hint,.r-reading+.r-orientation-hint{display:none}@media(max-width:700px){.r-item{height:64px}}

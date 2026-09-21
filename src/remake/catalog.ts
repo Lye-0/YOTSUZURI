@@ -25,14 +25,14 @@ export const portals:Portal[]=[
 {from:6,facing:1,to:8,gate:'shelves',rect:[38,15,24,65]}, {from:8,facing:3,to:6,rect:[38,15,24,65]},
 {from:8,facing:0,to:9,gate:'secret',rect:[38,15,24,65]}, {from:9,facing:2,to:8,rect:[38,15,24,65]},
 ];
-export const itemNames={key:'真鍮の鍵',card:'丸印の札',cards:'二枚の返却札',receipts:'三枚の複写控え',folios:'両面の校正紙',knife:'紙ナイフ',lens:'拡大鏡',register:'紙の位置決め片',weights:'刷り機の押さえ',corner:'金属の角当て',threadchart:'綴じ糸の見本',plates:'二枚の原版',pin:'紙止めのピン',proof:'窓を抜いた刷り紙',needle:'綴じ針',thread:'綴じ糸',oldplan:'旧書庫の見取り図',gatherings:'原本の束',tissue:'薄い保護紙',blanks:'白紙の束',wedge:'斜面の木片',cradle:'小口の支持具',frame:'綴じ枠',returnrecord:'返却の記録',keyparts:'六枚歯の保守鍵',clamp:'束の締め具'} as const;
+export const itemNames={key:'真鍮の鍵',card:'丸印の札','card-diamond':'菱形の札','card-moon':'三日月の札',cards:'二枚の返却札',receipts:'三枚の複写控え',folios:'両面の校正紙',knife:'紙ナイフ',lens:'拡大鏡',register:'紙の位置決め片',weights:'刷り機の押さえ',corner:'金属の角当て',threadchart:'綴じ糸の見本',plates:'二枚の原版',pin:'紙止めのピン',proof:'窓を抜いた刷り紙',needle:'綴じ針',thread:'綴じ糸',oldplan:'旧書庫の見取り図',gatherings:'原本の束',tissue:'薄い保護紙',blanks:'白紙の束',wedge:'斜面の木片',cradle:'小口の支持具',frame:'綴じ枠',returnrecord:'返却の記録',keyparts:'六枚歯の保守鍵',clamp:'束の締め具'} as const;
 export type CampaignItem=keyof typeof itemNames;
 export type Mechanism='layers'|'digits'|'receipts'|'rings'|'measure'|'paper-face'|'folios'|'balance'|'seals'|'plates'|'loops'|'press'|'thread'|'scraps'|'latches'|'shelves'|'watermarks'|'envelope'|'books'|'mirrors'|'assemble'|'foreedge'|'blanks'|'frame'|'rubbing'|'pins'|'cams'|'masters'|'bind';
 export type ObjectSpec={id:number;name:string;room:number;facing:0|1|2|3;kind:Mechanism;rect:[number,number,number,number];physical:CampaignItem[];rewards:CampaignItem[];box:boolean};
 const o=(id:number,name:string,room:number,facing:0|1|2|3,kind:Mechanism,rect:[number,number,number,number],physical:CampaignItem[]=[],rewards:CampaignItem[]=[],box=true):ObjectSpec=>({id,name,room,facing,kind,rect,physical,rewards,box});
 // Rectangles are calibrated against accepted photographs before scene activation.
 export const objects:ObjectSpec[]=[
-o(1,'札入れ',0,2,'layers',[8,34,20,18],[],['cards']),
+o(1,'札入れ',0,2,'layers',[8,24,20,30],[],['card-diamond','card-moon'],false),
 o(2,'帳場の引出し',1,1,'digits',[39,61,24,16],[],['receipts']),
 o(3,'校正箱',1,0,'receipts',[27,42,45,37],[],['folios']),
 o(4,'工具箱',2,0,'rings',[68,49,15,10],[],['knife','lens']),
