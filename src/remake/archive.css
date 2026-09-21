@@ -9,3 +9,5 @@
 .r-stage.r-weighing-reading{width:min(96vw,calc((100svh - 90px)*1.11111));aspect-ratio:1000/900}
 
 .weighing-selected{outline:1px solid #dfd0a0b0;outline-offset:3px;border-radius:3px}
+
+.r-stage.r-optical-reading{width:min(96vw,calc((100svh - 90px)*1.11111));aspect-ratio:1000/900}

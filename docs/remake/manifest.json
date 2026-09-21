@@ -2861,5 +2861,197 @@
       1329,
       565
     ]
+  },
+  {
+    "id": "plaster",
+    "group": "scenes/repair",
+    "path": "remake/scenes/repair/plaster.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": false,
+    "bytes": 583754,
+    "source": "exec-1a43e63c-aefc-47de-8408-793643fc19b6.png",
+    "master": "scenes/repair/plaster.png"
+  },
+  {
+    "id": "floor",
+    "group": "scenes/repair",
+    "path": "remake/scenes/repair/floor.webp",
+    "width": 1128,
+    "height": 1394,
+    "alpha": false,
+    "bytes": 457272,
+    "source": "exec-6e1fa58d-c025-4b58-ae12-c5d8644ee3e1.png",
+    "master": "scenes/repair/floor.png"
+  },
+  {
+    "id": "window",
+    "group": "parts/repair",
+    "path": "remake/parts/repair/window.webp",
+    "width": 1277,
+    "height": 1232,
+    "alpha": true,
+    "bytes": 661642,
+    "source": "exec-3a49dd70-fbc7-441c-b502-48eff3231b43.png",
+    "master": "parts/repair/window.png",
+    "bounds": [
+      39,
+      73,
+      1199,
+      1087
+    ]
+  },
+  {
+    "id": "worktop",
+    "group": "parts/repair",
+    "path": "remake/parts/repair/worktop.webp",
+    "width": 1997,
+    "height": 787,
+    "alpha": true,
+    "bytes": 770832,
+    "source": "exec-ab3f9aa6-fb41-4a41-8c9a-401bb016991e.png",
+    "master": "parts/repair/worktop.png",
+    "bounds": [
+      25,
+      25,
+      1950,
+      730
+    ]
+  },
+  {
+    "id": "mirror",
+    "group": "parts/optics",
+    "path": "remake/parts/optics/mirror.webp",
+    "width": 1402,
+    "height": 1122,
+    "alpha": true,
+    "bytes": 179450,
+    "source": "exec-fd5ce028-4949-416c-a995-431e618ed157.png",
+    "master": "parts/optics/mirror.png",
+    "bounds": [
+      100,
+      118,
+      1202,
+      882
+    ]
+  },
+  {
+    "id": "lamp",
+    "group": "parts/optics",
+    "path": "remake/parts/optics/lamp.webp",
+    "width": 1074,
+    "height": 1464,
+    "alpha": true,
+    "bytes": 356570,
+    "source": "exec-fad2c536-c4d5-46a6-9df9-12515cec832f.png",
+    "master": "parts/optics/lamp.png",
+    "bounds": [
+      144,
+      179,
+      786,
+      1111
+    ]
+  },
+  {
+    "id": "receiver",
+    "group": "parts/optics",
+    "path": "remake/parts/optics/receiver.webp",
+    "width": 1074,
+    "height": 1464,
+    "alpha": true,
+    "bytes": 483390,
+    "source": "exec-9a1288e9-d099-4a6b-b62e-9b5121f82ff8.png",
+    "master": "parts/optics/receiver.png",
+    "bounds": [
+      88,
+      84,
+      897,
+      1303
+    ]
+  },
+  {
+    "id": "relay",
+    "group": "parts/optics",
+    "path": "remake/parts/optics/relay.webp",
+    "width": 2172,
+    "height": 724,
+    "alpha": true,
+    "bytes": 268532,
+    "source": "exec-3e90721a-c24a-4e30-aec5-864e091724ab.png",
+    "master": "parts/optics/relay.png",
+    "bounds": [
+      244,
+      55,
+      1666,
+      610
+    ]
+  },
+  {
+    "id": "guard",
+    "group": "parts/optics",
+    "path": "remake/parts/optics/guard.webp",
+    "width": 1728,
+    "height": 910,
+    "alpha": true,
+    "bytes": 129726,
+    "source": "exec-e058713b-0019-4ae0-b0ff-d9055af49646.png",
+    "master": "parts/optics/guard.png",
+    "bounds": [
+      38,
+      289,
+      1653,
+      324
+    ]
+  },
+  {
+    "id": "bench-front",
+    "group": "parts/repair",
+    "path": "remake/parts/repair/bench-front.webp",
+    "width": 1997,
+    "height": 787,
+    "alpha": true,
+    "bytes": 212362,
+    "source": "exec-8ece282c-b73b-4a4f-99a1-677b5253a1fe.png",
+    "master": "parts/repair/bench-front.png",
+    "bounds": [
+      43,
+      64,
+      1904,
+      673
+    ]
+  },
+  {
+    "id": "iron-face",
+    "group": "parts/optics",
+    "path": "remake/parts/optics/iron-face.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": true,
+    "bytes": 669074,
+    "source": "exec-66fb591e-0753-4e9d-a04b-88bc81d4d016.png",
+    "master": "parts/optics/iron-face.png",
+    "bounds": [
+      53,
+      57,
+      1432,
+      910
+    ]
+  },
+  {
+    "id": "iron-top",
+    "group": "parts/optics",
+    "path": "remake/parts/optics/iron-top.webp",
+    "width": 1983,
+    "height": 793,
+    "alpha": true,
+    "bytes": 441992,
+    "source": "exec-c154aebf-33a7-46cb-8cdd-9d3eef234c70.png",
+    "master": "parts/optics/iron-top.png",
+    "bounds": [
+      66,
+      59,
+      1852,
+      671
+    ]
   }
 ]

@@ -939,5 +939,105 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       1329,
       565
     ]
+  },
+  "parts/repair/window": {
+    "width": 1277,
+    "height": 1232,
+    "bounds": [
+      39,
+      73,
+      1199,
+      1087
+    ]
+  },
+  "parts/repair/worktop": {
+    "width": 1997,
+    "height": 787,
+    "bounds": [
+      25,
+      25,
+      1950,
+      730
+    ]
+  },
+  "parts/optics/mirror": {
+    "width": 1402,
+    "height": 1122,
+    "bounds": [
+      100,
+      118,
+      1202,
+      882
+    ]
+  },
+  "parts/optics/lamp": {
+    "width": 1074,
+    "height": 1464,
+    "bounds": [
+      144,
+      179,
+      786,
+      1111
+    ]
+  },
+  "parts/optics/receiver": {
+    "width": 1074,
+    "height": 1464,
+    "bounds": [
+      88,
+      84,
+      897,
+      1303
+    ]
+  },
+  "parts/optics/relay": {
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      244,
+      55,
+      1666,
+      610
+    ]
+  },
+  "parts/optics/guard": {
+    "width": 1728,
+    "height": 910,
+    "bounds": [
+      38,
+      289,
+      1653,
+      324
+    ]
+  },
+  "parts/repair/bench-front": {
+    "width": 1997,
+    "height": 787,
+    "bounds": [
+      43,
+      64,
+      1904,
+      673
+    ]
+  },
+  "parts/optics/iron-face": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      53,
+      57,
+      1432,
+      910
+    ]
+  },
+  "parts/optics/iron-top": {
+    "width": 1983,
+    "height": 793,
+    "bounds": [
+      66,
+      59,
+      1852,
+      671
+    ]
   }
 };

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "repair-plaster",
+    "prompt": "Create a photorealistic environment texture asset for the same old book-restoration workshop as the reference photograph. Reference is material and lighting context only, not composition to copy. Perfectly frontal orthographic photograph of an entire plain muted grey aged lime-plaster wall, 4.2 meters wide and 2.8 meters tall, subtle irregular fine cracks and rubbed grain, cool blue-grey ambient illumination with very faint warm spill at upper right. No objects, no lamps, no windows, no doors, no trim, no floor, no text. Full bleed rectangular wall material. Physically believable quiet slightly eerie room, restrained contrast, high resolution detailed real plaster. Not a rendered game scene. Landscape 3:2.",
+    "referenced_image_paths": [
+      "C:\\Users\\kawau\\dev\\Game\\YOTSUZURI\\public\\remake\\closeups\\p22-cradle.webp"
+    ]
+  },
+  {
+    "id": "repair-floor",
+    "prompt": "Photorealistic material asset for same book-restoration room as reference. Reference for age/color/material only. Orthographic perfectly straight-down photograph of a whole 4.2m wide by 5.2m deep old workshop floor. Long dark brown worn timber floorboards run vertically image top to bottom, uneven wear, modest matte surface, small old scratches, believable plank joins; no papers, furniture, objects, tools, rug, feet, markings, borders, or text. Even dim cool neutral light no cast object shadows, texture readable. Full bleed portrait rectangular floor photograph, not stylized or game render.",
+    "referenced_image_paths": [
+      "C:\\Users\\kawau\\dev\\Game\\YOTSUZURI\\public\\remake\\closeups\\p22-cradle.webp"
+    ]
+  },
+  {
+    "id": "repair-window",
+    "prompt": "Photorealistic isolated architectural window asset matching the rainy blue window in reference photograph. Orthographic straight-on front view, one complete old dark brown wooden sash window, four by three small rectangular panes, closed, night blue rain speckles visible on the panes. Width 1.4 meters height 1.35 meters. Thick weathered old dark wood frame, real joints and chipped finish. Window alone with no wall, no shelf, no scene, no props, no lettering. Complete outer frame visible with margin around it. Transparent background, genuine alpha outside frame. Glass panes retain dark blue rain surface, not transparent holes. Soft neutral interior lighting for clean compositing into room geometry.",
+    "referenced_image_paths": [
+      "C:\\Users\\kawau\\dev\\Game\\YOTSUZURI\\public\\remake\\closeups\\p22-cradle.webp"
+    ]
+  },
+  {
+    "id": "repair-worktop",
+    "prompt": "Photorealistic orthographic straight-down photograph of a solid antique bookbinder workbench TOP SLAB only. Reference image shows intended dark worn workbench material. Single rectangular slab 1.65m wide .65m deep, thickness not visible from this perpendicular camera. Rich irregular dark walnut/oak grain, authentic scratches, old stains, softened chipped perimeter, three broad boards joined lengthwise. Empty bare tabletop, no machinery, books, paper, tools, holes, bolts, markings, or text. Neutral diffuse warm grey illumination without cast shadows. Entire rectangle visible with small transparent margin. Transparent background genuine alpha outside silhouette. Detailed real wood photo, no perspective distortion.",
+    "referenced_image_paths": [
+      "C:\\Users\\kawau\\dev\\Game\\YOTSUZURI\\public\\remake\\closeups\\p22-cradle.webp"
+    ]
+  }
+]

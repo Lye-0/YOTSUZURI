@@ -1,0 +1,10 @@
+[
+  {
+    "id": "optics-iron-face",
+    "prompt": "Photorealistic orthographic front photograph of the broad face of a single dark cast-iron rectangular baffle block. Physical face 15cm wide, 10cm tall, subtle 2mm chamfer at all four edges, slightly softened corners. Fine authentic cast metal grain, dark charcoal patina, restrained scraped wear along edges, a few brown rust flecks and tiny machining marks. Flat front face exactly perpendicular to camera, no visible top or side, no surrounding scene, no holes, no screws, labels, symbols or markings. Entire object visible with small genuine transparent alpha margin. Diffuse cool neutral lighting. The metal must look tangible and detailed, not brushed wood or a blurry flat grey box."
+  },
+  {
+    "id": "optics-iron-top",
+    "prompt": "Photorealistic orthographic top-down photograph of the top face of a small solid dark cast-iron baffle block. Rectangular 15cm by 6cm top surface, subtle 2mm beveled perimeter and softly worn corners. Fine authentic cast metal grain, dark charcoal patina, scraped edge wear, a few old brown rust flecks and small fine pits, no large scratches. No visible side faces, exact perpendicular camera. Complete rectangle with genuine transparent alpha margin. No holes, fittings, symbols, text or other objects. Diffuse cool neutral illumination, detailed tangible old iron photograph, not illustration or blurry texture."
+  }
+]
