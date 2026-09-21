@@ -1,0 +1,104 @@
+[
+  {
+    "id": "reception-south-case",
+    "prompt": "Edit target FIRST photograph ofreception southwall. Add EMPTY wallmountedwoodticketcase matching secondreference exactly, at LEFTwall x8..28percent,y24..54percent. Outerwidth20%height30%image, correctperspective andrealcontactshadowagainstplaster; darkwornwood material. Remove coat-hookthatwouldbe behindcase. Emptycase NO woodenretainingbars andNO tickets (willcompositecomponents). Preservefrontglassdoors externalchain alley umbrellastand floor andallotherpixels. Samecoolambient andwarmrightlight.16:9.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-d20f04a5-2468-4ccf-a8a6-068120f66e47.png",
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-ad4826f0-af3a-4320-a9e7-4815ef3877d8.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-f47a327d-408e-43c7-aa89-07b714442bc7.png"
+  },
+  {
+    "id": "p01-empty-background",
+    "prompt": "Edit exactcasecloseup preserveentireemptywoodencase andimmediatesupportingplasterpanel pixel-for-pixel. CorrectONLY area LEFT ofcase: remove the unrelatedcounter, bell, loosepapers andhangingposter seen inbackground. Replacewithsamecreamplasteranddarkwaistwoodpanel, slightlyoutoffocus, witha narrow darkverticaldoorframe atfarleft. ThiscaseisontheSouthwall notbehindacounter. Samecamera lighting.16:9.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-ad4826f0-af3a-4320-a9e7-4815ef3877d8.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-f6ac0d48-f282-47a7-a1c6-4721dc5e1f0a.png"
+  },
+  {
+    "id": "proof-east-empty-tray",
+    "prompt": "Edit wideproofreadingroom eastwall. Remove5ivoryoffcuts fromsmalltrayatlefttable soemptywoodtray remains. Removeblankstrip currentlyontopofruler andplace it directlyBELOWruler ontabletowardcamera, samecreamlongblankstrip. Reference2 specifiesarrangementanddimensions ofthissamebench closeup. Preservewholecamera roomwindow walls, rulerwoodgrain andtablelight. No otherchanges.16:9.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-ff32c8a6-4e76-42bb-9221-f614e2802f61.png",
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-ce871716-2143-494d-b456-78692e43b2f0.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-f9a564e7-ba3d-43c6-b72e-fd0eddf8b281.png"
+  },
+  {
+    "id": "key-shaft",
+    "prompt": "Edit exact key cutout: remove ONLY allsix rectangular adjustableteeth and theirscrews projectingdown fromshaft. Keepovalbowshaft and six darkattachmentmouths onunderside, no teeth. Perfectsamecamera silhouetteofremainingkey andlight, genuinely transparentbackground. This isstationarybodyofadjustablekey usedasgamecomponent.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-265eb763-34ac-4775-a0ee-3ef59392a970.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-693bac3f-0630-493b-9128-de5333efd8d3.png"
+  },
+  {
+    "id": "key-tooth",
+    "prompt": "Photoreal component cutout, ONE ofsix rectangularbrass adjustableteeth fromreferencekey, separatedfromkey. A vertical shortbrassrectangulartonguewithroundedlowercorners anddarkslottedscrewnearupperthird, exactlymatchingreference texture light colors. Straight-on samefrontfaceview. Singlepart centeredwithtransparentmargin on genuinely transparentbackground, nootherteeth no shaft no bow no surface.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-265eb763-34ac-4775-a0ee-3ef59392a970.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-e2eb1da9-ca62-443f-b956-b8d57d622913.png"
+  },
+  {
+    "id": "p27-board",
+    "prompt": "Photoreal front-on closeup of antique locksmith EDUCATIONAL CUTAWAY LOCK mountedonoldwoodboard insideJapanese1930s bookrestorationworkshop. Brassrectangularcasing occupyingx18..82 y18..80 has THREE deep empty vertical rectangularchannels centeredx35,50,65, channelwidth7%, fromy25to72. NO pins inserted(emptytracksfor latercompositedcomponents). A finehorizontal joint seam acrosscasingat y45, clearlysameheightacrossallthreechannels. Brass slidinghorizontalbolt at RIGHT withsmallrealwoodpullhandlex87y46. Darkironbaseat y73 supportsadjustablekeyfitting, threetinyknurledadjustmentwheelsatbottom alignedwithchannels. Warmdimlightfromupperright, grayplasterbackground. No numericlabels no engravedinstructions no futuristiclights. Physicalhighdetailmetal photograph,16:9.",
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-ede3d399-ca03-4679-8a82-587fb8f64a86.png"
+  },
+  {
+    "id": "gathering-right",
+    "prompt": "Photoreal isolated unbound antique paper signature bundle, genuine transparentbackground. A smallblockof about20 agedcream sheets foldedalong LEFTshortedge with two tiny sewingholes there. Landscape top face approx16cmwide12cmdeep, thickness2cm. Threequarter view lookingdownandfromFRONT: top blankivorypaper isupperhalf ofobject, FRONTforeedge is broadvisible face lowerhalf, individualparallelpageedges visible. Pages slightlyfanned right by10degrees, no ink words orcover, no clothbinding. Geometricblockshape, worncorner atfrontleft, clearfourcorners offrontedgefor laterpreciseprintedartprojection. Softwarmrightlight, no tableorbackdrop.",
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-6410f38a-bdab-4cf7-a342-9ee5530eed90.png"
+  },
+  {
+    "id": "key-blade",
+    "prompt": "Photoreal isolated brass sliding blade, matching antique key reference metal. ONE narrow vertical rectangular smooth brass tongue, widthabout1unit length5units, smallbevelededges androundedbottomtip, flatfrontsurface, NO screws,noholes,norings, nootherobjects. Genuinely transparentbackground. Straight-on cameraviewwarmdiffuselight. Centerobjectfills80%canvasheight, microscopicwornmetalgrain.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-e2eb1da9-ca62-443f-b956-b8d57d622913.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-43ad9543-6102-4e2d-8473-ff0382819e1b.png"
+  },
+  {
+    "id": "steel-pin",
+    "prompt": "Photoreal isolated machined steel lock pin, verticalrectangularbar withsquarecutends andvery slightlybevelededges, aspect1:5, darksilverusedmetal subtle scratches. Front-on photograph,genuine transparentbackground. No screw,nohead, nohook,noadditionalparts,no backdropglow. Uniformwarmrightlighting. Gamecomponent.",
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-7e66b91b-4c1e-4036-a83a-5396e6fff71e.png"
+  },
+  {
+    "id": "p27-board-clean",
+    "prompt": "Edit exact cutaway demonstrationlock photo: remove the large loose ironkey lyingforeground andremove calligraphy scrap at upperrightbackground. Keep realthree-channelcasing, handle, screws, knurledwheels, woodenbase absolutelyunchanged. Fillwoodtable wherekeywas withmatchingexistinggrain. No newobjects.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-ede3d399-ca03-4679-8a82-587fb8f64a86.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-1149e846-8e1f-4357-af5b-cffa06751581.png"
+  },
+  {
+    "id": "book-edge-stack",
+    "prompt": "Photoreal isolated thick UNBOUND antique book comprising exactlySIX signatures stacked vertically oneaboveanother. Eachsignature many ivorypaper leaves; thin horizontal separation seams between6 bundles visible onforeedge. Camera LOW almostFRONT-ON aimedatforeedge, so broadfrontpaperedgeface takesmostobjectheight, withonlysmallsliver blanktoppaper visible. Overallbookwidth28cmheight7cmdepth20cm. No cover,nothread,noclamps,noinkornumbers. Foreedgefrontplane nearlyrectangularwithparallelhorizontalupperloweredges, nofanningyet. Frontfacesuniformagedpaperfibers clean forlaterimageprojection. Genuine transparentbackground, warmupperrightlight, clearfulllateraloutline.16:9landscape.",
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-36b0daa2-31f8-4d9e-add6-29132a23b80d.png"
+  },
+  {
+    "id": "book-edge-six",
+    "prompt": "Edit targetstack photograph: there are currently FIVE thick signatures. Add ONE additional paper signature atbottom, for EXACTLY SIX distinct equal-thickness bundles. Keeptop5 unchanged, extendstackdownward with new6th, samewidthcamera agedpaperfibers. Six frontfaces and FIVE horizontal seams separating them mustbe plainlyvisible. Transparentbackground no ink no letters. Maintainblanktopandlowfrontalcamera.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-36b0daa2-31f8-4d9e-add6-29132a23b80d.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-a686c421-b6be-4d68-8647-31f776edb92a.png"
+  },
+  {
+    "id": "p27-pulled",
+    "prompt": "Edit exactdemonstrationlock photograph. Pull ONLY woodenhandle andhorizontalbrassbolt onRIGHT outward 40pixels totheRIGHT (about2cm), exposing slightlymore darkboltshaft whereit exits brasscase. Do notmove casing, itsseam, threechannels, adjustmentknobs, woodbase orcamera. Keepentirehandle insideframe. This is unlocked state ofsame mechanism. No otherchanges.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-1149e846-8e1f-4357-af5b-cffa06751581.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-f75dd58c-51f7-4b03-95d8-0c42b1369e80.png"
+  },
+  {
+    "id": "proof-east-bare",
+    "prompt": "Edit exactwide room photo removeonly thelongivorypaperstrip belowruler, exposingwoodthere. Emptytrayalreadyempty retainit, rulerandallroomobjects camera lightingfixed. No paper added toforeground.16:9.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-f9a564e7-ba3d-43c6-b72e-fd0eddf8b281.png"
+    ],
+    "output": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-0b4ed22c-8320-4771-8b19-485e7bd9d824.png"
+  }
+]

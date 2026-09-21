@@ -14,12 +14,12 @@ export const rooms=[
 export const directions=['north','east','south','west'] as const;
 export type Portal={from:number;facing:0|1|2|3;to:number;gate?:'office'|'workshop'|'archive'|'shelves'|'secret';rect:[number,number,number,number]};
 export const portals:Portal[]=[
-{from:0,facing:0,to:2,rect:[72,16,20,59]}, {from:2,facing:2,to:0,rect:[10,15,25,70]},
+{from:0,facing:0,to:2,rect:[72,16,20,59]}, {from:2,facing:2,to:0,rect:[14,17,16,58]},
 {from:0,facing:1,to:1,gate:'office',rect:[38,15,20,64]}, {from:1,facing:3,to:0,rect:[38,15,24,65]},
 {from:0,facing:3,to:10,rect:[17,18,21,65]}, {from:10,facing:1,to:0,rect:[62,15,25,65]},
-{from:2,facing:0,to:3,gate:'workshop',rect:[19,16,20,61]}, {from:3,facing:2,to:2,rect:[38,15,24,65]},
-{from:3,facing:1,to:4,rect:[38,15,24,65]}, {from:4,facing:3,to:3,rect:[38,15,24,65]},
-{from:3,facing:3,to:5,rect:[38,15,24,65]}, {from:5,facing:1,to:3,rect:[38,15,24,65]},
+{from:2,facing:0,to:3,gate:'workshop',rect:[20,18,18,58]}, {from:3,facing:2,to:2,rect:[14,16,19,61]},
+{from:3,facing:1,to:4,rect:[20,18,28,59]}, {from:4,facing:3,to:3,rect:[38,15,24,65]},
+{from:3,facing:3,to:5,rect:[73,17,15,59]}, {from:5,facing:1,to:3,rect:[38,15,24,65]},
 {from:3,facing:0,to:6,gate:'archive',rect:[38,15,24,65]}, {from:6,facing:2,to:3,rect:[38,15,24,65]},
 {from:6,facing:3,to:7,rect:[38,15,24,65]}, {from:7,facing:1,to:6,rect:[38,15,24,65]},
 {from:6,facing:1,to:8,gate:'shelves',rect:[38,15,24,65]}, {from:8,facing:3,to:6,rect:[38,15,24,65]},
@@ -32,14 +32,14 @@ export type ObjectSpec={id:number;name:string;room:number;facing:0|1|2|3;kind:Me
 const o=(id:number,name:string,room:number,facing:0|1|2|3,kind:Mechanism,rect:[number,number,number,number],physical:CampaignItem[]=[],rewards:CampaignItem[]=[],box=true):ObjectSpec=>({id,name,room,facing,kind,rect,physical,rewards,box});
 // Rectangles are calibrated against accepted photographs before scene activation.
 export const objects:ObjectSpec[]=[
-o(1,'札入れ',0,2,'layers',[8,24,20,30],[],['card-diamond','card-moon'],false),
-o(2,'帳場の引出し',1,1,'digits',[39,61,24,16],[],['receipts']),
-o(3,'校正箱',1,0,'receipts',[27,42,45,37],[],['folios']),
-o(4,'工具箱',2,0,'rings',[68,49,15,10],[],['knife','lens']),
-o(5,'欠けた定規',2,1,'measure',[25,52,50,24],['knife'],['register'],false),
-o(6,'試し刷り',2,3,'paper-face',[27,39,45,36],[],[],false),
-o(7,'工房戸',2,0,'folios',[19,16,20,61],[],[]),
-o(8,'釣合いの箱',3,1,'balance',[20,53,25,27],[],['weights']),
+o(1,'札入れ',0,2,'layers',[15.15,24.3,12.6,20.8],[],['card-diamond','card-moon'],false),
+o(2,'帳場の引出し',1,1,'digits',[32,62,40,10],[],['receipts']),
+o(3,'校正箱',1,0,'receipts',[35,52,30,29],[],['folios']),
+o(4,'工具箱',2,0,'rings',[69,50,12,8],[],['knife','lens']),
+o(5,'欠けた定規',2,1,'measure',[36,53,32,6],['knife'],['register'],false),
+o(6,'試し刷り',2,3,'paper-face',[31,54,37,7],[],[],false),
+o(7,'工房戸',2,0,'folios',[20,18,18,58],[],[]),
+o(8,'釣合いの箱',3,1,'balance',[60,26,28,55],[],['weights']),
 o(9,'封印の箱',5,3,'seals',[22,46,50,32],[],['corner','threadchart']),
 o(10,'原版の引出し',3,3,'plates',[23,46,50,32],[],['plates']),
 o(11,'留め輪',4,2,'loops',[22,40,50,36],[],['pin']),

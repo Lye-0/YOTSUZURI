@@ -1,5 +1,6 @@
 import type {World} from './campaign';
 export function campaignHints(g:World):string[]|null{
+if(g.room===3&&g.focus==='object:8')return g.opened.includes(8)?['引出しに、刷り機の押さえがある。']:['重りは、持ってから皿へ置ける。台へ戻すこともできる。','三つの重りを左右に分け、横棒を水平にする。','二と三の重りを同じ皿へ、五の重りを反対側へ置く。留め金が上がったら、引出しを引く。'];
 if(g.room===0&&g.focus==='object:1')return ['木札の端に、隣の札を押さえる出っ張りがある。','上の札は二枚目の右端を、二枚目と下の札は三枚目の両端を押さえている。','上と下は、どちらからでも抜ける。出っ張りが外れた札を順に取る。'];
 if(g.room===2){
 if(g.focus==='object:4')return g.opened.includes(4)?['箱の中の道具は、一つずつ取れる。']:['二つの環には、それぞれ一か所だけ切れ目がある。','蓋の金具が通る位置へ、両方の切れ目を合わせる。'];
