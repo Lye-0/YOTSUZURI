@@ -1,0 +1,30 @@
+[
+  {
+    "id": "p13-front-empty",
+    "prompt": "Edit ONLY the sewing thread and needle in this exact photograph. Remove all FIVE short linen stitches between the central pairs of holes, all loose thread on both sides of the book, and the needle on the desk. Keep the ten small sewing holes (FIVE pairs), open blank book, page edges, paper fibers, same desk woodgrain, window, lamp, camera and lighting EXACTLY unchanged. Result is the same book with its thread removed. Do not add a sixth row or extra holes. Photoreal same 1672x941.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-d0f33652-a9fd-440f-b4aa-9e521e68c482.png"
+    ]
+  },
+  {
+    "id": "p13-back-empty",
+    "prompt": "Photograph the reverse of the SAME open book in reference, by turning the whole spread over while keeping the camera, desk, window and lamp fixed. The two blank outer ivory paper covers are now face up and face down pages beneath; same dimensions and central fold, same FIVE pairs of sewing holes arranged as five rows along center (ten holes total). All thread and needle removed for a blank assembly base. Near top-down same 1672x941 framing, book same x300-1350,y200-760 area, natural paper shadows. Outer covers are plain warm ivory paper slightly more worn, not dark leather. Absolutely no writing/ink, no thread, no diagrams yet. No extra sixth hole row. Background and lamp remain where they were, not mirrored.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-d0f33652-a9fd-440f-b4aa-9e521e68c482.png"
+    ]
+  },
+  {
+    "id": "sewing-needle",
+    "prompt": "Extract the SAME long plain steel sewing needle from the lower right of reference as a separate photoreal transparent-alpha cutout. Needle only, no attached thread, no desk or paper. Entire needle visible with its small oval eye at one end and sharp narrow point at other. Same warm steel reflections, not a knife or awl. Place diagonally from lower-left point to upper-right eye. Real RGBA transparency around the needle, no black or checkered background.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-d0f33652-a9fd-440f-b4aa-9e521e68c482.png"
+    ]
+  },
+  {
+    "id": "binding-thread",
+    "prompt": "Photoreal isolated loose small coil of the SAME natural pale-brown linen bookbinding thread as seen beside this reference book, on actual transparent alpha background. One continuous fine fibrous thread coiled into four loose overlapping loops with two short ends. No knots, needle, spool, box, hands or background. Natural warm lamplight, real fiber texture, modest soft internal shadows. Actual RGBA cutout, not black/checkerboard. This is the thread removed from that small book.",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-d0f33652-a9fd-440f-b4aa-9e521e68c482.png"
+    ]
+  }
+]

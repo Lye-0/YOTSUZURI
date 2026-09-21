@@ -379,5 +379,45 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       2065,
       281
     ]
+  },
+  "items/needle": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      71,
+      70,
+      1409,
+      911
+    ]
+  },
+  "items/thread": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      65,
+      98,
+      1421,
+      814
+    ]
+  },
+  "parts/thread-anchor-tied": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      83,
+      225,
+      1385,
+      541
+    ]
+  },
+  "parts/thread-anchor-empty": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      589,
+      227,
+      350,
+      508
+    ]
   }
 };

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "p11-interlock-closed",
+    "prompt": "Edit the reference into a physically credible antique interlocking latch box. Keep the EXACT wooden case, tabletop, wall, camera, wood wear, lighting, and closed lid. REMOVE all three upright top rings, floating pins, and long wire loop from the TOP of the case, leaving its wooden lid clear. Instead, on the FRONT LOWER FACE of the case, fit THREE ordinary small brass ring-pull handles, spaced evenly horizontally, each pivoted to its own visible short vertical sliding stem and plate firmly screwed to the wooden case. These are pull handles for internal linked bolts, NOT a Chinese wire puzzle. Immediately ABOVE each ring, within that SAME lower front face (below the lid seam), add one narrow horizontal glass inspection slot showing a dark empty interior, with a real metal rim. Slots have no mechanism inside yet; moving bolt parts will be placed there later. Exactly three handles and three slots; all fixtures stay within front wooden face and do not float. Handle rings hang down in the plane of the front face, simple practical hardware. No writing, colors, labels, symbols or UI. Photoreal same 1672x941."
+  },
+  {
+    "id": "p11-interlock-pulled",
+    "refs": [
+      "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-ff2dee32-3407-43ed-9676-bcce56a18194.png"
+    ],
+    "prompt": "Edit ONLY the THREE brass ring-pull handles on the lower front face of this exact case. Pull each ring handle FORWARD toward the camera on its short sliding stem, about 1.5cm, so each loop is lifted into a shallow forward-projecting angle, more horizontally foreshortened than its hanging starting position. The small mounting plates, screws and inspection slots stay FIXED in exactly the same pixels. The projecting stems remain visibly attached to the case; rings are NOT removed. Keep all three as the SAME handles, same size and material. Leave the lid closed, case body, desk woodgrain, wall, lighting and camera EXACTLY unchanged. No new markings. Same 1672x941 photo."
+  },
+  {
+    "id": "press-south-empty",
+    "refs": [
+      "C:\\Users\\kawau\\dev\\Game\\YOTSUZURI\\public\\remake\\scenes\\press\\south.webp"
+    ],
+    "prompt": "Edit this exact room photograph. Remove ALL loose objects from the tabletop only: the small three-ring fixture, both paper sheets, the ink roller cradle and folded rag. Reveal the same empty wooden tabletop. Preserve the workbench and its edges, wooden boxes on the lower shelf, window on left, doorway on right, lamp, walls, floor, camera and lighting EXACTLY unchanged. No new objects and no extra doorway. Photoreal 1672x941."
+  },
+  {
+    "id": "p11-interlock-open",
+    "prompt": "Edit this exact antique wooden case photo by opening ONLY the lid upward on its rear hinges. The lid is raised about 100 degrees, its inside wood visible above the case; the interior below is completely EMPTY dark wood. Preserve the case lower body, three inspection slots, three forward-raised brass ring handles, corners, screws, desk, wall, lighting and camera EXACTLY unchanged. The lower front face and its fixtures must remain at their current pixels. Do not add anything inside. This is the same box after all its retaining bolts have released. Keep entire raised lid visible in the 1672x941 frame."
+  },
+  {
+    "id": "press-samples",
+    "prompt": "Photoreal close-up of the RIGHT HALF of the south workbench in the reference printing room, camera leans down to inspect two tiny fixed printing specimens. Same worn dark tabletop and warm lamplight; no different room. TWO small square zinc test coupons screwed onto the bench, side by side at x430-720 and x980-1270,y260-450. LEFT coupon has a simple solid TRIANGLE raised clearly above its flat base, obvious sidewalls/shadow. RIGHT coupon has the SAME triangle engraved as a deep recess below its flat square face, obvious inner shadow. Exactly one triangle on each coupon, no letters/numbers. Below each coupon lies one separate blank ivory paper test sheet, left x320-790,y500-800, right x880-1350,y500-800, same rectangular size and clean pale center. The two metal coupons are bolted down and are visibly small fixed specimens, not loose full-size printing plates. Paper surfaces completely BLANK for precise printed artwork later. No box or ring fixture in this close crop, no extra objects, UI or text. Photoreal 1672x941, sharp credible metal relief and paper fibers."
+  }
+]

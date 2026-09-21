@@ -1431,17 +1431,6 @@
     "master": "scenes/press/east.png"
   },
   {
-    "id": "south",
-    "group": "scenes/press",
-    "path": "remake/scenes/press/south.webp",
-    "width": 1672,
-    "height": 941,
-    "alpha": false,
-    "bytes": 221946,
-    "source": "exec-cab7f791-704d-44f6-9256-7fda64498d45.png",
-    "master": "scenes/press/south.png"
-  },
-  {
     "id": "west",
     "group": "scenes/press",
     "path": "remake/scenes/press/west.webp",
@@ -1535,5 +1524,249 @@
     "bytes": 210082,
     "source": "exec-907dca4a-16f5-4579-8989-d9b2ebdb1fc3.png",
     "master": "scenes/press/north.png"
+  },
+  {
+    "id": "east",
+    "group": "scenes/binding",
+    "path": "remake/scenes/binding/east.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 247532,
+    "source": "exec-115ff1e5-47aa-430d-827e-dd681e925461.png",
+    "master": "scenes/binding/east.png"
+  },
+  {
+    "id": "south",
+    "group": "scenes/binding",
+    "path": "remake/scenes/binding/south.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 228746,
+    "source": "exec-7ab4232c-34e6-443e-8668-759111b22053.png",
+    "master": "scenes/binding/south.png"
+  },
+  {
+    "id": "west",
+    "group": "scenes/binding",
+    "path": "remake/scenes/binding/west.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 254198,
+    "source": "exec-af426f96-7995-42f0-8874-828ba5c0a8be.png",
+    "master": "scenes/binding/west.png"
+  },
+  {
+    "id": "p13-front",
+    "group": "closeups",
+    "path": "remake/closeups/p13-front.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 313506,
+    "source": "exec-d0f33652-a9fd-440f-b4aa-9e521e68c482.png",
+    "master": "closeups/p13-front.png"
+  },
+  {
+    "id": "p13-front-empty",
+    "group": "closeups",
+    "path": "remake/closeups/p13-front-empty.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 276628,
+    "source": "exec-a4bf3fc3-1895-4605-a24e-d83300d75b0b.png",
+    "master": "closeups/p13-front-empty.png"
+  },
+  {
+    "id": "needle",
+    "group": "items",
+    "path": "remake/items/needle.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": true,
+    "bytes": 57670,
+    "source": "exec-29d6fa04-b02c-487e-958c-5fd308f47564.png",
+    "master": "items/needle.png",
+    "bounds": [
+      71,
+      70,
+      1409,
+      911
+    ]
+  },
+  {
+    "id": "thread",
+    "group": "items",
+    "path": "remake/items/thread.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": true,
+    "bytes": 266916,
+    "source": "exec-e6fd42d3-9b78-4a38-832b-c36b05c03c20.png",
+    "master": "items/thread.png",
+    "bounds": [
+      65,
+      98,
+      1421,
+      814
+    ]
+  },
+  {
+    "id": "p13-back-0",
+    "group": "closeups",
+    "path": "remake/closeups/p13-back-0.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 281322,
+    "source": "exec-f9cad539-e333-4470-bb58-3cced1c6aaee.png",
+    "master": "closeups/p13-back-0.png"
+  },
+  {
+    "id": "p13-back-1",
+    "group": "closeups",
+    "path": "remake/closeups/p13-back-1.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 276374,
+    "source": "exec-887be3af-c81a-498a-b90b-c3e183a658fe.png",
+    "master": "closeups/p13-back-1.png"
+  },
+  {
+    "id": "p13-back-2",
+    "group": "closeups",
+    "path": "remake/closeups/p13-back-2.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 301556,
+    "source": "exec-037ac406-6ac4-41fd-bbe9-5895de5d44a0.png",
+    "master": "closeups/p13-back-2.png"
+  },
+  {
+    "id": "p13-back-3",
+    "group": "closeups",
+    "path": "remake/closeups/p13-back-3.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 269860,
+    "source": "exec-1de8f0a3-2be9-41b3-9802-ab9960e7a4d5.png",
+    "master": "closeups/p13-back-3.png"
+  },
+  {
+    "id": "p13-back-4",
+    "group": "closeups",
+    "path": "remake/closeups/p13-back-4.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 279212,
+    "source": "exec-2de8fddd-9866-4ee5-b020-e518d52dab27.png",
+    "master": "closeups/p13-back-4.png"
+  },
+  {
+    "id": "north",
+    "group": "scenes/binding",
+    "path": "remake/scenes/binding/north.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 191526,
+    "source": "exec-296d5cb0-ac68-4ae3-ab1d-4497851d4157.png",
+    "master": "scenes/binding/north.png"
+  },
+  {
+    "id": "thread-anchor-tied",
+    "group": "parts",
+    "path": "remake/parts/thread-anchor-tied.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": true,
+    "bytes": 145536,
+    "source": "exec-3387b54b-0da8-4525-a9c6-0c641bfc5509.png",
+    "master": "parts/thread-anchor-tied.png",
+    "bounds": [
+      83,
+      225,
+      1385,
+      541
+    ]
+  },
+  {
+    "id": "thread-anchor-empty",
+    "group": "parts",
+    "path": "remake/parts/thread-anchor-empty.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": true,
+    "bytes": 61656,
+    "source": "exec-e750b99c-367b-428f-ae90-4b47473048f6.png",
+    "master": "parts/thread-anchor-empty.png",
+    "bounds": [
+      589,
+      227,
+      350,
+      508
+    ]
+  },
+  {
+    "id": "p11-closed",
+    "group": "closeups",
+    "path": "remake/closeups/p11-closed.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 256074,
+    "source": "exec-ff2dee32-3407-43ed-9676-bcce56a18194.png",
+    "master": "closeups/p11-closed.png"
+  },
+  {
+    "id": "p11-pulled",
+    "group": "closeups",
+    "path": "remake/closeups/p11-pulled.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 247266,
+    "source": "exec-fa8f627c-4451-4948-ae3f-0fc6dd304872.png",
+    "master": "closeups/p11-pulled.png"
+  },
+  {
+    "id": "p11-open-empty",
+    "group": "closeups",
+    "path": "remake/closeups/p11-open-empty.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 303444,
+    "source": "exec-46c7ccb4-f639-418c-bc9b-802d7522abe6.png",
+    "master": "closeups/p11-open-empty.png"
+  },
+  {
+    "id": "south",
+    "group": "scenes/press",
+    "path": "remake/scenes/press/south.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 192050,
+    "source": "exec-d689424d-0bc5-42ae-a41e-f4a06328625c.png",
+    "master": "scenes/press/south.png"
+  },
+  {
+    "id": "press-samples",
+    "group": "closeups",
+    "path": "remake/closeups/press-samples.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 312156,
+    "source": "exec-23c18f98-de73-4384-888b-e1a26c8a9270.png",
+    "master": "closeups/press-samples.png"
   }
 ]
