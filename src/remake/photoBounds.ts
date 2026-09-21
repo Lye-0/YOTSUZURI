@@ -819,5 +819,125 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       1051,
       1193
     ]
+  },
+  "parts/weighing/book-cover": {
+    "width": 1132,
+    "height": 1390,
+    "bounds": [
+      72,
+      60,
+      994,
+      1266
+    ]
+  },
+  "parts/weighing/support": {
+    "width": 1145,
+    "height": 1374,
+    "bounds": [
+      328,
+      14,
+      488,
+      1343
+    ]
+  },
+  "parts/weighing/beam": {
+    "width": 2092,
+    "height": 752,
+    "bounds": [
+      20,
+      200,
+      2050,
+      312
+    ]
+  },
+  "parts/weighing/pan": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      75,
+      80,
+      1103,
+      1095
+    ]
+  },
+  "parts/weighing/saddle": {
+    "width": 1868,
+    "height": 842,
+    "bounds": [
+      51,
+      190,
+      1767,
+      462
+    ]
+  },
+  "items/wedge": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      54,
+      109,
+      1427,
+      798
+    ]
+  },
+  "parts/weighing/poise": {
+    "width": 1145,
+    "height": 1374,
+    "bounds": [
+      277,
+      51,
+      617,
+      1277
+    ]
+  },
+  "parts/weighing/drawer": {
+    "width": 827,
+    "height": 1902,
+    "bounds": [
+      100,
+      114,
+      627,
+      1673
+    ]
+  },
+  "parts/weighing/mouth": {
+    "width": 1942,
+    "height": 809,
+    "bounds": [
+      27,
+      208,
+      1889,
+      383
+    ]
+  },
+  "parts/weighing/wedge-side": {
+    "width": 1774,
+    "height": 887,
+    "bounds": [
+      66,
+      131,
+      1645,
+      645
+    ]
+  },
+  "parts/weighing/wedge-ramp": {
+    "width": 903,
+    "height": 1741,
+    "bounds": [
+      108,
+      80,
+      687,
+      1580
+    ]
+  },
+  "parts/weighing/wedge-end": {
+    "width": 1774,
+    "height": 887,
+    "bounds": [
+      223,
+      160,
+      1329,
+      565
+    ]
   }
 };

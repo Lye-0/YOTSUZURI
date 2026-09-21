@@ -2657,5 +2657,209 @@
       1051,
       1193
     ]
+  },
+  {
+    "id": "book-cover",
+    "group": "parts/weighing",
+    "path": "remake/parts/weighing/book-cover.webp",
+    "width": 1132,
+    "height": 1390,
+    "alpha": true,
+    "bytes": 496608,
+    "source": "exec-7916e7ea-7bad-4f74-9627-4dd509db45c1.png",
+    "master": "parts/weighing/book-cover.png",
+    "bounds": [
+      72,
+      60,
+      994,
+      1266
+    ]
+  },
+  {
+    "id": "support",
+    "group": "parts/weighing",
+    "path": "remake/parts/weighing/support.webp",
+    "width": 1145,
+    "height": 1374,
+    "alpha": true,
+    "bytes": 85750,
+    "source": "exec-976b22aa-253c-4e89-8c6b-c7c9eecaa8fb.png",
+    "master": "parts/weighing/support.png",
+    "bounds": [
+      328,
+      14,
+      488,
+      1343
+    ]
+  },
+  {
+    "id": "beam",
+    "group": "parts/weighing",
+    "path": "remake/parts/weighing/beam.webp",
+    "width": 2092,
+    "height": 752,
+    "alpha": true,
+    "bytes": 82494,
+    "source": "exec-d5ddcb18-c7e6-4c81-8970-2b17cbe9962b.png",
+    "master": "parts/weighing/beam.png",
+    "bounds": [
+      20,
+      200,
+      2050,
+      312
+    ]
+  },
+  {
+    "id": "pan",
+    "group": "parts/weighing",
+    "path": "remake/parts/weighing/pan.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 541772,
+    "source": "exec-83c7c53a-58a0-4afd-aaf9-57c9b84bd666.png",
+    "master": "parts/weighing/pan.png",
+    "bounds": [
+      75,
+      80,
+      1103,
+      1095
+    ]
+  },
+  {
+    "id": "saddle",
+    "group": "parts/weighing",
+    "path": "remake/parts/weighing/saddle.webp",
+    "width": 1868,
+    "height": 842,
+    "alpha": true,
+    "bytes": 146702,
+    "source": "exec-6b7e1427-37f8-4b7b-9653-55aec2f0571a.png",
+    "master": "parts/weighing/saddle.png",
+    "bounds": [
+      51,
+      190,
+      1767,
+      462
+    ]
+  },
+  {
+    "id": "wedge",
+    "group": "items",
+    "path": "remake/items/wedge.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": true,
+    "bytes": 252068,
+    "source": "exec-4f52f0a8-bd2f-4a33-bb20-f13ff112d4ee.png",
+    "master": "items/wedge.png",
+    "bounds": [
+      54,
+      109,
+      1427,
+      798
+    ]
+  },
+  {
+    "id": "poise",
+    "group": "parts/weighing",
+    "path": "remake/parts/weighing/poise.webp",
+    "width": 1145,
+    "height": 1374,
+    "alpha": true,
+    "bytes": 213636,
+    "source": "exec-0eb40854-5116-4230-9e41-15fda775894e.png",
+    "master": "parts/weighing/poise.png",
+    "bounds": [
+      277,
+      51,
+      617,
+      1277
+    ]
+  },
+  {
+    "id": "drawer",
+    "group": "parts/weighing",
+    "path": "remake/parts/weighing/drawer.webp",
+    "width": 827,
+    "height": 1902,
+    "alpha": true,
+    "bytes": 395710,
+    "source": "exec-c5f0f11e-42b0-4ce9-aa00-4489e08fd7f4.png",
+    "master": "parts/weighing/drawer.png",
+    "bounds": [
+      100,
+      114,
+      627,
+      1673
+    ]
+  },
+  {
+    "id": "mouth",
+    "group": "parts/weighing",
+    "path": "remake/parts/weighing/mouth.webp",
+    "width": 1942,
+    "height": 809,
+    "alpha": true,
+    "bytes": 288748,
+    "source": "exec-fc9cd578-eff3-421e-bb1c-198f993376ac.png",
+    "master": "parts/weighing/mouth.png",
+    "bounds": [
+      27,
+      208,
+      1889,
+      383
+    ]
+  },
+  {
+    "id": "wedge-side",
+    "group": "parts/weighing",
+    "path": "remake/parts/weighing/wedge-side.webp",
+    "width": 1774,
+    "height": 887,
+    "alpha": true,
+    "bytes": 268248,
+    "source": "exec-0a1b3d88-8d32-40ea-a0d4-f7a8e01eae69.png",
+    "master": "parts/weighing/wedge-side.png",
+    "bounds": [
+      66,
+      131,
+      1645,
+      645
+    ]
+  },
+  {
+    "id": "wedge-ramp",
+    "group": "parts/weighing",
+    "path": "remake/parts/weighing/wedge-ramp.webp",
+    "width": 903,
+    "height": 1741,
+    "alpha": true,
+    "bytes": 540660,
+    "source": "exec-d64479c4-b63f-4fbb-a40f-150eafcb90bc.png",
+    "master": "parts/weighing/wedge-ramp.png",
+    "bounds": [
+      108,
+      80,
+      687,
+      1580
+    ]
+  },
+  {
+    "id": "wedge-end",
+    "group": "parts/weighing",
+    "path": "remake/parts/weighing/wedge-end.webp",
+    "width": 1774,
+    "height": 887,
+    "alpha": true,
+    "bytes": 438692,
+    "source": "exec-5acb8d0f-af8b-4a23-9e01-b2b94f7e29e1.png",
+    "master": "parts/weighing/wedge-end.png",
+    "bounds": [
+      223,
+      160,
+      1329,
+      565
+    ]
   }
 ]

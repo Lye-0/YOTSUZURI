@@ -1,3 +1,6 @@
+import type {World} from './campaign';
+import {WeighingInputs,type WeighingPresentation} from './WeighingInputs';
+import {WeighingWorld} from './WeighingWorld';
 import {WatermarkWorld} from './WatermarkWorld';
 import {WatermarkInputs,type WatermarkPresentation} from './WatermarkInputs';
 import {separateTarget} from './screenTargets';
@@ -65,7 +68,7 @@ function Doors({open}:{open:boolean}){
  <Face x={1.38} y={5.16} z={.012} width={1.09} height={.08} tilt={90}><Photograph id="wall-south" group="scenes/archive-east" crop={[620/1536,216/1024,380/1536,25/1024]}/></Face>
  </>;
 }
-export function ArchiveScene({values,facing,room=6,doorOpen=false,camera,selected=-1,busy=false,keyboard=false,onSelect,onMove,onInspect,onDoor,onPortal,onTrace,envelope,watermark,frame={width:1672,height:941}}:{values:ShelfState;envelope?:EnvelopeArtProps;watermark?:WatermarkPresentation;frame?:{width:number;height:number};facing:number;room?:6|7;doorOpen?:boolean;camera?:Partial<ArchiveEye>;selected?:number;busy?:boolean;keyboard?:boolean;onSelect?:(index:number,keyboard:boolean)=>void;onMove?:(index:number,position:number)=>void;onInspect?:(index:number,end:number)=>void;onDoor?:()=>void;onPortal?:(room:number)=>void;onTrace?:(index:number)=>void}){
+export function ArchiveScene({values,facing,room=6,doorOpen=false,camera,selected=-1,busy=false,keyboard=false,onSelect,onMove,onInspect,onDoor,onPortal,onTrace,envelope,watermark,weighing,frame={width:1672,height:941}}:{values:ShelfState;envelope?:EnvelopeArtProps;watermark?:WatermarkPresentation;weighing?:WeighingPresentation;frame?:{width:number;height:number};facing:number;room?:6|7;doorOpen?:boolean;camera?:Partial<ArchiveEye>;selected?:number;busy?:boolean;keyboard?:boolean;onSelect?:(index:number,keyboard:boolean)=>void;onMove?:(index:number,position:number)=>void;onInspect?:(index:number,end:number)=>void;onDoor?:()=>void;onPortal?:(room:number)=>void;onTrace?:(index:number)=>void}){
  const host=useRef<HTMLDivElement>(null),[scale,setScale]=useState(1),eye=archiveEye(facing,{...archiveRoomEye(room,facing),...camera});
  const ep=envelopeOrigin(values),ec=envelopeScreenCentre(values,eye),paperPeer=envelope?.onInspect&&archiveRayClear(values,[ep[0]+.215,ep[1]+.14,ep[2]],2,eye)?[ec[0]*scale,ec[1]*scale] as const:null;
  useLayoutEffect(()=>{const update=()=>setScale(host.current!.clientWidth/frame.width);update();const resize=new ResizeObserver(update);resize.observe(host.current!);return()=>resize.disconnect();},[frame.width]);
@@ -77,8 +80,10 @@ export function ArchiveScene({values,facing,room=6,doorOpen=false,camera,selecte
  <Face x={-4.2} y={5.2} z={2.8} width={4.2} height={5.2} tilt={-90}><Photograph id="ceiling" group="scenes/archive-east"/></Face>
  <Doors open={doorOpen}/>
  {watermark?<WatermarkWorld g={watermark.g}/>:null}
+ {weighing?<WeighingWorld g={weighing.g} eye={eye}/>:null}
  {shelfSpecs.map((_,i)=><Shelving key={i} index={i} values={values} envelope={envelope} onSelect={busy?undefined:onSelect}/>)}
  </div></div></div>
+ {weighing?<WeighingInputs {...weighing} eye={eye} scale={scale}/>:null}
  {watermark?<WatermarkInputs {...watermark} eye={eye} scale={scale}/>:null}
  {envelope?<><EnvelopeHotspots {...envelope} eye={eye} scale={scale} values={values}/><EnvelopeControls {...envelope} eye={eye} scale={scale} values={values}/></>:null}
  {onPortal?<ArchivePortals room={room} facing={facing} eye={eye} scale={scale} values={values} open={doorOpen} onPortal={onPortal}/>:null}
