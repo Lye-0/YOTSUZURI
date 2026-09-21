@@ -6,6 +6,7 @@ import {sceneFiles,mainPhoto} from './sceneFiles';
 import {photoBounds} from './photoBounds';
 import {threadOrder} from './threading';
 import {validKeeper} from './keeper';
+import {initialTrim} from './trimming';
 describe('写真フレームの依存',()=>{
 it('序盤の開閉と部分取得に必要な全写真が存在する',()=>{
 const foci:Record<number,Focus[]>={0:['room','box','book','lock','notice','front','passage','object:1'],1:['room','office-tickets','object:2','object:3','object:26'],2:['room','object:4','object:5','object:6','object:7'],3:['room','object:8','object:10'],4:['room','object:11','object:12','press-samples'],5:['room','object:13']};
@@ -45,6 +46,13 @@ for(const focus of ['room','object:15'] as const)for(const leaf of mask===7?[fal
 const g:World={...initial(),room:3,facing:0,focus,values:{15:values},flags:{'keeper:leaf':leaf},opened:leaf?[15]:[]};
 for(const path of sceneFiles(g))expect(existsSync(resolve('public',path.replace(/^\//,''))),path).toBe(true);
 }
+}
+});
+it('図面の組み合わせ・持ち出し・角当ての所在を描ける',()=>{
+for(const candidate of [-1,0,1,2])for(const back of [0,1])for(const taken of candidate<0?[false]:[false,true])for(const corner of [false,true]){
+const values=initialTrim();values[0]=candidate;values[4]=back;
+const g:World={...initial(),room:5,facing:2,focus:'object:14',values:{14:values},flags:{'trim:taken':taken},placed:{14:corner?['corner']:[]},inventory:taken?['oldplan']:[],itemValues:taken?{oldplan:values}:{}};
+for(const focus of ['room','object:14'] as const)for(const path of sceneFiles({...g,focus}))expect(existsSync(resolve('public',path.replace(/^\//,''))),path).toBe(true);
 }
 });
 it('操作前後の写真を同じ対象の状態から選ぶ',()=>{const g:World={...initial(),room:1,facing:1,focus:'object:2',opened:[2]};expect(mainPhoto(g)).toContain('p02-open-full');expect(mainPhoto({...g,collected:['receipts']})).toContain('p02-open-empty');expect(sceneFiles({...initial(),room:2,facing:0,opened:[4,7]})).toEqual(expect.arrayContaining(['/remake/scenes/proof/north-box-open.webp','/remake/scenes/proof/north-door-open.webp']))});

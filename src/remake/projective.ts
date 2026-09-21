@@ -8,6 +8,7 @@ return [(x1-x0+g*x1)/width,(x3-x0+h*x3)/height,x0,(y1-y0+g*y1)/width,(y3-y0+h*y3
 }
 export function project(p:Point,m:ReturnType<typeof homography>):Point{const [a,b,c,d,e,f,g,h]=m,den=g*p[0]+h*p[1]+1;return[(a*p[0]+b*p[1]+c)/den,(d*p[0]+e*p[1]+f)/den]}
 export function cssProjection(width:number,height:number,q:Quad){const [a,b,c,d,e,f,g,h]=homography(width,height,q);return `matrix3d(${[a,d,0,g,b,e,0,h,0,0,1,0,c,f,0,1].join(',')})`}
+export function cssAffineProjection(width:number,height:number,q:Quad){const [a,b,c,d,e,f,g,h]=homography(width,height,q);if(Math.abs(g)+Math.abs(h)>1e-9)throw Error('Affine paper plane must be a parallelogram');return `matrix(${[a,d,b,e,c,f].join(',')})`;}
 export function betweenQuads(from:Quad,to:Quad){
 const [a,b,c,d,e,f,g,h]=homography(1,1,from),det=a*(e-f*h)-b*(d-f*g)+c*(d*h-e*g);if(Math.abs(det)<1e-12)throw new Error('Degenerate source plane');
 const inv=[e-f*h,c*h-b,b*f-c*e,f*g-d,a-c*g,c*d-a*f,d*h-e*g,b*g-a*h,a*e-b*d].map(n=>n/det),dest=[...homography(1,1,to),1];

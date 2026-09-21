@@ -519,5 +519,25 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       1054,
       939
     ]
+  },
+  "parts/trimming-paper": {
+    "width": 1374,
+    "height": 1145,
+    "bounds": [
+      48,
+      81,
+      1282,
+      988
+    ]
+  },
+  "parts/corner-flat": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      94,
+      94,
+      1066,
+      1062
+    ]
   }
 };

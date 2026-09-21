@@ -1526,17 +1526,6 @@
     "master": "scenes/binding/east.png"
   },
   {
-    "id": "south",
-    "group": "scenes/binding",
-    "path": "remake/scenes/binding/south.webp",
-    "width": 1672,
-    "height": 941,
-    "alpha": false,
-    "bytes": 228746,
-    "source": "exec-7ab4232c-34e6-443e-8668-759111b22053.png",
-    "master": "scenes/binding/south.png"
-  },
-  {
     "id": "p13-front",
     "group": "closeups",
     "path": "remake/closeups/p13-front.webp",
@@ -2026,5 +2015,61 @@
     "bytes": 302328,
     "source": "exec-9748f23b-fdc9-416f-b1bd-af66a3084215.png",
     "master": "closeups/p15-tray-3.png"
+  },
+  {
+    "id": "south",
+    "group": "scenes/binding",
+    "path": "remake/scenes/binding/south.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 184128,
+    "source": "exec-faf55cdf-a5d3-40f8-8601-1f77f6785bb2.png",
+    "master": "scenes/binding/south.png"
+  },
+  {
+    "id": "p14-table",
+    "group": "closeups",
+    "path": "remake/closeups/p14-table.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 311544,
+    "source": "exec-c885d3e3-ee20-4b3a-9de1-2314bbded79a.png",
+    "master": "closeups/p14-table.png"
+  },
+  {
+    "id": "trimming-paper",
+    "group": "parts",
+    "path": "remake/parts/trimming-paper.webp",
+    "width": 1374,
+    "height": 1145,
+    "alpha": true,
+    "bytes": 197076,
+    "source": "exec-95aab298-7156-421a-a993-12fd30a43cb8.png",
+    "master": "parts/trimming-paper.png",
+    "bounds": [
+      48,
+      81,
+      1282,
+      988
+    ]
+  },
+  {
+    "id": "corner-flat",
+    "group": "parts",
+    "path": "remake/parts/corner-flat.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 194058,
+    "source": "exec-f612a797-2523-43df-895b-857e0c94b196.png",
+    "master": "parts/corner-flat.png",
+    "bounds": [
+      94,
+      94,
+      1066,
+      1062
+    ]
   }
 ]
