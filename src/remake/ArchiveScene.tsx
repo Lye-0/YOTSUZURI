@@ -1,3 +1,4 @@
+import {CradleInputs,type CradlePresentation} from './CradleInputs';
 import {OpticalInputs,type OpticalPresentation} from './OpticalInputs';
 import {WorldCamera} from './WorldCamera';
 import {RepairWorld} from './RepairWorld';
@@ -75,7 +76,7 @@ function Doors({open}:{open:boolean}){return <>
  <Face x={1.38} y={5.16} z={.012} width={1.09} height={.08} tilt={90}><Photograph id="wall-south" group="scenes/archive-east" crop={[620/1536,216/1024,380/1536,25/1024]}/></Face>
  </>;
 }
-export function ArchiveScene({values,facing,room=6,doorOpen=false,camera,selected=-1,busy=false,keyboard=false,onSelect,onMove,onInspect,onDoor,onPortal,onTrace,envelope,watermark,weighing,repair,frame={width:1672,height:941}}:{values:ShelfState;envelope?:EnvelopeArtProps;watermark?:WatermarkPresentation;weighing?:WeighingPresentation;repair?:OpticalPresentation;frame?:{width:number;height:number};facing:number;room?:6|7|8;doorOpen?:boolean;camera?:Partial<ArchiveEye>;selected?:number;busy?:boolean;keyboard?:boolean;onSelect?:(index:number,keyboard:boolean)=>void;onMove?:(index:number,position:number)=>void;onInspect?:(index:number,end:number)=>void;onDoor?:()=>void;onPortal?:(room:number)=>void;onTrace?:(index:number)=>void}){
+export function ArchiveScene({values,facing,room=6,doorOpen=false,camera,selected=-1,busy=false,keyboard=false,onSelect,onMove,onInspect,onDoor,onPortal,onTrace,envelope,watermark,weighing,repair,frame={width:1672,height:941}}:{values:ShelfState;envelope?:EnvelopeArtProps;watermark?:WatermarkPresentation;weighing?:WeighingPresentation;repair?:OpticalPresentation&CradlePresentation;frame?:{width:number;height:number};facing:number;room?:6|7|8;doorOpen?:boolean;camera?:Partial<ArchiveEye>;selected?:number;busy?:boolean;keyboard?:boolean;onSelect?:(index:number,keyboard:boolean)=>void;onMove?:(index:number,position:number)=>void;onInspect?:(index:number,end:number)=>void;onDoor?:()=>void;onPortal?:(room:number)=>void;onTrace?:(index:number)=>void}){
  const host=useRef<HTMLDivElement>(null),[scale,setScale]=useState(1),eye=archiveEye(facing,{...archiveRoomEye(room===8?6:room,facing),...camera});
  const ep=envelopeOrigin(values),ec=envelopeScreenCentre(values,eye),paperPeer=envelope?.onInspect&&archiveRayClear(values,[ep[0]+.215,ep[1]+.14,ep[2]],2,eye)?[ec[0]*scale,ec[1]*scale] as const:null;
  useLayoutEffect(()=>{const update=()=>setScale(host.current!.clientWidth/frame.width);update();const resize=new ResizeObserver(update);resize.observe(host.current!);return()=>resize.disconnect();},[frame.width]);
@@ -99,6 +100,7 @@ export function ArchiveScene({values,facing,room=6,doorOpen=false,camera,selecte
  <WorldCamera eye={eye} frame={frame} scale={scale}>{archiveWorld}</WorldCamera>
  </>}
 
+ {repair?<CradleInputs {...repair} eye={eye} scale={scale}/>:null}
  {repair?<OpticalInputs {...repair} eye={eye} scale={scale}/>:null}
  {weighing?<WeighingInputs {...weighing} eye={eye} scale={scale}/>:null}
  {watermark?<WatermarkInputs {...watermark} eye={eye} scale={scale}/>:null}

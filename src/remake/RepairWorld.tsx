@@ -1,3 +1,7 @@
+import {ForeedgeWorld} from './ForeedgeWorld';
+import {CradleBody} from './CradleBody';
+import {cradleTaken} from './cradle';
+import {cradleHome,cradleWorld} from './cradleGeometry';
 import {OpticalWorld} from './OpticalWorld';
 import type {World} from './campaign';
 import {Face,Photograph} from './ArchivePhotos';
@@ -18,6 +22,7 @@ export function RepairWorld({g,eye}:{g:World;eye:ArchiveEye}){return <>
  <PhotoCuboid x={4.198} y={door.start-.045} z={2.08} width={.065} depth={door.end-door.start+.09} height={.065} texture={{id:'bench-front',group:'parts/repair',crop:[.13,.25,.74,.13]}}/>
  <Face x={8.383} y={.9} z={2.62} width={1.4} height={1.35} turn={-90}><Photograph id="window" group="parts/repair"/></Face>
  <RepairBench x={east.x} y={east.y} turn={-90} width={east.width} depth={east.depth}/>
+ {!cradleTaken(g)?<div style={{position:'absolute',width:0,height:0,transformStyle:'preserve-3d',transform:`translate3d(${cradleWorld([0,0,0])[0]*500}px,${-cradleHome.z*500}px,${cradleWorld([0,0,0])[1]*500}px) rotateY(-90deg)`}}><CradleBody g={g}/></div>:null}
  <RepairBench x={south.x} y={south.y} turn={180}/>
- <div style={{position:'absolute',width:0,height:0,transformStyle:'preserve-3d',transform:`translate3d(${south.x*500}px,0,${south.y*500}px) rotateY(180deg)`}}><OpticalWorld g={g}/></div>
+ <div style={{position:'absolute',width:0,height:0,transformStyle:'preserve-3d',transform:`translate3d(${south.x*500}px,0,${south.y*500}px) rotateY(180deg)`}}><OpticalWorld g={g}/><ForeedgeWorld g={g}/></div>
  </>;}

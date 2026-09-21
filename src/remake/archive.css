@@ -11,3 +11,7 @@
 .weighing-selected{outline:1px solid #dfd0a0b0;outline-offset:3px;border-radius:3px}
 
 .r-stage.r-optical-reading{width:min(96vw,calc((100svh - 90px)*1.11111));aspect-ratio:1000/900}
+
+.r-held-cradle{position:relative;width:100%;height:100%;pointer-events:none}.r-held-cradle.inspection{width:min(86vw,900px);height:min(66svh,600px)}
+
+.r-stage.r-book-edge{width:min(96vw,calc((100svh - 90px)*.666667));aspect-ratio:600/900}.r-stage.r-book-painting{width:min(96vw,calc((100svh - 90px)*2));aspect-ratio:1000/500}

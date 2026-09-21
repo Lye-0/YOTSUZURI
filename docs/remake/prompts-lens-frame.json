@@ -1,0 +1,7 @@
+{
+  "id": "lens-frame",
+  "prompt": "Edit this exact old brass magnifying glass photograph for use as a functional magnifier in an interactive game. Preserve the brass circular rim, dark wooden handle, scratches, original proportions, camera and object placement exactly. Replace the cloudy opaque grey glass interior with a truly transparent circular aperture, alpha zero through the central glass so content can be composited behind it. You may retain only a very faint small semi-transparent specular glint near the upper left inner rim; do not leave an opaque grey disc. Also make the entire background outside the rim and handle genuinely transparent with zero alpha, removing all brown streaks and any matte. Output true RGBA, no checkerboard pattern. Keep the full tool and same canvas composition, no cropping, no extra objects.",
+  "referenced_image_paths": [
+    "C:\\Users\\kawau\\dev\\Game\\YOTSUZURI\\public\\remake\\items\\lens.webp"
+  ]
+}

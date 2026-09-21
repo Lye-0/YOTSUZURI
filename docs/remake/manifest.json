@@ -3053,5 +3053,73 @@
       1852,
       671
     ]
+  },
+  {
+    "id": "lower-board",
+    "group": "parts/cradle",
+    "path": "remake/parts/cradle/lower-board.webp",
+    "width": 1341,
+    "height": 1173,
+    "alpha": true,
+    "bytes": 373186,
+    "source": "exec-35794e58-ee32-4a94-a92a-78b985ae8f6f.png",
+    "master": "parts/cradle/lower-board.png",
+    "bounds": [
+      22,
+      17,
+      1302,
+      1137
+    ]
+  },
+  {
+    "id": "upper-board",
+    "group": "parts/cradle",
+    "path": "remake/parts/cradle/upper-board.webp",
+    "width": 1341,
+    "height": 1173,
+    "alpha": true,
+    "bytes": 439800,
+    "source": "exec-30f61403-9d33-4ee5-8c25-4c1738b0affb.png",
+    "master": "parts/cradle/upper-board.png",
+    "bounds": [
+      32,
+      53,
+      1280,
+      1071
+    ]
+  },
+  {
+    "id": "hinge",
+    "group": "parts/cradle",
+    "path": "remake/parts/cradle/hinge.webp",
+    "width": 1586,
+    "height": 992,
+    "alpha": true,
+    "bytes": 531574,
+    "source": "exec-a9f69e8f-5b1f-4d01-9838-3db7e8cc58bb.png",
+    "master": "parts/cradle/hinge.png",
+    "bounds": [
+      62,
+      111,
+      1460,
+      769
+    ]
+  },
+  {
+    "id": "lens-frame",
+    "group": "parts",
+    "path": "remake/parts/lens-frame.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": true,
+    "bytes": 158212,
+    "source": "exec-43aa6868-4049-4100-a868-5ea2b7e5624d.png",
+    "master": "parts/lens-frame.png",
+    "bounds": [
+      32,
+      153,
+      1476,
+      692
+    ]
   }
 ]

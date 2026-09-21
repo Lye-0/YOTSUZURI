@@ -1039,5 +1039,45 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       1852,
       671
     ]
+  },
+  "parts/cradle/lower-board": {
+    "width": 1341,
+    "height": 1173,
+    "bounds": [
+      22,
+      17,
+      1302,
+      1137
+    ]
+  },
+  "parts/cradle/upper-board": {
+    "width": 1341,
+    "height": 1173,
+    "bounds": [
+      32,
+      53,
+      1280,
+      1071
+    ]
+  },
+  "parts/cradle/hinge": {
+    "width": 1586,
+    "height": 992,
+    "bounds": [
+      62,
+      111,
+      1460,
+      769
+    ]
+  },
+  "parts/lens-frame": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      32,
+      153,
+      1476,
+      692
+    ]
   }
 };

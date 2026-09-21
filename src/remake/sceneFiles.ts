@@ -1,3 +1,4 @@
+import {cradleFiles} from './cradleAssets';
 import {watermarkFiles} from './watermarkAssets';
 import {weighingFiles} from './weighingAssets';
 import {envelopeFiles} from './envelopeAssets';
@@ -34,7 +35,7 @@ return close(id===4?open?'p04-open-empty':'p04-base':id===5?'p05-base':id===6?'p
 export function sceneFiles(g:World):string[]{
 const files=[mainPhoto(g)],add=(n:string,group='closeups')=>files.push(photoPath(n,group));
 if(g.room===6||g.room===7||g.room===3&&g.facing===0&&g.focus==='room'&&g.opened.includes(15))files.push(...archivePhotoFiles,...envelopeFiles,...watermarkFiles,...weighingFiles);
-for(const item of g.inventory){if(item==='gatherings'){add('book-edge-closed','parts');add('folded-paper','parts/watermark');continue;}if(item==='oldplan'){add('trimming-paper','parts');continue;}if(item==='proof'){add('print-paper','parts');continue;}if(item==='plates'){for(const i of g.itemValues.plates??[])add(`plate-${i}`,'parts');continue;}add(item==='register'?'paper-strip':item,'items');if(item==='folios')for(const n of ['folio-open','folio-folded','folio-book'])add(n,'items');if(item==='receipts')add('receipt-single','items')}
+for(const item of g.inventory){if(item==='cradle'){files.push(...cradleFiles);continue;}if(item==='gatherings'){add('book-edge-closed','parts');add('folded-paper','parts/watermark');continue;}if(item==='oldplan'){add('trimming-paper','parts');continue;}if(item==='proof'){add('print-paper','parts');continue;}if(item==='plates'){for(const i of g.itemValues.plates??[])add(`plate-${i}`,'parts');continue;}add(item==='register'?'paper-strip':item,'items');if(item==='folios')for(const n of ['folio-open','folio-folded','folio-book'])add(n,'items');if(item==='receipts')add('receipt-single','items')}
 if(g.inventory.includes('keyparts')||g.focus==='object:26'&&g.opened.includes(26))for(const n of ['key-shaft','key-tooth','key-blade'])add(n,'parts');
 if(g.room===5&&g.facing===2&&(g.focus==='room'||g.focus==='object:14')){add('trimming-paper','parts');if(g.placed[14]?.includes('corner')||g.focus==='object:14')add('corner-flat','parts');}
 if(g.room===3&&g.facing===0&&(g.focus==='room'||g.focus==='object:15')){add('p15-keeper-base');add('keeper-pin-front','parts');const count=keeperValues(g).slice(3).filter(Boolean).length;if(count&&!g.flags['keeper:leaf'])add(`p15-tray-${count}`);if(g.flags['keeper:leaf']||g.focus==='object:15')add('p15-keeper-open');if(g.focus==='object:15')for(const n of [1,2,3])add(`p15-tray-${n}`);}

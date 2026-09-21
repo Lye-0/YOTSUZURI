@@ -1,4 +1,4 @@
-import {useRef,useState} from 'react';
+import {useId,useRef,useState} from 'react';
 import {BOOK_ORDER,BUNDLE_THICKNESS} from './book';
 import {Icon} from './Icons';
 import {GatheringTop} from './FoldedPaper';
@@ -15,7 +15,7 @@ function HiddenDoorPainting(){return <g stroke="#464139" fill="none" strokeWidth
 </g>}
 function OtherBookPainting({variant}:{variant:number}){return <g stroke="#594a3b" fill="none" strokeWidth="3" opacity=".67"><path d={variant?'M60 40Q250 270 440 55T860 50M70 280Q280 70 480 280T880 275':'M60 165Q260 5 460 170T850 155M80 70Q280 300 480 70T860 75'}/>{[150,340,530,720].map((x,i)=><g key={x} transform={`translate(${x} ${90+(i%2)*125})`}><path d="M0 0q-50 -70 -75 -25q20 45 75 25q20 -65 65 -35q-10 40 -65 35v90"/><circle cy="-5" r="14"/></g>)}</g>;}
 export function ForeedgeBook({order,view,sources=[0,1,2,3,4,5],blanks=[],onOrder,onView,showPainting=true,surfaceOnly=false,solidFace=false}:{order:number[];view:number;sources?:readonly number[];blanks?:number[];onOrder?:(order:number[])=>void;onView?:(view:number)=>void;showPainting?:boolean;surfaceOnly?:boolean;solidFace?:boolean}){
-const [selected,setSelected]=useState<number|null>(null),drag=useRef<{index:number;y:number}|null>(null);
+const paintId=useId().replace(/[^a-zA-Z0-9]/g,''),[selected,setSelected]=useState<number|null>(null),drag=useRef<{index:number;y:number}|null>(null);
 const total=(order.reduce((s,id)=>s+BUNDLE_THICKNESS[sources[id]],0)+blanks.length)*unit,top=390-total;
 let cursor=top;
 const layers=order.map((id,index)=>{const source=sources[id],row=source<6?source:(source-6)%6,y=cursor,height=BUNDLE_THICKNESS[source]*unit;cursor+=height+(blanks.includes(index)?unit:0);return{id,source,row,index,y,height}});
@@ -24,7 +24,7 @@ return <div className="r-foreedge-book"><svg viewBox={surfaceOnly?`50 ${top} 900
 {!surfaceOnly?<svg x="50" y={top-107} width="900" height="107" viewBox="0 0 200 150" preserveAspectRatio="none"><GatheringTop/></svg>:null}
 {layers.map(({id,source,row,index,y,height})=><g key={id}>
 <svg x="50" y={y} width="900" height={height} viewBox={`${solidFace?220:0} ${rows[row]} ${solidFace?1330:1672} ${rows[row+1]-rows[row]}`} preserveAspectRatio="none"><image href={photo(view)} width="1672" height="941"/></svg>
-{showPainting&&view===2?<svg x="50" y={y} width="900" height={height} viewBox={`0 ${source<6?originalTop[source]:(source%2)*110} 900 ${height}`} preserveAspectRatio="none" style={{mixBlendMode:'multiply'}}>{source<6?<HiddenDoorPainting/>:<OtherBookPainting variant={source<8?0:1}/>}</svg>:null}
+{showPainting&&view===2?<><defs><mask id={`${paintId}-paper-${id}`} x="50" y={y} width="900" height={height} maskUnits="userSpaceOnUse" style={{maskType:'alpha'}}><svg x="50" y={y} width="900" height={height} viewBox={`0 ${rows[row]} 1672 ${rows[row+1]-rows[row]}`} preserveAspectRatio="none"><image href={photo(view)} width="1672" height="941"/></svg></mask></defs><g mask={`url(#${paintId}-paper-${id})`}><svg x="50" y={y} width="900" height={height} viewBox={`0 ${source<6?originalTop[source]:(source%2)*110} 900 ${height}`} preserveAspectRatio="none" style={{mixBlendMode:'multiply'}}>{source<6?<HiddenDoorPainting/>:<OtherBookPainting variant={source<8?0:1}/>}</svg></g></>:null}
 {blanks.includes(index)?<svg x="50" y={y+height} width="900" height={unit} viewBox="0 415 1672 107" preserveAspectRatio="none"><image href={photo(1)} width="1672" height="941"/></svg>:null}
 {selected===index?<rect x="55" y={y+1} width="890" height={height-2} fill="none" stroke="#d2b57a" strokeWidth="1.3" opacity=".7"/>:null}
 {onOrder?<g role="button" tabIndex={0} aria-label={`${index+1}番目の束を入れ替える`} className="r-paper-grab" onPointerDown={e=>{drag.current={index,y:e.clientY};e.currentTarget.setPointerCapture(e.pointerId)}} onPointerCancel={()=>{drag.current=null}} onPointerUp={e=>{if(drag.current?.index!==index)return;const delta=e.clientY-drag.current.y;drag.current=null;if(Math.abs(delta)>20){const next=[...order],to=Math.max(0,Math.min(5,index+(delta>0?1:-1)));[next[index],next[to]]=[next[to],next[index]];onOrder(next);setSelected(null)}else choose(index)}} onKeyDown={e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();choose(index)}}}><rect className="r-paper-hit" x="75" y={y-Math.max(0,30-height)/2} width="850" height={Math.max(30,height)}/></g>:null}

@@ -12,7 +12,7 @@ export function OpticalInputs({g,onAct,onInspectOptics,view='all',onView,eye,sca
  const centre=(index:number,position=v[index])=>{const p=opticalPosition([mirrorStops[position],mirrorRows[index]]);return screen([p[0],p[1],.866]);};
  if(!onAct&&!onInspectOptics)return null;
  if(onInspectOptics){const ps=[[.05,.03,.91],[1.53,.03,.91],[1.53,.68,.91],[.05,.68,.91]].map(p=>screen([p[0],p[1],p[2]]));if(ps.some(p=>p[2]<=0))return null;const left=Math.min(...ps.map(p=>p[0])),top=Math.min(...ps.map(p=>p[1])),right=Math.max(...ps.map(p=>p[0])),bottom=Math.max(...ps.map(p=>p[1]));return <button className="env-screen-hit" aria-label="反射片と留め棒を調べる" style={{left,top,width:right-left,height:bottom-top}} onClick={onInspectOptics}/>;}
- if(!onAct)return null;
+ if(!onAct||g.focus!=='object:20')return null;
  if(view==='all')return <div className="envelope-hit-layer">{([['反射片を近くで見る',[.43,.35,.92],'light'],['受光部と留め棒を近くで見る',[1.12,.247,.97],'catch']] as const).map(([name,point,next])=>{const p=screen(point);return <button key={name} className="watermark-command" style={{left:p[0]-22,top:p[1]-22}} aria-label={name} onClick={()=>{setSelected(null);onView?.(next);}}><Icon name="inspect"/></button>;})}</div>;
  const move=(e:PointerEvent<HTMLButtonElement>)=>{const s=drag.current;if(!s||s.id!==e.pointerId)return;const delta=((e.clientX-s.x)*s.dx+(e.clientY-s.y)*s.dy)/(s.dx*s.dx+s.dy*s.dy)*3;onAct({type:'p-mirror-slide',id:20,index:s.index,position:Math.max(0,Math.min(3,Math.round(s.value+delta)))});};
  const guard=screen(g.flags['optics:guard']?[1.12,.247,1.17]:[1.38,.247,.91]);
