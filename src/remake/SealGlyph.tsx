@@ -1,0 +1,3 @@
+export function SealGlyph({mark}:{mark:number}){return <svg viewBox="0 0 64 64" width="100%" height="100%" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+ {mark===0?<><path d="M32 45V24C18 27 17 11 32 8C47 11 46 27 32 24"/><path d="M22 48L32 57L42 48"/></>:mark===1?<><path d="M32 46V26M32 29C12 34 8 17 10 14C28 14 32 24 32 29M32 24C32 12 43 7 53 9C55 24 42 28 32 24"/><path d="M22 48L32 57L42 48"/></>:mark===2?<><circle cx="32" cy="22" r="12"/><path d="M32 34V54M18 54H46"/></>:<><circle cx="21" cy="22" r="9"/><circle cx="43" cy="22" r="9"/><path d="M21 31Q22 41 32 43Q42 41 43 31M32 43V54M18 54H46"/></>}
+ </svg>}

@@ -31,5 +31,11 @@ const g:World={...initial(),room:4,facing:2,focus:'object:11',values:{11:[mask,0
 for(const path of sceneFiles(g))expect(existsSync(resolve('public',path.replace(/^\//,''))),path).toBe(true);
 }
 });
+it('封印の接写・部分取得・隣室の戸口に必要な写真が存在する',()=>{
+for(const opened of [[],[9]])for(const collected of [[],['corner'],['threadchart'],['corner','threadchart']])for(const [room,facing,focus] of [[5,3,'object:9'],[5,3,'room'],[3,3,'room'],[4,3,'room']] as const){
+const g:World={...initial(),room,facing,focus,opened,collected:collected as World['collected']};
+for(const path of sceneFiles(g))expect(existsSync(resolve('public',path.replace(/^\//,''))),path).toBe(true);
+}
+});
 it('操作前後の写真を同じ対象の状態から選ぶ',()=>{const g:World={...initial(),room:1,facing:1,focus:'object:2',opened:[2]};expect(mainPhoto(g)).toContain('p02-open-full');expect(mainPhoto({...g,collected:['receipts']})).toContain('p02-open-empty');expect(sceneFiles({...initial(),room:2,facing:0,opened:[4,7]})).toEqual(expect.arrayContaining(['/remake/scenes/proof/north-box-open.webp','/remake/scenes/proof/north-door-open.webp']))});
 });

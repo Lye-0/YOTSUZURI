@@ -419,5 +419,85 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       350,
       508
     ]
+  },
+  "parts/seal-front-0": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      237,
+      9,
+      782,
+      1144
+    ]
+  },
+  "parts/seal-front-1": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      226,
+      10,
+      808,
+      1170
+    ]
+  },
+  "parts/seal-front-2": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      237,
+      9,
+      783,
+      1144
+    ]
+  },
+  "parts/seal-front-3": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      230,
+      4,
+      794,
+      1155
+    ]
+  },
+  "parts/seal-back-angular": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      250,
+      16,
+      789,
+      1147
+    ]
+  },
+  "items/corner": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      150,
+      64,
+      956,
+      1136
+    ]
+  },
+  "items/threadchart": {
+    "width": 1448,
+    "height": 1086,
+    "bounds": [
+      61,
+      101,
+      1330,
+      883
+    ]
+  },
+  "parts/seal-back-round": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      248,
+      14,
+      797,
+      1150
+    ]
   }
 };

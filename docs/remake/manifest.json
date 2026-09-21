@@ -1548,17 +1548,6 @@
     "master": "scenes/binding/south.png"
   },
   {
-    "id": "west",
-    "group": "scenes/binding",
-    "path": "remake/scenes/binding/west.webp",
-    "width": 1672,
-    "height": 941,
-    "alpha": false,
-    "bytes": 254198,
-    "source": "exec-af426f96-7995-42f0-8874-828ba5c0a8be.png",
-    "master": "scenes/binding/west.png"
-  },
-  {
     "id": "p13-front",
     "group": "closeups",
     "path": "remake/closeups/p13-front.webp",
@@ -1768,5 +1757,174 @@
     "bytes": 312156,
     "source": "exec-23c18f98-de73-4384-888b-e1a26c8a9270.png",
     "master": "closeups/press-samples.png"
+  },
+  {
+    "id": "seal-front-0",
+    "group": "parts",
+    "path": "remake/parts/seal-front-0.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 211374,
+    "source": "exec-430c17ec-002c-4362-915a-cac003c2f3fa.png",
+    "master": "parts/seal-front-0.png",
+    "bounds": [
+      237,
+      9,
+      782,
+      1144
+    ]
+  },
+  {
+    "id": "seal-front-1",
+    "group": "parts",
+    "path": "remake/parts/seal-front-1.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 230860,
+    "source": "exec-3f8a7b80-38b2-4c05-b0f7-3e580fabddbc.png",
+    "master": "parts/seal-front-1.png",
+    "bounds": [
+      226,
+      10,
+      808,
+      1170
+    ]
+  },
+  {
+    "id": "seal-front-2",
+    "group": "parts",
+    "path": "remake/parts/seal-front-2.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 224232,
+    "source": "exec-1e6d023e-ee03-4f1d-8d83-dec8fe7ba9e8.png",
+    "master": "parts/seal-front-2.png",
+    "bounds": [
+      237,
+      9,
+      783,
+      1144
+    ]
+  },
+  {
+    "id": "seal-front-3",
+    "group": "parts",
+    "path": "remake/parts/seal-front-3.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 216922,
+    "source": "exec-465a5f89-4464-4d4b-86a2-0f2e3ba5ce85.png",
+    "master": "parts/seal-front-3.png",
+    "bounds": [
+      230,
+      4,
+      794,
+      1155
+    ]
+  },
+  {
+    "id": "seal-back-angular",
+    "group": "parts",
+    "path": "remake/parts/seal-back-angular.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 328016,
+    "source": "exec-2b693431-779c-418c-8b2f-49b0aa47f7f7.png",
+    "master": "parts/seal-back-angular.png",
+    "bounds": [
+      250,
+      16,
+      789,
+      1147
+    ]
+  },
+  {
+    "id": "p09-cases-base",
+    "group": "closeups",
+    "path": "remake/closeups/p09-cases-base.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 274734,
+    "source": "exec-c0bed328-41f3-4de7-bf2d-f0332c3afd06.png",
+    "master": "closeups/p09-cases-base.png"
+  },
+  {
+    "id": "p09-open-empty",
+    "group": "closeups",
+    "path": "remake/closeups/p09-open-empty.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 266080,
+    "source": "exec-beae3275-509d-4d2e-9754-4746ed62da58.png",
+    "master": "closeups/p09-open-empty.png"
+  },
+  {
+    "id": "corner",
+    "group": "items",
+    "path": "remake/items/corner.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 163950,
+    "source": "exec-db336884-55c1-4226-9b16-1dc1d951a442.png",
+    "master": "items/corner.png",
+    "bounds": [
+      150,
+      64,
+      956,
+      1136
+    ]
+  },
+  {
+    "id": "threadchart",
+    "group": "items",
+    "path": "remake/items/threadchart.webp",
+    "width": 1448,
+    "height": 1086,
+    "alpha": true,
+    "bytes": 381382,
+    "source": "exec-2fd4c742-ab8a-4f76-8799-99493f383e9a.png",
+    "master": "items/threadchart.png",
+    "bounds": [
+      61,
+      101,
+      1330,
+      883
+    ]
+  },
+  {
+    "id": "seal-back-round",
+    "group": "parts",
+    "path": "remake/parts/seal-back-round.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 260762,
+    "source": "exec-3cf527bc-eba1-4c3f-9d41-e15e652ba020.png",
+    "master": "parts/seal-back-round.png",
+    "bounds": [
+      248,
+      14,
+      797,
+      1150
+    ]
+  },
+  {
+    "id": "west",
+    "group": "scenes/binding",
+    "path": "remake/scenes/binding/west.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 235820,
+    "source": "exec-b785c47c-ef00-40b6-9edc-72d60aad8694.png",
+    "master": "scenes/binding/west.png"
   }
 ]
