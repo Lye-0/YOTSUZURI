@@ -5,6 +5,7 @@ import {initial,type World,type Focus} from './campaign';
 import {sceneFiles,mainPhoto} from './sceneFiles';
 import {photoBounds} from './photoBounds';
 import {threadOrder} from './threading';
+import {validKeeper} from './keeper';
 describe('写真フレームの依存',()=>{
 it('序盤の開閉と部分取得に必要な全写真が存在する',()=>{
 const foci:Record<number,Focus[]>={0:['room','box','book','lock','notice','front','passage','object:1'],1:['room','office-tickets','object:2','object:3','object:26'],2:['room','object:4','object:5','object:6','object:7'],3:['room','object:8','object:10'],4:['room','object:11','object:12','press-samples'],5:['room','object:13']};
@@ -35,6 +36,15 @@ it('封印の接写・部分取得・隣室の戸口に必要な写真が存在�
 for(const opened of [[],[9]])for(const collected of [[],['corner'],['threadchart'],['corner','threadchart']])for(const [room,facing,focus] of [[5,3,'object:9'],[5,3,'room'],[3,3,'room'],[4,3,'room']] as const){
 const g:World={...initial(),room,facing,focus,opened,collected:collected as World['collected']};
 for(const path of sceneFiles(g))expect(existsSync(resolve('public',path.replace(/^\//,''))),path).toBe(true);
+}
+});
+it('保守戸の途中位置・受け皿・開閉写真がそろっている',()=>{
+for(let a=0;a<3;a++)for(let b=0;b<3;b++)for(let c=0;c<3;c++)for(let mask=0;mask<8;mask++){
+const values=[a,b,c,...[0,1,2].map(i=>(mask>>i)&1)];if(!validKeeper(values))continue;
+for(const focus of ['room','object:15'] as const)for(const leaf of mask===7?[false,true]:[false]){
+const g:World={...initial(),room:3,facing:0,focus,values:{15:values},flags:{'keeper:leaf':leaf},opened:leaf?[15]:[]};
+for(const path of sceneFiles(g))expect(existsSync(resolve('public',path.replace(/^\//,''))),path).toBe(true);
+}
 }
 });
 it('操作前後の写真を同じ対象の状態から選ぶ',()=>{const g:World={...initial(),room:1,facing:1,focus:'object:2',opened:[2]};expect(mainPhoto(g)).toContain('p02-open-full');expect(mainPhoto({...g,collected:['receipts']})).toContain('p02-open-empty');expect(sceneFiles({...initial(),room:2,facing:0,opened:[4,7]})).toEqual(expect.arrayContaining(['/remake/scenes/proof/north-box-open.webp','/remake/scenes/proof/north-door-open.webp']))});

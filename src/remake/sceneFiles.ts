@@ -1,3 +1,4 @@
+import {keeperValues} from './keeper';
 import {interlockMask} from './interlock';
 import {threadPhoto,threadProgress} from './threading';
 import {value,type World} from './campaign';
@@ -6,6 +7,7 @@ export const photoPath=(name:string,group='closeups')=>import.meta.env.BASE_URL+
 export function mainPhoto(g:World):string{
 const close=(n:string)=>photoPath(n),room=(n:string)=>photoPath(n,`scenes/${rooms[g.room].key}`);
 if(g.room===0){if(g.focus==='room')return room(g.facing===0?'north-closed':g.facing===1?g.doorOpen?'east-open':'east-closed':directions[g.facing]);const names={box:g.boxOpen?'box-full':'box-closed',book:'book-open',lock:'lock-empty',notice:'notice',front:'front-chain',passage:'service-window','object:1':'p01-empty'};return close(names[g.focus as keyof typeof names]??'box-closed')}
+if(g.room===3&&g.facing===0&&g.focus==='room'&&g.opened.includes(15))return room('north-door-open');
 if(g.focus==='room')return room(g.room===2&&g.facing===3?'west-empty':directions[g.facing]);
 if(g.focus==='press-samples')return close('press-samples');
 if(g.focus==='office-tickets')return close('office-tickets');
@@ -13,6 +15,7 @@ const id=+g.focus.slice(7),open=g.opened.includes(id),p=`p${String(id).padStart(
 if([2,3,26].includes(id)){if(open&&id===2&&!g.collected.includes('receipts'))return close('p02-open-full');if(open&&id===3&&!g.collected.includes('folios'))return close('p03-open-full');return close(`${p}-${open?'open-empty':'closed'}`)}
 if(id===27)return close('p27-close');
 if(id===22)return close('p22-cradle');
+if(id===15)return close('p15-keeper-base');
 if(id===9)return close('p09-cases-base');
 if(id===11)return close('p11-closed');
 if(id===13)return close(threadPhoto(g));
@@ -26,6 +29,7 @@ export function sceneFiles(g:World):string[]{
 const files=[mainPhoto(g)],add=(n:string,group='closeups')=>files.push(photoPath(n,group));
 for(const item of g.inventory){if(item==='proof'){add('print-paper','parts');continue;}if(item==='plates'){for(const i of g.itemValues.plates??[])add(`plate-${i}`,'parts');continue;}add(item==='register'?'paper-strip':item,'items');if(item==='folios')for(const n of ['folio-open','folio-folded','folio-book'])add(n,'items');if(item==='receipts')add('receipt-single','items')}
 if(g.inventory.includes('keyparts')||g.focus==='object:26'&&g.opened.includes(26))for(const n of ['key-shaft','key-tooth','key-blade'])add(n,'parts');
+if(g.room===3&&g.facing===0&&(g.focus==='room'||g.focus==='object:15')){add('p15-keeper-base');add('keeper-pin-front','parts');const count=keeperValues(g).slice(3).filter(Boolean).length;if(count&&!g.flags['keeper:leaf'])add(`p15-tray-${count}`);if(g.flags['keeper:leaf']||g.focus==='object:15')add('p15-keeper-open');if(g.focus==='object:15')for(const n of [1,2,3])add(`p15-tray-${n}`);}
 if(g.focus==='object:9'||g.room===5&&g.facing===3&&g.focus==='room'){add('p09-cases-base');for(const i of [0,1,2,3])add(`seal-front-${i}`,'parts');for(const shape of ['angular','round'])add(`seal-back-${shape}`,'parts');if(g.opened.includes(9)){add('p09-open-empty');if(!g.collected.includes('corner'))add('corner','items');if(!g.collected.includes('threadchart'))add('threadchart','items');}}
 if(g.room===3&&g.facing===3&&g.focus==='room')files.push(...sceneFiles({...g,room:5,facing:3,focus:'room'}));
 if(g.room===5&&g.facing===1&&g.focus==='room')files.push(...sceneFiles({...g,room:3,facing:1,focus:'room'}));

@@ -732,17 +732,6 @@
     "master": "scenes/proof/north-box-open.png"
   },
   {
-    "id": "north",
-    "group": "scenes/type",
-    "path": "remake/scenes/type/north.webp",
-    "width": 1672,
-    "height": 941,
-    "alpha": false,
-    "bytes": 270992,
-    "source": "exec-f9713acd-928c-43d1-a504-c945db9c1fa4.png",
-    "master": "scenes/type/north.png"
-  },
-  {
     "id": "west",
     "group": "scenes/type",
     "path": "remake/scenes/type/west.webp",
@@ -1926,5 +1915,116 @@
     "bytes": 235820,
     "source": "exec-b785c47c-ef00-40b6-9edc-72d60aad8694.png",
     "master": "scenes/binding/west.png"
+  },
+  {
+    "id": "p15-keeper-base",
+    "group": "closeups",
+    "path": "remake/closeups/p15-keeper-base.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 283468,
+    "source": "exec-6d42b460-e8f3-4cd9-b18b-3006d60eea3f.png",
+    "master": "closeups/p15-keeper-base.png"
+  },
+  {
+    "id": "keeper-pin-front",
+    "group": "parts",
+    "path": "remake/parts/keeper-pin-front.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 319554,
+    "source": "exec-77061623-95fa-4412-a970-8e34abf96723.png",
+    "master": "parts/keeper-pin-front.png",
+    "bounds": [
+      176,
+      106,
+      901,
+      1025
+    ]
+  },
+  {
+    "id": "north",
+    "group": "scenes/type",
+    "path": "remake/scenes/type/north.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 200190,
+    "source": "exec-474ecc59-e1b5-4c1e-9644-a455dce57342.png",
+    "master": "scenes/type/north.png"
+  },
+  {
+    "id": "north-door-open",
+    "group": "scenes/type",
+    "path": "remake/scenes/type/north-door-open.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 209164,
+    "source": "exec-d205c7e2-43c7-402c-9689-d3e004e7aa05.png",
+    "master": "scenes/type/north-door-open.png"
+  },
+  {
+    "id": "keeper-pin-loose",
+    "group": "parts",
+    "path": "remake/parts/keeper-pin-loose.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 331934,
+    "source": "exec-9558cceb-8767-4d61-81b2-05648ae201dc.png",
+    "master": "parts/keeper-pin-loose.png",
+    "bounds": [
+      120,
+      127,
+      1054,
+      939
+    ]
+  },
+  {
+    "id": "p15-keeper-open",
+    "group": "closeups",
+    "path": "remake/closeups/p15-keeper-open.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 275572,
+    "source": "exec-40928ef3-5aa4-4d4f-a7f4-d76167e0ed53.png",
+    "master": "closeups/p15-keeper-open.png"
+  },
+  {
+    "id": "p15-tray-1",
+    "group": "closeups",
+    "path": "remake/closeups/p15-tray-1.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 292808,
+    "source": "exec-1872ab8a-eca5-46bf-990f-3ecae1348121.png",
+    "master": "closeups/p15-tray-1.png"
+  },
+  {
+    "id": "p15-tray-2",
+    "group": "closeups",
+    "path": "remake/closeups/p15-tray-2.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 295870,
+    "source": "exec-8538dc6f-f87f-4a4e-b08c-b26edde14d33.png",
+    "master": "closeups/p15-tray-2.png"
+  },
+  {
+    "id": "p15-tray-3",
+    "group": "closeups",
+    "path": "remake/closeups/p15-tray-3.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 302328,
+    "source": "exec-9748f23b-fdc9-416f-b1bd-af66a3084215.png",
+    "master": "closeups/p15-tray-3.png"
   }
 ]

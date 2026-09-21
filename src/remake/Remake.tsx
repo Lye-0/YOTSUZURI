@@ -1,3 +1,4 @@
+import {KeeperDoor} from './KeeperDoor';
 import {SealCases,type SealView} from './SealCases';
 import {ThreadChart} from './ThreadChart';
 import {PressSamples} from './PressSamples';
@@ -38,6 +39,7 @@ const image=(name:string,group='scenes/reception')=>import.meta.env.BASE_URL+'re
 type Area={name:string;rect:[number,number,number,number];action:()=>void;shape?:string;priority?:number};
 function load(){try{return readSave(localStorage.getItem(SAVE))??readSave(localStorage.getItem(RECEPTION_SAVE))??initial()}catch{return initial()}}
 export default function Remake(){
+const [keeperZoom,setKeeperZoom]=useState(false);
 const [sealView,setSealView]=useState<SealView>('all');
 const [threadZoom,setThreadZoom]=useState(false);
 const [pressView,setPressView]=useState<PressView>('all');
@@ -46,12 +48,12 @@ const photo=usePhoto(sceneFiles(worldState));const visibleWorld=useRef(worldStat
 useOverlayFocus(Boolean(panel||inspect||boundary));
 const world=useRef(worldState),timer=useRef<ReturnType<typeof setTimeout>|null>(null);world.current=worldState;
 const say=(text:string)=>{setToast(text);if(timer.current)clearTimeout(timer.current);timer.current=setTimeout(()=>setToast(''),2400)};
-const act=(a:Action)=>{if(a.type==='back'&&world.current.focus==='object:9'&&sealView!=='all'){setSealView('all');return;}if(a.type==='back'&&world.current.focus==='object:13'&&threadZoom){setThreadZoom(false);return;}if(a.type==='back'&&world.current.focus==='object:12'&&pressView!=='all'){setPressView('all');return;}const before=world.current;const r=apply(before,a);world.current=r.world;setG(r.world);if(r.message)say(r.message);else if(r.world!==before){if(timer.current)clearTimeout(timer.current);setToast('');}};
+const act=(a:Action)=>{if(a.type==='back'&&world.current.focus==='object:15'&&keeperZoom){setKeeperZoom(false);return;}if(a.type==='back'&&world.current.focus==='object:9'&&sealView!=='all'){setSealView('all');return;}if(a.type==='back'&&world.current.focus==='object:13'&&threadZoom){setThreadZoom(false);return;}if(a.type==='back'&&world.current.focus==='object:12'&&pressView!=='all'){setPressView('all');return;}const before=world.current;const r=apply(before,a);world.current=r.world;setG(r.world);if(r.message)say(r.message);else if(r.world!==before){if(timer.current)clearTimeout(timer.current);setToast('');}};
 useEffect(()=>{try{localStorage.setItem(SAVE,JSON.stringify(worldState));setSaveFailed(false)}catch{setSaveFailed(true)}},[worldState]);
-useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){if(panel)setPanel(null);else if(inspect)setInspect(null);else if(boundary)setBoundary(false);else act({type:'back'})}else if(photo.ready&&!panel&&!inspect&&!boundary&&e.target instanceof HTMLElement&&!['INPUT','BUTTON'].includes(e.target.tagName)){if(e.key==='ArrowLeft')act({type:'turn',delta:-1});if(e.key==='ArrowRight')act({type:'turn',delta:1});if(e.key==='ArrowDown')act({type:'back'});}};addEventListener('keydown',key);return()=>removeEventListener('keydown',key)},[panel,inspect,boundary,photo.ready,pressView,threadZoom,sealView]);
+useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){if(panel)setPanel(null);else if(inspect)setInspect(null);else if(boundary)setBoundary(false);else act({type:'back'})}else if(photo.ready&&!panel&&!inspect&&!boundary&&e.target instanceof HTMLElement&&!['INPUT','BUTTON'].includes(e.target.tagName)){if(e.key==='ArrowLeft')act({type:'turn',delta:-1});if(e.key==='ArrowRight')act({type:'turn',delta:1});if(e.key==='ArrowDown')act({type:'back'});}};addEventListener('keydown',key);return()=>removeEventListener('keydown',key)},[panel,inspect,boundary,photo.ready,pressView,threadZoom,sealView,keeperZoom]);
 useEffect(()=>()=>{if(timer.current)clearTimeout(timer.current)},[]);
 useEffect(()=>{for(const facing of [0,1,2,3] as const)for(const url of sceneFiles({...initial(),facing})){const preview=new Image();preview.src=url}},[]);
-const focus=(f:Focus)=>{setSealView('all');setThreadZoom(false);setPressView('all');act({type:'focus',focus:f});};const areas:Area[]=[];
+const focus=(f:Focus)=>{setKeeperZoom(false);setSealView('all');setThreadZoom(false);setPressView('all');act({type:'focus',focus:f});};const areas:Area[]=[];
 if(g.room===1){
 
 if(g.focus==='room'){
@@ -72,6 +74,7 @@ if(id===3)areas.push({name:'三枚の札を近くで見る',rect:[25,16,48,10],a
 }
 }else if(g.room===3){
 if(g.focus==='room'){
+if(g.facing===0)areas.push({name:g.opened.includes(15)?'書庫への戸口':'保守戸の留めを調べる',rect:[40.5,15,18.5,62],action:()=>g.opened.includes(15)?setBoundary(true):focus('object:15')});
 if(g.facing===2)areas.push({name:'校正室へ戻る',rect:[14,16,19,61],action:()=>act({type:'go',room:2})});
 if(g.facing===1)areas.push({name:'印刷室への戸口',rect:[20,18,28,59],action:()=>act({type:'go',room:4})},{name:'天秤の台を調べる',rect:[60,26,28,55],action:()=>focus('object:8')});
 if(g.facing===3)areas.push({name:'製本室への戸口',rect:[73,17,15,59],action:()=>act({type:'go',room:5})},{name:'原版の引出しを調べる',rect:[4.5,38,25,22],action:()=>focus('object:10')});
@@ -121,7 +124,7 @@ const receptionHelp=g.doorOpen?['帳場への戸が開いている。']:g.keyIns
 const help=campaignHints(g)??receptionHelp;
 if(worldState.started&&!photo.hasFrame)return <main className={"remake "+(worldState.reducedMotion?"still":"")} aria-busy={!photo.failed}>{photo.failed?<button onClick={photo.retry}>画像を再読み込み</button>:<div className="r-loading" role="status" aria-label="読み込み中"/>}</main>;
 if(!g.started)return <main className="remake-title" style={{backgroundImage:`url(${image('north-notice')})`}}><div><p>夜綴</p><span>YOTSUZURI</span><button onClick={()=>act({type:'start'})}>はじめる</button><small></small></div></main>;
-return <main className={'remake '+(g.reducedMotion?'still ':'')+(g.outlines?'outlines':'')} style={{'--light':g.brightness} as CSSProperties}><div className={"r-stage "+(g.focus==="object:9"?(sealView.startsWith("fragment:")?"r-seal-held":sealView.startsWith("trace:")?"r-seal-trace":sealView==="lock"?"r-seal-lock":sealView==="contents"?"r-seal-contents":""):g.focus==="notice"?"r-reading":g.focus==="object:1"?"r-case-reading":g.focus==="object:8"?"r-balance-reading":g.focus==="object:10"?"r-plate-reading":g.focus==="press-samples"?"r-samples-reading":g.focus==="object:11"?"r-interlock-reading":g.focus==="object:13"?(threadZoom?"r-thread-detail":""):g.focus==="object:12"?(pressView==="bed"?"r-press-bed":pressView==="paper"?"r-press-paper":""):"")} aria-busy={!photo.ready}><img className="r-photo" src={photo.shown} draggable={false} alt={g.focus==='room'?rooms[g.room].name+'・'+['北','東','南','西'][g.facing]:'近づいて見た同じ物'}/>{g.room===0&&g.focus==='room'&&g.facing===0&&g.bookOpen?<img className="r-photo r-book-change" src={image('north-book')} alt="" draggable={false}/>:null}
+return <main className={'remake '+(g.reducedMotion?'still ':'')+(g.outlines?'outlines':'')} style={{'--light':g.brightness} as CSSProperties}><div className={"r-stage "+(g.focus==="object:15"?(keeperZoom?"r-keeper-tray":"r-keeper-reading"):g.focus==="object:9"?(sealView.startsWith("fragment:")?"r-seal-held":sealView.startsWith("trace:")?"r-seal-trace":sealView==="lock"?"r-seal-lock":sealView==="contents"?"r-seal-contents":""):g.focus==="notice"?"r-reading":g.focus==="object:1"?"r-case-reading":g.focus==="object:8"?"r-balance-reading":g.focus==="object:10"?"r-plate-reading":g.focus==="press-samples"?"r-samples-reading":g.focus==="object:11"?"r-interlock-reading":g.focus==="object:13"?(threadZoom?"r-thread-detail":""):g.focus==="object:12"?(pressView==="bed"?"r-press-bed":pressView==="paper"?"r-press-paper":""):"")} aria-busy={!photo.ready}><img className="r-photo" src={photo.shown} draggable={false} alt={g.focus==='room'?rooms[g.room].name+'・'+['北','東','南','西'][g.facing]:'近づいて見た同じ物'}/>{g.room===0&&g.focus==='room'&&g.facing===0&&g.bookOpen?<img className="r-photo r-book-change" src={image('north-book')} alt="" draggable={false}/>:null}
 {g.room===0&&g.focus==='room'&&g.facing===0&&g.boxOpen?<PhotoPatch src={image('north-full')} rect={[14.5,37.5,15,22]}/>:null}
 {g.room===0&&g.focus==='room'&&g.facing===0&&!g.boxOpen&&g.latchUp?<PhotoPatch src={image('north-released')} rect={[20.5,48.5,2.3,7]}/>:null}
 {g.focus==='box'&&!g.boxOpen&&g.latchUp?<PhotoPatch src={image('box-released','closeups')} rect={[46,35,7,32]}/>:null}
@@ -131,6 +134,7 @@ return <main className={'remake '+(g.reducedMotion?'still ':'')+(g.outlines?'out
 {g.boxOpen&&g.room===0&&g.focus==='room'&&g.facing===0?<>{g.keyTaken?<PhotoPatch src={image('north-empty')} rect={[18,49,3.5,3]}/>:null}{g.cardTaken?<PhotoPatch src={image('north-empty')} rect={[22,48.8,4.5,3.3]}/>:null}</>:null}
 {g.room===0&&g.focus==='room'&&g.facing===0?<PhotoPatch src={image('north-notice')} rect={[55.5,20,6,14]}/>:null}
 <WorkshopPortals g={g} act={act}/>
+{g.room===3&&g.facing===0&&(g.focus==='room'||g.focus==='object:15')?<KeeperDoor g={g} act={act} wide={g.focus==='room'} enabled={photo.ready} zoom={keeperZoom} onZoom={setKeeperZoom}/>:null}
 {g.room===5&&g.facing===3&&(g.focus==='room'||g.focus==='object:9')?<SealCases g={g} act={act} wide={g.focus==='room'} enabled={photo.ready} view={sealView} onView={setSealView}/>:null}
 {g.room===3&&g.facing===3&&(g.focus==='room'||g.focus==='object:10')?<PlateDrawers g={g} act={act} wide={g.focus==='room'} enabled={photo.ready}/>:null}
 {g.room===1&&g.focus==='room'&&g.facing===1&&g.opened.includes(2)?<><PhotoPatch src={image('east-drawer-open','scenes/office')} rect={[29,60,45,27]}/>{!g.collected.includes('receipts')?<PhotoObject src={image('receipts','items')} rect={[43,66,15,6]} brightness={.84}/>:null}<PhotoDigits values={drumValues(g,2)} windows={[48.1,49.78,51.4].map(x=>({x,y:74.9,width:.65,height:2.1}))}/></>:null}

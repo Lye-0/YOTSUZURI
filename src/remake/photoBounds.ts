@@ -499,5 +499,25 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       797,
       1150
     ]
+  },
+  "parts/keeper-pin-front": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      176,
+      106,
+      901,
+      1025
+    ]
+  },
+  "parts/keeper-pin-loose": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      120,
+      127,
+      1054,
+      939
+    ]
   }
 };
