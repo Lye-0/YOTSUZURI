@@ -36,6 +36,14 @@ export function archiveProjectEye(point:ShelfPoint,eye:ArchiveEye){const [right,
 export const archiveProject=(point:ShelfPoint,facing:number)=>archiveProjectEye(point,archiveEye(facing));
 export function archiveLookAt(point:ShelfPoint,facing:number,overrides:Partial<ArchiveEye>={}):ArchiveEye{const e=archiveEye(facing,overrides),dx=point[0]-e.x,dy=point[1]-e.y;return {...e,heading:Math.atan2(dx,-dy)*180/Math.PI,pitch:Math.atan2(e.height-point[2],Math.hypot(dx,dy))*180/Math.PI,focal:overrides.focal??1450};}
 export function archiveFloorPoint(x:number,y:number,eye:ArchiveEye):ShelfPoint|null{const right=(x-eye.centerX)/eye.focal,up=(eye.centerY-y)/eye.focal,p=eye.pitch*Math.PI/180,yaw=eye.heading*Math.PI/180,dz=Math.cos(p)*up-Math.sin(p),depth=Math.sin(p)*up+Math.cos(p);if(dz>=0)return null;const t=-eye.height/dz;return [eye.x+t*(Math.cos(yaw)*right+Math.sin(yaw)*depth),eye.y+t*(Math.sin(yaw)*right-Math.cos(yaw)*depth),0];}
+export function archivePickShelf(values:ShelfState,x:number,y:number,eye:ArchiveEye){
+ const right=(x-eye.centerX)/eye.focal,up=(eye.centerY-y)/eye.focal,p=eye.pitch*Math.PI/180,yaw=eye.heading*Math.PI/180,depth=Math.sin(p)*up+Math.cos(p),direction=[Math.cos(yaw)*right+Math.sin(yaw)*depth,Math.sin(yaw)*right-Math.cos(yaw)*depth,Math.cos(p)*up-Math.sin(p)],origin=[eye.x,eye.y,eye.height];
+ let hit=-1,distance=Infinity;
+ for(let i=0;i<4;i++){const r=shelfRect(values,i),lo=[r.x,r.y,0],hi=[r.x+r.width,r.y+r.depth,r.height];let near=0,far=Infinity;
+  for(let axis=0;axis<3;axis++){const d=direction[axis];if(Math.abs(d)<1e-9){if(origin[axis]<lo[axis]||origin[axis]>hi[axis]){far=-1;break;}}else{const a=(lo[axis]-origin[axis])/d,b=(hi[axis]-origin[axis])/d;near=Math.max(near,Math.min(a,b));far=Math.min(far,Math.max(a,b));}}
+  if(far>=near&&near<distance){hit=i;distance=near;}
+ }return hit;
+}
 export function archiveRayClear(values:ShelfState,target:ShelfPoint,exclude=-1,eye=archiveEye(0)){
  const origin=[eye.x,eye.y,eye.height];
  for(let i=0;i<4;i++){if(i===exclude)continue;const r=shelfRect(values,i),lo=[r.x,r.y,0],hi=[r.x+r.width,r.y+r.depth,r.height];let near=0,far=1;

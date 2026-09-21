@@ -679,5 +679,85 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       597,
       1836
     ]
+  },
+  "parts/envelope/back-closed": {
+    "width": 1402,
+    "height": 1122,
+    "bounds": [
+      219,
+      279,
+      964,
+      559
+    ]
+  },
+  "parts/envelope/front-closed": {
+    "width": 1402,
+    "height": 1122,
+    "bounds": [
+      220,
+      274,
+      963,
+      565
+    ]
+  },
+  "parts/envelope/right-open": {
+    "width": 1619,
+    "height": 971,
+    "bounds": [
+      133,
+      181,
+      1353,
+      643
+    ]
+  },
+  "items/tissue": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      256,
+      184,
+      1026,
+      661
+    ]
+  },
+  "items/blanks": {
+    "width": 1226,
+    "height": 1283,
+    "bounds": [
+      124,
+      99,
+      979,
+      1101
+    ]
+  },
+  "parts/envelope/lower-open": {
+    "width": 1620,
+    "height": 971,
+    "bounds": [
+      129,
+      102,
+      1361,
+      802
+    ]
+  },
+  "parts/envelope/all-open": {
+    "width": 1320,
+    "height": 1191,
+    "bounds": [
+      70,
+      49,
+      1206,
+      1049
+    ]
+  },
+  "parts/envelope/inner-tray": {
+    "width": 1060,
+    "height": 1484,
+    "bounds": [
+      30,
+      94,
+      973,
+      1305
+    ]
   }
 };

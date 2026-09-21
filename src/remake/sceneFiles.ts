@@ -1,3 +1,4 @@
+import {envelopeFiles} from './envelopeAssets';
 import {archivePhotoFiles} from './archiveAssets';
 import {keeperValues} from './keeper';
 import {interlockMask} from './interlock';
@@ -30,7 +31,7 @@ return close(id===4?open?'p04-open-empty':'p04-base':id===5?'p05-base':id===6?'p
 /** Decode every photographic layer before presenting a new frame. */
 export function sceneFiles(g:World):string[]{
 const files=[mainPhoto(g)],add=(n:string,group='closeups')=>files.push(photoPath(n,group));
-if(g.room===6||g.room===7||g.room===3&&g.facing===0&&g.focus==='room'&&g.opened.includes(15))files.push(...archivePhotoFiles);
+if(g.room===6||g.room===7||g.room===3&&g.facing===0&&g.focus==='room'&&g.opened.includes(15))files.push(...archivePhotoFiles,...envelopeFiles);
 for(const item of g.inventory){if(item==='oldplan'){add('trimming-paper','parts');continue;}if(item==='proof'){add('print-paper','parts');continue;}if(item==='plates'){for(const i of g.itemValues.plates??[])add(`plate-${i}`,'parts');continue;}add(item==='register'?'paper-strip':item,'items');if(item==='folios')for(const n of ['folio-open','folio-folded','folio-book'])add(n,'items');if(item==='receipts')add('receipt-single','items')}
 if(g.inventory.includes('keyparts')||g.focus==='object:26'&&g.opened.includes(26))for(const n of ['key-shaft','key-tooth','key-blade'])add(n,'parts');
 if(g.room===5&&g.facing===2&&(g.focus==='room'||g.focus==='object:14')){add('trimming-paper','parts');if(g.placed[14]?.includes('corner')||g.focus==='object:14')add('corner-flat','parts');}

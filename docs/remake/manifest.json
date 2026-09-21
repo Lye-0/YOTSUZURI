@@ -2419,5 +2419,141 @@
     "bytes": 313946,
     "source": "exec-eb065dd5-7b53-4162-971d-f9b8b85e6e1a.png",
     "master": "scenes/archive-east/floor-traces.png"
+  },
+  {
+    "id": "back-closed",
+    "group": "parts/envelope",
+    "path": "remake/parts/envelope/back-closed.webp",
+    "width": 1402,
+    "height": 1122,
+    "alpha": true,
+    "bytes": 196432,
+    "source": "exec-506de10a-3082-4ce7-9b7d-2eba9b98ebfc.png",
+    "master": "parts/envelope/back-closed.png",
+    "bounds": [
+      219,
+      279,
+      964,
+      559
+    ]
+  },
+  {
+    "id": "front-closed",
+    "group": "parts/envelope",
+    "path": "remake/parts/envelope/front-closed.webp",
+    "width": 1402,
+    "height": 1122,
+    "alpha": true,
+    "bytes": 146580,
+    "source": "exec-3ff3d4c7-37e1-432e-81e9-3027f15274d8.png",
+    "master": "parts/envelope/front-closed.png",
+    "bounds": [
+      220,
+      274,
+      963,
+      565
+    ]
+  },
+  {
+    "id": "right-open",
+    "group": "parts/envelope",
+    "path": "remake/parts/envelope/right-open.webp",
+    "width": 1619,
+    "height": 971,
+    "alpha": true,
+    "bytes": 208336,
+    "source": "exec-709d94da-a0cf-4fdf-8681-c5e0b71d8cc8.png",
+    "master": "parts/envelope/right-open.png",
+    "bounds": [
+      133,
+      181,
+      1353,
+      643
+    ]
+  },
+  {
+    "id": "tissue",
+    "group": "items",
+    "path": "remake/items/tissue.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": true,
+    "bytes": 172922,
+    "source": "exec-3d37471b-95d1-455e-9c6c-5b445bc29a44.png",
+    "master": "items/tissue.png",
+    "bounds": [
+      256,
+      184,
+      1026,
+      661
+    ]
+  },
+  {
+    "id": "blanks",
+    "group": "items",
+    "path": "remake/items/blanks.webp",
+    "width": 1226,
+    "height": 1283,
+    "alpha": true,
+    "bytes": 198922,
+    "source": "exec-688c56f4-2daf-46f4-85cc-84f3ac611197.png",
+    "master": "items/blanks.png",
+    "bounds": [
+      124,
+      99,
+      979,
+      1101
+    ]
+  },
+  {
+    "id": "lower-open",
+    "group": "parts/envelope",
+    "path": "remake/parts/envelope/lower-open.webp",
+    "width": 1620,
+    "height": 971,
+    "alpha": true,
+    "bytes": 178520,
+    "source": "exec-26c2270b-90fa-4f90-9d07-5d14651f4349.png",
+    "master": "parts/envelope/lower-open.png",
+    "bounds": [
+      129,
+      102,
+      1361,
+      802
+    ]
+  },
+  {
+    "id": "all-open",
+    "group": "parts/envelope",
+    "path": "remake/parts/envelope/all-open.webp",
+    "width": 1320,
+    "height": 1191,
+    "alpha": true,
+    "bytes": 189472,
+    "source": "exec-55792142-2a2c-4f29-bf5f-69321a6c74c2.png",
+    "master": "parts/envelope/all-open.png",
+    "bounds": [
+      70,
+      49,
+      1206,
+      1049
+    ]
+  },
+  {
+    "id": "inner-tray",
+    "group": "parts/envelope",
+    "path": "remake/parts/envelope/inner-tray.webp",
+    "width": 1060,
+    "height": 1484,
+    "alpha": true,
+    "bytes": 261206,
+    "source": "exec-270e1e6a-cf07-402d-bd63-486014205d7b.png",
+    "master": "parts/envelope/inner-tray.png",
+    "bounds": [
+      30,
+      94,
+      973,
+      1305
+    ]
   }
 ]

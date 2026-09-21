@@ -7,7 +7,14 @@ import {photoBounds} from './photoBounds';
 import {threadOrder} from './threading';
 import {validKeeper} from './keeper';
 import {initialTrim} from './trimming';
+import {validEnvelope} from './envelope';
+import {envelopePhoto,envelopeUrl} from './envelopeAssets';
 describe('写真フレームの依存',()=>{
+it('封筒の表裏・全展開段階・内袋・部分取得の写真を先読みする',()=>{
+ for(const face of [0,1])for(const loose of [0,1])for(const mask of [0,1,3,7])for(const slide of [0,1,2]){const values=[face,loose,mask,slide];if(!validEnvelope(values))continue;for(const collected of [[],['tissue'],['blanks'],['tissue','blanks']]){
+  const g:World={...initial(),room:6,focus:'object:18',values:{18:values},collected:collected as World['collected']};const files=sceneFiles(g);expect(files).toContain(envelopeUrl(envelopePhoto(g)));expect(files).toContain('/remake/parts/envelope/inner-tray.webp');for(const path of files)expect(existsSync(resolve('public',path.replace(/^\//,''))),path).toBe(true);
+ }}
+});
 it('書庫の四方向・戸口の遠景・途中移動が同じ写真資産を先読みする',()=>{
  const states:World[]=[{...initial(),room:3,facing:0,opened:[15]}];for(const room of [6,7])for(const facing of [0,1,2,3] as const)states.push({...initial(),room,facing,values:{16:[3,1,0,2]},flags:{'archive:door':true}});
  for(const g of states){const files=sceneFiles(g);expect(files).toContain('/remake/parts/archive/b-back.webp');expect(files).toContain('/remake/scenes/archive-west/floor-traces.webp');for(const path of files)expect(existsSync(resolve('public',path.replace(/^\//,''))),path).toBe(true);}
