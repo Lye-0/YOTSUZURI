@@ -299,5 +299,85 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       328,
       1424
     ]
+  },
+  "parts/plate-metal": {
+    "width": 1671,
+    "height": 941,
+    "bounds": [
+      33,
+      102,
+      1607,
+      735
+    ]
+  },
+  "parts/plate-0": {
+    "width": 2098,
+    "height": 749,
+    "bounds": [
+      209,
+      0,
+      1680,
+      744
+    ]
+  },
+  "parts/plate-1": {
+    "width": 2098,
+    "height": 749,
+    "bounds": [
+      208,
+      0,
+      1683,
+      749
+    ]
+  },
+  "parts/plate-2": {
+    "width": 2097,
+    "height": 750,
+    "bounds": [
+      203,
+      0,
+      1661,
+      734
+    ]
+  },
+  "parts/plate-3": {
+    "width": 2100,
+    "height": 749,
+    "bounds": [
+      211,
+      0,
+      1671,
+      741
+    ]
+  },
+  "parts/print-paper": {
+    "width": 1672,
+    "height": 941,
+    "bounds": [
+      35,
+      80,
+      1602,
+      810
+    ]
+  },
+  "items/pin": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      198,
+      48,
+      867,
+      1147
+    ]
+  },
+  "parts/press-weight": {
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      54,
+      222,
+      2065,
+      281
+    ]
   }
 };

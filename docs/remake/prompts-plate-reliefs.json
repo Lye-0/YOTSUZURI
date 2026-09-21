@@ -1,0 +1,40 @@
+[
+  {
+    "id": "plate-0",
+    "prompt": "Edit this exact metal plate template into a fully photoreal antique printing plate. Preserve the precise outer rectangle, two left registration holes and EXACT contour and position of the lighter geometric region, including every notch. That geometric region must be physically RAISED by 3mm ABOVE the surrounding metal as a solid relief printing surface, with visible tiny vertical sidewalls, upper-left bevel highlight and cast shadow outside its lower/right edges. Same warm grey aged zinc and scratch detail, subtle grazing warm lamplight from upper left that clearly reveals the depth. Face-on orthographic camera, no perspective distortion. Do not reinterpret the design as printed paint. No letters or numbers. Actual transparent alpha outside the metal rectangle and in the two holes; remove the green background from the template. Keep the artwork unaltered, this is a precise physical puzzle component.",
+    "ref": "C:\\Users\\kawau\\Documents\\MY DEVELOPMENT TEMP\\脱出ゲーム\\4_YOTSUZURI\\remake\\qa\\plate-template-0.png"
+  },
+  {
+    "id": "plate-1",
+    "prompt": "Edit this exact metal plate template into a fully photoreal antique printing plate. Preserve the precise outer rectangle, two left registration holes and EXACT contour and position of the darker geometric region, including every notch. That geometric region must be physically RECESSED by 3mm BELOW the surrounding metal as an engraved cavity, with visible inner vertical sidewalls, a shadow INSIDE the upper-left lip and highlight INSIDE the lower-right lip. Same warm grey aged zinc and scratch detail, subtle grazing warm lamplight from upper left that clearly reveals the depth. Face-on orthographic camera, no perspective distortion. Do not reinterpret the design as printed paint. No letters or numbers. Actual transparent alpha outside the metal rectangle and in the two holes; remove the green background from the template. Keep the artwork unaltered, this is a precise physical puzzle component.",
+    "ref": "C:\\Users\\kawau\\Documents\\MY DEVELOPMENT TEMP\\脱出ゲーム\\4_YOTSUZURI\\remake\\qa\\plate-template-1.png"
+  },
+  {
+    "id": "plate-2",
+    "prompt": "Edit this exact metal plate template into a fully photoreal antique printing plate. Preserve the precise outer rectangle, two left registration holes and EXACT contour and position of the darker geometric region, including every notch. That geometric region must be physically RECESSED by 3mm BELOW the surrounding metal as an engraved cavity, with visible inner vertical sidewalls, a shadow INSIDE the upper-left lip and highlight INSIDE the lower-right lip. Same warm grey aged zinc and scratch detail, subtle grazing warm lamplight from upper left that clearly reveals the depth. Face-on orthographic camera, no perspective distortion. Do not reinterpret the design as printed paint. No letters or numbers. Actual transparent alpha outside the metal rectangle and in the two holes; remove the green background from the template. Keep the artwork unaltered, this is a precise physical puzzle component.",
+    "ref": "C:\\Users\\kawau\\Documents\\MY DEVELOPMENT TEMP\\脱出ゲーム\\4_YOTSUZURI\\remake\\qa\\plate-template-2.png"
+  },
+  {
+    "id": "plate-3",
+    "prompt": "Edit this exact metal plate template into a fully photoreal antique printing plate. Preserve the precise outer rectangle, two left registration holes and EXACT contour and position of the lighter geometric region, including every notch. That geometric region must be physically RAISED by 3mm ABOVE the surrounding metal as a solid relief printing surface, with visible tiny vertical sidewalls, upper-left bevel highlight and cast shadow outside its lower/right edges. Same warm grey aged zinc and scratch detail, subtle grazing warm lamplight from upper left that clearly reveals the depth. Face-on orthographic camera, no perspective distortion. Do not reinterpret the design as printed paint. No letters or numbers. Actual transparent alpha outside the metal rectangle and in the two holes; remove the green background from the template. Keep the artwork unaltered, this is a precise physical puzzle component.",
+    "ref": "C:\\Users\\kawau\\Documents\\MY DEVELOPMENT TEMP\\脱出ゲーム\\4_YOTSUZURI\\remake\\qa\\plate-template-3.png"
+  },
+  {
+    "id": "plate-2-notch",
+    "ref": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-6ce53815-218e-420f-a603-cb7aa02acc46.png",
+    "prompt": "Edit ONLY one tiny feature of this exact printing plate photograph. The engraved recessed cavity has a vertical inner edge near x1285 in this 2098x750 image, extending down toward y580. Add ONE small rectangular recessed notch continuous with the cavity protruding LEFTWARD from that inner vertical edge by about 65 pixels, between y435 and y495. This makes the central empty silhouette asymmetric on its right edge. All other contours, the outer metal, holes, scratch texture, camera, thickness, lighting and alpha remain EXACTLY unchanged. Do not add new symbols or text, only this small physical machining detail."
+  },
+  {
+    "id": "plate-3-notch",
+    "ref": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-75e4c004-b9fa-4d88-a599-9432d6057f42.png",
+    "prompt": "Edit ONLY one tiny feature of this exact printing plate photograph. The raised metallic relief has a vertical inner edge near x1285 in this 2098x750 image, extending down toward y580. Add ONE small rectangular raised tab continuous with the relief protruding LEFTWARD from that inner vertical edge by about 65 pixels, between y435 and y495. This makes the central empty silhouette asymmetric on its right edge. All other contours, the outer metal, holes, scratch texture, camera, thickness, lighting and alpha remain EXACTLY unchanged. Do not add new symbols or text, only this small physical machining detail."
+  },
+  {
+    "id": "plate-metal",
+    "prompt": "Photoreal isolated antique printing plate for an escape game, transparent alpha background. A single flat rectangular zinc metal plate 30cm wide and 14cm tall, seen EXACTLY face-on orthographic from directly above, horizontal. Dark brushed warm grey zinc, subtly tarnished, fine scratches, realistic thin milled edge and very slight irregular wear. Two small round registration holes close to the LEFT edge near its upper and lower corners. Surface is plain, completely blank, no lettering, no raised art, no pattern, no grid. Fine metal surface detail suitable for adding precise etched artwork in the renderer. Directional warm lamplight from upper-left, restrained reflections, no excessive shine. Object fills 90 percent of the horizontal image, 1672x941 canvas, transparent actual alpha outside the rectangle. No wood, no backdrop, no hands, no display frame, no shadows outside object."
+  },
+  {
+    "id": "p10-open-3-v2",
+    "prompt": "Edit this EXACT reference photograph. Cabinet has FOUR closed shallow drawers. Open ONLY the FOURTH BOTTOM drawer (its handle centered around x810,y580 in this 1672x941 image). Pull its front toward camera and DOWN about 55 pixels, so its handle now centers around y635, bottom edge around y685. Reveal its empty wooden interior between y535 and y580. Leave drawer THREE at y426-520 FULLY CLOSED, with its existing handle at y475 entirely unchanged. Drawer ONE and TWO also remain exactly closed. There must still be exactly FOUR handles. Do not put a handle inside an open drawer. Preserve camera, cabinet casing, top, backdrop and all unedited woodgrain. Only bottom drawer moves. Physically believable photographic edit."
+  }
+]

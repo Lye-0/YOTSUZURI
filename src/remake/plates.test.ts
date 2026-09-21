@@ -16,8 +16,9 @@ describe('原版の持ち出しと交換',()=>{
   expect(run(g,{type:'p-plate',id:10,index:0}).inventory).toEqual([]);
  });
  it('正解履歴があっても現在の二枚が違えば刷り上がりは完成しない',()=>{
-  const g:World={...initial(),room:4,facing:0,focus:'object:12',placed:{12:['plates','pin','weights','register']},values:{12:[1,3,0,1]},itemValues:{plates:[1,2]},solved:[10]};
-  expect(run(g,{type:'p-test',id:12}).solved).not.toContain(12);
-  expect(run({...g,itemValues:{plates:[0,3]}},{type:'p-test',id:12}).solved).toContain(12);
+  const g:World={...initial(),room:4,facing:0,focus:'object:12',placed:{12:['plates','pin','weights','register']},values:{12:[0,0,0,1]},itemValues:{plates:[1,2]},solved:[10]};
+  const printing:Action[]=[{type:'p-press-paper',id:12},{type:'p-print',id:12},{type:'p-press-paper',id:12},{type:'p-press-select',id:12,slot:1},{type:'p-press-paper',id:12},{type:'p-print',id:12}];
+  expect(run(g,...printing).solved).not.toContain(12);
+  expect(run({...g,itemValues:{plates:[0,3]}},...printing).solved).toContain(12);
  });
 });

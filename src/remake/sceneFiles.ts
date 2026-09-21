@@ -10,17 +10,22 @@ const id=+g.focus.slice(7),open=g.opened.includes(id),p=`p${String(id).padStart(
 if([2,3,26].includes(id)){if(open&&id===2&&!g.collected.includes('receipts'))return close('p02-open-full');if(open&&id===3&&!g.collected.includes('folios'))return close('p03-open-full');return close(`${p}-${open?'open-empty':'closed'}`)}
 if(id===27)return close('p27-close');
 if(id===22)return close('p22-cradle');
+if(id===12)return close('p12-base');
+if(id===10)return close('p10-closed');
 if(id===8)return close('p08-base');
 return close(id===4?open?'p04-open-empty':'p04-base':id===5?'p05-base':id===6?'p06-empty':`${p}-close`);
 }
 /** Decode every photographic layer before presenting a new frame. */
 export function sceneFiles(g:World):string[]{
 const files=[mainPhoto(g)],add=(n:string,group='closeups')=>files.push(photoPath(n,group));
-for(const item of g.inventory){add(item==='register'?'paper-strip':item,'items');if(item==='folios')for(const n of ['folio-open','folio-folded','folio-book'])add(n,'items');if(item==='receipts')add('receipt-single','items')}
+for(const item of g.inventory){if(item==='proof'){add('print-paper','parts');continue;}if(item==='plates'){for(const i of g.itemValues.plates??[])add(`plate-${i}`,'parts');continue;}add(item==='register'?'paper-strip':item,'items');if(item==='folios')for(const n of ['folio-open','folio-folded','folio-book'])add(n,'items');if(item==='receipts')add('receipt-single','items')}
 if(g.inventory.includes('keyparts')||g.focus==='object:26'&&g.opened.includes(26))for(const n of ['key-shaft','key-tooth','key-blade'])add(n,'parts');
+if(g.room===4&&g.facing===3&&g.focus==='room')files.push(...sceneFiles({...g,room:3,facing:3,focus:'room'}));
+if(g.focus==='object:12'||g.room===4&&g.facing===0&&g.focus==='room'){add('p12-empty-shelf');for(const n of ['print-paper','press-weight',...((g.itemValues.plates??[]).map(i=>`plate-${i}`))])add(n,'parts');add('pin','items');add('paper-strip','items')}
 if(g.focus==='object:27'){add('steel-pin','parts');add('key-blade','parts');if(g.flags['attempt:27']&&value(g,27).every((n,i)=>n+[2,1,4][i]===5))add('p27-open')}
 if(g.focus==='object:22')for(const n of ['book-edge-closed','book-edge-left','book-edge-right'])add(n,'parts');
-if(g.room===3&&g.facing===1){for(const n of ['balance-beam','balance-pan','balance-weight-small','balance-weight-medium','balance-weight-large','balance-pin'])add(n,'parts');if(g.focus==='room')add('east-pin-clear','scenes/type');else add('p08-pin-clear');if(g.opened.includes(8)){add('weights','items');if(g.focus==='room')add('east-open','scenes/type');else add('p08-open-empty')}}
+if(g.room===3&&g.facing===1){if(g.focus==='room')add('east','scenes/press');for(const n of ['balance-beam','balance-pan','balance-weight-small','balance-weight-medium','balance-weight-large','balance-pin'])add(n,'parts');if(g.focus==='room')add('east-pin-clear','scenes/type');else add('p08-pin-clear');if(g.opened.includes(8)){add('weights','items');if(g.focus==='room')add('east-open','scenes/type');else add('p08-open-empty')}}
+if(g.room===3&&g.facing===3){add('p10-closed');for(const i of [0,1,2,3])add(`plate-${i}`,'parts');const open=[0,1,2,3].find(i=>g.flags[`drawer:10:${i}`]);if(open!==undefined)add(`p10-open-${open}`)}
 if(g.room===0){
 if(g.focus==='room'&&g.facing===0){add('north-notice','scenes/reception');if(g.bookOpen)add('north-book','scenes/reception');if(g.boxOpen){add('north-full','scenes/reception');if(g.keyTaken||g.cardTaken)add('north-empty','scenes/reception')}else if(g.latchUp)add('north-released','scenes/reception')}
 if(g.focus==='room'&&g.facing===1&&!g.doorOpen&&g.keyInserted)add(g.doorUnlocked?'east-unlocked':'east-key','scenes/reception');

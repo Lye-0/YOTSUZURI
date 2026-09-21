@@ -1,0 +1,2 @@
+import type {ReactNode} from 'react';
+export function PhotoControl({label,rect,onActivate,enabled=true,children}:{label:string;rect:[number,number,number,number];onActivate:()=>void;enabled?:boolean;children?:ReactNode}){return <g role="button" aria-label={label} aria-disabled={!enabled} tabIndex={enabled?0:-1} onClick={()=>enabled&&onActivate()} onKeyDown={e=>{if(enabled&&['Enter',' '].includes(e.key)){e.preventDefault();onActivate();}}}>{children}<rect className="r-paper-hit" x={rect[0]} y={rect[1]} width={rect[2]} height={rect[3]}/></g>}

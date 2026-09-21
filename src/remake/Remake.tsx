@@ -1,3 +1,10 @@
+import {PressScene,type PressView} from './PressScene';
+import {PressMechanism} from './PressMechanism';
+import {HeldPrint} from './HeldPrint';
+import {PrintedSheet} from './PrintedSheet';
+import {decodePrint} from './press';
+import {PortalView} from './PortalView';
+import {PlateDrawers,HeldPlates} from './PlateDrawers';
 import {useEffect,useRef,useState,type CSSProperties} from 'react';
 import {apply,initial,readSave,SAVE,type Action,type Focus} from './campaign';
 import {SAVE as RECEPTION_SAVE} from './model';
@@ -26,17 +33,18 @@ const image=(name:string,group='scenes/reception')=>import.meta.env.BASE_URL+'re
 type Area={name:string;rect:[number,number,number,number];action:()=>void;shape?:string;priority?:number};
 function load(){try{return readSave(localStorage.getItem(SAVE))??readSave(localStorage.getItem(RECEPTION_SAVE))??initial()}catch{return initial()}}
 export default function Remake(){
+const [pressView,setPressView]=useState<PressView>('all');
 const [worldState,setG]=useState(load),[panel,setPanel]=useState<'settings'|'help'|null>(null),[inspect,setInspect]=useState<Item|null>(null),[hint,setHint]=useState(0),[toast,setToast]=useState(''),[saveFailed,setSaveFailed]=useState(false),[boundary,setBoundary]=useState(false),[resetConfirm,setResetConfirm]=useState(false);
 const photo=usePhoto(sceneFiles(worldState));const visibleWorld=useRef(worldState);if(photo.ready)visibleWorld.current=worldState;const g=visibleWorld.current;
 useOverlayFocus(Boolean(panel||inspect||boundary));
 const world=useRef(worldState),timer=useRef<ReturnType<typeof setTimeout>|null>(null);world.current=worldState;
 const say=(text:string)=>{setToast(text);if(timer.current)clearTimeout(timer.current);timer.current=setTimeout(()=>setToast(''),2400)};
-const act=(a:Action)=>{const r=apply(world.current,a);world.current=r.world;setG(r.world);if(r.message)say(r.message)};
+const act=(a:Action)=>{if(a.type==='back'&&world.current.focus==='object:12'&&pressView!=='all'){setPressView('all');return;}const r=apply(world.current,a);world.current=r.world;setG(r.world);if(r.message)say(r.message)};
 useEffect(()=>{try{localStorage.setItem(SAVE,JSON.stringify(worldState));setSaveFailed(false)}catch{setSaveFailed(true)}},[worldState]);
-useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){if(panel)setPanel(null);else if(inspect)setInspect(null);else if(boundary)setBoundary(false);else act({type:'back'})}else if(photo.ready&&!panel&&!inspect&&!boundary&&e.target instanceof HTMLElement&&!['INPUT','BUTTON'].includes(e.target.tagName)){if(e.key==='ArrowLeft')act({type:'turn',delta:-1});if(e.key==='ArrowRight')act({type:'turn',delta:1});if(e.key==='ArrowDown')act({type:'back'});}};addEventListener('keydown',key);return()=>removeEventListener('keydown',key)},[panel,inspect,boundary,photo.ready]);
+useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){if(panel)setPanel(null);else if(inspect)setInspect(null);else if(boundary)setBoundary(false);else act({type:'back'})}else if(photo.ready&&!panel&&!inspect&&!boundary&&e.target instanceof HTMLElement&&!['INPUT','BUTTON'].includes(e.target.tagName)){if(e.key==='ArrowLeft')act({type:'turn',delta:-1});if(e.key==='ArrowRight')act({type:'turn',delta:1});if(e.key==='ArrowDown')act({type:'back'});}};addEventListener('keydown',key);return()=>removeEventListener('keydown',key)},[panel,inspect,boundary,photo.ready,pressView]);
 useEffect(()=>()=>{if(timer.current)clearTimeout(timer.current)},[]);
 useEffect(()=>{for(const facing of [0,1,2,3] as const)for(const url of sceneFiles({...initial(),facing})){const preview=new Image();preview.src=url}},[]);
-const focus=(f:Focus)=>act({type:'focus',focus:f});const areas:Area[]=[];
+const focus=(f:Focus)=>{setPressView('all');act({type:'focus',focus:f});};const areas:Area[]=[];
 if(g.room===1){
 
 if(g.focus==='room'){
@@ -58,9 +66,11 @@ if(id===3)areas.push({name:'三枚の札を近くで見る',rect:[25,16,48,10],a
 }else if(g.room===3){
 if(g.focus==='room'){
 if(g.facing===2)areas.push({name:'校正室へ戻る',rect:[14,16,19,61],action:()=>act({type:'go',room:2})});
-if(g.facing===1)areas.push({name:'印刷室への戸口',rect:[20,18,28,59],action:()=>setBoundary(true)},{name:'天秤の台を調べる',rect:[60,26,28,55],action:()=>focus('object:8')});
-if(g.facing===3)areas.push({name:'製本室への戸口',rect:[73,17,15,59],action:()=>setBoundary(true)});
+if(g.facing===1)areas.push({name:'印刷室への戸口',rect:[20,18,28,59],action:()=>act({type:'go',room:4})},{name:'天秤の台を調べる',rect:[60,26,28,55],action:()=>focus('object:8')});
+if(g.facing===3)areas.push({name:'製本室への戸口',rect:[73,17,15,59],action:()=>setBoundary(true)},{name:'原版の引出しを調べる',rect:[4.5,38,25,22],action:()=>focus('object:10')});
 }
+}else if(g.room===4){
+if(g.focus==='room'){if(g.facing===3)areas.push({name:'活字室へ戻る',rect:[31.7,22.1,36.2,58],action:()=>act({type:'go',room:3})});if(g.facing===0)areas.push({name:'刷り機へ近づく',rect:[29,26,42,62],action:()=>focus('object:12')});if(g.facing===2)areas.push({name:'留め輪の小箱を調べる',rect:[32.7,46,8,9],action:()=>setBoundary(true)});}
 }else if(g.room===2){
 
 if(g.focus==='room'){
@@ -102,7 +112,7 @@ const receptionHelp=g.doorOpen?['帳場への戸が開いている。']:g.keyIns
 const help=campaignHints(g)??receptionHelp;
 if(worldState.started&&!photo.hasFrame)return <main className={"remake "+(worldState.reducedMotion?"still":"")} aria-busy={!photo.failed}>{photo.failed?<button onClick={photo.retry}>画像を再読み込み</button>:<div className="r-loading" role="status" aria-label="読み込み中"/>}</main>;
 if(!g.started)return <main className="remake-title" style={{backgroundImage:`url(${image('north-notice')})`}}><div><p>夜綴</p><span>YOTSUZURI</span><button onClick={()=>act({type:'start'})}>はじめる</button><small></small></div></main>;
-return <main className={'remake '+(g.reducedMotion?'still ':'')+(g.outlines?'outlines':'')} style={{'--light':g.brightness} as CSSProperties}><div className={"r-stage "+(g.focus==="notice"?"r-reading":g.focus==="object:1"?"r-case-reading":g.focus==="object:8"?"r-balance-reading":"")} aria-busy={!photo.ready}><img className="r-photo" src={photo.shown} draggable={false} alt={g.focus==='room'?rooms[g.room].name+'・'+['北','東','南','西'][g.facing]:'近づいて見た同じ物'}/>{g.room===0&&g.focus==='room'&&g.facing===0&&g.bookOpen?<img className="r-photo r-book-change" src={image('north-book')} alt="" draggable={false}/>:null}
+return <main className={'remake '+(g.reducedMotion?'still ':'')+(g.outlines?'outlines':'')} style={{'--light':g.brightness} as CSSProperties}><div className={"r-stage "+(g.focus==="notice"?"r-reading":g.focus==="object:1"?"r-case-reading":g.focus==="object:8"?"r-balance-reading":g.focus==="object:10"?"r-plate-reading":g.focus==="object:12"?(pressView==="bed"?"r-press-bed":pressView==="paper"?"r-press-paper":""):"")} aria-busy={!photo.ready}><img className="r-photo" src={photo.shown} draggable={false} alt={g.focus==='room'?rooms[g.room].name+'・'+['北','東','南','西'][g.facing]:'近づいて見た同じ物'}/>{g.room===0&&g.focus==='room'&&g.facing===0&&g.bookOpen?<img className="r-photo r-book-change" src={image('north-book')} alt="" draggable={false}/>:null}
 {g.room===0&&g.focus==='room'&&g.facing===0&&g.boxOpen?<PhotoPatch src={image('north-full')} rect={[14.5,37.5,15,22]}/>:null}
 {g.room===0&&g.focus==='room'&&g.facing===0&&!g.boxOpen&&g.latchUp?<PhotoPatch src={image('north-released')} rect={[20.5,48.5,2.3,7]}/>:null}
 {g.focus==='box'&&!g.boxOpen&&g.latchUp?<PhotoPatch src={image('box-released','closeups')} rect={[46,35,7,32]}/>:null}
@@ -111,6 +121,8 @@ return <main className={'remake '+(g.reducedMotion?'still ':'')+(g.outlines?'out
 {g.boxOpen&&g.focus==='box'?<>{g.keyTaken?<PhotoPatch src={image('box-empty','closeups')} rect={[30.5,46.5,15.5,8]}/>:null}{g.cardTaken?<PhotoPatch src={image('box-empty','closeups')} rect={[52,45.5,18.5,10.5]}/>:null}</>:null}
 {g.boxOpen&&g.room===0&&g.focus==='room'&&g.facing===0?<>{g.keyTaken?<PhotoPatch src={image('north-empty')} rect={[18,49,3.5,3]}/>:null}{g.cardTaken?<PhotoPatch src={image('north-empty')} rect={[22,48.8,4.5,3.3]}/>:null}</>:null}
 {g.room===0&&g.focus==='room'&&g.facing===0?<PhotoPatch src={image('north-notice')} rect={[55.5,20,6,14]}/>:null}
+{g.room===3&&g.facing===1&&g.focus==='room'?<PortalView src={image('east','scenes/press')} opening={[[342,174],[788,174],[788,724],[342,724]]} frame={[55,153,1020,574]}/>:null}
+{g.room===3&&g.facing===3&&(g.focus==='room'||g.focus==='object:10')?<PlateDrawers g={g} act={act} wide={g.focus==='room'} enabled={photo.ready}/>:null}
 {g.room===1&&g.focus==='room'&&g.facing===1&&g.opened.includes(2)?<><PhotoPatch src={image('east-drawer-open','scenes/office')} rect={[29,60,45,27]}/>{!g.collected.includes('receipts')?<PhotoObject src={image('receipts','items')} rect={[43,66,15,6]} brightness={.84}/>:null}<PhotoDigits values={drumValues(g,2)} windows={[48.1,49.78,51.4].map(x=>({x,y:74.9,width:.65,height:2.1}))}/></>:null}
 {g.room===1&&g.focus==='room'&&g.facing===1&&g.opened.includes(26)?<PhotoPatch src={image('east-case-open','scenes/office')} rect={[62,42,10,17]}/>:null}
 {g.room===1&&g.focus==='room'&&g.facing===0&&g.opened.includes(3)?<><PhotoPatch src={image('north-open','scenes/office')} rect={[33,51,34,32]}/><PhotoDigits values={drumValues(g,3)} windows={[48.1,49.12,50.12,51.12].map(x=>({x,y:66.6,width:.62,height:1.9}))}/>{!g.collected.includes('folios')?<PhotoObject src={image('folios','items')} rect={[42,57.5,15,3.5]} brightness={.8}/>:null}</>:null}
@@ -128,13 +140,16 @@ return <main className={'remake '+(g.reducedMotion?'still ':'')+(g.outlines?'out
 {g.room===2&&g.focus==='object:6'?<ProofPapers g={g} act={act} enabled={photo.ready}/>:null}
 {g.room===2&&g.focus==='room'&&g.facing===3?<div className="r-proof-papers-wide"><ProofPapers g={g} act={act} enabled={false}/></div>:null}
 {g.room===0&&g.facing===2&&(g.focus==='room'||g.focus==='object:1')?<TicketCase g={g} act={act} wide={g.focus==='room'} enabled={photo.ready}/>:null}
+{g.room===4&&g.facing===3&&g.focus==='room'?<PortalView src={image('west','scenes/type')} opening={[[530,208],[1135,208],[1135,752],[530,752]]} frame={[332,188,1003,565]}><PlateDrawers g={{...g,room:3,facing:3,focus:'room'}} act={act} wide enabled={false}/></PortalView>:null}
+{g.room===4&&g.facing===0&&g.focus==='room'?<PressMechanism g={g} act={act} wide enabled={false}/>:null}
+{g.focus==='object:12'?<PressScene g={g} act={act} view={pressView} onView={setPressView} enabled={photo.ready} showBack={false}/>:null}
 {g.room===3&&g.facing===1&&(g.focus==='room'||g.focus==='object:8')?<Balance g={g} act={act} wide={g.focus==='room'} enabled={photo.ready}/>:null}
 {areas.map(a=><button disabled={!photo.ready} key={a.name} aria-label={a.name} className={'r-target '+(g.outlines?'marked':'')} style={{left:a.rect[0]+'%',top:a.rect[1]+'%',width:a.rect[2]+'%',height:a.rect[3]+'%',clipPath:a.shape,zIndex:a.priority??2}} onClick={a.action}/>)}
 {g.focus==='room'?<><button disabled={!photo.ready} className="r-nav r-left" aria-label="左を向く" onClick={()=>act({type:'turn',delta:-1})}><Icon name="left"/></button><button disabled={!photo.ready} className="r-nav r-right" aria-label="右を向く" onClick={()=>act({type:'turn',delta:1})}><Icon name="right"/></button></>:<button disabled={!photo.ready} className="r-nav r-back" aria-label="元の視点へ戻る" onClick={()=>act({type:'back'})}><Icon name="back"/></button>}
 {photo.failed?<button className="r-image-retry" onClick={photo.retry}>画像を再読み込み</button>:null}<div className="r-tools"><button aria-label="調べられる物を表示" aria-pressed={g.outlines} onClick={()=>act({type:'settings',key:'outlines',value:!g.outlines})}><Icon name="eye"/></button><button aria-label="ヒント" onClick={()=>{setPanel('help');setHint(0)}}><Icon name="help"/></button><button aria-label="設定" onClick={()=>{setResetConfirm(false);setPanel('settings')}}><Icon name="settings"/></button></div>
 <div className={'r-message '+(toast?'visible':'')} role="status">{toast}</div></div>
-<div className="r-orientation-hint" aria-hidden="true">↻ 横向きで大きく表示</div><footer className="r-inventory" aria-label="持ち物"><Icon name="bag"/>{g.inventory.map(n=><div className="r-item" key={n}><button aria-label={itemNames[n]+'を選ぶ'} aria-pressed={g.selected===n} className={g.selected===n?'selected':''} onClick={()=>act({type:'select',item:n})}>{n==='keyparts'?<KeyParts values={g.itemValues.keyparts}/>:<img src={image(n==='register'?'paper-strip':n,'items')} alt=""/>}</button><button className="r-inspect-button" aria-label={itemNames[n]+'を観察する'} onClick={()=>setInspect(n)}><Icon name="inspect"/></button></div>)}{saveFailed?<span>保存できません</span>:null}</footer>
-{inspect?<section className="r-overlay item-view" role="dialog" aria-modal="true" aria-label="手元の物">{inspect==='receipts'?<ReceiptPapers g={g} act={act}/>:inspect==='folios'?<FolioPapers g={g} act={act}/>:inspect==='keyparts'?<KeyParts values={g.itemValues.keyparts} detail onChange={values=>act({type:'item-arrange',item:'keyparts',values})}/>:<img src={image(inspect==='register'?'paper-strip':inspect,'items')} alt={itemNames[inspect]}/>}<button className="r-nav r-back" aria-label="観察を閉じる" autoFocus onClick={()=>setInspect(null)}><Icon name="back"/></button></section>:null}
+<div className="r-orientation-hint" aria-hidden="true">↻ 横向きで大きく表示</div><footer className="r-inventory" aria-label="持ち物"><Icon name="bag"/>{g.inventory.map(n=><div className="r-item" key={n}><button aria-label={itemNames[n]+'を選ぶ'} aria-pressed={g.selected===n} className={g.selected===n?'selected':''} onClick={()=>act({type:'select',item:n})}>{n==='proof'?<div className='r-held-print'><PrintedSheet layers={decodePrint(g.itemValues.proof)}/></div>:n==='plates'?<HeldPlates g={g}/>:n==='keyparts'?<KeyParts values={g.itemValues.keyparts}/>:<img src={image(n==='register'?'paper-strip':n,'items')} alt=""/>}</button><button className="r-inspect-button" aria-label={itemNames[n]+'を観察する'} onClick={()=>setInspect(n)}><Icon name="inspect"/></button></div>)}{saveFailed?<span>保存できません</span>:null}</footer>
+{inspect?<section className="r-overlay item-view" role="dialog" aria-modal="true" aria-label="手元の物">{inspect==='proof'?<HeldPrint layers={decodePrint(g.itemValues.proof)}/>:inspect==='plates'?<HeldPlates g={g} detail/>:inspect==='receipts'?<ReceiptPapers g={g} act={act}/>:inspect==='folios'?<FolioPapers g={g} act={act}/>:inspect==='keyparts'?<KeyParts values={g.itemValues.keyparts} detail onChange={values=>act({type:'item-arrange',item:'keyparts',values})}/>:<img src={image(inspect==='register'?'paper-strip':inspect,'items')} alt={itemNames[inspect]}/>}<button className="r-nav r-back" aria-label="観察を閉じる" autoFocus onClick={()=>setInspect(null)}><Icon name="back"/></button></section>:null}
 {panel?<section className="r-overlay" role="dialog" aria-modal="true" aria-label={panel==='help'?'ヒント':'設定'}><div className="r-panel"><button className="r-panel-close" aria-label="閉じる" autoFocus onClick={()=>setPanel(null)}><Icon name="close"/></button>{panel==='help'?<><p>{help[Math.min(hint,help.length-1)]}</p><div className="hint-step"><button disabled={hint===0} onClick={()=>setHint(h=>h-1)}>前</button><span>{hint+1} / {help.length}</span><button disabled={hint>=help.length-1} onClick={()=>setHint(h=>h+1)}>次</button></div></>:<><h1>設定</h1><label>明るさ<input type="range" min=".75" max="1.4" step=".05" value={g.brightness} onChange={e=>act({type:'settings',key:'brightness',value:+e.target.value})}/></label><label><input type="checkbox" checked={g.reducedMotion} onChange={e=>act({type:'settings',key:'reducedMotion',value:e.target.checked})}/>動きを抑える</label><p className="r-settings-note">物は写真の上で操作できます。手元の物は選んでから使用先へ。虫眼鏡で単体を観察できます。</p><small>進行はこの端末に自動保存されます。旧版の保存とは別です。</small>{resetConfirm?<div className="r-reset"><p>この進行を最初からやり直します。</p><button onClick={()=>{const next=initial();world.current=next;setG(next);setPanel(null);setResetConfirm(false)}}>やり直す</button><button onClick={()=>setResetConfirm(false)}>取り消す</button></div>:<button className="r-reset-link" onClick={()=>setResetConfirm(true)}>最初から</button>}</>}</div></section>:null}
 {boundary?<section className="r-overlay" role="dialog" aria-modal="true" aria-label="確認版の範囲"><div className="r-panel"><p>この先は制作中です。</p><p className="r-settings-note"></p><button autoFocus onClick={()=>setBoundary(false)}>戻る</button></div></section>:null}
 </main>;

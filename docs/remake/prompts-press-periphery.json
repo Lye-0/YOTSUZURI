@@ -1,0 +1,12 @@
+[
+  {
+    "id": "press-east-clear",
+    "ref": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-9a95a5b8-3539-448c-820e-fb1ee0def0df.png",
+    "prompt": "Edit this photograph. Remove the cropped printing press from the left foreground COMPLETELY, revealing unobstructed same worn wood floor and north wall return in its place. The machine is physically outside this east-facing camera field, not moved into another part. Keep the east lattice window, center bench, paper stack, wooden tray, all wall beams and lighting EXACTLY unchanged. No extra furniture in the removed area. Photo 1672x941, keep current lens/framing."
+  },
+  {
+    "id": "press-west-clear",
+    "ref": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-9475e325-e7d0-42a7-b542-4e8a8404e0fa.png",
+    "prompt": "Edit this exact photo. Remove the cropped printing press and huge wheel ONLY from the far right foreground, reveal worn wood floor and bare dark wainscot and ivory plaster continuing the same west wall. The press is outside this west-facing field of view. Keep central doorway, view through to the type composing table and binding doorway, pinned papers, left foreground table, beams and lighting EXACTLY unchanged. No new objects. Photoreal 1672x941."
+  }
+]

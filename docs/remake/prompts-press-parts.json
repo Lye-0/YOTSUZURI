@@ -1,0 +1,14 @@
+[
+  {
+    "id": "p12-base",
+    "prompt": "Close-up photograph of the SAME antique proof press in the reference, camera approaches its actual front working bed and leans slightly down to inspect it. Photoreal 1672x941. Preserve the black iron roller support behind, large wheel at far LEFT cropped naturally, long lever to far RIGHT, warm old printing room background. The sliding rectangular working bed dominates center x350-1280,y380-800, empty dark smooth zinc/steel face with a wooden rim. Show two tiny registration-pin sockets near left edge and one shallow six-unit paper-gauge channel along its front edge; no labels/numbers. Immediately to right of press bed a narrow attached wooden shelf x1290-1650 holds TWO blank paper sheets and space for a spare plate. No generic wooden puzzle panel, no printed symbols, no UI. This is visibly a close approach to the press, not a different object. Sufficient ambient lamplight to read metal details. Keep camera level horizontally, realistic perspective."
+  },
+  {
+    "id": "print-paper",
+    "prompt": "One blank sheet of antique Japanese printing paper, real photographic cutout, actual transparent alpha outside it. Broad landscape rectangle with width:height about 2.25:1, viewed directly top-down, flat, entire sheet visible with narrow transparent margins. Warm ivory fibrous paper, softly irregular lightly worn edges, a tiny asymmetric nick at upper-left corner and a few visible fibers; clean pale center ready for precise black printing. NO lines, writing, logos, diagrams, folds, stains obscuring center, or extra papers. Neutral soft warm lamplight from upper-left. RGBA PNG on truly transparent background, not black/checkerboard. 1672x941."
+  },
+  {
+    "id": "pin",
+    "prompt": "Photoreal isolated small antique paper-stop pin for a proof printing press, real transparent alpha background. A simple U-shaped bent steel staple, two equal parallel blunt cylindrical legs, short rounded bridge joining their tops. A sturdy utilitarian part about 5cm across, 6cm long, aged dark grey steel rubbed to brighter edges. Seen from slightly above/front, entire U visible. No ball knob, no handle ornament, no key teeth, no mounting base, no other objects. Warm lamplight upper-left. RGBA cutout with actual alpha transparency outside and inside the U, not black painted background. High detail 1024x1024."
+  }
+]

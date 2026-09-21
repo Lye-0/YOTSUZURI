@@ -18,14 +18,14 @@ export const portals:Portal[]=[
 {from:0,facing:1,to:1,gate:'office',rect:[38,15,20,64]}, {from:1,facing:3,to:0,rect:[38,15,24,65]},
 {from:0,facing:3,to:10,rect:[17,18,21,65]}, {from:10,facing:1,to:0,rect:[62,15,25,65]},
 {from:2,facing:0,to:3,gate:'workshop',rect:[20,18,18,58]}, {from:3,facing:2,to:2,rect:[14,16,19,61]},
-{from:3,facing:1,to:4,rect:[20,18,28,59]}, {from:4,facing:3,to:3,rect:[38,15,24,65]},
+{from:3,facing:1,to:4,rect:[20,18,28,59]}, {from:4,facing:3,to:3,rect:[31.7,22.1,36.2,58]},
 {from:3,facing:3,to:5,rect:[73,17,15,59]}, {from:5,facing:1,to:3,rect:[38,15,24,65]},
 {from:3,facing:0,to:6,gate:'archive',rect:[38,15,24,65]}, {from:6,facing:2,to:3,rect:[38,15,24,65]},
 {from:6,facing:3,to:7,rect:[38,15,24,65]}, {from:7,facing:1,to:6,rect:[38,15,24,65]},
 {from:6,facing:1,to:8,gate:'shelves',rect:[38,15,24,65]}, {from:8,facing:3,to:6,rect:[38,15,24,65]},
 {from:8,facing:0,to:9,gate:'secret',rect:[38,15,24,65]}, {from:9,facing:2,to:8,rect:[38,15,24,65]},
 ];
-export const itemNames={key:'真鍮の鍵',card:'丸印の札','card-diamond':'菱形の札','card-moon':'三日月の札',cards:'二枚の返却札',receipts:'三枚の複写控え',folios:'両面の校正紙',knife:'紙ナイフ',lens:'拡大鏡',register:'紙の位置決め片',weights:'刷り機の押さえ',corner:'金属の角当て',threadchart:'綴じ糸の見本',plates:'二枚の原版',pin:'紙止めのピン',proof:'窓を抜いた刷り紙',needle:'綴じ針',thread:'綴じ糸',oldplan:'旧書庫の見取り図',gatherings:'原本の束',tissue:'薄い保護紙',blanks:'白紙の束',wedge:'斜面の木片',cradle:'小口の支持具',frame:'綴じ枠',returnrecord:'返却の記録',keyparts:'六枚歯の保守鍵',clamp:'束の締め具'} as const;
+export const itemNames={key:'真鍮の鍵',card:'丸印の札','card-diamond':'菱形の札','card-moon':'三日月の札',cards:'二枚の返却札',receipts:'三枚の複写控え',folios:'両面の校正紙',knife:'紙ナイフ',lens:'拡大鏡',register:'紙の位置決め片',weights:'刷り機の押さえ',corner:'金属の角当て',threadchart:'綴じ糸の見本',plates:'原版',pin:'紙止めのピン',proof:'試し刷りの紙',needle:'綴じ針',thread:'綴じ糸',oldplan:'旧書庫の見取り図',gatherings:'原本の束',tissue:'薄い保護紙',blanks:'白紙の束',wedge:'斜面の木片',cradle:'小口の支持具',frame:'綴じ枠',returnrecord:'返却の記録',keyparts:'六枚歯の保守鍵',clamp:'束の締め具'} as const;
 export type CampaignItem=keyof typeof itemNames;
 export type Mechanism='layers'|'digits'|'receipts'|'rings'|'measure'|'paper-face'|'folios'|'balance'|'seals'|'plates'|'loops'|'press'|'thread'|'scraps'|'latches'|'shelves'|'watermarks'|'envelope'|'books'|'mirrors'|'assemble'|'foreedge'|'blanks'|'frame'|'rubbing'|'pins'|'cams'|'masters'|'bind';
 export type ObjectSpec={id:number;name:string;room:number;facing:0|1|2|3;kind:Mechanism;rect:[number,number,number,number];physical:CampaignItem[];rewards:CampaignItem[];box:boolean};
