@@ -1,0 +1,153 @@
+{
+  "archiveFrontBatch": [
+    {
+      "id": "archive-a-front",
+      "prompt": "Photoreal photographic asset for an old Japanese book archive. Material reference image establishes aged dark brown wood and subdued old iron fittings; do not copy its room. ONLY the FRONT ELEVATION of one complete piece of furniture, including its two visible front roller feet. Orthographic straight-on product photograph: vertical and horizontal edges parallel, no perspective, no top surface or side surface visible. Genuine RGBA transparent background around and under feet, no floor, no room, no shadow card. No text, numbers, logos or UI. Authentic worn timber and old paper volumes, not a 3D render or illustration. Furniture proportions must be exact enough to texture its real 3D front plane. Diffuse soft warm light, no hard directional shadows. A LOW narrow open book cabinet, 1.35m wide and 1.15m high. Two vertical bays, two shelves filled with thin aged bound pamphlets and faded olive cloth books, some empty space. Simple plain square wooden posts and two small iron roller feet, one near each end. One black iron horizontal pulling handle fixed to the upper front crossbeam at about1.0m height. NO diagonal repair. Its TOP will be used as a work surface and generated separately, do not show the top here."
+    },
+    {
+      "id": "archive-b-front",
+      "prompt": "Photoreal photographic asset for an old Japanese book archive. Material reference image establishes aged dark brown wood and subdued old iron fittings; do not copy its room. ONLY the FRONT ELEVATION of one complete piece of furniture, including its two visible front roller feet. Orthographic straight-on product photograph: vertical and horizontal edges parallel, no perspective, no top surface or side surface visible. Genuine RGBA transparent background around and under feet, no floor, no room, no shadow card. No text, numbers, logos or UI. Authentic worn timber and old paper volumes, not a 3D render or illustration. Furniture proportions must be exact enough to texture its real 3D front plane. Diffuse soft warm light, no hard directional shadows. A LONG tall mobile bookcase, 3.10m wide and 1.90m high (width/height1.632). Four broad vertical bays and four shelves holding old books and paper bundles in muted brown/ochre/olive, unlabeled spines. IMPORTANT identifiable repair: one visibly newer pale brown wooden DIAGONAL BRACE across the lower LEFT bay, running from the left post around0.55m high up to the next post around1.05m high. The brace is structural, bolted twice, not a symbol. Exactly two visible broad front iron roller bogies, near left and right ends. One dark iron horizontal pulling handle at the center crossbeam around1.2m high. Sturdy thick wooden frame, no carved decorations."
+    },
+    {
+      "id": "archive-c-front",
+      "prompt": "Photoreal photographic asset for an old Japanese book archive. Material reference image establishes aged dark brown wood and subdued old iron fittings; do not copy its room. ONLY the FRONT ELEVATION of one complete piece of furniture, including its two visible front roller feet. Orthographic straight-on product photograph: vertical and horizontal edges parallel, no perspective, no top surface or side surface visible. Genuine RGBA transparent background around and under feet, no floor, no room, no shadow card. No text, numbers, logos or UI. Authentic worn timber and old paper volumes, not a 3D render or illustration. Furniture proportions must be exact enough to texture its real 3D front plane. Diffuse soft warm light, no hard directional shadows. A NARROW tall flat-file map chest, 0.81m wide and1.35m high. Five shallow wide horizontal drawers, each with a small plain aged iron cup pull. This chest is unusually deep (1.31m) but the depth must NOT be shown in this FRONT-only image. The two front feet have distinctive L-shaped aged brass corner shoes around small dark iron rollers. One sturdy black iron pull bar under the TOP edge, around1.25m high. No diagonal brace, no books sticking out. Top and side photographic textures will be added separately."
+    },
+    {
+      "id": "archive-d-front",
+      "prompt": "Photoreal photographic asset for an old Japanese book archive. Material reference image establishes aged dark brown wood and subdued old iron fittings; do not copy its room. ONLY the FRONT ELEVATION of one complete piece of furniture, including its two visible front roller feet. Orthographic straight-on product photograph: vertical and horizontal edges parallel, no perspective, no top surface or side surface visible. Genuine RGBA transparent background around and under feet, no floor, no room, no shadow card. No text, numbers, logos or UI. Authentic worn timber and old paper volumes, not a 3D render or illustration. Furniture proportions must be exact enough to texture its real 3D front plane. Diffuse soft warm light, no hard directional shadows. A MEDIUM mobile bookcase,1.80m wide and1.45m high. Three vertical bays and three open shelves filled with faded rust-red and brown bound volumes, no readable spine text. Straight old wooden frame, two short front support feet wrapped by small iron angle brackets with visible right-angle toes, subtly different from the simpler feet of the low cabinet. One dark iron pull handle at the center upper crossbeam around1.3m high. NO diagonal wooden repair. Top surface will be generated separately, no top or side in this orthographic front image."
+    }
+  ],
+  "archiveWheelBatch": [
+    {
+      "id": "archive-a-front-rail",
+      "ref": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-468bf7ab-7c47-4c12-b285-e0ab43e240e2.png",
+      "prompt": "Edit ONLY the two caster wheels at the bottom of this exact front-elevation cabinet photo. Turn each swivel wheel 90 degrees about the vertical swivel axis so this cabinet can roll toward/away from the camera (front-to-back). From this frontal view, show the narrow rounded dark iron WHEEL TREAD EDGE, NOT the circular side face. Keep same caster mounting hardware and same location directly under the posts. Do not change the cabinet, books, grain, handle, proportions, canvas or lighting. Keep real RGBA transparency and the two small complete wheels visible under the feet. No side or top perspective."
+    },
+    {
+      "id": "archive-d-front-rail",
+      "ref": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-f0d12886-7426-4c9b-b1cb-ffd4471f930e.png",
+      "prompt": "Edit ONLY the two feet of this exact front-elevation bookcase: add a small dark iron roller/caster directly under EACH of the two metal-wrapped support feet, so the shelf can slide left-right along floor rails. Two rollers total visible in FRONT view, with circular side faces visible and small axles, attached to the existing metal shoes. Preserve the foot iron angle brackets and the entire unchanged cabinet, book arrangement, grain, handle, lighting and front-on camera. Extend into the transparent margin below as needed; do not crop the new wheels. Real RGBA transparent outside. No additional shadows, no floor, no side perspective."
+    }
+  ],
+  "archiveWallBatch": [
+    {
+      "id": "archive-wall-north",
+      "side": "north",
+      "prompt": "Convert image1 geometry guide into an extremely photoreal straight-on wall elevation texture. Image2 is MATERIAL/ATMOSPHERE reference only: same aged Japanese bookbindery, warm gray-beige plaster, natural cracked lime finish, dark worn timber wainscot, old joinery. Preserve EXACT positions and sizes of window/door, wainscot boundary, outer timber posts from image1. The entire image is one FLAT RECTANGULAR wall plane, edge-to-edge, orthographic camera perpendicular to wall. NO perspective view, NO adjacent walls, NO visible floor or ceiling, NO furniture, NO books, NO labels or diagrams, NO extra openings. Every flat color of the guide must become a convincing detailed photographic material, not a render or illustration. Restrained diffuse lighting with warm ambient fill and cooler nighttime atmosphere; no dramatic light cone. NORTH wall,4.2m wide2.8m high. Keep the one four-pane old wooden window exactly at the guide location (slightly left of center), sill1.35m and top2.35m, glass dark muted blue at night, faint condensation and no recognizable exterior buildings. The rest of the plaster including the large area RIGHT of window is unbroken. No door here. Thick dark timber wainscot up to1.0m. Photographic wood grain and plaster texture must stay sharp across whole wall."
+    },
+    {
+      "id": "archive-wall-east",
+      "side": "east",
+      "prompt": "Convert image1 geometry guide into an extremely photoreal straight-on wall elevation texture. Image2 is MATERIAL/ATMOSPHERE reference only: same aged Japanese bookbindery, warm gray-beige plaster, natural cracked lime finish, dark worn timber wainscot, old joinery. Preserve EXACT positions and sizes of window/door, wainscot boundary, outer timber posts from image1. The entire image is one FLAT RECTANGULAR wall plane, edge-to-edge, orthographic camera perpendicular to wall. NO perspective view, NO adjacent walls, NO visible floor or ceiling, NO furniture, NO books, NO labels or diagrams, NO extra openings. Every flat color of the guide must become a convincing detailed photographic material, not a render or illustration. Restrained diffuse lighting with warm ambient fill and cooler nighttime atmosphere; no dramatic light cone. EAST wall,5.2m wide2.8m high. One CLOSED timber maintenance door exactly in the guide position, right of center. Simple vertical dark wooden planks, aged narrow wooden frame, no symbols, a small round aged brass knob on its RIGHT edge (left hinges). Door goes to ground edge with no visible floor. No windows, no lamps, no other handles. It will open as a separate physical textured leaf so its rectangular area must be straight and precise."
+    },
+    {
+      "id": "archive-wall-south",
+      "side": "south",
+      "prompt": "Convert image1 geometry guide into an extremely photoreal straight-on wall elevation texture. Image2 is MATERIAL/ATMOSPHERE reference only: same aged Japanese bookbindery, warm gray-beige plaster, natural cracked lime finish, dark worn timber wainscot, old joinery. Preserve EXACT positions and sizes of window/door, wainscot boundary, outer timber posts from image1. The entire image is one FLAT RECTANGULAR wall plane, edge-to-edge, orthographic camera perpendicular to wall. NO perspective view, NO adjacent walls, NO visible floor or ceiling, NO furniture, NO books, NO labels or diagrams, NO extra openings. Every flat color of the guide must become a convincing detailed photographic material, not a render or illustration. Restrained diffuse lighting with warm ambient fill and cooler nighttime atmosphere; no dramatic light cone. SOUTH wall,4.2m wide2.8m high. One OPEN doorway exactly in guide position, slightly right of center. Keep the rectangular timber frame and a dark empty opening with no visible room contents, no leaf, no handle; the actual connected room and door leaf will be composited in the runtime. The opening ends at the bottom image edge. All surrounding plaster and wainscot photoreal and otherwise plain. No window, no lamp, no extra doorway."
+    },
+    {
+      "id": "archive-wall-west",
+      "side": "west",
+      "prompt": "Convert image1 geometry guide into an extremely photoreal straight-on wall elevation texture. Image2 is MATERIAL/ATMOSPHERE reference only: same aged Japanese bookbindery, warm gray-beige plaster, natural cracked lime finish, dark worn timber wainscot, old joinery. Preserve EXACT positions and sizes of window/door, wainscot boundary, outer timber posts from image1. The entire image is one FLAT RECTANGULAR wall plane, edge-to-edge, orthographic camera perpendicular to wall. NO perspective view, NO adjacent walls, NO visible floor or ceiling, NO furniture, NO books, NO labels or diagrams, NO extra openings. Every flat color of the guide must become a convincing detailed photographic material, not a render or illustration. Restrained diffuse lighting with warm ambient fill and cooler nighttime atmosphere; no dramatic light cone. WEST wall,5.2m wide2.8m high. One OPEN doorway exactly in guide position left of center, dark empty interior with no leaf or objects; actual neighboring room is composited later. One small aged brass wall lamp exactly at guide location far LEFT of doorway, dim warm light, believable shade and mount, not a flat icon. No windows or other openings. Open doorway ends at bottom image edge. Lamp light falls softly on plaster, no hard spotlight."
+    }
+  ],
+  "archiveSurfaceBatch": [
+    {
+      "id": "archive-a-top",
+      "ref": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-26801ab0-0a6b-48dd-8835-8ae87bd25b91.png",
+      "prompt": "Photoreal isolated furniture surface from the SAME cabinet in the reference. Preserve its exact aged dark brown timber color, grain character, wear, thickness and joinery style. Orthographic perpendicular photograph of the requested surface ONLY, no perspective, no surrounding room, no text. Genuine RGBA transparency outside the complete surface; small transparent margin. Soft neutral diffuse illumination, no cast shadow backdrop. TOP surface seen straight down: a rectangular wooden worktop1.35m wide and0.55m deep, width:depth2.455. Empty, no books, paper, handles or tools. Three long timber planks joined along the width direction, worn but flat. Thin darker rim along edges, no visible vertical side surfaces. Must match the low book cabinet and fit between the slightly projecting front side posts."
+    },
+    {
+      "id": "archive-a-side",
+      "ref": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-26801ab0-0a6b-48dd-8835-8ae87bd25b91.png",
+      "prompt": "Photoreal isolated furniture surface from the SAME cabinet in the reference. Preserve its exact aged dark brown timber color, grain character, wear, thickness and joinery style. Orthographic perpendicular photograph of the requested surface ONLY, no perspective, no surrounding room, no text. Genuine RGBA transparency outside the complete surface; small transparent margin. Soft neutral diffuse illumination, no cast shadow backdrop. RIGHT/EAST SIDE elevation of this low cabinet: depth0.55m across image and height1.02m. Front of cabinet is LEFT edge of this side image, back is RIGHT edge. One plain inset wooden side panel in a thick timber frame, same wood as reference, no books visible and no handles. Two attached small iron swivel casters under front/back feet, circles visible from this SIDE because it rolls front-to-back. The frontmost post, caster height and top must join the right edge of the referenced front photo. No top surface visible."
+    },
+    {
+      "id": "archive-c-top",
+      "ref": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-0d629336-c6eb-49a9-bd2a-edc1fc65eb55.png",
+      "prompt": "Photoreal isolated furniture surface from the SAME cabinet in the reference. Preserve its exact aged dark brown timber color, grain character, wear, thickness and joinery style. Orthographic perpendicular photograph of the requested surface ONLY, no perspective, no surrounding room, no text. Genuine RGBA transparency outside the complete surface; small transparent margin. Soft neutral diffuse illumination, no cast shadow backdrop. TOP surface seen straight down: a rectangular wood top0.81m wide and1.31m deep (portrait, width/depth0.618). Empty surface only, no handles, books or paper. Worn dark wood with a subtle framed rim, consistent with the deep flat-file chest. No side thickness visible."
+    },
+    {
+      "id": "archive-c-side",
+      "ref": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-0d629336-c6eb-49a9-bd2a-edc1fc65eb55.png",
+      "prompt": "Photoreal isolated furniture surface from the SAME cabinet in the reference. Preserve its exact aged dark brown timber color, grain character, wear, thickness and joinery style. Orthographic perpendicular photograph of the requested surface ONLY, no perspective, no surrounding room, no text. Genuine RGBA transparency outside the complete surface; small transparent margin. Soft neutral diffuse illumination, no cast shadow backdrop. RIGHT/EAST SIDE elevation of the flat-file chest: depth1.31m across image and height1.30m. Front of chest is LEFT edge, back is RIGHT edge. Plain dark wooden side panel with two horizontal reinforcing rails, no drawers or handles on this side. The front edge joins the reference drawer face. Aged brass L-shaped shoes at both lower feet like the front. Small iron caster wheels are seen EDGE-ON as narrow dark rounded treads here because this chest rolls laterally left-right relative to its front. Preserve real alpha under and around feet. No top or front face visible."
+    },
+    {
+      "id": "archive-d-top",
+      "ref": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-c96e821e-706f-4fb7-8895-036db2cc7d57.png",
+      "prompt": "Photoreal isolated furniture surface from the SAME cabinet in the reference. Preserve its exact aged dark brown timber color, grain character, wear, thickness and joinery style. Orthographic perpendicular photograph of the requested surface ONLY, no perspective, no surrounding room, no text. Genuine RGBA transparency outside the complete surface; small transparent margin. Soft neutral diffuse illumination, no cast shadow backdrop. TOP surface seen straight down: rectangular wooden top1.80m wide and0.60m deep, exactly3:1. Empty, no books or other objects. Same old dark wood as medium bookcase, two or three widthwise planks with subtle joints, straight rectangular boundary, no vertical thickness visible."
+    }
+  ],
+  "archiveSurfaceFixBatch": [
+    {
+      "id": "archive-a-side-alpha",
+      "ref": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-5d7e4116-c1ee-49d0-866a-aa55339c1c50.png",
+      "prompt": "Remove ONLY the entire brown gradient backdrop and make every pixel outside the cabinet, including the open gap under its bottom rail and around both wheels, genuinely RGBA TRANSPARENT (alpha0). Preserve the cabinet photograph exactly: panel, posts, grain, two circular caster wheels, proportions, highlights, crop. No black opaque background, no shadow card, no halo. This is a cutout photographic side surface."
+    },
+    {
+      "id": "archive-c-side-square",
+      "ref": "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-4a63af7f-3d42-4046-a58e-1bef4c34fb24.png",
+      "prompt": "This is the correct side construction and material but it is too narrow. Make a photographic SIDE elevation of the same deep map chest whose side is SQUARE: physical depth1.31m from left(front) to right(back), height1.30m top to wheel bottom. Widen ONLY the central wooden panel and horizontal reinforcing rails to create the longer side. Keep the two vertical corner posts at their existing physical thickness (not stretched), same brass L feet and narrow edge-on caster treads, same height and material. Reposition the back/right post farther right. Add natural wood grain/planks to fill the wider center; do NOT stretch the grain, nails, shoes or wheels. Resulting full object silhouette approximately1:1 width:height. Orthographic photograph, front is left edge and back right edge, no top/front perspective. Actual RGBA transparent outside and under the furniture, no backdrop."
+    }
+  ],
+  "archiveFloorBatch": [
+    {
+      "id": "archive-floor",
+      "prompt": "Photoreal architectural texture of the ENTIRE timber floor of an old Japanese book archive, 4.2m wide by5.2m long. EXACTLY top-down orthographic view, rectangular portrait image covering only the floor, edge to edge. About28 narrow aged dark brown floorboards across width, running vertically for the long north-south direction, with staggered end joints and natural fine scratches. Same worn timber color/material as reference room floor. No perspective, no wall, no objects, no furniture, no footprints, no rails, no symbols, no vignette. Flat diffuse lighting, restrained warm ambient tone with subtly cooler northern/top portion, no hard sunlight shapes. Real photographic grain and joinery, not a generated repeating pattern or illustration."
+    },
+    {
+      "id": "archive-ceiling",
+      "prompt": "Photoreal architectural texture of the ENTIRE timber ceiling of an old Japanese book archive, 4.2m wide by5.2m long. EXACTLY orthographic view looking straight UP at it, rectangular portrait image showing ceiling only edge to edge. Dark old timber ceiling planks with about8 thick transverse joists running horizontally across the width, evenly but naturally spaced along the long direction. Same aged Japanese timber atmosphere as reference. No perspective, no walls, no furniture, no lamp, no wires, no vents, no labels. Dim soft ambient illumination retaining real wood grain and joins, no spotlight. Actual photographic material, not flat diagram or CGI."
+    }
+  ],
+  "archiveTallBPrompt": "Edit this exact long mobile bookcase into the final TALL version: same width3.10m, increased overall height2.25m instead of1.90m. Add ONE NEW shelf row ABOVE the existing four rows, filled with naturally varied old paper volumes (not duplicated exact copies). Preserve the original four rows below, the left diagonal repair brace, central vertical iron handle, post spacing, foot rollers, timber color and grain. Extend the outer vertical posts upward to support the new fifth row. Do NOT stretch the existing books vertically or change their sizes; the extra height comes from the new row. Five rows total, same four bays. Straight-on orthographic FRONT ELEVATION only, no top or side. Real RGBA transparency around and beneath the complete cabinet. Keep full top and both wheels inside canvas. Photographic material, no labels. This taller case must completely hide a2.08m-high doorway behind it.",
+  "archiveCBackPrompt": "Edit only the FIVE small cup-shaped drawer pulls in this exact front-elevation photo: remove all five cup pulls and their screw marks, replacing them with matching continuous worn timber. Keep the SINGLE LONG iron pulling bar at the very top exactly unchanged. Keep all wood divisions and grain, posts, dimensions, brass corner shoes, two edge/side castors, lighting and alpha silhouette unchanged. The visible face should read as the plank BACK of a deep mobile storage rack, with one top bar for moving the whole rack, not five separate inviting drawer handles. Do not add a lock, hinges, labels, decorative symbols or new hardware. Real RGBA transparency outside, no backdrop.",
+  "archiveExtraBatch": [
+    {
+      "id": "archive-b-back",
+      "prompt": "Photoreal isolated BACK elevation of the SAME tall mobile bookcase in image1. Overall width3.10m and height2.30m. Strictly straight-on orthographic, full back and two rear caster wheels visible, no top or side. Solid worn dark timber backboards in thick matching frame, three horizontal reinforcing battens, subtle bolted joints. NO visible books, NO handle, NO diagonal brace on this back (the repair is on the front face). Match exact wood tone, post thickness, wheel size, proportions and age of referenced five-row shelf. Genuine RGBA transparency around silhouette and below bottom rail, no backdrop or floor. The inside of this back is SOLID, not transparent."
+    },
+    {
+      "id": "archive-b-side",
+      "prompt": "Photoreal isolated SOUTH END/SIDE elevation of the SAME tall mobile bookcase in image1. Very NARROW end: physical depth0.55m across image by height2.30m (width/height0.239). Front of bookcase at LEFT edge of this end view, rear at RIGHT. Thick dark wood posts, solid narrow timber end panel with three reinforcing crossrails. Same wood and joinery as reference. Two small caster wheels seen EDGE-ON as narrow rounded treads under the front/rear feet, because the bookcase rolls north-south. No books, handle, diagonal brace, top or front face visible. Orthographic front-on view of this side only. Entire narrow object on genuine RGBA transparency, no background."
+    },
+    {
+      "id": "archive-rail",
+      "prompt": "A photoreal isolated old recessed FLOOR GUIDE RAIL viewed exactly from overhead, for moving heavy wooden bookcases in an old Japanese printing workshop. One straight long narrow iron strip,1.8m long and0.05m wide (36:1), with a shallow longitudinal groove and a few naturally worn countersunk screw heads, dark oxidized iron with rubbed silver edges. Small low iron stop block at each end, no labels or scale. Runs horizontally across image, full rail visible including both ends. No perspective, no floorboards, no shadow card, genuine RGBA transparent around the entire rail. Detailed photographic metal surface, not line art, not a toy railway track, not two parallel train rails."
+    }
+  ],
+  "archiveWestWallBatch": [
+    {
+      "id": "archive-west-blank",
+      "prompt": "Use case: precise-object-edit. Reference is the wall of the same abandoned Japanese bookbinding workshop. Make a flat perfectly frontal orthographic photographic wall texture, full wall edge to edge, NO floor/ceiling perspective. Keep the same weathered beige plaster, dark timber frame and dark vertical wooden lower wainscot, same ambient dim warm light, realistic grain. REMOVE the entire window and restore continuous aged plaster there. No furniture, doors, writing, symbols or props. Wall width 4.2m and height2.8m; wainscot top exactly39.3% from bottom. The result must look like an actual old photographed wall, not a game illustration. Landscape3:2.",
+      "referenced_image_paths": [
+        "C:\\Users\\kawau\\Documents\\MY DEVELOPMENT TEMP\\脱出ゲーム\\4_YOTSUZURI\\remake\\masters\\scenes\\archive-east\\wall-north.png"
+      ]
+    },
+    {
+      "id": "archive-west-window",
+      "prompt": "Use case: precise-object-edit. Same abandoned Japanese bookbinding workshop wall material and the EXACT same four-pane dark blue window design from reference. Render another perfectly frontal orthographic photographic wall texture, NO perspective, no floor/ceiling. Wall dimensions5.2m wide and2.8m tall, wide landscape aspect13:7. The window outer frame spans x56.25% to78.125% of full image width and y14.64% to53.21% of full image height. Keep every other area plain aged beige plaster with dark vertical wooden wainscot occupying bottom39.3% of height. Dark timber outer frame same as reference. No extra windows/doors/lamps/furniture/writing. Photoreal natural worn timber and plaster. Window only on right half; precise position matters for a room plan.",
+      "referenced_image_paths": [
+        "C:\\Users\\kawau\\Documents\\MY DEVELOPMENT TEMP\\脱出ゲーム\\4_YOTSUZURI\\remake\\masters\\scenes\\archive-east\\wall-north.png"
+      ]
+    }
+  ],
+  "archiveTraceBatch": [
+    {
+      "id": "archive-floor-traces-6",
+      "prompt": "Use case: precise-object-edit / sketch-to-render. Image1 is the EXISTING TOP-DOWN FLOOR PHOTOGRAPH to preserve: entire 4.2m by5.2m aged dark Japanese workshop wooden plank floor, north at top, straight orthographic view, no wall. Image2 is a precise LOCATION GUIDE only, NOT the final style. Preserve image1 planks and camera; in exactly the two guide rectangles create the subtle but clearly visible natural witness marks left after heavy bookshelves stood there for decades and were moved: slightly lighter less worn wooden grain inside footprint, irregular dusty edge and four small flattened dark oval iron caster wear dents at guide dots. These are wear patterns ON THE SAME FLOOR, no platforms, plaques, painted rectangles or added panels. Keep actual wood grain continuous through boundaries. Outside these two footprints do not add any other rectangular scars. Do not depict any furniture, rails, tools, text, diagrams or symbols. Real photographed aged floor, gentle warm ambient illumination. Portrait aspect21:26. Precisely match position and size of the guide's two rectangles.",
+      "referenced_image_paths": [
+        "C:\\Users\\kawau\\Documents\\MY DEVELOPMENT TEMP\\脱出ゲーム\\4_YOTSUZURI\\remake\\masters\\scenes\\archive-east\\floor.png",
+        "C:\\Users\\kawau\\dev\\Game\\YOTSUZURI\\docs\\remake\\archive-guides\\floor-traces-6.png"
+      ]
+    },
+    {
+      "id": "archive-floor-traces-7",
+      "prompt": "Use case: precise-object-edit / sketch-to-render. Image1 is the EXISTING TOP-DOWN FLOOR PHOTOGRAPH to preserve: entire 4.2m by5.2m aged dark Japanese workshop wooden plank floor, north at top, straight orthographic view, no wall. Image2 is a precise LOCATION GUIDE only, NOT the final style. Preserve image1 planks and camera; in exactly the two guide rectangles create the subtle but clearly visible natural witness marks left after heavy bookshelves stood there for decades and were moved: slightly lighter less worn wooden grain inside footprint, irregular dusty edge and four small flattened dark oval iron caster wear dents at guide dots. These are wear patterns ON THE SAME FLOOR, no platforms, plaques, painted rectangles or added panels. Keep actual wood grain continuous through boundaries. Outside these two footprints do not add any other rectangular scars. Do not depict any furniture, rails, tools, text, diagrams or symbols. Real photographed aged floor, gentle warm ambient illumination. Portrait aspect21:26. Precisely match position and size of the guide's two rectangles.",
+      "referenced_image_paths": [
+        "C:\\Users\\kawau\\Documents\\MY DEVELOPMENT TEMP\\脱出ゲーム\\4_YOTSUZURI\\remake\\masters\\scenes\\archive-east\\floor.png",
+        "C:\\Users\\kawau\\dev\\Game\\YOTSUZURI\\docs\\remake\\archive-guides\\floor-traces-7.png"
+      ]
+    }
+  ]
+}

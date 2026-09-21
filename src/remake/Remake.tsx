@@ -1,3 +1,4 @@
+import {ArchiveRoom,ArchiveEntrance,type ArchiveDetail} from './ArchiveRoom';
 import {TrimBench} from './TrimBench';
 import {TrimAssembly,TrimInspection,HeldOldPlan} from './TrimPaper';
 import {KeeperDoor} from './KeeperDoor';
@@ -41,6 +42,7 @@ const image=(name:string,group='scenes/reception')=>import.meta.env.BASE_URL+'re
 type Area={name:string;rect:[number,number,number,number];action:()=>void;shape?:string;priority?:number};
 function load(){try{return readSave(localStorage.getItem(SAVE))??readSave(localStorage.getItem(RECEPTION_SAVE))??initial()}catch{return initial()}}
 export default function Remake(){
+const [archiveDetail,setArchiveDetail]=useState<ArchiveDetail>(null);
 const [trimSelected,setTrimSelected]=useState<number|null>(null);
 const [trimInspect,setTrimInspect]=useState<number|null>(null);
 const [keeperZoom,setKeeperZoom]=useState(false);
@@ -53,13 +55,15 @@ const photo=usePhoto(sceneFiles(worldState));const visibleWorld=useRef(worldStat
 useOverlayFocus(Boolean(panel||inspect||boundary||trimInspect!==null));
 const world=useRef(worldState),timer=useRef<ReturnType<typeof setTimeout>|null>(null);world.current=worldState;
 const say=(text:string)=>{setToast(text);if(timer.current)clearTimeout(timer.current);timer.current=setTimeout(()=>setToast(''),2400)};
-const act=(a:Action)=>{if(a.type==='back'&&world.current.focus==='object:15'&&keeperZoom){setKeeperZoom(false);return;}if(a.type==='back'&&world.current.focus==='object:9'&&sealView!=='all'){setSealView('all');return;}if(a.type==='back'&&world.current.focus==='object:13'&&threadZoom){setThreadZoom(false);return;}if(a.type==='back'&&world.current.focus==='object:12'&&pressView!=='all'){setPressView('all');return;}const before=world.current;const r=apply(before,a);world.current=r.world;setG(r.world);if(r.message)say(r.message);else if(r.world!==before){if(timer.current)clearTimeout(timer.current);setToast('');}};
+const act=(a:Action)=>{if(a.type==='back'&&archiveDetail){setArchiveDetail(null);return;}if(a.type==='back'&&world.current.focus==='object:15'&&keeperZoom){setKeeperZoom(false);return;}if(a.type==='back'&&world.current.focus==='object:9'&&sealView!=='all'){setSealView('all');return;}if(a.type==='back'&&world.current.focus==='object:13'&&threadZoom){setThreadZoom(false);return;}if(a.type==='back'&&world.current.focus==='object:12'&&pressView!=='all'){setPressView('all');return;}const before=world.current;const r=apply(before,a);world.current=r.world;setG(r.world);if(r.message)say(r.message);else if(r.world!==before){if(timer.current)clearTimeout(timer.current);setToast('');}};
 useEffect(()=>{try{localStorage.setItem(SAVE,JSON.stringify(worldState));setSaveFailed(false)}catch{setSaveFailed(true)}},[worldState]);
-useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){if(panel)setPanel(null);else if(trimInspect!==null)closeTrimInspection();else if(inspect)setInspect(null);else if(boundary)setBoundary(false);else act({type:'back'})}else if(photo.ready&&!panel&&!inspect&&!boundary&&trimInspect===null&&e.target instanceof HTMLElement&&!['INPUT','BUTTON'].includes(e.target.tagName)){if(e.key==='ArrowLeft')act({type:'turn',delta:-1});if(e.key==='ArrowRight')act({type:'turn',delta:1});if(e.key==='ArrowDown')act({type:'back'});}};addEventListener('keydown',key);return()=>removeEventListener('keydown',key)},[panel,inspect,boundary,photo.ready,pressView,threadZoom,sealView,keeperZoom,trimInspect]);
+useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){if(panel)setPanel(null);else if(trimInspect!==null)closeTrimInspection();else if(inspect)setInspect(null);else if(boundary)setBoundary(false);else act({type:'back'})}else if(photo.ready&&!panel&&!inspect&&!boundary&&trimInspect===null&&e.target instanceof HTMLElement&&!['INPUT','BUTTON'].includes(e.target.tagName)){if(e.key==='ArrowLeft')act({type:'turn',delta:-1});if(e.key==='ArrowRight')act({type:'turn',delta:1});if(e.key==='ArrowDown')act({type:'back'});}};addEventListener('keydown',key);return()=>removeEventListener('keydown',key)},[panel,inspect,boundary,photo.ready,pressView,threadZoom,sealView,keeperZoom,trimInspect,archiveDetail]);
 useEffect(()=>()=>{if(timer.current)clearTimeout(timer.current)},[]);
 useEffect(()=>{for(const facing of [0,1,2,3] as const)for(const url of sceneFiles({...initial(),facing})){const preview=new Image();preview.src=url}},[]);
-const focus=(f:Focus)=>{setTrimSelected(null);setTrimInspect(null);setKeeperZoom(false);setSealView('all');setThreadZoom(false);setPressView('all');act({type:'focus',focus:f});};const areas:Area[]=[];
-if(g.room===1){
+const focus=(f:Focus)=>{setArchiveDetail(null);setTrimSelected(null);setTrimInspect(null);setKeeperZoom(false);setSealView('all');setThreadZoom(false);setPressView('all');act({type:'focus',focus:f});};const areas:Area[]=[];
+if(g.room===6||g.room===7){
+// Archive targets belong to the shared physical scene.
+}else if(g.room===1){
 
 if(g.focus==='room'){
 if(g.facing===3)areas.push({name:'受渡口へ戻る',rect:[38,16,24,64],action:()=>act({type:'go',room:0})});
@@ -79,7 +83,7 @@ if(id===3)areas.push({name:'三枚の札を近くで見る',rect:[25,16,48,10],a
 }
 }else if(g.room===3){
 if(g.focus==='room'){
-if(g.facing===0)areas.push({name:g.opened.includes(15)?'書庫への戸口':'保守戸の留めを調べる',rect:[40.5,15,18.5,62],action:()=>g.opened.includes(15)?setBoundary(true):focus('object:15')});
+if(g.facing===0)areas.push({name:g.opened.includes(15)?'書庫への戸口':'保守戸の留めを調べる',rect:[40.5,15,18.5,62],action:()=>g.opened.includes(15)?act({type:'go',room:6}):focus('object:15')});
 if(g.facing===2)areas.push({name:'校正室へ戻る',rect:[14,16,19,61],action:()=>act({type:'go',room:2})});
 if(g.facing===1)areas.push({name:'印刷室への戸口',rect:[20,18,28,59],action:()=>act({type:'go',room:4})},{name:'天秤の台を調べる',rect:[60,26,28,55],action:()=>focus('object:8')});
 if(g.facing===3)areas.push({name:'製本室への戸口',rect:[73,17,15,59],action:()=>act({type:'go',room:5})},{name:'原版の引出しを調べる',rect:[4.5,38,25,22],action:()=>focus('object:10')});
@@ -139,6 +143,8 @@ return <main className={'remake '+(g.reducedMotion?'still ':'')+(g.outlines?'out
 {g.boxOpen&&g.room===0&&g.focus==='room'&&g.facing===0?<>{g.keyTaken?<PhotoPatch src={image('north-empty')} rect={[18,49,3.5,3]}/>:null}{g.cardTaken?<PhotoPatch src={image('north-empty')} rect={[22,48.8,4.5,3.3]}/>:null}</>:null}
 {g.room===0&&g.focus==='room'&&g.facing===0?<PhotoPatch src={image('north-notice')} rect={[55.5,20,6,14]}/>:null}
 <WorkshopPortals g={g} act={act}/>
+{g.room===3&&g.facing===0&&g.focus==='room'&&g.opened.includes(15)?<ArchiveEntrance g={g}/>:null}
+{g.room===6||g.room===7?<ArchiveRoom g={g} act={act} enabled={photo.ready} detail={archiveDetail} onDetail={setArchiveDetail} onBoundary={()=>setBoundary(true)}/>:null}
 {g.room===5&&g.facing===2&&(g.focus==='room'||g.focus==='object:14')?<TrimBench g={g} act={act} wide={g.focus==='room'} enabled={photo.ready} onInspect={setTrimInspect} selectedPaper={trimSelected} onSelectPaper={setTrimSelected}/>:null}
 {g.room===3&&g.facing===0&&(g.focus==='room'||g.focus==='object:15')?<KeeperDoor g={g} act={act} wide={g.focus==='room'} enabled={photo.ready} zoom={keeperZoom} onZoom={setKeeperZoom}/>:null}
 {g.room===5&&g.facing===3&&(g.focus==='room'||g.focus==='object:9')?<SealCases g={g} act={act} wide={g.focus==='room'} enabled={photo.ready} view={sealView} onView={setSealView}/>:null}
@@ -170,7 +176,7 @@ return <main className={'remake '+(g.reducedMotion?'still ':'')+(g.outlines?'out
 {g.focus==='object:12'?<PressScene g={g} act={act} view={pressView} onView={setPressView} enabled={photo.ready} showBack={false}/>:null}
 {g.room===3&&g.facing===1&&(g.focus==='room'||g.focus==='object:8')?<Balance g={g} act={act} wide={g.focus==='room'} enabled={photo.ready}/>:null}
 {areas.map(a=><button disabled={!photo.ready} key={a.name} aria-label={a.name} className={'r-target '+(g.outlines?'marked':'')} style={{left:a.rect[0]+'%',top:a.rect[1]+'%',width:a.rect[2]+'%',height:a.rect[3]+'%',clipPath:a.shape,zIndex:a.priority??2}} onClick={a.action}/>)}
-{g.focus==='room'?<><button disabled={!photo.ready} className="r-nav r-left" aria-label="左を向く" onClick={()=>act({type:'turn',delta:-1})}><Icon name="left"/></button><button disabled={!photo.ready} className="r-nav r-right" aria-label="右を向く" onClick={()=>act({type:'turn',delta:1})}><Icon name="right"/></button></>:<button disabled={!photo.ready} className="r-nav r-back" aria-label="元の視点へ戻る" onClick={()=>act({type:'back'})}><Icon name="back"/></button>}
+{g.focus==='room'&&!archiveDetail?<><button disabled={!photo.ready} className="r-nav r-left" aria-label="左を向く" onClick={()=>act({type:'turn',delta:-1})}><Icon name="left"/></button><button disabled={!photo.ready} className="r-nav r-right" aria-label="右を向く" onClick={()=>act({type:'turn',delta:1})}><Icon name="right"/></button></>:<button disabled={!photo.ready} className="r-nav r-back" aria-label="元の視点へ戻る" onClick={()=>act({type:'back'})}><Icon name="back"/></button>}
 {photo.failed?<button className="r-image-retry" onClick={photo.retry}>画像を再読み込み</button>:null}<div className="r-tools"><button aria-label="調べられる物を表示" aria-pressed={g.outlines} onClick={()=>act({type:'settings',key:'outlines',value:!g.outlines})}><Icon name="eye"/></button><button aria-label="ヒント" onClick={()=>{setPanel('help');setHint(0)}}><Icon name="help"/></button><button aria-label="設定" onClick={()=>{setResetConfirm(false);setPanel('settings')}}><Icon name="settings"/></button></div>
 <div className={'r-message '+(toast?'visible':'')} role="status">{toast}</div></div>
 <footer className="r-inventory" aria-label="持ち物"><Icon name="bag"/>{g.inventory.map(n=><div className="r-item" key={n}><button aria-label={itemNames[n]+'を選ぶ'} aria-pressed={g.selected===n} className={g.selected===n?'selected':''} onClick={()=>act({type:'select',item:n})}>{n==='oldplan'?<TrimAssembly values={g.itemValues.oldplan}/>:n==='threadchart'?<ThreadChart/>:n==='proof'?<div className='r-held-print'><PrintedSheet layers={decodePrint(g.itemValues.proof)}/></div>:n==='plates'?<HeldPlates g={g}/>:n==='keyparts'?<KeyParts values={g.itemValues.keyparts}/>:<img src={image(n==='register'?'paper-strip':n,'items')} alt=""/>}</button><button className="r-inspect-button" aria-label={itemNames[n]+'を観察する'} onClick={()=>setInspect(n)}><Icon name="inspect"/></button></div>)}{saveFailed?<span>保存できません</span>:null}</footer>

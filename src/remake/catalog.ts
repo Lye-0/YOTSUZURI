@@ -22,7 +22,7 @@ export const portals:Portal[]=[
 {from:3,facing:3,to:5,rect:[73,17,15,59]}, {from:5,facing:1,to:3,rect:[31.6,18,25.6,58.3]},
 {from:3,facing:0,to:6,gate:'archive',rect:[38,15,24,65]}, {from:6,facing:2,to:3,rect:[38,15,24,65]},
 {from:6,facing:3,to:7,rect:[38,15,24,65]}, {from:7,facing:1,to:6,rect:[38,15,24,65]},
-{from:6,facing:1,to:8,gate:'shelves',rect:[38,15,24,65]}, {from:8,facing:3,to:6,rect:[38,15,24,65]},
+{from:6,facing:1,to:8,gate:'shelves',rect:[38,15,24,65]}, {from:8,facing:3,to:6,gate:'shelves',rect:[38,15,24,65]},
 {from:8,facing:0,to:9,gate:'secret',rect:[38,15,24,65]}, {from:9,facing:2,to:8,rect:[38,15,24,65]},
 ];
 export const itemNames={key:'真鍮の鍵',card:'丸印の札','card-diamond':'菱形の札','card-moon':'三日月の札',cards:'二枚の返却札',receipts:'三枚の複写控え',folios:'両面の校正紙',knife:'紙ナイフ',lens:'拡大鏡',register:'紙の位置決め片',weights:'刷り機の押さえ',corner:'金属の角当て',threadchart:'綴じ糸の見本',plates:'原版',pin:'紙止めのピン',proof:'試し刷りの紙',needle:'綴じ針',thread:'綴じ糸',oldplan:'旧書庫の見取り図',gatherings:'原本の束',tissue:'薄い保護紙',blanks:'白紙の束',wedge:'斜面の木片',cradle:'小口の支持具',frame:'綴じ枠',returnrecord:'返却の記録',keyparts:'六枚歯の保守鍵',clamp:'束の締め具'} as const;

@@ -539,5 +539,135 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       1066,
       1062
     ]
+  },
+  "parts/archive/a-front": {
+    "width": 1358,
+    "height": 1158,
+    "bounds": [
+      41,
+      127,
+      1278,
+      972
+    ]
+  },
+  "parts/archive/c-front": {
+    "width": 1086,
+    "height": 1448,
+    "bounds": [
+      98,
+      27,
+      890,
+      1392
+    ]
+  },
+  "parts/archive/d-front": {
+    "width": 1398,
+    "height": 1125,
+    "bounds": [
+      43,
+      64,
+      1312,
+      1024
+    ]
+  },
+  "parts/archive/a-top": {
+    "width": 1964,
+    "height": 801,
+    "bounds": [
+      40,
+      61,
+      1886,
+      675
+    ]
+  },
+  "parts/archive/c-top": {
+    "width": 984,
+    "height": 1599,
+    "bounds": [
+      47,
+      49,
+      891,
+      1501
+    ]
+  },
+  "parts/archive/d-top": {
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      53,
+      67,
+      2067,
+      592
+    ]
+  },
+  "parts/archive/a-side": {
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      126,
+      37,
+      774,
+      1446
+    ]
+  },
+  "parts/archive/c-side": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      48,
+      41,
+      1158,
+      1172
+    ]
+  },
+  "parts/archive/b-front": {
+    "width": 1472,
+    "height": 1068,
+    "bounds": [
+      22,
+      9,
+      1429,
+      1030
+    ]
+  },
+  "parts/archive/c-rear": {
+    "width": 1086,
+    "height": 1448,
+    "bounds": [
+      95,
+      24,
+      896,
+      1396
+    ]
+  },
+  "parts/archive/b-back": {
+    "width": 1456,
+    "height": 1080,
+    "bounds": [
+      20,
+      11,
+      1413,
+      1041
+    ]
+  },
+  "parts/archive/b-side": {
+    "width": 939,
+    "height": 1675,
+    "bounds": [
+      285,
+      10,
+      371,
+      1650
+    ]
+  },
+  "parts/archive/rail": {
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      23,
+      295,
+      2126,
+      110
+    ]
   }
 };

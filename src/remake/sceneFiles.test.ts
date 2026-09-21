@@ -8,6 +8,10 @@ import {threadOrder} from './threading';
 import {validKeeper} from './keeper';
 import {initialTrim} from './trimming';
 describe('写真フレームの依存',()=>{
+it('書庫の四方向・戸口の遠景・途中移動が同じ写真資産を先読みする',()=>{
+ const states:World[]=[{...initial(),room:3,facing:0,opened:[15]}];for(const room of [6,7])for(const facing of [0,1,2,3] as const)states.push({...initial(),room,facing,values:{16:[3,1,0,2]},flags:{'archive:door':true}});
+ for(const g of states){const files=sceneFiles(g);expect(files).toContain('/remake/parts/archive/b-back.webp');expect(files).toContain('/remake/scenes/archive-west/floor-traces.webp');for(const path of files)expect(existsSync(resolve('public',path.replace(/^\//,''))),path).toBe(true);}
+});
 it('序盤の開閉と部分取得に必要な全写真が存在する',()=>{
 const foci:Record<number,Focus[]>={0:['room','box','book','lock','notice','front','passage','object:1'],1:['room','office-tickets','object:2','object:3','object:26'],2:['room','object:4','object:5','object:6','object:7'],3:['room','object:8','object:10'],4:['room','object:11','object:12','press-samples'],5:['room','object:13']};
 for(const room of [0,1,2,3,4,5])for(const facing of [0,1,2,3] as const)for(const focus of foci[room])for(const opened of [[],[1,2,3,4,7,8,11,26]])for(const collected of [[],['receipts','folios','knife','card-diamond','weights'] as const]){
@@ -17,7 +21,7 @@ for(const path of sceneFiles(g))expect(existsSync(resolve('public',path.replace(
 });
 it('写真部品に透過と切り出し情報があり、途中の原版収納も描ける',()=>{
 const manifest=JSON.parse(readFileSync('docs/remake/manifest.json','utf8')) as {group:string;id:string;alpha:boolean}[];
-for(const asset of manifest.filter(a=>a.group==='parts')){expect(asset.alpha,asset.id).toBe(true);expect(photoBounds[`parts/${asset.id}`],asset.id).toBeDefined();}
+for(const asset of manifest.filter(a=>a.group==='parts'||a.group.startsWith('parts/'))){expect(asset.alpha,asset.id).toBe(true);expect(photoBounds[`${asset.group}/${asset.id}`],asset.id).toBeDefined();}
 for(let i=0;i<4;i++)for(const path of sceneFiles({...initial(),room:3,facing:3,focus:'object:10',flags:{[`drawer:10:${i}`]:true},inventory:['plates'],itemValues:{plates:[i]}}))expect(existsSync(resolve('public',path.replace(/^\//,''))),path).toBe(true);
 });
 it('綴じ見本の表裏・全ての途中段階・部分回収の写真が存在する',()=>{

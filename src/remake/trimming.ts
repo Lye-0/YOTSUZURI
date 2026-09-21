@@ -1,11 +1,11 @@
 import type {World} from './campaign';
 /** These are ink crossings at the cut edge, shared by the renderer and fit test. */
 export const trimSeams=[
- {front:[90,188,250,310,410],back:[132,245,371]},
- {front:[90,202,250,310,410],back:[132,227,371]},
- {front:[90,188,250,310,410],back:[132,227,371]},
+ {front:[90,188,238,310,410],back:[132,245,371]},
+ {front:[90,202,238,310,410],back:[132,227,371]},
+ {front:[90,188,238,310,410],back:[132,227,371]},
 ];
-export const originalSeam={front:[90,188,250,310,410],back:[132,227,371]};
+export const originalSeam={front:[90,188,238,310,410],back:[132,227,371]};
 export const initialTrim=()=>[-1,1,0,1,0,0,0,0];
 export const trimValues=(g:World)=>g.values[14]??initialTrim();
 export function validTrim(v:unknown):v is number[]{return Array.isArray(v)&&v.length===8&&Number.isInteger(v[0])&&v[0]>=-1&&v[0]<=2&&v.slice(1).every(n=>n===0||n===1);}
