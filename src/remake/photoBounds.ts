@@ -1129,5 +1129,75 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       1846,
       427
     ]
+  },
+  "parts/study/study-leaf-plain": {
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      52,
+      41,
+      923,
+      1449
+    ]
+  },
+  "parts/study/study-leaf-deckled": {
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      53,
+      44,
+      939,
+      1447
+    ]
+  },
+  "parts/study/study-leaf-foxed": {
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      63,
+      61,
+      899,
+      1422
+    ]
+  },
+  "parts/study/blank-fold-top": {
+    "width": 1086,
+    "height": 1448,
+    "bounds": [
+      84,
+      74,
+      923,
+      1303
+    ]
+  },
+  "parts/study/study-linen-mat": {
+    "width": 2053,
+    "height": 766,
+    "bounds": [
+      24,
+      238,
+      2007,
+      279
+    ]
+  },
+  "parts/study/study-stub-cut": {
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      164,
+      44,
+      135,
+      1445
+    ]
+  },
+  "parts/study/study-stub-torn": {
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      339,
+      33,
+      258,
+      1473
+    ]
   }
 };

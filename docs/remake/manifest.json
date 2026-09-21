@@ -3206,5 +3206,124 @@
       1846,
       427
     ]
+  },
+  {
+    "id": "study-leaf-plain",
+    "group": "parts/study",
+    "path": "remake/parts/study/study-leaf-plain.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "bytes": 400934,
+    "source": "exec-3412143a-a106-4e0d-80af-b61c4e3688cd.png",
+    "master": "parts/study/study-leaf-plain.png",
+    "bounds": [
+      52,
+      41,
+      923,
+      1449
+    ]
+  },
+  {
+    "id": "study-leaf-deckled",
+    "group": "parts/study",
+    "path": "remake/parts/study/study-leaf-deckled.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "bytes": 427884,
+    "source": "exec-817fdd92-ab24-4226-9587-58e3b02456d3.png",
+    "master": "parts/study/study-leaf-deckled.png",
+    "bounds": [
+      53,
+      44,
+      939,
+      1447
+    ]
+  },
+  {
+    "id": "study-leaf-foxed",
+    "group": "parts/study",
+    "path": "remake/parts/study/study-leaf-foxed.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "bytes": 302668,
+    "source": "exec-138f8eea-d322-4499-b8a2-a522d45f0d55.png",
+    "master": "parts/study/study-leaf-foxed.png",
+    "bounds": [
+      63,
+      61,
+      899,
+      1422
+    ]
+  },
+  {
+    "id": "blank-fold-top",
+    "group": "parts/study",
+    "path": "remake/parts/study/blank-fold-top.webp",
+    "width": 1086,
+    "height": 1448,
+    "alpha": true,
+    "bytes": 321240,
+    "source": "exec-1ae663f5-bb3a-4bf0-ba95-79efcbc7de91.png",
+    "master": "parts/study/blank-fold-top.png",
+    "bounds": [
+      84,
+      74,
+      923,
+      1303
+    ]
+  },
+  {
+    "id": "study-linen-mat",
+    "group": "parts/study",
+    "path": "remake/parts/study/study-linen-mat.webp",
+    "width": 2053,
+    "height": 766,
+    "alpha": true,
+    "bytes": 262774,
+    "source": "exec-9068af76-92b4-4be5-942a-9a490dcffdde.png",
+    "master": "parts/study/study-linen-mat.png",
+    "bounds": [
+      24,
+      238,
+      2007,
+      279
+    ]
+  },
+  {
+    "id": "study-stub-cut",
+    "group": "parts/study",
+    "path": "remake/parts/study/study-stub-cut.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "bytes": 68738,
+    "source": "exec-28f64ecd-d08a-42f3-a3cb-0d57d87f5959.png",
+    "master": "parts/study/study-stub-cut.png",
+    "bounds": [
+      164,
+      44,
+      135,
+      1445
+    ]
+  },
+  {
+    "id": "study-stub-torn",
+    "group": "parts/study",
+    "path": "remake/parts/study/study-stub-torn.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "bytes": 133286,
+    "source": "exec-0fe4064c-77ef-44f8-a807-1db7ef0020ae.png",
+    "master": "parts/study/study-stub-torn.png",
+    "bounds": [
+      339,
+      33,
+      258,
+      1473
+    ]
   }
 ]

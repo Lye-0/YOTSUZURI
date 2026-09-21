@@ -1,3 +1,4 @@
+import {studyFiles} from './studyAssets';
 import {repairFiles} from './repairAssets';
 import {cradleFiles} from './cradleAssets';
 import {watermarkFiles} from './watermarkAssets';
@@ -12,7 +13,7 @@ import {directions,rooms} from './catalog';
 export const photoPath=(name:string,group='closeups')=>import.meta.env.BASE_URL+`remake/${group}/${name}.webp`;
 export function mainPhoto(g:World):string{
 const close=(n:string)=>photoPath(n),room=(n:string)=>photoPath(n,`scenes/${rooms[g.room].key}`);
-if(g.room===8)return photoPath('plaster','scenes/repair');
+if(g.room===8||g.room===9)return photoPath('plaster','scenes/repair');
 if(g.room===6||g.room===7)return photoPath(g.room===6?'wall-north':'wall-blank',`scenes/${rooms[g.room].key}`);
 if(g.room===0){if(g.focus==='room')return room(g.facing===0?'north-closed':g.facing===1?g.doorOpen?'east-open':'east-closed':directions[g.facing]);const names={box:g.boxOpen?'box-full':'box-closed',book:'book-open',lock:'lock-empty',notice:'notice',front:'front-chain',passage:'service-window','object:1':'p01-empty'};return close(names[g.focus as keyof typeof names]??'box-closed')}
 if(g.room===3&&g.facing===0&&g.focus==='room'&&g.opened.includes(15))return room('north-door-open');
@@ -36,6 +37,8 @@ return close(id===4?open?'p04-open-empty':'p04-base':id===5?'p05-base':id===6?'p
 /** Decode every photographic layer before presenting a new frame. */
 export function sceneFiles(g:World):string[]{
 const files=[mainPhoto(g)],add=(n:string,group='closeups')=>files.push(photoPath(n,group));
+if(g.room===9)files.push(...studyFiles,...repairFiles,...archivePhotoFiles,...watermarkFiles,...weighingFiles);
+if(g.room===8&&g.flags.secret)files.push(...studyFiles);
 if(g.room===6||g.room===7||g.room===8||g.room===3&&g.facing===0&&g.focus==='room'&&g.opened.includes(15))files.push(...archivePhotoFiles,...envelopeFiles,...watermarkFiles,...weighingFiles);
 if(g.room===8||g.flags['archive:door']&&(g.room===6||g.room===7||g.room===3&&g.facing===0))files.push(...repairFiles);
 for(const item of g.inventory){if(item==='cradle'){files.push(...cradleFiles);continue;}if(item==='gatherings'){add('book-edge-closed','parts');add('folded-paper','parts/watermark');continue;}if(item==='oldplan'){add('trimming-paper','parts');continue;}if(item==='proof'){add('print-paper','parts');continue;}if(item==='plates'){for(const i of g.itemValues.plates??[])add(`plate-${i}`,'parts');continue;}add(item==='register'?'paper-strip':item,'items');if(item==='folios')for(const n of ['folio-open','folio-folded','folio-book'])add(n,'items');if(item==='receipts')add('receipt-single','items')}
