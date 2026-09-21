@@ -2107,23 +2107,6 @@
     ]
   },
   {
-    "id": "d-front",
-    "group": "parts/archive",
-    "path": "remake/parts/archive/d-front.webp",
-    "width": 1398,
-    "height": 1125,
-    "alpha": true,
-    "bytes": 278422,
-    "source": "exec-c96e821e-706f-4fb7-8895-036db2cc7d57.png",
-    "master": "parts/archive/d-front.png",
-    "bounds": [
-      43,
-      64,
-      1312,
-      1024
-    ]
-  },
-  {
     "id": "wall-north",
     "group": "scenes/archive-east",
     "path": "remake/scenes/archive-east/wall-north.webp",
@@ -2221,23 +2204,6 @@
       49,
       891,
       1501
-    ]
-  },
-  {
-    "id": "d-top",
-    "group": "parts/archive",
-    "path": "remake/parts/archive/d-top.webp",
-    "width": 2172,
-    "height": 724,
-    "alpha": true,
-    "bytes": 571126,
-    "source": "exec-042e78c0-99da-44e5-95ee-c0c9430f31af.png",
-    "master": "parts/archive/d-top.png",
-    "bounds": [
-      53,
-      67,
-      2067,
-      592
     ]
   },
   {
@@ -2383,17 +2349,6 @@
   },
   {
     "id": "floor-traces",
-    "group": "scenes/archive-east",
-    "path": "remake/scenes/archive-east/floor-traces.webp",
-    "width": 1127,
-    "height": 1396,
-    "alpha": false,
-    "bytes": 298318,
-    "source": "exec-8733a0d6-8172-419e-935b-12d2ce9ad8bc.png",
-    "master": "scenes/archive-east/floor-traces.png"
-  },
-  {
-    "id": "floor-traces",
     "group": "scenes/archive-west",
     "path": "remake/scenes/archive-west/floor-traces.webp",
     "width": 1127,
@@ -2402,5 +2357,67 @@
     "bytes": 325848,
     "source": "exec-c2bd56ad-1ae3-4c74-a224-d98a16e14de8.png",
     "master": "scenes/archive-west/floor-traces.png"
+  },
+  {
+    "id": "d-front",
+    "group": "parts/archive",
+    "path": "remake/parts/archive/d-front.webp",
+    "width": 948,
+    "height": 1659,
+    "alpha": true,
+    "bytes": 309354,
+    "source": "exec-602bdc05-ce12-4f59-8275-91949b99b44b.png",
+    "master": "parts/archive/d-front.png",
+    "bounds": [
+      93,
+      42,
+      761,
+      1582
+    ]
+  },
+  {
+    "id": "d-top",
+    "group": "parts/archive",
+    "path": "remake/parts/archive/d-top.webp",
+    "width": 1448,
+    "height": 1086,
+    "alpha": true,
+    "bytes": 479566,
+    "source": "exec-9531efa9-b6d9-47a1-a261-6d888d0ea3dc.png",
+    "master": "parts/archive/d-top.png",
+    "bounds": [
+      81,
+      109,
+      1286,
+      867
+    ]
+  },
+  {
+    "id": "d-side",
+    "group": "parts/archive",
+    "path": "remake/parts/archive/d-side.webp",
+    "width": 821,
+    "height": 1915,
+    "alpha": true,
+    "bytes": 366938,
+    "source": "exec-c717cbbc-cdcc-4d19-a656-a65b91cbb0bf.png",
+    "master": "parts/archive/d-side.png",
+    "bounds": [
+      111,
+      35,
+      597,
+      1836
+    ]
+  },
+  {
+    "id": "floor-traces",
+    "group": "scenes/archive-east",
+    "path": "remake/scenes/archive-east/floor-traces.webp",
+    "width": 1127,
+    "height": 1396,
+    "alpha": false,
+    "bytes": 313946,
+    "source": "exec-eb065dd5-7b53-4162-971d-f9b8b85e6e1a.png",
+    "master": "scenes/archive-east/floor-traces.png"
   }
 ]

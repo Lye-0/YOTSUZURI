@@ -560,16 +560,6 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       1392
     ]
   },
-  "parts/archive/d-front": {
-    "width": 1398,
-    "height": 1125,
-    "bounds": [
-      43,
-      64,
-      1312,
-      1024
-    ]
-  },
   "parts/archive/a-top": {
     "width": 1964,
     "height": 801,
@@ -588,16 +578,6 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       49,
       891,
       1501
-    ]
-  },
-  "parts/archive/d-top": {
-    "width": 2172,
-    "height": 724,
-    "bounds": [
-      53,
-      67,
-      2067,
-      592
     ]
   },
   "parts/archive/a-side": {
@@ -668,6 +648,36 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       295,
       2126,
       110
+    ]
+  },
+  "parts/archive/d-front": {
+    "width": 948,
+    "height": 1659,
+    "bounds": [
+      93,
+      42,
+      761,
+      1582
+    ]
+  },
+  "parts/archive/d-top": {
+    "width": 1448,
+    "height": 1086,
+    "bounds": [
+      81,
+      109,
+      1286,
+      867
+    ]
+  },
+  "parts/archive/d-side": {
+    "width": 821,
+    "height": 1915,
+    "bounds": [
+      111,
+      35,
+      597,
+      1836
     ]
   }
 };

@@ -14,10 +14,10 @@ function artwork(edition:number|'body',back:boolean){
   for(const i of [0,1,3]){const [x,y,w,h]=archiveOldPlan[i].rect;add(`M${x} ${y}h${w}v${h}h${-w}Z`);}
   add(`M425 ${seam.front[1]}H500V${seam.front[2]}H425Z`);
   for(const x of [117,187])add(`M${x} 154v8m0 -3h8`);
-  for(const x of [107,263])add(`M${x} 340v-10m-4 3h11`);
-  add('M343 165v9h10 M440 165v9h-10 M500 192h9v8 M500 234h9v-8',2.2);
+  for(const x of [106,253])add(`M${x} 340v-10m-4 3h11`);
+  add('M342 165v9h10 M384 165v9h-10 M500 192h9v8 M500 234h9v-8',2.2);
   // A small elevation records the repaired front-left post, at the old north-east corner.
-  add('M235 293h34v24h-34Z M238 314l17 -17 M254 317l9 23',2.2);
+  add('M224 293h34v24h-34Z M227 314l17 -17 M243 317l9 23',2.2);
   add(`M414 ${seam.front[3]}H450m6 0h58 M452 ${seam.front[3]-6}l4 13`,2.1);
   add('M100 450h70m-70 -4v8m35 -8v8m35 -8v8 M93 58V28m-7 12l7 -12l7 12',2.2);
  }

@@ -1,14 +1,14 @@
 export type ShelfPoint=readonly [number,number,number];
 export type ShelfState=readonly number[];
 export const archiveRoom={width:4.2,depth:5.2,height:2.8,eastDoor:[2.925,4.0625] as const,westDoor:[2.58375,3.8025] as const,southDoor:[1.4,2.45] as const,passage:.65};
-export const archiveCamera={x:2.3,y:3,height:1.6,pitch:8,focal:730,width:1672,heightPx:941,scale:500};
+export const archiveCamera={x:2.3,y:3.5,height:1.6,pitch:18,focal:650,width:1672,heightPx:941,scale:500};
 export const shelfSpecs=[
- {key:'a',x:.9,y:.15,width:1.35,depth:.55,height:1.02,handleFace:'south',axis:'y',stops:[.15,.3,.6,.9,1.2]},
- {key:'b',x:3.6,y:1.5,width:.55,depth:3.1,height:2.3,handleFace:'west',axis:'y',stops:[0,.25,.5,.75,1,1.25,1.5]},
- {key:'c',x:1,y:.85,width:.81,depth:1.31,height:1.3,handleFace:'south',axis:'x',stops:[0,.5,1,1.5,2,2.3,2.6]},
- {key:'d',x:2.3,y:.1,width:1.8,depth:.6,height:1.4,handleFace:'south',axis:'x',stops:[1.05,1.4,1.7,2,2.3]},
+ {key:'a',x:1.65,y:.15,width:1.35,depth:.55,height:1.02,handleFace:'south',axis:'y',stops:[.15,.3,.6,.9,1.2]},
+ {key:'b',x:3.6,y:1.5,width:.55,depth:2.9,height:2.3,handleFace:'west',axis:'y',stops:[0,.25,.5,.75,1,1.25,1.5,1.75,2,2.3]},
+ {key:'c',x:1,y:.85,width:.81,depth:1.31,height:1.3,handleFace:'south',axis:'x',stops:[1,1.5,2,2.5,3,3.3]},
+ {key:'d',x:3.35,y:.1,width:.8,depth:.6,height:1.4,handleFace:'south',axis:'x',stops:[0,.85,1.7,2.55,3.35]},
 ] as const;
-export const initialShelves=()=>[0,6,2,4];
+export const initialShelves=()=>[0,6,0,4];
 export type ShelfRect={x:number;y:number;width:number;depth:number;height:number};
 export function shelfRect(values:ShelfState,index:number):ShelfRect{const s=shelfSpecs[index],position=s.stops[values[index]];return {x:s.axis==='x'?position:s.x,y:s.axis==='y'?position:s.y,width:s.width,depth:s.depth,height:s.height};}
 export function shelvesOverlap(a:ShelfRect,b:ShelfRect){const e=1e-7;return a.x<b.x+b.width-e&&a.x+a.width>b.x+e&&a.y<b.y+b.depth-e&&a.y+a.depth>b.y+e;}
@@ -45,6 +45,7 @@ export function archiveRayClear(values:ShelfState,target:ShelfPoint,exclude=-1,e
  return true;
 }
 export const archiveDoorHandle:ShelfPoint=[4.19,3.965,1.12];
+export const archiveDoorPoint=(open:boolean):ShelfPoint=>open?[4.2+3.965-archiveRoom.eastDoor[0],archiveRoom.eastDoor[0]+.005,1.12]:archiveDoorHandle;
 export const shelfNames=['低い書架','補修板のある長い書架','奥行きのある棚','赤い本の書架'] as const;
 export function shelfHandlePoint(v:ShelfState,i:number):ShelfPoint{const r=shelfRect(v,i),z=[.93,1.04,1.19,1.34][i];return shelfSpecs[i].handleFace==='west'?[r.x-.005,r.y+r.depth/2,z]:[r.x+r.width/2,r.y+r.depth+.005,z];}
 export function shelfFootPoint(v:ShelfState,i:number,end:number):ShelfPoint{const r=shelfRect(v,i),ratio=end?1-[.03,.04,.075,.03][i]:[.03,.04,.075,.03][i],z=i===1?.11:.04;return shelfSpecs[i].handleFace==='west'?[r.x,r.y+r.depth*ratio,z]:[r.x+r.width*ratio,r.y+r.depth,z];}

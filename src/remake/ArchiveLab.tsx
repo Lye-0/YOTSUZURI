@@ -4,7 +4,7 @@ import {ArchiveScene,archivePhotoFiles} from './ArchiveScene';
 import {initialShelves,validShelves,canMoveShelf,archiveLookAt,shelfFootPoint} from './archiveSpace';
 import {usePhoto} from './usePhoto';
 import {Icon} from './Icons';
-const SAVE='yotsuzuri:archive-lab:v1';
+const SAVE='yotsuzuri:archive-lab:v2';
 function restore(){try{const s=JSON.parse(localStorage.getItem(SAVE)??'null');if(s&&validShelves(s.values))return {values:s.values as number[],open:s.open===true};}catch{}return {values:initialShelves(),open:false};}
 export default function ArchiveLab(){
  const [saved]=useState(restore),[values,setValues]=useState(saved.values),[room,setRoom]=useState<6|7>(6),[facing,setFacing]=useState(0),[open,setOpen]=useState(saved.open),[message,setMessage]=useState(''),[selected,setSelected]=useState(-1),[keyboard,setKeyboard]=useState(false),[trace,setTrace]=useState<number|null>(null),[detail,setDetail]=useState<[number,number]|null>(null),[busy,setBusy]=useState(false),timer=useRef<ReturnType<typeof setTimeout>|null>(null);const photo=usePhoto(archivePhotoFiles);
