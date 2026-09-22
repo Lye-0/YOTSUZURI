@@ -1,7 +1,6 @@
 import {useId,useState} from 'react';
 import {plateIds} from './plates';
 import {PlateArtwork} from './PlateArtwork';
-import {PressSamples} from './PressSamples';
 import {PhotoControl} from './PhotoControl';
 import type {World,Action} from './campaign';
 const closedY=[260,365,475,578],openY=[313,418,516,636],floorY=[202,317,413,528],patchY=[181,304,399,507];
@@ -23,7 +22,6 @@ export function PlateDrawers({g,act,wide=false,enabled=true}:{g:World;act:(a:Act
  {!wide&&inspection!==null&&open===inspection?<section className="r-plate-inspection" aria-label={`${inspection+1}段目の原版を観察`}>
  <p className="r-plate-caption">{inspection+1}段目の引出し{taken.includes(inspection)?' ― 原版は持ち出し中':''}</p>
  {!taken.includes(inspection)?<div className="r-plate-surface"><PlateArtwork index={inspection}/></div>:<div className="r-plate-empty">引出しは空になっている。</div>}
- <figure className="r-plate-sample"><figcaption>試し押しの見本 ― 版と、下に置かれた刷り上がり<br/>二枚を重ね刷りし、白く残る輪郭を読む。</figcaption><div><PressSamples/></div></figure>
  <div className="r-plate-actions"><button disabled={!enabled} onClick={()=>{trigger('p-drawer',inspection);setInspection(null);}}>引出しを閉める</button><button disabled={!enabled||(taken.includes(inspection)&&!g.inventory.includes('plates'))} onClick={()=>trigger('p-plate',inspection)}>{taken.includes(inspection)?'この原版を戻す':'この原版を持ち出す'}</button></div>
  </section>:null}</>;
 }
