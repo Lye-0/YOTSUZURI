@@ -114,7 +114,7 @@ export function progressHints(g:World,base:Base,context?:'exit'|'secret'):string
   switch(id){
   case 1:{if(v.every(Boolean))return reward(1);const free=[0,1,2,3].filter(i=>ticketCanLift(v,i));return ['残っている金具の自由端が、どの板の手前に重なるかを見る。','ねじのある側の板を外すと、その金具も一緒に外れる。',`今は${free.map(i=>['一番上','上から二段目','上から三段目','一番下'][i]).join('、')}の板を手前へ引ける。`];}
   case 2:if(matchesNumeric(g,2))return['三桁は合っている。引出しの取っ手を引く。'];if(!g.cardTaken)return['受渡台の小箱にある丸印の札も、穴の数を比べる手掛かりになる。',...box()];if(!has(g,'card-diamond')||!has(g,'card-moon'))return['受渡口の札入れに、まだ返却札が残っている。',...object(1)];return fallback(2);
-  case 3:if(matchesNumeric(g,3))return['錠の数字は合っている。校正箱の取っ手を引く。'];if(!has(g,'receipts'))return need('receipts',3,'校正箱の読解');if((g.itemValues.receipts??[]).join()!=='0,2,1')return['手元の三枚の複写控えを観察し、横の罫線をつなぐ。','左右の紙と高さを合わせてから、返却の欄を左から読む。'];return fallback(3).slice(2);
+  case 3:if(matchesNumeric(g,3))return['錠の数字は合っている。校正箱の取っ手を引く。'];if(!has(g,'receipts'))return need('receipts',3,'校正箱の読解');if((g.itemValues.receipts??[]).join()!=='0,2,1')return['手元の三枚の複写控えには、紙の境目で途切れた罫線と印がある。','紙を上下にずらし、境目の罫線と割印が続く位置を探す。'];return ['罫線と割印がつながっている。箱の錠の上にも印が刻まれている。',...fallback(3).slice(2)];
   case 4:return matchesNumeric(g,4)?['環の切れ目が金具の位置に合っている。工具箱の蓋を持ち上げる。']:fallback(4);
   case 5:if(has(g,'register'))return g.itemValues.register?.[0]===6?finished(5,'必要な長さの位置決め片は切り出せている。'):['切り出した片は、必要な長さと違う。トレーへ戻すと切り直せる。','欠けた定規の数字そのものではなく、二つの印の間の差を測る。'];if(!has(g,'knife'))return need('knife',5,'紙を切る場所');return v[0]===6?need('knife',5,'測った長さの紙片'):fallback(5);
   case 6:return g.solved.includes(6)?finished(6,'紙の表裏を返すと、透けた印の左右が逆になることを確かめられた。'):fallback(6);

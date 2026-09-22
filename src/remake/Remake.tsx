@@ -38,6 +38,7 @@ import {FolioPapers} from './FolioPapers';
 import {TicketInk} from './TicketInk';
 import {RingLock} from './RingLock';
 import {DoorMarks} from './DoorMarks';
+import {ReceiptLockSeal} from './ReceiptSeal';
 import {MeasureBench} from './MeasureBench';
 import {ProofPapers} from './ProofPapers';
 import {TicketCase} from './TicketCase';
@@ -181,6 +182,7 @@ return <main className={'remake '+(snapshot?'r-snapshot ':'')+(g.reducedMotion?'
 {g.room===1&&g.focus==='room'&&g.facing===0&&g.opened.includes(3)?<><PhotoPatch src={image('north-open','scenes/office')} rect={[33,51,34,32]}/><PhotoDigits values={drumValues(g,3)} windows={[48.1,49.12,50.12,51.12].map(x=>({x,y:66.6,width:.62,height:1.9}))}/>{!g.collected.includes('folios')?<PhotoObject src={image('folios','items')} rect={[42,57.5,15,3.5]} brightness={.8}/>:null}</>:null}
 {g.room===1&&g.focus.startsWith('object:')&&officeDrums[+g.focus.slice(7)]?<PhotoDigits values={drumValues(g,+g.focus.slice(7))} windows={officeDrums[+g.focus.slice(7)][g.opened.includes(+g.focus.slice(7))?'open':'closed']} enabled={photo.ready} onTurn={g.opened.includes(+g.focus.slice(7))?undefined:i=>act({type:'p-set',id:+g.focus.slice(7),values:turnDrum(g,+g.focus.slice(7),i)})}/>:null}
 {g.room===1&&g.focus==='room'?(g.facing===1?[2,26]:g.facing===0?[3]:[]).filter(id=>!g.opened.includes(id)).map(id=><PhotoDigits key={id} values={drumValues(g,id)} windows={officeDrums[id].wide}/>):null}
+{g.room===1&&g.facing===0&&(g.focus==='room'||g.focus==='object:3')?<ReceiptLockSeal wide={g.focus==='room'} open={g.opened.includes(3)}/>:null}
 {g.room===1&&g.facing===0?<TicketInk variant={g.focus==='office-tickets'?'close':g.focus==='object:3'?'cabinet':'wide'}/>:null}
 {g.room===1&&g.focus==='object:26'&&g.opened.includes(26)&&!g.collected.includes('keyparts')?<div className="r-key-placement"><KeyParts projected/></div>:null}
 {g.room===2&&g.focus==='object:4'&&g.opened.includes(4)?<>{!g.collected.includes('knife')?<PhotoPatch src={image('p04-open-full','closeups')} rect={[17.5,34,34,6.5]}/>:null}{!g.collected.includes('lens')?<PhotoPatch src={image('p04-open-full','closeups')} rect={[55.5,30,24.5,10.5]}/>:null}</>:null}

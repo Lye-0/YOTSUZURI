@@ -1,4 +1,5 @@
 import {useRef} from 'react';
+import {ReceiptSeal} from './ReceiptSeal';
 import type {World,Action} from './campaign';
 const correct=[0,2,1];
 const rows=[{name:'受付',digits:['4','27','0'],dy:-34},{name:'作業',digits:['2','63','5'],dy:34},{name:'返却',digits:['9','18','6'],dy:0}];
@@ -15,8 +16,9 @@ onPointerCancel={()=>{drag.current=null}}
 onKeyDown={e=>{if(['Enter',' ','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();change(i,e.key==='ArrowUp'?-1:1)}}}>
 <image href={import.meta.env.BASE_URL+'remake/items/receipt-single.webp'} width="380" height="250" preserveAspectRatio="none"/>
 <g className="r-paper-ink" fontFamily="serif" fill="#3b342b"><text x="70" y="43" fontSize="15">第 二 六 号</text>{rows.map((r,k)=><g key={r.name} transform={`translate(0 ${base+r.dy})`}>
-<path d="M 18 0 H 73 M 102 0 H 182 M 236 0 H 361" fill="none" stroke="#564839" strokeWidth={k===2?1.8:1}/>
+<path d="M 18 0 H 73 M 102 0 H 182 M 236 0 H 361" fill="none" stroke="#564839" strokeWidth="1"/>
 {i===0?<text x="40" y="-9" fontSize="14">{r.name}</text>:null}<text x="145" y="-8" fontSize="25" letterSpacing="25">{r.digits[i]}</text>
-<path d={i===0?'M 325 -5 l 10 5 l -10 5':i===2?'M 30 -5 l 10 5 l -10 5':'M 30 -5 l 10 5 l -10 5 M 325 -5 l 10 5 l -10 5'} fill="none" stroke="#564839" strokeWidth="1.4"/>
+{i>0?<svg x="12" y="-14" width="18" height="28" viewBox="0 -14 18 28" overflow="hidden" style={{color:'#564839'}}><ReceiptSeal row={k}/></svg>:null}
+{i<2?<svg x="324" y="-14" width="18" height="28" viewBox="-18 -14 18 28" overflow="hidden" style={{color:'#564839'}}><ReceiptSeal row={k}/></svg>:<path d="M346 -5l10 5-10 5" fill="none" stroke="#564839" strokeWidth="1.4"/>}
 </g>)}</g>{interactive?<rect className="r-paper-hit" width="380" height="250"/>:null}</g>})}</svg>;
 }

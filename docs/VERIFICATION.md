@@ -32,3 +32,5 @@
 進行に応じたヒントの追加確認は [ヒント修正記録](remake/29_PROGRESS_HINTS.md) を参照。
 
 切断位置と操作枠の追加確認は [修正記録](remake/30_MEASURE_AND_TARGETS.md) を参照。
+
+控えの欄を選ぶ根拠の修正は [対応根拠の記録](remake/31_RECEIPT_EVIDENCE.md) を参照。
