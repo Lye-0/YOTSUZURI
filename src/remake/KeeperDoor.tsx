@@ -1,6 +1,8 @@
 import {useId,useState,type PointerEvent} from 'react';
 import {PhotoSprite} from './PhotoSprite';
 import {PhotoControl} from './PhotoControl';
+import {EvidenceLock} from './EvidenceLock';
+import {lockValues} from './evidenceLocks';
 import {keeperValues} from './keeper';
 import type {World,Action} from './campaign';
 const rows=[216,383,550];
@@ -26,6 +28,7 @@ export function KeeperDoor({g,act,wide=false,enabled=true,zoom=false,onZoom}:{g:
  {!wide&&zoom&&count>0?<PhotoControl label="留めを一つ溝へ戻す" rect={[926,608,174,116]} enabled={enabled} onActivate={()=>act({type:'p-keeper-return',id:15,index:v.slice(3).findIndex(Boolean)})}/>:null}
  {!wide&&!zoom?<PhotoControl label="受け皿をのぞく" rect={[915,615,195,125]} enabled={enabled} onActivate={()=>onZoom?.(true)}/>:null}
  </>:null}
+ {!zoom&&!leaf?<svg x="460" y="80" width="350" height="500"><EvidenceLock values={lockValues(g.flags,'keeper:setting')} onTurn={!wide&&enabled?index=>act({type:'p-keeper-setting',id:15,index}):undefined}/></svg>:null}
  </g>
  {wide&&open?<g transform="matrix(.023 0 0 .075 731 392)"><image href={base+'closeups/p15-keeper-base.webp'} width="1672" height="941" clipPath={`url(#${id}knob)`}/></g>:null}
  {!wide?<>

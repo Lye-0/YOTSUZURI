@@ -1,6 +1,6 @@
 import type {World} from './campaign';
 import type {CampaignItem} from './catalog';
-import {validOrder,reconstructedBook,BOOK_UNIT,bookHeights} from './book';
+import {validOrder,reconstructedBook,BOOK_UNIT,bookHeights,bookProfile} from './book';
 import {gatheringSources} from './gatherings';
 import {clampValues,clampFits} from './clamp';
 import {keyOpens} from './numericRules';
@@ -9,7 +9,7 @@ export const frameAtPress=(g:World)=>finalPlaced(g,'frame')&&finalPlaced(g,'clam
 export const bookAtPress=(g:World)=>finalPlaced(g,'gatherings')&&finalPlaced(g,'clamp')&&g.flags['book:papers-mounted']!==false&&(g.flags['book:papers-mounted']===true||frameAtPress(g)||g.book.sewn||g.book.clamped);
 export const finalBookHeight=(g:World)=>bookHeights(g.book,gatheringSources(g)).reduce((a,b)=>a+b,0)*BOOK_UNIT;
 export const finalPlatenHeight=(g:World)=>clampValues(g)[3]?.19:bookAtPress(g)&&g.book.closed?.02+finalBookHeight(g):frameAtPress(g)&&!clampFits(clampValues(g))?.038:.0205;
-export type BindingAction={type:'p-book-order';id:30;order:number[]}|{type:'p-book-blank';id:30;position:number}|{type:'p-book-side'|'p-book-close'|'p-book-clamp'|'p-book-sew'|'p-book-unpick';id:30}|{type:'p-book-mount';id:30;item:'frame'|'gatherings'}|{type:'p-place';id:30;target?:CampaignItem}|{type:'p-retrieve';id:30;item:CampaignItem}|{type:'p-set';id:30;values:number[]}|{type:'p-test';id:30};
+export type BindingAction={type:'p-book-order';id:30;order:number[]}|{type:'p-book-blank';id:30;position:number}|{type:'p-book-key-fix'|'p-book-key-release'|'p-book-side'|'p-book-close'|'p-book-clamp'|'p-book-sew'|'p-book-unpick';id:30}|{type:'p-book-mount';id:30;item:'frame'|'gatherings'}|{type:'p-place';id:30;target?:CampaignItem}|{type:'p-retrieve';id:30;item:CampaignItem}|{type:'p-set';id:30;values:number[]}|{type:'p-test';id:30};
 export function isBindingAction(a:{type:string}):a is BindingAction{return 'id'in a&&a.id===30&&(a.type.startsWith('p-book-')||['p-place','p-retrieve','p-set','p-test'].includes(a.type));}
 const required:CampaignItem[]=['gatherings','blanks','needle','thread','frame','clamp','keyparts'];
 export function applyBinding(s:World,a:BindingAction):{world:World;message?:string}{
@@ -32,8 +32,22 @@ export function applyBinding(s:World,a:BindingAction):{world:World;message?:stri
   if(!has('clamp'))return{world:s};if(!v[3]){v[3]=1;g.book.clamped=false;if(!g.book.sewn)g.book.closed=false;}
   else{if(has('gatherings')&&bookAtPress(g)){if(!g.book.closed)return{world:s,message:'束が広がっている。'};if(!frameAtPress(g))return{world:s,message:'枠を合わせてから押さえる。'};if(!clampFits(v))return{world:s,message:'押さえ板の受け座がずれている。'};g.book.clamped=true;}v[3]=0;}
   g.values[28]=v;break;
+ case'p-book-key-release':if(!has('keyparts'))return{world:s};g.flags['key:fixed']=false;break;
+ case'p-book-key-fix':{
+  if(!has('keyparts'))return{world:s,message:'鍵部品を受け台に置く。'};
+  if(!has('gatherings')||!g.book.closed||!g.book.sewn)return{world:s,message:'綴じて閉じた本を、歯合わせの型として使う。'};
+  if(g.book.clamped||bookAtPress(g))return{world:s,message:'押さえ板を上げ、綴じた本を手前の受け台へ移す。'};
+  const profile=bookProfile(g.book,gatheringSources(g));
+  if(profile.some(n=>n<1||n>4))return{world:s,message:'本の段差が歯の可動範囲に収まらない。束を確認できる。'};
+  g.values[30]=profile.map(n=>5-n);g.itemValues.keyparts=[...g.values[30]];g.flags['key:fixed']=true;break;
+ }
  case'p-book-sew':
-  if(!has('gatherings')||!has('thread')||!g.book.closed||!g.book.clamped||!clampFits(v))return{world:s,message:'束を締め具で押さえる。'};
+  if(!has('gatherings'))return{world:s,message:'綴じる紙束を台に置く。'};
+  if(!has('thread'))return{world:s,message:'麻糸を作業台に置く。'};
+  if(!g.book.closed)return{world:s,message:'束を閉じて重ねる。'};
+  if(!has('clamp')||!bookAtPress(g))return{world:s,message:'紙束を締め具に載せる。'};
+  if(!clampFits(v))return{world:s,message:'カムを回して押さえ板の受け座を合わせる。'};
+  if(!g.book.clamped)return{world:s,message:'上の取っ手で押さえ板を下ろす。'};
   if(!has('needle')){if(g.selected!=='needle'||!g.inventory.includes('needle'))return{world:s,message:'綴じ針を使う。'};g.inventory=g.inventory.filter(n=>n!=='needle');g.placed[30]=[...materials,'needle'];g.selected=null;}
   g.book.sewn=true;break;
  case'p-book-unpick':if(!g.book.sewn||g.book.clamped)return{world:s};if(!has('needle')&&!(g.selected==='needle'&&g.inventory.includes('needle')))return{world:s,message:'綴じ針を使う。'};g.book.sewn=false;break;
@@ -46,7 +60,7 @@ export function applyBinding(s:World,a:BindingAction):{world:World;message?:stri
   if(a.item==='frame')g.flags['book:frame-mounted']=false;
   if(a.item==='gatherings'){g.flags['book:papers-mounted']=false;g.book.blanks=[];g.book.closed=false;g.book.side=1;}
   if(a.item==='blanks')g.book.blanks=[];break;
- case'p-set':if(!has('keyparts')||a.values.length!==6||a.values.some(n=>!Number.isInteger(n)||n<1||n>4))return{world:s};g.values[30]=[...a.values];break;
+ case'p-set':if(g.flags['key:fixed'])return{world:s,message:'固定ねじを緩めると調整できる。'};if(!has('keyparts')||a.values.length!==6||a.values.some(n=>!Number.isInteger(n)||n<1||n>4))return{world:s};g.values[30]=[...a.values];break;
  case'p-test':break;
  }
  solve();return{world:g};

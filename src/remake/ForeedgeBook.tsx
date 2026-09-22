@@ -1,3 +1,5 @@
+import {EvidenceLock} from './EvidenceLock';
+import {panelLockCode} from './evidenceLocks';
 import {RepairPanelInk} from './RepairPanelInk';
 import {useId,useRef,useState} from 'react';
 import {BOOK_ORDER,BUNDLE_THICKNESS} from './book';
@@ -8,7 +10,8 @@ const rows=[199,304,415,522,625,735,853];
 const unit=26;
 const originalTop:number[]=[];let originalHeight=0;for(const id of BOOK_ORDER){originalTop[id]=originalHeight;originalHeight+=BUNDLE_THICKNESS[id]*unit;}
 export const paintedJoin=(id:number)=>[110+originalTop[id]*.6,110+(originalTop[id]+BUNDLE_THICKNESS[id]*unit)*.6];
-function HiddenDoorPainting(){return <g stroke="#464139" fill="none" strokeWidth="2.4" opacity=".74">
+function HiddenDoorPainting(){return <g style={{color:'#464139'}} stroke="#464139" fill="none" strokeWidth="2.4" opacity=".74">
+<svg x="650" y="10" width="210" height="308"><EvidenceLock values={panelLockCode} ink/></svg>
 <path d="M110 0L312.8 338M122 0L324.8 338M75 306H855"/>
 <g transform="translate(430 25) scale(.13)" style={{color:'#464139'}}><RepairPanelInk/></g>
 <path d="M432 298l-12 24M560 298l12 24M620 40V306M630 40V306M60 80h60M77 95h54M78 150h88M112 201h70M131 254h80" strokeWidth="1" opacity=".5"/>

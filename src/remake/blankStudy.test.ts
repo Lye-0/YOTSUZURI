@@ -6,7 +6,7 @@ describe('失われた葉と折り返された葉',()=>{
  it('折りを広げた全幅から欠損を区別し、未観察でも配置できる',()=>{
   expect(missingLeaves).toEqual([1,4]);let g=apply(start(),{type:'p-place',id:23}).world;
   g=apply(g,{type:'p-blank-mark',id:23,packet:0,slot:4}).world;g=apply(g,{type:'p-blank-mark',id:23,packet:1,slot:1}).world;
-  expect(g.solved).toContain(23);expect(g.book.blanks).toEqual([]);expect(g.flags).toEqual({});
+  expect(g.solved).toContain(23);expect(g.book.blanks).toEqual([]);expect(g.flags).toEqual(initial().flags);
  });
  it('誤配置も持ち帰って置き直せ、二枚が増殖しない',()=>{
   let g=apply(start(),{type:'p-place',id:23}).world;g=apply(g,{type:'p-blank-mark',id:23,packet:0,slot:0}).world;

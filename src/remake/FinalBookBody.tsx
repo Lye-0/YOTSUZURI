@@ -23,7 +23,9 @@ export function FinalBookBody({g,resolution=12}:{g:World;resolution?:number}){co
  <Face x={0} y={.15} z={row.height} width={.20} height={row.height} resolution={resolution}><Edge {...row} back={back}/></Face>
  <Face x={.20} y={0} z={row.height} width={.20} height={row.height} turn={180} resolution={resolution}><Edge {...row} back={back} solid/></Face>
  <Face x={.20} y={.15} z={row.height} width={.15} height={row.height} turn={90} resolution={resolution}><Edge {...row} back={back} solid/></Face>
+ <Face x={0} y={.151} z={row.height} width={.20} height={row.height} resolution={resolution}><svg viewBox="0 0 200 60" width="100%" height="100%"><text x="8" y="35" fill="#59472c" fontSize="16">{['○','◇','＋','∥','△','□'][row.source%6]}</text>{[0,4].includes(row.source)&&!row.blank?<path d="M70 28h90m-90 4h85" stroke="#5c4230" strokeWidth="2" strokeDasharray="4 3"/>:null}</svg></Face>
  <Face x={0} y={0} z={row.height} width={.15} height={row.height} turn={-90} resolution={resolution}><Edge {...row} back={back} solid/></Face>
+ <Face x={0} y={.151} z={row.height} width={.20} height={row.height} resolution={resolution}><svg viewBox="0 0 200 60" width="100%" height="100%"><text x="8" y="35" fill="#59472c" fontSize="16">{['○','◇','＋','∥','△','□'][row.source%6]}</text>{[0,4].includes(row.source)&&!row.blank?<path d="M70 28h90m-90 4h85" stroke="#5c4230" strokeWidth="2" strokeDasharray="4 3"/>:null}</svg></Face>
  <Face x={0} y={0} z={row.height} width={.20} height={.15} tilt={90} resolution={resolution}><div style={{position:'absolute',inset:0,transform:back?'scaleX(-1)':undefined}}><GatheringTop/></div></Face>
  {row.blank&&!g.book.closed?<Face x={.002} y={.006} z={row.units*BOOK_UNIT/2+BOOK_UNIT} width={.196} height={.15} tilt={90} resolution={resolution}><BlankFoldTop/></Face>:null}
  </div>)}

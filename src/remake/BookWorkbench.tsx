@@ -1,4 +1,4 @@
-import {useRef,useState,useLayoutEffect,type CSSProperties} from 'react';
+import {useRef,useState,useLayoutEffect,type ReactNode,type CSSProperties} from 'react';
 import type {World,Action} from './campaign';
 import type {CampaignItem} from './catalog';
 import {WorldCamera} from './WorldCamera';
@@ -7,13 +7,13 @@ import {MagnifyingLens} from './MagnifyingLens';
 import {archiveProjectEye,type ShelfPoint} from './archiveSpace';
 import {bookWorkEye,bookWorkFrame,bookWorkPoint,finalPaperPose,finalKeyPoint,type BookWorkView} from './bookWorkspaceGeometry';
 import {finalPlaced,bookAtPress,frameAtPress,finalPlatenHeight} from './binding';
-import {finalGroups,finalRenderedHeight} from './FinalBookBody';
+import {finalGroups,finalRenderedHeight,BlankFoldTop} from './FinalBookBody';
 import {clampValues,camCentre} from './clamp';
 import {Icon} from './Icons';
 import {separateTarget} from './screenTargets';
 const names:Partial<Record<CampaignItem,string>>={clamp:'締め具',frame:'綴じ枠',gatherings:'紙束',blanks:'白紙',needle:'綴じ針',thread:'麻糸',keyparts:'保守鍵'};
 export function BookWorkbench({g,act,view,onView}:{g:World;act?:((a:Action)=>void);view:BookWorkView;onView:(v:BookWorkView)=>void}){
- const host=useRef<HTMLDivElement>(null),[scale,setScale]=useState(1),[picked,setPicked]=useState<CampaignItem|null>(null),[first,setFirst]=useState<number|null>(null),[adding,setAdding]=useState(false),[lens,setLens]=useState<readonly[number,number]|null>(null),frame=bookWorkFrame(view),eye=bookWorkEye(g,view),width=frame.width*scale,height=frame.height*scale,has=(n:CampaignItem)=>finalPlaced(g,n),paper=finalPaperPose(g),groups=finalGroups(g),locked=g.book.clamped||g.book.sewn,v=clampValues(g),platen=finalPlatenHeight(g);
+ const host=useRef<HTMLDivElement>(null),[scale,setScale]=useState(1),[picked,setPicked]=useState<CampaignItem|null>(null),[first,setFirst]=useState<number|null>(null),[adding,setAdding]=useState(false),[lens,setLens]=useState<readonly[number,number]|null>(null),frame={...bookWorkFrame(view),...(window.innerWidth<600&&view==='book'?{height:1600}:{})},eye={...bookWorkEye(g,view),...(window.innerWidth<600&&view==='book'?{centerY:630}:{})},width=frame.width*scale,height=frame.height*scale,has=(n:CampaignItem)=>finalPlaced(g,n),paper=finalPaperPose(g),groups=finalGroups(g),locked=g.book.clamped||g.book.sewn,v=clampValues(g),platen=finalPlatenHeight(g);
  useLayoutEffect(()=>{const fit=()=>setScale(host.current!.clientWidth/frame.width);fit();const r=new ResizeObserver(fit);r.observe(host.current!);return()=>r.disconnect()},[frame.width]);
  const go=(next:BookWorkView)=>{setFirst(null);setPicked(null);setLens(null);onView(next)};
  const point=(p:ShelfPoint)=>{const q=archiveProjectEye(bookWorkPoint(p),eye);return[q[0]*scale,q[1]*scale] as const;};
@@ -21,7 +21,11 @@ export function BookWorkbench({g,act,view,onView}:{g:World;act?:((a:Action)=>voi
  const patch=(x:number,y:number,z:number,w:number,d:number)=>box([[x,y,z],[x+w,y,z],[x+w,y+d,z],[x,y+d,z]],32);
  const choose=(item:CampaignItem)=>{if(g.selected==='needle'&&item==='gatherings'){act?.({type:g.book.sewn?'p-book-unpick':'p-book-sew',id:30});return;}setPicked(n=>n===item?null:item)};
  const button=(label:string,style:CSSProperties,click:()=>void,pressed=false)=><button className="env-screen-hit" aria-label={label} aria-pressed={pressed} style={style} onClick={click}/>;
- const command=(label:string,icon:Parameters<typeof Icon>[0]['name'],click:()=>void,offset:number,pressed=false)=><button className="watermark-command" aria-label={label} aria-pressed={pressed} style={{left:width/2+offset-22,top:height-120}} onClick={click}><Icon name={icon}/></button>;
+ const commands:ReactNode[]=[];
+ const suppressBlankClick=useRef(false);
+ const drag=useRef<{kind:'blank'|'row';position?:number}|null>(null),[dragPoint,setDragPoint]=useState<[number,number]|null>(null);
+ const dragEnd=(e:React.PointerEvent)=>{const item=drag.current;drag.current=null;setDragPoint(null);const target=document.elementFromPoint(e.clientX,e.clientY)?.closest<HTMLElement>('[data-book-row]');if(!item||!target||locked)return;suppressBlankClick.current=item.kind==='blank';const position=Number(target.dataset.bookRow);if(item.kind==='blank'){if(!g.book.blanks.includes(position))act?.({type:'p-book-blank',id:30,position});}else if(item.position!==undefined&&item.position!==position){const order=[...g.book.order],picked=order.splice(item.position,1)[0];order.splice(position,0,picked);act?.({type:'p-book-order',id:30,order});}};
+ const command=(label:string,icon:Parameters<typeof Icon>[0]['name'],click:()=>void,offset:number,pressed=false)=>{commands.push(<button key={label} className="book-command" aria-label={label} aria-pressed={pressed} onClick={click}><Icon name={icon}/><span>{label}</span></button>);return null;};
  const changeRow=(position:number)=>{if(locked)return;if(adding){if(!g.book.blanks.includes(position))act?.({type:'p-book-blank',id:30,position});setAdding(false);return;}if(first===null){setFirst(position);return;}if(first!==position){const order=[...g.book.order];[order[first],order[position]]=[order[position],order[first]];act?.({type:'p-book-order',id:30,order})}setFirst(null)};
  const camPoints=[0,1,2].map(i=>{const c=camCentre(v,i);return point([.08+c[0],.08+c[1],platen+.034])}),keyPoints=[0,1,2,3,4,5].map(i=>point(finalKeyPoint(i,g.values[30]?.[i]??1)));
  const selected=g.selected&&names[g.selected]&&!has(g.selected)?g.selected:null;
@@ -46,16 +50,23 @@ export function BookWorkbench({g,act,view,onView}:{g:World;act?:((a:Action)=>voi
  </>:null}
  </>:null}
  {view==='book'?<>
- {!locked?groups.map(row=>{const y=paper.y+.15+row.shift,style=box([[paper.x,y,paper.z+row.top],[paper.x+.20,y,paper.z+row.top],[paper.x+.20,y,paper.z+row.bottom],[paper.x,y,paper.z+row.bottom]],24);return <button key={row.position} className="env-screen-hit" aria-label={`${row.visibleIndex+1}番目の束${adding?'に白紙を入れる':'を選ぶ'}`} aria-pressed={first===row.position} style={{...style,outline:first===row.position?'1px solid #e0cea0':undefined}} onClick={()=>changeRow(row.position)}/>;}):null}
- {has('blanks')&&!locked?command(adding?'白紙を入れる操作をやめる':'白紙を束の中へ入れる','insert',()=>{setAdding(n=>!n);setFirst(null)},-87,adding):null}
+ {!locked?groups.map(row=>{const y=paper.y+.15+row.shift,style=box([[paper.x,y,paper.z+row.top],[paper.x+.20,y,paper.z+row.top],[paper.x+.20,y,paper.z+row.bottom],[paper.x,y,paper.z+row.bottom]],24);return <button key={row.position} className="env-screen-hit" data-book-row={row.position} aria-label={`${row.visibleIndex+1}番目の束${adding?'に白紙を入れる':'を選ぶ'}`} aria-pressed={first===row.position} style={{...style,outline:first===row.position?'1px solid #e0cea0':undefined}} onClick={()=>{if(adding)changeRow(row.position);else setFirst(row.position)}} onPointerDown={e=>{if(adding)return;drag.current={kind:'row',position:row.position};e.currentTarget.setPointerCapture(e.pointerId)}} onPointerUp={dragEnd} onPointerCancel={()=>{drag.current=null;setDragPoint(null)}}/>;}):null}
+ {has('blanks')&&!locked&&g.book.blanks.length<2?<button className="book-blank-source" aria-label="補充用の白紙を束へドラッグする" aria-pressed={adding} onClick={()=>{if(suppressBlankClick.current){suppressBlankClick.current=false;return;}setAdding(n=>!n)}} onPointerDown={e=>{e.currentTarget.setPointerCapture(e.pointerId);drag.current={kind:'blank'};}} onPointerMove={e=>{if(drag.current){const b=host.current!.getBoundingClientRect();setDragPoint([e.clientX-b.left,e.clientY-b.top]);}}} onPointerUp={dragEnd} onPointerCancel={()=>{drag.current=null;setDragPoint(null)}}><BlankFoldTop/><span>欠けた葉を補う白紙<br/>束の内側へドラッグ</span></button>:null}
+ {dragPoint?<div className="book-drag-paper" style={{left:dragPoint[0]-55,top:dragPoint[1]-35}}><BlankFoldTop/></div>:null}
+ <p className="book-work-instruction">{adding?'白紙を入れる束を選ぶ':'束をドラッグして並べ替える。欠けた葉は白紙で補う。'}</p>
  {first!==null&&g.book.blanks.includes(first)&&!locked?command('選んだ束から白紙を抜く','bag',()=>{act({type:'p-book-blank',id:30,position:first});setFirst(null)},-29):null}
  {!locked?command(g.book.closed?'束を広げる':'束を閉じる','fold',()=>{act({type:'p-book-close',id:30});setFirst(null)},29):null}
+ {!g.book.clamped&&!g.book.sewn&&has('clamp')?command(bookAtPress(g)?'束を手前へ移す':'束を締め具に載せる','move',()=>act({type:'p-book-mount',id:30,item:'gatherings'}),0):null}
+ {has('clamp')?command(v[3]?'押さえ板を下ろす':'押さえ板を上げる','back',()=>act({type:'p-book-clamp',id:30}),0):null}
+ {g.book.clamped&&!g.book.sewn?command('束を糸で綴じる','stitch',()=>act({type:'p-book-sew',id:30}),0):null}
  {!g.book.clamped?command('束全体を裏返す','flip',()=>{act({type:'p-book-side',id:30});setFirst(null)},87):null}
  {g.book.sewn&&!g.book.clamped&&bookAtPress(g)?command('綴じた本を手前で読む','eye',()=>{act({type:'p-book-mount',id:30,item:'gatherings'});go('compare')},-29):null}
  </>:null}
  {view==='cams'?<>{camPoints.map((p,i)=><button key={i} className="env-screen-hit" aria-label={`${i+1}個目の偏心カムを回す`} style={{left:p[0]-22,top:p[1]-22,width:44,height:44,clipPath:separateTarget(p,camPoints.filter((_,j)=>j!==i))}} onClick={()=>act({type:'p-clamp-turn',id:28,index:i})}/>)}{command(v[3]?'押さえ板を下ろす':'押さえ板を上げる','back',()=>act({type:'p-book-clamp',id:30}),0)}</>:null}
- {view==='compare'&&has('keyparts')?<>{keyPoints.map((p,i)=><button key={i} className="env-screen-hit" aria-label={`${i+1}枚目の歯を調整する`} style={{left:p[0]-22,top:p[1]-22,width:44,height:44,clipPath:separateTarget(p,keyPoints.filter((_,j)=>j!==i))}} onClick={()=>{const values=[...(g.values[30]??[1,1,1,1,1,1])];values[i]=values[i]%4+1;act({type:'p-set',id:30,values})}}/>)}{command('保守鍵を持ち物へ戻す','bag',()=>act({type:'p-retrieve',id:30,item:'keyparts'}),0)}</>:null}
+ {view==='compare'&&has('keyparts')?<>
+ {command(g.flags['key:fixed']?'歯の固定を緩める':'本の段差で歯を合わせて固定する','stitch',()=>act({type:g.flags['key:fixed']?'p-book-key-release':'p-book-key-fix',id:30}),0)}{keyPoints.map((p,i)=><button key={i} className="env-screen-hit" aria-label={`${i+1}枚目の歯を調整する`} style={{left:p[0]-22,top:p[1]-22,width:44,height:44,clipPath:separateTarget(p,keyPoints.filter((_,j)=>j!==i))}} onClick={()=>{if(g.flags['key:fixed'])return;const values=[...(g.values[30]??[1,1,1,1,1,1])];values[i]=values[i]%4+1;act({type:'p-set',id:30,values})}}/>)}{command('保守鍵を持ち物へ戻す','bag',()=>act({type:'p-retrieve',id:30,item:'keyparts'}),0)}</>:null}
  {g.selected==='lens'&&['book','compare'].includes(view)?<div role="slider" tabIndex={0} aria-label="拡大鏡を動かす" aria-valuemin={0} aria-valuemax={100} aria-valuenow={lens?Math.round(lens[0]/frame.width*100):50} style={{position:'absolute',inset:'0 0 145px',touchAction:'none',pointerEvents:'auto'}} onPointerDown={e=>{e.currentTarget.setPointerCapture(e.pointerId);const b=host.current!.getBoundingClientRect();setLens([(e.clientX-b.left)/scale,(e.clientY-b.top)/scale])}} onPointerMove={e=>{if(e.buttons||e.pointerType==='touch'&&e.currentTarget.hasPointerCapture(e.pointerId)){const b=host.current!.getBoundingClientRect();setLens([(e.clientX-b.left)/scale,(e.clientY-b.top)/scale])}}} onKeyDown={e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();const p=lens??[frame.width/2,frame.height/2];setLens([Math.max(0,Math.min(frame.width,p[0]+(e.key==='ArrowLeft'?-30:e.key==='ArrowRight'?30:0))),Math.max(0,Math.min(frame.height-145/scale,p[1]+(e.key==='ArrowUp'?-30:e.key==='ArrowDown'?30:0)))])}}}/>:null}
+ <div className="book-command-bar">{commands}</div>
  </div>:null}
  {g.selected==='lens'&&lens?<MagnifyingLens g={g} eye={eye} scale={scale} point={lens} renderScene={enlarged=><LoadingWorld g={g} eye={enlarged} pixelScale={scale}/>}/>:null}
  </div>;

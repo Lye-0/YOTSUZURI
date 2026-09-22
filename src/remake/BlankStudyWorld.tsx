@@ -1,3 +1,4 @@
+import {BOOK_ORDER} from './book';
 import type {CSSProperties} from 'react';
 import type {World} from './campaign';
 import {Face,Photograph,type UV} from './ArchivePhotos';
@@ -26,6 +27,6 @@ function Specimen({g,index}:{g:World;index:number}){
 export function BlankStudyWorld({g}:{g:World}){return <><ArchiveBench x={studyTable.x} y={studyTable.y} turn={90}/><div style={{...space,transform:`translate3d(${studyTable.x*500}px,0,${studyTable.y*500}px) rotateY(90deg)`}}>
  <Face x={.03} y={.008} z={.823} width={1.58} height={.23} tilt={90} resolution={2}><Photograph id="study-linen-mat" group={group}/></Face>
  {studySpecimens.map((_,i)=><Specimen key={i} g={g} index={i}/>)}
- {studySpecimens.map((_,i)=><Face key={i} x={studyHinge(i)-.025} y={.193} z={.824} width={.05} height={.026} tilt={90} resolution={5}><svg viewBox="0 0 50 26" width="100%" height="100%"><text x="25" y="21" textAnchor="middle" fill="#453d31" fontFamily="serif" fontSize="19">{['I','II','III','IV','V','VI'][i]}</text></svg></Face>)}
+ {studySpecimens.map((_,i)=><Face key={i} x={studyHinge(i)-.025} y={.193} z={.824} width={.05} height={.026} tilt={90} resolution={5}><svg viewBox="0 0 50 26" width="100%" height="100%"><text x="25" y="21" textAnchor="middle" fill="#453d31" fontFamily="serif" fontSize="19">{['○','◇','＋','∥','△','□'][BOOK_ORDER[i]]}</text></svg></Face>)}
  {g.placed[23]?.includes('blanks')?blankStudyValues(g).map((slot,i)=>{const [x,y,z]=blankPosition(slot,i);return <Face key={i} x={x} y={y} z={z} width={.20} height={.15} tilt={90} resolution={8}><div style={{position:'absolute',width:'75%',height:'133.333%',left:'100%',top:0,transformOrigin:'0 0',transform:'rotate(90deg)'}}><Photograph id="blank-fold-top" group={group}/></div></Face>}):null}
  </div></>;}

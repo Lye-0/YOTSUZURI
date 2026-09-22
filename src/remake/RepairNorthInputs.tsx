@@ -11,6 +11,7 @@ export function RepairNorthInputs({g,onAct,panelIndex,onInspectPanel,onVault,eye
  if(!onAct)return null;const uncovered=panelUncovered(g,panelIndex),cover=archiveProjectEye(panelCoverPoint(panelIndex,uncovered),eye),knob=archiveProjectEye(panelKnobPoint(panelIndex,panelIndex===1&&!!g.flags.secret),eye);
  return <>
  <button className="env-screen-hit" aria-label={uncovered?'外した覆いを戻す':'取っ手の覆いを外す'} style={{left:cover[0]*scale-22,top:cover[1]*scale-(uncovered?35:60),width:44,height:uncovered?70:120}} onClick={()=>onAct({type:'repair-trim',index:panelIndex})}/>
+ {uncovered&&!g.flags.secret?Array.from({length:6},(_,row)=>{const q=archiveProjectEye([repairPanels[panelIndex].x+.56,.085,1.15-(50+row*65)/1000],eye);return <button key={row} className="env-screen-hit" aria-label={`${row+1}段目の留め位置を動かす`} style={{left:q[0]*scale-55,top:q[1]*scale-18,width:110,height:36}} onClick={()=>onAct({type:'repair-setting',index:panelIndex,row})}/>;}):null}
  {uncovered?<button className="env-screen-hit" aria-label="木板の取っ手を回す" style={{left:knob[0]*scale-22,top:knob[1]*scale-22,width:44,height:44}} onClick={()=>onAct({type:'repair-panel-door',index:panelIndex})}/>:null}
  </>;
 }

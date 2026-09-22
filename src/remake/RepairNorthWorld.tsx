@@ -1,3 +1,5 @@
+import {EvidenceLock} from './EvidenceLock';
+import {lockValues} from './evidenceLocks';
 import type {World} from './campaign';
 import {Face,Photograph} from './ArchivePhotos';
 import {PhotoCuboid,type PhotoTexture} from './PhotoCuboid';
@@ -13,6 +15,7 @@ export function RepairNorthWorld({g,eye,pixelScale}:{g:World;eye:ArchiveEye;pixe
  <Face resolution={resolution} x={1} y={-.018} z={2.1} width={1} height={2.1} turn={180}><Photograph {...wood}/></Face>
  <PhotoCuboid x={.975} y={-.018} z={0} width={.025} depth={.036} height={2.07} texture={wood}/>
  <PhotoCuboid x={.025} y={-.018} z={0} width={.025} depth={.036} height={2.07} texture={wood}/>
+ {uncovered&&!open?<Face x={.40} y={.044} z={1.15} width={.30} height={.44}><EvidenceLock values={lockValues(g.flags,`repair:setting:${index}`)}/></Face>:null}
  {!uncovered?<Face x={coverBoard.u} y={.042} z={coverBoard.top} width={coverBoard.width} height={coverBoard.height}><CoverWood/></Face>:null}
  </div>
  {uncovered?<Face x={panel.x-.12} y={.12} z={.56} width={coverBoard.width} height={coverBoard.height} tilt={10}><CoverWood/></Face>:null}

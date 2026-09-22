@@ -1,3 +1,4 @@
+import {printLockCode} from './evidenceLocks';
 import {describe,it,expect} from 'vitest';
 import {apply,initial,readSave,type World} from './campaign';
 import {keeperValues,keeperClear,validKeeper} from './keeper';
@@ -16,6 +17,7 @@ describe('中央の逃げ口を通る三つの留め',()=>{
    expect(keeperClear(g)).toBe(true);expect(apply(g,{type:'p-open',id:15}).world.opened).not.toContain(15);
    const undone=apply(g,{type:'p-keeper-return',id:15,index:0}).world;
    expect(keeperClear(undone)).toBe(false);expect(apply(undone,{type:'p-keeper-leaf',id:15}).world.flags['keeper:leaf']).not.toBe(true);
+   for(let index=0;index<6;index++)for(let n=0;n<printLockCode[index];n++)g=apply(g,{type:'p-keeper-setting',id:15,index}).world;
    g=apply(g,{type:'p-keeper-leaf',id:15}).world;expect(apply(g,{type:'p-open',id:15}).world.opened).toContain(15);
   }
  });
