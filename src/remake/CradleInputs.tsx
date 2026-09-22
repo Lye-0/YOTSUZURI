@@ -25,7 +25,7 @@ export function CradleInputs({g,onAct,onInspectCradle,cradleSide=false,onCradleS
  <button className="watermark-command" aria-label="選んだ部品を手元へ戻す" style={{left:width*.5+36,top:height-130}} onClick={()=>{onAct({type:'p-retrieve',id:21,item:selected});setSelected(null);}}><Icon name="bag"/></button>
  {selected==='wedge'?<><button className="watermark-command" aria-label="木片を左へ寄せる" disabled={v[3]===0} style={{left:width*.5-138,top:height-130}} onClick={()=>onAct({type:'p-cradle-slide',id:21,position:v[3]-1})}><Icon name="left"/></button><button className="watermark-command" aria-label="木片を右へ寄せる" disabled={v[3]===2} style={{left:width*.5-80,top:height-130}} onClick={()=>onAct({type:'p-cradle-slide',id:21,position:v[3]+1})}><Icon name="right"/></button></>:null}
  </>:null}
- {!raised?command('板の間を横から見る',[.36,.18,.055],'inspect',()=>onCradleSide?.(!cradleSide)):null}
+ {onCradleSide?<button className="cradle-view-toggle" aria-label={cradleSide?'板を正面から見る':'板の間を横から見る'} onClick={()=>onCradleSide(!cradleSide)}><Icon name="inspect"/><span>{cradleSide?'正面から見る':'横から見る'}</span></button>:null}
  {!v[0]?command('支持具を持ち上げる',[.16,.32,.02],'bag',()=>{setSelected(null);onAct({type:'p-cradle-take',id:21});}):null}
  </div>;
 }
