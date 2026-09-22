@@ -13,7 +13,7 @@ export function applyPlates(s:World,a:PlateAction):{world:World;message?:string}
  if(!g.flags[key])return {world:s};
  const ids=plateIds(g);
  if(ids.includes(a.index)){
-  if(!g.inventory.includes('plates')||g.selected!=='plates')return {world:s};
+  if(!g.inventory.includes('plates'))return {world:s};
   g.itemValues.plates=ids.filter(n=>n!==a.index);
   if(!g.itemValues.plates.length){g.inventory=g.inventory.filter(n=>n!=='plates');g.collected=g.collected.filter(n=>n!=='plates');g.selected=null;}
  }else{

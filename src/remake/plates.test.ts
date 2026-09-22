@@ -10,6 +10,12 @@ describe('原版の持ち出しと交換',()=>{
   g=run(g,{type:'select',item:'plates'},{type:'p-plate',id:10,index:2},{type:'p-drawer',id:10,index:3},{type:'p-plate',id:10,index:3});
   expect(g.itemValues.plates).toEqual([1,3]);expect(g.inventory).toEqual(['plates']);
  });
+ it('明示した返却操作なら持ち物を選び直さず元の引出しへ戻せる',()=>{
+  const g=run(start(),{type:'p-drawer',id:10,index:0},{type:'p-plate',id:10,index:0});
+  expect(g.selected).toBeNull();
+  const returned=run(g,{type:'p-plate',id:10,index:0});
+  expect(returned.itemValues.plates).toEqual([]);expect(returned.inventory).not.toContain('plates');
+ });
  it('閉じた引出しから取れず、刷り機に置いた版を重複取得しない',()=>{
   expect(run(start(),{type:'p-plate',id:10,index:0}).inventory).toEqual([]);
   const g:World={...start(),placed:{12:['plates']},itemValues:{plates:[0,3]},flags:{'drawer:10:0':true}};
