@@ -294,9 +294,9 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
     "width": 2100,
     "height": 749,
     "bounds": [
-      183,
+      180,
       0,
-      1732,
+      1737,
       749
     ]
   },

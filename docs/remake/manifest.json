@@ -1236,13 +1236,13 @@
     "width": 2100,
     "height": 749,
     "alpha": true,
-    "bytes": 459250,
-    "source": "exec-6d328729-399c-44f5-b4dc-36bf62ea99ce.png",
+    "bytes": 498604,
+    "source": "exec-a7f6178d-0e74-4839-8320-cc4fe6b28998.png",
     "master": "parts/plate-0.png",
     "bounds": [
-      183,
+      180,
       0,
-      1732,
+      1737,
       749
     ]
   },
