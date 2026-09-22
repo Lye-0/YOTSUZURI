@@ -23,7 +23,7 @@ export function applyBinding(s:World,a:BindingAction):{world:World;message?:stri
  case'p-book-mount':{
   if(!has(a.item))return{world:s};if(!has('clamp'))return{world:s,message:'締め具を置く台がある。'};if(!v[3])return{world:s,message:'押さえ板を上げると動かせる。'};
   if(a.item==='frame'){g.flags['book:frame-mounted']=!frameAtPress(g);}
-  else{if(!bookAtPress(g)&&!frameAtPress(g))return{world:s,message:'枠がまだ載っていない。'};g.flags['book:papers-mounted']=!bookAtPress(g);if(!g.book.sewn)g.book.closed=false;}break;}
+  else{if(!bookAtPress(g)&&!frameAtPress(g))return{world:s,message:'枠がまだ載っていない。'};g.flags['book:papers-mounted']=!bookAtPress(g);}break;}
  case'p-book-order':if(!has('gatherings')||locked||!validOrder(a.order))return{world:s};g.book.blanks=g.book.blanks.map(i=>a.order.indexOf(g.book.order[i]));g.book.order=[...a.order];g.book.closed=false;break;
  case'p-book-blank':if(!has('gatherings')||!has('blanks')||locked||!Number.isInteger(a.position)||a.position<0||a.position>5)return{world:s};if(g.book.blanks.includes(a.position))g.book.blanks=g.book.blanks.filter(n=>n!==a.position);else if(g.book.blanks.length<2)g.book.blanks.push(a.position);else return{world:s,message:'白紙は二つとも束の中にある。'};g.book.closed=false;break;
  case'p-book-side':if(!has('gatherings')||g.book.clamped)return{world:s};g.book.side=g.book.side?0:1;break;

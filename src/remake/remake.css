@@ -182,3 +182,5 @@ button,[role=button],.r-paper-hit{-webkit-tap-highlight-color:transparent}.r-loa
 @media(max-width:600px){.book-command{font-size:12px;padding:7px}.book-command-bar{gap:5px}.book-blank-source{width:115px}.book-blank-source>svg{width:85px;height:50px}}
 
 @media(max-width:600px){.r-stage.r-binding-book{width:96vw;aspect-ratio:1000/1600}.book-blank-source{bottom:160px;left:12px;width:155px}.book-blank-source>svg{width:100px;height:45px}.book-blank-source span{display:block;font-size:12px}.book-work-instruction{top:62px;font-size:12px}}
+
+.book-command.book-command-secondary{background:transparent;border-color:transparent;font-size:13px;color:#cabc9a;text-decoration:underline;text-underline-offset:4px}
