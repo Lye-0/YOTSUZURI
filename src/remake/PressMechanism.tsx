@@ -1,12 +1,14 @@
 import {value,placed,type World,type Action} from './campaign';
 import {ProjectedSurface} from './ProjectedSurface';
+import {PressReference} from './PressReference';
 import {PlateArtwork} from './PlateArtwork';
 import {PrintedSheet} from './PrintedSheet';
 import {PhotoSprite} from './PhotoSprite';
 import {PhotoControl} from './PhotoControl';
 import {PhotoPatch} from './PhotoPatch';
 import {betweenQuads,project,type Quad} from './projective';
-const bed:Quad=[[535,477],[1040,477],[1222,733],[360,733]],stock:Quad=[[1161,497],[1397,493],[1498,574],[1211,579]],shelf:Quad=[[1252,604],[1548,598],[1666,710],[1329,718]];
+const bed:Quad=[[535,477],[1040,477],[1222,733],[360,733]],stock:Quad=[[1161,497],[1397,493],[1498,574],[1211,579]],shelf:Quad=[[1218,610],[1378,605],[1480,719],[1300,726]];
+export const referenceQuad:Quad=[[1402,604],[1570,600],[1665,706],[1500,716]];
 const closeToWide=betweenQuads(bed,[[738,495],[886,489],[997,530],[780,540]]);
 export function PressMechanism({g,act,enabled=true,wide=false}:{g:World;act:(a:Action)=>void;enabled?:boolean;wide?:boolean}){
  const v=value(g,12),slot=g.print.slot,ids=g.itemValues.plates??[],down=!!g.flags['press:paper-down'];
@@ -17,6 +19,7 @@ export function PressMechanism({g,act,enabled=true,wide=false}:{g:World;act:(a:A
  const material=(item:'plates'|'pin'|'weights'|'register')=>act(!g.selected&&placed(g,12,item)?{type:'p-retrieve',id:12,item}:{type:'p-place',id:12,target:item});
  return <div className="r-press-mechanism">
  {!wide?<PhotoPatch src={import.meta.env.BASE_URL+'remake/closeups/p12-empty-shelf.webp'} rect={[65.5,47,34.5,40]}/>:null}
+ <ProjectedSurface quad={quad(referenceQuad)} width={970} height={460}><PressReference/></ProjectedSurface>
  <ProjectedSurface quad={quad(bed)} width={1000} height={1000}><svg viewBox="0 0 1000 1000" width="100%" height="100%">
  <g fill="none" stroke="#d4caaa" strokeWidth="4" opacity=".85"><path d="M868 280h48m-24-18v36"/></g>
  {placed(g,12,'plates')&&ids[slot]!==undefined?<g transform={`rotate(${v[slot]*90} 500 500)`}><svg x="50" y="300" width="900" height="400"><PlateArtwork index={ids[slot]}/></svg></g>:null}

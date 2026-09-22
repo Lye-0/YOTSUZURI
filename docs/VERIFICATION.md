@@ -46,3 +46,5 @@
 小口台の自動設置と直接操作は [修正記録](remake/46_FOREEDGE_DIRECT.md) を参照。
 
 原版の凹凸と試し押しの比較は [修正記録](remake/47_PLATE_INSPECTION.md) を参照。
+
+刷り機の完成見本は [修正記録](remake/48_PRESS_REFERENCE.md) を参照。

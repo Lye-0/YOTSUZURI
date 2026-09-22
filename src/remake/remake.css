@@ -148,3 +148,7 @@ button,[role=button],.r-paper-hit{-webkit-tap-highlight-color:transparent}.r-loa
 .r-plate-actions button{min-height:44px;padding:10px 18px;background:#282d20;border:1px solid #b5a174;color:#eee0bb;font:inherit;cursor:pointer}
 .r-plate-actions button:disabled{opacity:.4;cursor:default}
 @media(max-width:600px){.r-plate-inspection{padding:60px 10px 60px;gap:14px}.r-plate-caption{font-size:16px}.r-plate-surface{max-height:none}.r-plate-actions{gap:8px}.r-plate-actions button{font-size:14px;padding:10px}}
+
+.r-press-reference-view{position:absolute;inset:0;background:#151a12;display:flex;align-items:center;justify-content:center;padding:60px 5%;box-sizing:border-box}.r-press-reference-view>svg{width:100%;height:auto;max-height:100%}
+
+.r-stage.r-press-reference-reading{width:min(1200px,96vw);height:calc(100svh - 150px);aspect-ratio:auto}
