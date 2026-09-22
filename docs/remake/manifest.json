@@ -1683,23 +1683,6 @@
     ]
   },
   {
-    "id": "seal-back-angular",
-    "group": "parts",
-    "path": "remake/parts/seal-back-angular.webp",
-    "width": 1254,
-    "height": 1254,
-    "alpha": true,
-    "bytes": 328016,
-    "source": "exec-2b693431-779c-418c-8b2f-49b0aa47f7f7.png",
-    "master": "parts/seal-back-angular.png",
-    "bounds": [
-      250,
-      16,
-      789,
-      1147
-    ]
-  },
-  {
     "id": "p09-cases-base",
     "group": "closeups",
     "path": "remake/closeups/p09-cases-base.webp",
@@ -1753,23 +1736,6 @@
       101,
       1330,
       883
-    ]
-  },
-  {
-    "id": "seal-back-round",
-    "group": "parts",
-    "path": "remake/parts/seal-back-round.webp",
-    "width": 1254,
-    "height": 1254,
-    "alpha": true,
-    "bytes": 260762,
-    "source": "exec-3cf527bc-eba1-4c3f-9d41-e15e652ba020.png",
-    "master": "parts/seal-back-round.png",
-    "bounds": [
-      248,
-      14,
-      797,
-      1150
     ]
   },
   {
@@ -3734,5 +3700,104 @@
       397,
       1397
     ]
+  },
+  {
+    "id": "p09-trace-0",
+    "group": "closeups",
+    "path": "remake/closeups/p09-trace-0.webp",
+    "width": 1122,
+    "height": 1402,
+    "alpha": false,
+    "bytes": 617628,
+    "source": "exec-78fd20dc-dc03-4497-8130-ba0ea792e16c.png",
+    "master": "closeups/p09-trace-0.png"
+  },
+  {
+    "id": "p09-trace-1",
+    "group": "closeups",
+    "path": "remake/closeups/p09-trace-1.webp",
+    "width": 1122,
+    "height": 1402,
+    "alpha": false,
+    "bytes": 559930,
+    "source": "exec-9c00c572-6279-400c-ac56-756df36ada48.png",
+    "master": "closeups/p09-trace-1.png"
+  },
+  {
+    "id": "p09-trace-2",
+    "group": "closeups",
+    "path": "remake/closeups/p09-trace-2.webp",
+    "width": 1122,
+    "height": 1402,
+    "alpha": false,
+    "bytes": 550024,
+    "source": "exec-be569732-18bd-4919-933d-4eb0e04f1168.png",
+    "master": "closeups/p09-trace-2.png"
+  },
+  {
+    "id": "p09-trace-3",
+    "group": "closeups",
+    "path": "remake/closeups/p09-trace-3.webp",
+    "width": 1122,
+    "height": 1402,
+    "alpha": false,
+    "bytes": 518582,
+    "source": "exec-4c9cd5ef-4feb-4889-b457-a41acea5a7dd.png",
+    "master": "closeups/p09-trace-3.png"
+  },
+  {
+    "id": "seal-back-0",
+    "group": "parts",
+    "path": "remake/parts/seal-back-0.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 348682,
+    "source": "exec-f6038e4c-53b3-4365-9a09-1c50a7397004.png",
+    "master": "parts/seal-back-0.png"
+  },
+  {
+    "id": "seal-back-1",
+    "group": "parts",
+    "path": "remake/parts/seal-back-1.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 337106,
+    "source": "exec-004a6c29-922b-4754-94d5-47b86e18fb84.png",
+    "master": "parts/seal-back-1.png"
+  },
+  {
+    "id": "seal-back-2",
+    "group": "parts",
+    "path": "remake/parts/seal-back-2.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 325108,
+    "source": "exec-e26131b1-c392-4ca1-a14a-303f49c5d982.png",
+    "master": "parts/seal-back-2.png"
+  },
+  {
+    "id": "seal-back-3",
+    "group": "parts",
+    "path": "remake/parts/seal-back-3.webp",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "bytes": 355222,
+    "source": "exec-1df8a6ea-4997-4449-a51c-01f771fd0a49.png",
+    "master": "parts/seal-back-3.png"
+  },
+  {
+    "id": "p09-lock-detail",
+    "group": "closeups",
+    "path": "remake/closeups/p09-lock-detail.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 545592,
+    "source": "exec-94f348fe-4e38-4a14-8776-3dd44c3879b6.png",
+    "master": "closeups/p09-lock-detail.png"
   }
 ]

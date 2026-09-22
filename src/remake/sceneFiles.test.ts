@@ -77,3 +77,5 @@ for(const focus of ['room','object:14'] as const)for(const path of sceneFiles({.
 });
 it('操作前後の写真を同じ対象の状態から選ぶ',()=>{const g:World={...initial(),room:1,facing:1,focus:'object:2',opened:[2]};expect(mainPhoto(g)).toContain('p02-open-full');expect(mainPhoto({...g,collected:['receipts']})).toContain('p02-open-empty');expect(sceneFiles({...initial(),room:2,facing:0,opened:[4,7]})).toEqual(expect.arrayContaining(['/remake/scenes/proof/north-box-open.webp','/remake/scenes/proof/north-door-open.webp']))});
 });
+
+it('封印の個別裏面と接写を先読みし、旧共用裏面を参照しない',()=>{const g:World={...initial(),room:5,facing:3,focus:'object:9'};const files=sceneFiles(g);for(let i=0;i<4;i++){expect(files).toContain(`/remake/parts/seal-back-${i}.webp`);expect(files).toContain(`/remake/closeups/p09-trace-${i}.webp`)}expect(files).toContain('/remake/closeups/p09-lock-detail.webp');expect(files.join()).not.toContain('seal-back-angular');expect(files.join()).not.toContain('seal-back-round');for(const file of files)expect(existsSync(resolve('public',file.slice(1)))).toBe(true)});

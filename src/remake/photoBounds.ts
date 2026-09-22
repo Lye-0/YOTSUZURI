@@ -440,16 +440,6 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       1155
     ]
   },
-  "parts/seal-back-angular": {
-    "width": 1254,
-    "height": 1254,
-    "bounds": [
-      250,
-      16,
-      789,
-      1147
-    ]
-  },
   "items/corner": {
     "width": 1254,
     "height": 1254,
@@ -468,16 +458,6 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       101,
       1330,
       883
-    ]
-  },
-  "parts/seal-back-round": {
-    "width": 1254,
-    "height": 1254,
-    "bounds": [
-      248,
-      14,
-      797,
-      1150
     ]
   },
   "parts/keeper-pin-front": {
@@ -1458,6 +1438,46 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       71,
       397,
       1397
+    ]
+  },
+  "parts/seal-back-0": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      231,
+      0,
+      796,
+      1159
+    ]
+  },
+  "parts/seal-back-1": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      228,
+      4,
+      813,
+      1185
+    ]
+  },
+  "parts/seal-back-2": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      248,
+      12,
+      788,
+      1147
+    ]
+  },
+  "parts/seal-back-3": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      226,
+      7,
+      810,
+      1152
     ]
   }
 };

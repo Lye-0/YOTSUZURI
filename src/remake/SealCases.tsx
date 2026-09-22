@@ -3,7 +3,7 @@ import {PhotoSprite} from './PhotoSprite';
 import {PhotoControl} from './PhotoControl';
 import {SealGlyph} from './SealGlyph';
 import {ThreadChart} from './ThreadChart';
-import {sealFragments,sealReceivers} from './sealOwnership';
+import {photoBounds} from './photoBounds';
 import {value,type World,type Action} from './campaign';
 export type SealView='all'|'lock'|'contents'|`trace:${number}`|`fragment:${number}`;
 const centers=[239,649,1034,1435],wheels=[1373,1414,1454,1495];
@@ -11,7 +11,10 @@ export function sealFrame(view:SealView):[number,number,number,number]{if(view==
 export function SealCases({g,act,wide=false,enabled=true,view='all',onView}:{g:World;act:(a:Action)=>void;wide?:boolean;enabled?:boolean;view?:SealView;onView?:(v:SealView)=>void}){
  const uid=useId().replace(/:/g,''),open=g.opened.includes(9),values=value(g,9),base=import.meta.env.BASE_URL+'remake/';
  const fragment=view.startsWith('fragment:')?+view.slice(9):null,back=fragment!==null&&!!g.flags['seal:back:'+fragment];
- if(fragment!==null&&!wide)return <><div className="r-seal-fragment"><svg viewBox="0 0 800 1000" width="100%" height="100%"><PhotoSprite name={back?`seal-back-${sealFragments[fragment].chip}`:`seal-front-${fragment}`} x={90} y={40} width={620} height={900}/></svg></div><button className="r-thread-flip" aria-label="封印の断片を裏返す" aria-pressed={back} disabled={!enabled} onClick={()=>act({type:'p-seal-flip',id:9,index:fragment})}><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M7 10A11 11 0 0 1 26 14M25 6l1 8-8-1M25 22A11 11 0 0 1 6 18M7 26l-1-8 8 1"/></svg></button></>;
+ if(view==='lock'&&!wide)return <svg className="r-seal-cases" viewBox="140 285 1390 500" preserveAspectRatio="xMidYMid meet" role="group" aria-label="四つの印章輪"><image href={base+'closeups/p09-lock-detail.webp'} width="1672" height="941"/>{[421,695,968,1242].map((x,i)=><g key={i}><svg x={x-62} y="444" width="124" height="134" color="#523721"><SealGlyph mark={values[i]}/></svg>{!open?<PhotoControl label={`${i+1}番目の印章輪を回す`} rect={[x-100,402,200,215]} enabled={enabled} onActivate={()=>act({type:'p-set',id:9,values:values.map((n,j)=>i===j?(n+1)%4:n)})}/>:null}</g>)}</svg>;
+ if(view.startsWith('trace:')&&!wide)return <img className="r-seal-trace-photo" src={base+`closeups/p09-trace-${+view.slice(6)}.webp`} alt="木の欠けと蝋に残った刻印" draggable={false}/>;
+ const fragmentName=back?`seal-back-${fragment}`:`seal-front-${fragment}`,part=photoBounds['parts/'+fragmentName],partHeight=850,partWidth=part?Math.min(660,partHeight*part.bounds[2]/part.bounds[3]):620;
+ if(fragment!==null&&!wide)return <><div className="r-seal-fragment"><svg viewBox="0 0 800 1000" width="100%" height="100%"><PhotoSprite name={fragmentName} x={(800-partWidth)/2} y={40} width={partWidth} height={partHeight}/></svg></div><button className="r-thread-flip" aria-label="封印の断片を裏返す" aria-pressed={back} disabled={!enabled} onClick={()=>act({type:'p-seal-flip',id:9,index:fragment})}><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M7 10A11 11 0 0 1 26 14M25 6l1 8-8-1M25 22A11 11 0 0 1 6 18M7 26l-1-8 8 1"/></svg></button></>;
  return <svg className="r-seal-cases" viewBox={(wide?[0,0,1672,941]:sealFrame(view)).join(' ')} preserveAspectRatio="none" role="group" aria-label="封印の残る四つの箱">
  <defs><clipPath id={uid+'boxes'}><path d={open?'M65 414L178 301L1146 301L1202 402L1223 113L1564 113L1540 359L1609 465L1603 591L65 591Z':'M65 414L178 301L1534 303L1609 416L1603 591L65 591Z'}/></clipPath><clipPath id={uid+'lid'}><rect x="1200" y="95" width="425" height="393"/></clipPath></defs>
  <g transform={wide?'translate(468 385) scale(.25 .21)':undefined}>
@@ -19,7 +22,10 @@ export function SealCases({g,act,wide=false,enabled=true,view='all',onView}:{g:W
  <image href={base+'closeups/p09-cases-base.webp'} width="1672" height="941"/>
  {open?<image href={base+'closeups/p09-open-empty.webp'} width="1672" height="941" clipPath={`url(#${uid}lid)`}/>:null}
  </g>
- {sealReceivers.map((r,i)=><g key={i} transform={`translate(${centers[i]} ${i===3?506:508})`} fill="none" stroke="#4e1810" strokeWidth="2.6" strokeLinecap="round" opacity=".9"><path d={r.foot==='v'?'M-10 -3L0 4L10 -3':'M-11 1H11'}/></g>)}
+ {centers.map((x,i)=><g key={'trace-photo'+i} pointerEvents="none">
+ {!(open&&i===3)?<svg x={x-25} y="407" width="50" height="31" viewBox="300 55 520 370" preserveAspectRatio="none"><image href={base+`closeups/p09-trace-${i}.webp`} width="1122" height="1402"/></svg>:null}
+ <svg x={x-28} y={i===3?482:490} width="56" height={i===3?29:36} viewBox="230 760 650 410" preserveAspectRatio="none"><image href={base+`closeups/p09-trace-${i}.webp`} width="1122" height="1402"/></svg>
+ </g>)}
  {wheels.map((x,i)=><svg key={i} x={x-11} y="535" width="22" height="25" color="#523721"><SealGlyph mark={values[i]}/></svg>)}
  {centers.map((x,i)=><g key={i} transform={`rotate(${[-5,3,-3,5][i]} ${x} 633)`} style={{filter:'drop-shadow(1px 3px 2px #0008)'}}><PhotoSprite name={`seal-front-${i}`} x={x-42} y={608} width={84} height={50}/></g>)}
  {open?<>
