@@ -1,3 +1,4 @@
+import {paperOnExit,paperMatchesExit} from './exitReference';
 import type {World} from './campaign';
 import type {CampaignItem} from './catalog';
 export const initialRubbing=()=>[0,0];
@@ -12,8 +13,8 @@ export type RubbingAction={type:'p-mould-turn';id:25;flip?:boolean}|{type:'p-rub
 export function applyRubbing(s:World,a:RubbingAction|{type:'p-place';id:number;target?:CampaignItem}|{type:'p-retrieve';id:number;item:CampaignItem}):{world:World;message?:string}{
  const active=s.room===9&&s.facing===0&&s.focus==='object:25',onBench=s.placed[25]?.includes('tissue');
  if(a.type==='p-rubbing-view'){
-  if(!s.inventory.includes('tissue')&&!(active&&onBench&&s.flags['rubbing:inspection']))return{world:s};
-  const g=structuredClone(s),t=[...tissueTrace(g)],i=a.flip?3:4;t[i]=(t[i]+1)%(a.flip?2:4);g.itemValues.tissue=t;return{world:g};
+  if(!s.inventory.includes('tissue')&&!(s.room===10&&s.facing===3&&paperOnExit(s))&&!(s.room===10&&s.facing===0&&s.focus==='object:29'&&s.placed[29]?.includes('tissue'))&&!(active&&onBench&&s.flags['rubbing:inspection']))return{world:s};
+  const g=structuredClone(s),t=[...tissueTrace(g)],i=a.flip?3:4;t[i]=(t[i]+1)%(a.flip?2:4);g.itemValues.tissue=t;if(paperOnExit(g)&&paperMatchesExit(g)&&!g.solved.includes(25))g.solved.push(25);if(g.placed[29]?.includes('tissue')&&g.values[29]?.[0]===1&&paperMatchesExit(g)&&!g.solved.includes(29))g.solved.push(29);return{world:g};
  }
  if(!active)return{world:s};const g=structuredClone(s),v=[...rubbingValues(g)],t=[...tissueTrace(g)];
  if(a.type==='p-mould-turn'){
@@ -30,7 +31,7 @@ export function applyRubbing(s:World,a:RubbingAction|{type:'p-place';id:number;t
   if(!tissueOnMould(g)||!Number.isInteger(a.zone)||a.zone<0||a.zone>5)return{world:s};
   if(t[2]&&(t[0]!==v[0]||t[1]!==v[1]||t[3]!==0||t[4]!==0))return{world:s,message:'先の写しが残っている。'};
   if(t[2]&(1<<a.zone))return{world:s};t[0]=v[0];t[1]=v[1];t[2]|=1<<a.zone;t[3]=0;t[4]=0;
-  if(t[0]===1&&t[2]===63&&!g.solved.includes(25))g.solved.push(25);
+
  }
  g.values[25]=v;g.itemValues.tissue=t;return{world:g};
 }

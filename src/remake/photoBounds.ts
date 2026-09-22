@@ -1289,5 +1289,155 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       1385,
       901
     ]
+  },
+  "parts/loading/exit-door": {
+    "width": 845,
+    "height": 1862,
+    "bounds": [
+      42,
+      24,
+      771,
+      1809
+    ]
+  },
+  "parts/loading/loaded-shelf": {
+    "width": 864,
+    "height": 1821,
+    "bounds": [
+      43,
+      69,
+      781,
+      1668
+    ]
+  },
+  "parts/loading/crate-front": {
+    "width": 1470,
+    "height": 1070,
+    "bounds": [
+      30,
+      44,
+      1409,
+      981
+    ]
+  },
+  "parts/loading/exit-plate": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      52,
+      85,
+      1433,
+      821
+    ]
+  },
+  "parts/clamp/cam-disc": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      56,
+      51,
+      1140,
+      1139
+    ]
+  },
+  "parts/clamp/base-top": {
+    "width": 1350,
+    "height": 1165,
+    "bounds": [
+      21,
+      74,
+      1308,
+      1016
+    ]
+  },
+  "parts/clamp/platen-top": {
+    "width": 1404,
+    "height": 1120,
+    "bounds": [
+      50,
+      55,
+      1304,
+      1011
+    ]
+  },
+  "parts/clamp/iron-arch": {
+    "width": 1391,
+    "height": 1131,
+    "bounds": [
+      20,
+      34,
+      1353,
+      1061
+    ]
+  },
+  "parts/clamp/spindle": {
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      240,
+      36,
+      544,
+      1463
+    ]
+  },
+  "parts/clamp/worktop": {
+    "width": 1905,
+    "height": 826,
+    "bounds": [
+      40,
+      69,
+      1827,
+      685
+    ]
+  },
+  "parts/masters/current": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      51,
+      79,
+      1434,
+      830
+    ]
+  },
+  "parts/masters/obsolete": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      60,
+      68,
+      1416,
+      883
+    ]
+  },
+  "parts/clamp/pressure-socket": {
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      39,
+      39,
+      1173,
+      1167
+    ]
+  },
+  "parts/book/sewing-loop": {
+    "width": 887,
+    "height": 1774,
+    "bounds": [
+      374,
+      79,
+      143,
+      1617
+    ]
+  },
+  "parts/book/blank-fold-edge": {
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      52,
+      304,
+      2069,
+      110
+    ]
   }
 };

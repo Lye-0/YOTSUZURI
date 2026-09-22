@@ -12,11 +12,11 @@ export const rooms=[
 {id:10,key:'loading',name:'搬出間',at:[-1,0]},
 ] as const;
 export const directions=['north','east','south','west'] as const;
-export type Portal={from:number;facing:0|1|2|3;to:number;gate?:'office'|'workshop'|'archive'|'shelves'|'secret';rect:[number,number,number,number]};
+export type Portal={from:number;facing:0|1|2|3;to:number;gate?:'loading'|'office'|'workshop'|'archive'|'shelves'|'secret';rect:[number,number,number,number]};
 export const portals:Portal[]=[
 {from:0,facing:0,to:2,rect:[72,16,20,59]}, {from:2,facing:2,to:0,rect:[14,17,16,58]},
 {from:0,facing:1,to:1,gate:'office',rect:[38,15,20,64]}, {from:1,facing:3,to:0,rect:[38,15,24,65]},
-{from:0,facing:3,to:10,rect:[17,18,21,65]}, {from:10,facing:1,to:0,rect:[62,15,25,65]},
+{from:0,facing:3,to:10,gate:'loading',rect:[17,18,21,65]}, {from:10,facing:1,to:0,gate:'loading',rect:[62,15,25,65]},
 {from:2,facing:0,to:3,gate:'workshop',rect:[20,18,18,58]}, {from:3,facing:2,to:2,rect:[14,16,19,61]},
 {from:3,facing:1,to:4,rect:[20,18,28,59]}, {from:4,facing:3,to:3,rect:[31.7,22.1,36.2,58]},
 {from:3,facing:3,to:5,rect:[73,17,15,59]}, {from:5,facing:1,to:3,rect:[31.6,18,25.6,58.3]},

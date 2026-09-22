@@ -1,3 +1,6 @@
+import {masterFiles} from './masterAssets';
+import {clampFiles} from './clampAssets';
+import {loadingFiles} from './loadingAssets';
 import {rubbingFiles} from './rubbingAssets';
 import {joineryFiles} from './joineryAssets';
 import {studyFiles} from './studyAssets';
@@ -15,9 +18,12 @@ import {directions,rooms} from './catalog';
 export const photoPath=(name:string,group='closeups')=>import.meta.env.BASE_URL+`remake/${group}/${name}.webp`;
 export function mainPhoto(g:World):string{
 const close=(n:string)=>photoPath(n),room=(n:string)=>photoPath(n,`scenes/${rooms[g.room].key}`);
+if(g.room===5&&g.facing===1&&g.focus==='room')return photoPath('east-clamp-empty','scenes/binding');
+if(g.focus==='object:28')return photoPath('worktop','parts/clamp');
+if(g.room===10)return photoPath('plaster','scenes/loading');
 if(g.room===8||g.room===9)return photoPath('plaster','scenes/repair');
 if(g.room===6||g.room===7)return photoPath(g.room===6?'wall-north':'wall-blank',`scenes/${rooms[g.room].key}`);
-if(g.room===0){if(g.focus==='room')return room(g.facing===0?'north-closed':g.facing===1?g.doorOpen?'east-open':'east-closed':directions[g.facing]);const names={box:g.boxOpen?'box-full':'box-closed',book:'book-open',lock:'lock-empty',notice:'notice',front:'front-chain',passage:'service-window','object:1':'p01-empty'};return close(names[g.focus as keyof typeof names]??'box-closed')}
+if(g.room===0){if(g.focus==='room'&&g.facing===3&&g.flags['loading:entry'])return room('west-loading-open');if(g.focus==='room')return room(g.facing===0?'north-closed':g.facing===1?g.doorOpen?'east-open':'east-closed':directions[g.facing]);const names={box:g.boxOpen?'box-full':'box-closed',book:'book-open',lock:'lock-empty',notice:'notice',front:'front-chain',passage:'service-window','object:1':'p01-empty'};return close(names[g.focus as keyof typeof names]??'box-closed')}
 if(g.room===3&&g.facing===0&&g.focus==='room'&&g.opened.includes(15))return room('north-door-open');
 if(g.focus==='room')return room(g.room===2&&g.facing===3?'west-empty':directions[g.facing]);
 if(g.focus==='press-samples')return close('press-samples');
@@ -39,11 +45,15 @@ return close(id===4?open?'p04-open-empty':'p04-base':id===5?'p05-base':id===6?'p
 /** Decode every photographic layer before presenting a new frame. */
 export function sceneFiles(g:World):string[]{
 const files=[mainPhoto(g)],add=(n:string,group='closeups')=>files.push(photoPath(n,group));
+if(g.room===5&&g.facing===1){files.push(...clampFiles);add('east-clamp-empty','scenes/binding');}
+if(g.flags.exitOpen||g.finished)add('exterior','scenes/loading');
+if(g.room===10)for(const facing of [0,1,2] as const)files.push(...sceneFiles({...g,room:0,facing,focus:'room'}));
+if(g.room===10||g.room===0&&(g.facing===3||g.focus==='passage'))files.push(...clampFiles,...joineryFiles,photoPath('blank-fold-top','parts/study'),photoPath('blank-fold-edge','parts/book'),photoPath('sewing-loop','parts/book'),photoPath('book-edge-closed','parts'),photoPath('folded-paper','parts/watermark'),photoPath('needle','items'),photoPath('thread','items'),photoPath('lens-frame','parts'),...loadingFiles,...masterFiles,...rubbingFiles,...['key-shaft','key-blade','key-tooth'].map(n=>photoPath(n,'parts')));
 if(g.room===9)files.push(...rubbingFiles,photoPath('model','parts/cutaway'),photoPath('key-blade','parts'),...joineryFiles,...studyFiles,...repairFiles,...archivePhotoFiles,...watermarkFiles,...weighingFiles);
 if(g.room===8&&g.flags.secret)files.push(...rubbingFiles,photoPath('model','parts/cutaway'),photoPath('key-blade','parts'),...joineryFiles,...studyFiles);
 if(g.room===6||g.room===7||g.room===8||g.room===3&&g.facing===0&&g.focus==='room'&&g.opened.includes(15))files.push(...archivePhotoFiles,...envelopeFiles,...watermarkFiles,...weighingFiles);
 if(g.room===8||g.flags['archive:door']&&(g.room===6||g.room===7||g.room===3&&g.facing===0))files.push(...repairFiles);
-for(const item of g.inventory){if(item==='tissue'){files.push(...rubbingFiles);continue;}if(item==='frame'||item==='returnrecord'){files.push(...joineryFiles);continue;}if(item==='cradle'){files.push(...cradleFiles);continue;}if(item==='gatherings'){add('book-edge-closed','parts');add('folded-paper','parts/watermark');continue;}if(item==='oldplan'){add('trimming-paper','parts');continue;}if(item==='proof'){add('print-paper','parts');continue;}if(item==='plates'){for(const i of g.itemValues.plates??[])add(`plate-${i}`,'parts');continue;}add(item==='register'?'paper-strip':item,'items');if(item==='folios')for(const n of ['folio-open','folio-folded','folio-book'])add(n,'items');if(item==='receipts')add('receipt-single','items')}
+for(const item of g.inventory){if(item==='clamp'){files.push(...clampFiles);continue;}if(item==='tissue'){files.push(...rubbingFiles);continue;}if(item==='frame'||item==='returnrecord'){files.push(...joineryFiles);continue;}if(item==='cradle'){files.push(...cradleFiles);continue;}if(item==='gatherings'){add('book-edge-closed','parts');add('folded-paper','parts/watermark');continue;}if(item==='oldplan'){add('trimming-paper','parts');continue;}if(item==='proof'){add('print-paper','parts');continue;}if(item==='plates'){for(const i of g.itemValues.plates??[])add(`plate-${i}`,'parts');continue;}add(item==='register'?'paper-strip':item,'items');if(item==='folios')for(const n of ['folio-open','folio-folded','folio-book'])add(n,'items');if(item==='receipts')add('receipt-single','items')}
 if(g.inventory.includes('keyparts')||g.focus==='object:26'&&g.opened.includes(26))for(const n of ['key-shaft','key-tooth','key-blade'])add(n,'parts');
 if(g.room===5&&g.facing===2&&(g.focus==='room'||g.focus==='object:14')){add('trimming-paper','parts');if(g.placed[14]?.includes('corner')||g.focus==='object:14')add('corner-flat','parts');}
 if(g.room===3&&g.facing===0&&(g.focus==='room'||g.focus==='object:15')){add('p15-keeper-base');add('keeper-pin-front','parts');const count=keeperValues(g).slice(3).filter(Boolean).length;if(count&&!g.flags['keeper:leaf'])add(`p15-tray-${count}`);if(g.flags['keeper:leaf']||g.focus==='object:15')add('p15-keeper-open');if(g.focus==='object:15')for(const n of [1,2,3])add(`p15-tray-${n}`);}

@@ -22,7 +22,7 @@ describe('透かしと折りの照合',()=>{
  });
  it('整理布へ置いた順が違っても、同じ実物の順・厚みへ組み直せる',()=>{
   const g=collect([4,0,2]),sources=gatheringSources(g),order=BOOK_ORDER.map(id=>sources.indexOf(id));expect(sources).toEqual([4,5,0,1,2,3]);expect(g.solved).toContain(17);
-  const b={...g.book,order,blanks:[1,4],side:1 as const,closed:true,clamped:true};expect(reconstructedBook(b,sources)).toBe(true);expect(bookProfile(b,sources)).toEqual([1,3,4,2,4,1]);
+  const b={...g.book,order,blanks:[1,4],side:1 as const,closed:true,clamped:true,sewn:true};expect(reconstructedBook(b,sources)).toBe(true);expect(bookProfile(b,sources)).toEqual([1,3,4,2,4,1]);
  });
  it('旧形式の取得済み原本を維持し、実物の識別を任意の並べ替えで変えない',()=>{
   const g=readSave(JSON.stringify({...start(),inventory:['gatherings'],collected:['gatherings'],solved:[17],values:{17:[1,3,5]}}))!;expect(gatheringSources(g)).toEqual([0,1,2,3,4,5]);expect(gatheringValues(g)).toEqual([-1,0,2,4]);
