@@ -29,3 +29,5 @@ describe('透かしと折りの照合',()=>{
   expect(apply(g,{type:'item-arrange',item:'gatherings',values:[4,5,0,1,2,3]}).world).toBe(g);
  });
 });
+
+it('直接移動では占有場所へ暗黙に交換せず、ほかの比較紙と向きを保つ',()=>{let g=start();g=apply(g,{type:'p-gathering-move',id:17,index:0,destination:'light'}).world;const old=g;expect(apply(g,{type:'p-gathering-move',id:17,index:1,destination:'light'}).world).toBe(old);g=apply(g,{type:'p-gathering-move',id:17,index:2,destination:0}).world;expect(gatheringPose(g,2).flip).toBe(true);expect(gatheringValues(g)).toEqual([0,2,-1,-1]);expect(apply(g,{type:'p-gathering-move',id:17,index:1,destination:0}).world).toBe(g);g=apply(g,{type:'p-gathering-move',id:17,index:2,destination:'home'}).world;expect(gatheringValues(g)).toEqual([0,-1,-1,-1]);g=apply(g,{type:'p-gathering-move',id:17,index:0,destination:1}).world;expect(gatheringValues(g)).toEqual([-1,-1,0,-1])});

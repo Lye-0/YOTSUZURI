@@ -104,3 +104,13 @@ button,[role=button],.r-paper-hit{-webkit-tap-highlight-color:transparent}.r-loa
 .watermark-hit-outline{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}.watermark-hit-outline polygon{fill:transparent;stroke:none;vector-effect:non-scaling-stroke}.outlines .watermark-hit{outline:none;background:transparent}.outlines .watermark-hit-outline polygon{stroke:#e9cf73;stroke-width:2;fill:#e9cf7314}
 
 .joinery-actions{position:absolute;left:50%;bottom:72px;transform:translateX(-50%);display:flex;justify-content:center;gap:8px;flex-wrap:wrap;width:max-content;max-width:calc(100% - 20px);pointer-events:auto}.joinery-actions button{display:flex;align-items:center;gap:7px;min-height:44px;padding:8px 12px;background:#192016ed;border:1px solid #bda97b99;font-size:14px;white-space:nowrap}.joinery-actions svg{width:24px;height:24px;flex:none}@media(max-width:700px){.joinery-actions{bottom:48px;gap:5px}.joinery-actions button{padding:6px 9px;font-size:12px}.joinery-actions svg{width:20px;height:20px}}
+
+.watermark-paper{cursor:grab;touch-action:none}.watermark-chosen .watermark-hit-outline polygon{stroke:#ffe09a;stroke-width:3;fill:#f4d98828}.watermark-destination .watermark-hit-outline polygon{stroke:#ead395;stroke-width:2;stroke-dasharray:6 4;fill:#ead3950c}.watermark-drag{position:absolute;pointer-events:none;z-index:12;filter:drop-shadow(5px 9px 5px #0008)}.watermark-drag.settling{transition:left .26s ease,top .26s ease,width .26s ease,height .26s ease}
+
+.archive-view:has(.watermark-drag[data-index="0"]) [data-watermark-paper="0"]{opacity:.18}
+.archive-view:has(.watermark-drag[data-index="1"]) [data-watermark-paper="1"]{opacity:.18}
+.archive-view:has(.watermark-drag[data-index="2"]) [data-watermark-paper="2"]{opacity:.18}
+.archive-view:has(.watermark-drag[data-index="3"]) [data-watermark-paper="3"]{opacity:.18}
+.archive-view:has(.watermark-drag[data-index="4"]) [data-watermark-paper="4"]{opacity:.18}
+
+.watermark-inspect-cue{position:absolute;right:8%;bottom:8%;width:24px;height:24px;color:#f3dfaa;background:#1b211bd9;pointer-events:none}.watermark-inspect-cue svg{width:100%;height:100%}

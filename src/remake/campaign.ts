@@ -56,7 +56,7 @@ if(a.type==='repair-trim'||a.type==='repair-panel-door')return applyRepairNorth(
 if(a.type==='p-cradle-board'||a.type==='p-cradle-turn'||a.type==='p-cradle-slide'||a.type==='p-cradle-take'||a.type==='p-cradle-return'||(a.type==='p-place'||a.type==='p-retrieve')&&a.id===21)return applyCradle(s,a);
 if(a.type==='p-mirror-slide'||a.type==='p-mirror-turn'||a.type==='p-optical-guard')return applyOptics(s,a);
 if(a.type==='p-weigh-place'||a.type==='p-weigh-rider'||a.type==='p-weigh-detach'||a.type==='p-weigh-attach'||a.type==='p-weigh-spine'||a.type==='p-weigh-return-wedge'||a.type==='p-take'&&a.id===19)return applyWeighing(s,a);
-if(a.type==='p-gathering-probe'||a.type==='p-gathering-turn'||a.type==='p-gathering-place'||a.type==='p-gathering-take'||a.type==='p-gathering-return')return applyGatherings(s,a);
+if(a.type==='p-gathering-move'||a.type==='p-gathering-probe'||a.type==='p-gathering-turn'||a.type==='p-gathering-place'||a.type==='p-gathering-take'||a.type==='p-gathering-return')return applyGatherings(s,a);
 if(a.type==='p-envelope-turn'||a.type==='p-envelope-loosen'||a.type==='p-envelope-flap'||a.type==='p-envelope-slide'||a.type==='p-take'&&a.id===18)return applyEnvelope(s,a);
 if(a.type==='p-slide'||a.type==='archive-door')return applyArchive(s,a);
 if(a.type==='p-trim-place'||a.type==='p-trim-remove'||a.type==='p-trim-flip'||a.type==='p-trim-rotate'||a.type==='p-trim-take'||a.type==='p-trim-return')return applyTrim(s,a);
