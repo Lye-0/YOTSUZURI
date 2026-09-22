@@ -22,7 +22,7 @@ export function WatermarkWorld({g}:{g:World}){
  {probe>=0&&pose?<><Face x={inspectionPlace[0]+.013} y={inspectionPlace[1]+.014} z={.862} width={.15} height={.2} tilt={90}><FoldedPaper index={probe} flip={pose.flip} rotate={pose.rotate} illuminated/></Face><Face x={inspectionPlace[0]} y={inspectionPlace[1]} z={.864} width={.15} height={.2} tilt={90}><FoldedPaper index={probe} flip={pose.flip} rotate={pose.rotate} illuminated/></Face></>:null}
  <Face x={-.035} y={.355} z={.823} width={.84} height={.255} tilt={90}><Photograph id="sorting-cloth" group="parts/watermark"/></Face>
  <Face x={.32} y={.61} z={.824} width={.14} height={.036} tilt={90}><InkLabel text="六折"/></Face>
- {candidatePlaces.map(([x,y],index)=>selected.includes(index)?null:<Pair key={index} index={index} x={x} y={y} lifted={probe===index} pose={gatheringPose(g,index)}/>)}
+ {candidatePlaces.map(([x,y],index)=>selected.includes(index)||probe===index?null:<Pair key={index} index={index} x={x} y={y} lifted={probe===index} pose={gatheringPose(g,index)}/>)}
  {!taken?selected.map((index,slot)=>index<0?null:<Pair key={slot} index={index} x={gatheringPlaces[slot][0]} y={gatheringPlaces[slot][1]} pose={gatheringPose(g,index)}/>):null}
  </div></>;
 }

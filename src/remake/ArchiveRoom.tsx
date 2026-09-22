@@ -18,7 +18,7 @@ export function ArchiveRoom({g,act,enabled,detail,onDetail}:{g:World;act:(a:Acti
  return <ArchiveScene values={values} facing={g.facing} room={g.room as 6|7} doorOpen={!!g.flags['archive:door']} camera={camera} frame={weighing?WEIGHING_FRAME:paper?ENVELOPE_FRAME:marking?WATERMARK_FRAME:undefined} selected={detail?-1:selected} busy={busy||!enabled} keyboard={keyboard}
  weighing={{g,detail:weighingDetail,onDetail:enabled?onDetail:undefined,onAct:enabled&&weighing?act:undefined,onInspect:interactive&&g.room===7&&g.facing===3?()=>{onDetail(null);act({type:'focus',focus:'object:19'});}:undefined}}
  repair={{g}}
- watermark={{g,onAct:enabled&&marking?act:undefined,onInspect:interactive&&g.room===7&&g.facing===0?()=>{onDetail(null);act({type:'focus',focus:'object:17'});}:undefined,onZoom:enabled&&marking?()=>onDetail({kind:'watermark'}):undefined,detail:detail?.kind==='watermark'}}
+ watermark={{g,onAct:enabled&&marking?act:undefined,onInspect:interactive&&g.room===7&&g.facing===0?()=>{onDetail(null);act({type:'focus',focus:'object:17'});}:undefined,onZoom:enabled&&marking?()=>onDetail({kind:'watermark'}):undefined,onTable:()=>onDetail(null),detail:detail?.kind==='watermark'}}
  envelope={{g,onAct:enabled&&paper?act:undefined,onInspect:interactive&&g.room===6?()=>{setSelected(-1);onDetail(null);act({type:'focus',focus:'object:18'});}:undefined,onInspectContents:enabled&&paper?()=>onDetail({kind:'envelope'}):undefined,contents:detail?.kind==='envelope'}}
  onSelect={interactive&&g.room===6?(i,k)=>{setSelected(i);setKeyboard(k);}:undefined} onMove={interactive&&g.room===6?move:undefined}
  onInspect={interactive?(index,end)=>{setSelected(-1);onDetail({kind:'foot',index,end});}:undefined}
