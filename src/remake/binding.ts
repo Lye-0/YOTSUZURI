@@ -3,7 +3,7 @@ import type {CampaignItem} from './catalog';
 import {validOrder,reconstructedBook,BOOK_UNIT,bookHeights} from './book';
 import {gatheringSources} from './gatherings';
 import {clampValues,clampFits} from './clamp';
-import {keyOpens} from '../engine';
+import {keyOpens} from './numericRules';
 export const finalPlaced=(g:World,item:CampaignItem)=>!!g.placed[30]?.includes(item);
 export const frameAtPress=(g:World)=>finalPlaced(g,'frame')&&finalPlaced(g,'clamp')&&g.flags['book:frame-mounted']!==false;
 export const bookAtPress=(g:World)=>finalPlaced(g,'gatherings')&&finalPlaced(g,'clamp')&&g.flags['book:papers-mounted']!==false&&(g.flags['book:papers-mounted']===true||frameAtPress(g)||g.book.sewn||g.book.clamped);

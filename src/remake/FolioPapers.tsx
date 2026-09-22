@@ -1,5 +1,5 @@
 import {useRef} from 'react';
-import {foldPages,folioMarks} from '../mechanics';
+import {foldPages,folioMarks} from './folio';
 import {PrintedMark} from './PrintedMark';
 import type {World,Action} from './campaign';
 const photo=(n:string)=>import.meta.env.BASE_URL+`remake/items/${n}.webp`;

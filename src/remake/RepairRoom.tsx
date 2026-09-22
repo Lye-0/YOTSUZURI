@@ -6,7 +6,7 @@ import {repairEye,opticalEye} from './repairSpace';
 import {cradleEye} from './cradleGeometry';
 import {foreedgeEye,foreedgeFrame} from './foreedgeGeometry';
 import {panelEye} from './repairNorthGeometry';
-export function RepairRoom({g,act,enabled,detail,onDetail,onBoundary}:{g:World;act:(a:Action)=>void;enabled:boolean;detail:ArchiveDetail;onDetail:(detail:ArchiveDetail)=>void;onBoundary:()=>void}){
+export function RepairRoom({g,act,enabled,detail,onDetail}:{g:World;act:(a:Action)=>void;enabled:boolean;detail:ArchiveDetail;onDetail:(detail:ArchiveDetail)=>void}){
  const optical=g.focus==='object:20',cradle=g.focus==='object:21',book=g.focus==='object:22',opticalView=detail?.kind==='optics'?detail.view:'all',bookView=detail?.kind==='foreedge'?detail.view:'all',panel=detail?.kind==='repair-panel'?detail.index:undefined,side=detail?.kind==='cradle-side',interactive=enabled&&g.focus==='room'&&!detail;
  const camera=panel!==undefined?panelEye(panel):optical?opticalEye(opticalView):cradle?cradleEye(side):book?foreedgeEye(g,bookView):repairEye(g.facing),frame=panel!==undefined?{width:700,height:1000}:book?foreedgeFrame(bookView):optical||cradle?{width:1000,height:900}:undefined;
  const focus=(id:number)=>{onDetail(null);act({type:'focus',focus:`object:${id}`});};

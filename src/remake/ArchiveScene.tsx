@@ -1,3 +1,5 @@
+import {TypeSideBackdrop} from './TypeSideBackdrop';
+import {TiledSurface} from './TiledSurface';
 import {RubbingWorld} from './RubbingWorld';
 import {CutawayWorld} from './CutawayWorld';
 import {JoineryWorld} from './JoineryWorld';
@@ -29,19 +31,21 @@ import {photoBounds} from './photoBounds';
 const M=archiveCamera.scale;
 import {Face,Photograph,type UV} from './ArchivePhotos';
 export {archivePhotoFiles} from './archiveAssets';
-function Rails(){const tracks=[[1.69,.1,1.68,90],[2.96,.1,1.68,90],[3.6,0,5.2,90],[4.1,0,5.2,90],[1,.96,3.15,0],[1,2.16,3.15,0],[0,.14,4.17,0],[0,.7,4.17,0]],info=photoBounds['parts/archive/rail'],[x,y,w,h]=info.bounds,uv=(start:number,end:number):UV=>[(x+w*start)/info.width,y/info.height,w*(end-start)/info.width,h/info.height];return <Face x={0} y={0} z={.004} width={4.2} height={5.2} tilt={90} floor>{tracks.map(([x,y,length,angle],i)=>{const cap=.04,middle=length-2*cap,count=Math.ceil(middle/.8);return <div key={i} style={{position:'absolute',left:x*M,top:y*M,width:length*M,height:.055*M,transform:`rotate(${angle}deg) translateY(-50%)`,transformOrigin:'0 0',pointerEvents:'none'}}><div className="archive-wall-tile" style={{left:0,top:0,width:cap*M,height:'100%'}}><Photograph id="rail" crop={uv(0,.03)}/></div>{Array.from({length:count},(_,j)=><div key={j} className="archive-wall-tile" style={{left:(cap+j*middle/count)*M,top:0,width:middle/count*M+.1,height:'100%'}}><Photograph id="rail" crop={uv(.03,.97)}/></div>)}<div className="archive-wall-tile" style={{right:0,top:0,width:cap*M,height:'100%'}}><Photograph id="rail" crop={uv(.97,1)}/></div></div>;})}</Face>;}
+function Rails({eye,pixelScale}:{eye:ArchiveEye;pixelScale:number}){const tracks=[[1.69,.1,1.68,90],[2.96,.1,1.68,90],[3.6,0,5.2,90],[4.1,0,5.2,90],[1,.96,3.15,0],[1,2.16,3.15,0],[0,.14,4.17,0],[0,.7,4.17,0]],info=photoBounds['parts/archive/rail'],[bx,by,bw,bh]=info.bounds,uv=(start:number,end:number):UV=>[(bx+bw*start)/info.width,by/info.height,bw*(end-start)/info.width,bh/info.height];return <>{tracks.flatMap(([x,y,length,angle],i)=>{const a=angle*Math.PI/180,cap=.04,middle=length-2*cap,count=Math.ceil(middle/.8),segments=[[0,cap,0,.03],...Array.from({length:count},(_,j)=>[cap+j*middle/count,middle/count,.03,.97]),[length-cap,cap,.97,1]];return segments.map(([offset,w,u0,u1],j)=><TiledSurface key={i+':'+j} x={x+Math.cos(a)*offset+Math.sin(a)*.0275} y={y+Math.sin(a)*offset-Math.cos(a)*.0275} z={.006} width={w} height={.055} turn={-angle} tilt={90} id="rail" group="parts/archive" crop={uv(u0,u1)} eye={eye} pixelScale={pixelScale}/>);})}</>;}
+
 const walls={
  north:{width:4.2,x:0,y:0,turn:0,sx:[0,489/1536,918/1536,1],dx:[0,1.4,2.45,4.2],sy:[0,131/1024,529/1024,615/1024,1],dy:[0,.41,1.49,1.7,2.8],hole:false},
  east:{width:5.2,x:4.2,y:0,turn:-90,sx:[0,946/1709,1289/1709,1],dx:[0,2.925,4.0625,5.2],sy:[0,220/920,550/920,1],dy:[0,.72,1.7,2.8],hole:true},
  south:{width:4.2,x:4.2,y:5.2,turn:180,sx:[0,635/1536,984/1536,1],dx:[0,1.75,2.8,4.2],sy:[0,247/1024,610/1024,1],dy:[0,.72,1.7,2.8],hole:true},
  west:{width:5.2,x:0,y:5.2,turn:90,sx:[0,469/1708,839/1708,1],dx:[0,1.3975,2.61625,5.2],sy:[0,211/921,550/921,1],dy:[0,.72,1.7,2.8],hole:true},
 } as const;
-function ArchiveFloor({room}:{room:6|7}){
+function ArchiveFloor({room,eye,pixelScale}:{room:6|7;eye:ArchiveEye;pixelScale:number}){
  // Calibrate generated caster dents to the drawing; never change the logical footprint to fit a photograph.
  const a=oldFootprint(room===6?3:0),b=oldFootprint(room===6?2:1),px=(r:typeof a,n:number)=>(r.x+r.width*n)/4.2,py=(r:typeof a,n:number)=>(r.y+r.depth*n)/5.2;
  const sx=(room===6?[0,185,373,607,925,1127]:[0,188,280,566,941,1127]).map(n=>n/1127),sy=(room===6?[0,165,300,426,617,1396]:[0,130,238,1032,1151,1396]).map(n=>n/1396);
  const dx=room===6?[0,px(a,.04),px(a,.96),px(b,.04),px(b,.96),1]:[0,px(b,.04),px(a,.04),px(a,.96),px(b,.96),1],dy=[0,py(a,.06),py(a,.94),py(b,.06),py(b,.94),1];
- return <Face x={room===6?0:-4.2} y={0} z={0} width={4.2} height={5.2} tilt={90} floor>{dx.slice(0,-1).flatMap((x,i)=>dy.slice(0,-1).map((y,j)=><div key={`${i}:${j}`} className="archive-wall-tile" style={{left:x*4.2*M,top:y*5.2*M,width:(dx[i+1]-x)*4.2*M+.1,height:(dy[j+1]-y)*5.2*M+.1}}><Photograph id="floor-traces" group={`scenes/archive-${room===6?'east':'west'}`} crop={[sx[i],sy[j],sx[i+1]-sx[i],sy[j+1]-sy[j]]}/></div>))}</Face>;
+ return <>{dx.slice(0,-1).flatMap((x,i)=>dy.slice(0,-1).map((y,j)=><TiledSurface key={`${i}:${j}`} x={(room===6?0:-4.2)+x*4.2} y={y*5.2} z={0} width={(dx[i+1]-x)*4.2} height={(dy[j+1]-y)*5.2} tilt={90} id="floor-traces" group={`scenes/archive-${room===6?'east':'west'}`} crop={[sx[i],sy[j],sx[i+1]-sx[i],sy[j+1]-sy[j]]} eye={eye} pixelScale={pixelScale}/>))}</>;
+
 }
 function ArchivePortals({room,facing,eye,scale,values,open,onPortal}:{room:6|7;facing:number;eye:ArchiveEye;scale:number;values:ShelfState;open:boolean;onPortal:(room:number)=>void}){
  let target:number,name:string,points:[number,number,number][];
@@ -55,7 +59,8 @@ function ArchivePortals({room,facing,eye,scale,values,open,onPortal}:{room:6|7;f
 }
 type WallSpec={width:number;x:number;y:number;turn:number;sx:readonly number[];dx:readonly number[];sy:readonly number[];dy:readonly number[];hole:boolean};
 const westWalls:Record<keyof typeof walls,WallSpec>={north:{...walls.north,x:-4.2,sx:[0,1],dx:[0,4.2],sy:[0,615/1024,1],dy:[0,1.7,2.8]},south:{...walls.south,x:0,sx:[0,1],dx:[0,4.2],sy:[0,615/1024,1],dy:[0,1.7,2.8],hole:false},east:{...walls.west,x:0,y:0,turn:-90,sx:[0,1-839/1708,1-469/1708,1],dx:[0,...archiveRoom.westDoor,5.2]},west:{...walls.west,x:-4.2,hole:false,sx:[0,955/1712,1334/1712,1],dx:[0,2.925,4.0625,5.2],sy:[0,125/920,466/920,540/920,1],dy:[0,.41,1.49,1.7,2.8]}};
-function Wall({side,west=false}:{side:keyof typeof walls;west?:boolean}){const w=west?westWalls[side]:walls[side],mirror=west&&side==='east',id=west?(side==='west'?'wall-window':side==='east'?'wall-west':'wall-blank'):`wall-${side}`,group=west&&side!=='east'?'scenes/archive-west':'scenes/archive-east';return <Face x={w.x} y={w.y} z={2.8} width={w.width} height={2.8} turn={w.turn}>{w.dx.slice(0,-1).flatMap((x,i)=>w.dy.slice(0,-1).map((y,j)=>w.hole&&i===1&&j>=1?null:<div key={`${i}:${j}`} className="archive-wall-tile" style={{left:x*M,top:y*M,width:(w.dx[i+1]-x)*M+.15,height:(w.dy[j+1]-y)*M+.15}}><Photograph id={id} group={group} mirror={mirror} crop={[mirror?1-w.sx[i+1]:w.sx[i],w.sy[j],w.sx[i+1]-w.sx[i],w.sy[j+1]-w.sy[j]]}/></div>))}</Face>;}
+function Wall({side,west=false,eye,pixelScale}:{side:keyof typeof walls;west?:boolean;eye:ArchiveEye;pixelScale:number}){const w=west?westWalls[side]:walls[side],mirror=west&&side==='east',id=west?(side==='west'?'wall-window':side==='east'?'wall-west':'wall-blank'):`wall-${side}`,group=west&&side!=='east'?'scenes/archive-west':'scenes/archive-east',a=w.turn*Math.PI/180;return <>{w.dx.slice(0,-1).flatMap((x,i)=>w.dy.slice(0,-1).map((y,j)=>w.hole&&i===1&&j>=1?null:<TiledSurface key={`${i}:${j}`} x={w.x+x*Math.cos(a)} y={w.y-x*Math.sin(a)} z={2.8-y} width={w.dx[i+1]-x} height={w.dy[j+1]-y} turn={w.turn} id={id} group={group} mirror={mirror} crop={[mirror?1-w.sx[i+1]:w.sx[i],w.sy[j],w.sx[i+1]-w.sx[i],w.sy[j+1]-w.sy[j]]} eye={eye} pixelScale={pixelScale}/>))}</>;}
+
 function Shelving({values,index,onSelect,envelope}:{values:ShelfState;index:number;envelope?:EnvelopeArtProps;onSelect?:(index:number,keyboard:boolean)=>void}){
  const s=shelfSpecs[index],r=shelfRect(values,index);
  return <div className="archive-shelf" onClick={onSelect?e=>{e.stopPropagation();onSelect(index,false);}:undefined} style={{cursor:onSelect?'pointer':undefined,transform:`translate3d(${r.x*M}px,0,${r.y*M}px)`}}>
@@ -95,12 +100,12 @@ export function ArchiveScene({values,facing,room=6,doorOpen=false,camera,selecte
  const portalPoints=[[4.2,archiveRoom.eastDoor[0],2.08],[4.2,archiveRoom.eastDoor[1],2.08],[4.2,archiveRoom.eastDoor[1],0],[4.2,archiveRoom.eastDoor[0],0]].map(p=>archiveProjectEye([p[0],p[1],p[2]],eye)),portalClip=portalPoints.every(p=>p[2]>.05)?`polygon(${portalPoints.map(p=>`${p[0]/frame.width*100}% ${p[1]/frame.height*100}%`).join(',')})`:null;
  const vaultPoints=[[5.85,0,2.05],[6.77,0,2.05],[6.77,0,0],[5.85,0,0]].map(p=>archiveProjectEye([p[0],p[1],p[2]],eye)),vaultClip=vaultPoints.every(p=>p[2]>.05)?`polygon(${vaultPoints.map(p=>`${p[0]/frame.width*100}% ${p[1]/frame.height*100}%`).join(',')})`:null;
  const archiveWorld=<>
- <ArchiveFloor room={6}/><ArchiveFloor room={7}/>
- <Rails/>
- <Face x={0} y={5.2} z={2.8} width={4.2} height={5.2} tilt={-90}><Photograph id="ceiling" group="scenes/archive-east"/></Face>
- {(['north','east','south','west'] as const).map(side=><div key={side} style={{display:'contents'}}><Wall side={side}/><Wall side={side} west/></div>)}
- <Face x={-4.2} y={5.2} z={2.8} width={4.2} height={5.2} tilt={-90}><Photograph id="ceiling" group="scenes/archive-east"/></Face>
- <Doors open={doorOpen}/>
+ <ArchiveFloor room={6} eye={eye} pixelScale={scale}/><ArchiveFloor room={7} eye={eye} pixelScale={scale}/>
+ <Rails eye={eye} pixelScale={scale}/>
+ <TiledSurface x={0} y={5.2} z={2.8} width={4.2} height={5.2} tilt={-90} id="ceiling" group="scenes/archive-east" eye={eye} pixelScale={scale}/>
+ {(['north','east','south','west'] as const).map(side=><div key={side} style={{display:'contents'}}><Wall side={side} eye={eye} pixelScale={scale}/><Wall side={side} west eye={eye} pixelScale={scale}/></div>)}
+ <TiledSurface x={-4.2} y={5.2} z={2.8} width={4.2} height={5.2} tilt={-90} id="ceiling" group="scenes/archive-east" eye={eye} pixelScale={scale}/>
+ <Doors open={doorOpen}/>{envelope?.g?<TypeSideBackdrop g={envelope.g} eye={eye}/>:null}
  {watermark?<WatermarkWorld g={watermark.g}/>:null}
  {weighing?<WeighingWorld g={weighing.g} eye={eye}/>:null}
  {shelfSpecs.map((_,i)=><Shelving key={i} index={i} values={values} envelope={envelope} onSelect={busy?undefined:onSelect}/>)}

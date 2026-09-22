@@ -1,7 +1,0 @@
-{
-  "id": "cradle-lower-board-alpha",
-  "prompt": "Edit this exact wooden board photograph. Keep the board, its exact rounded perimeter, wood grain, scratches, warm brown color, perpendicular camera, and proportions unchanged. Remove every grey/white checkerboard pixel outside the board. The checkerboard is an unwanted painted background, not actual transparency. Replace that entire surrounding area with a true transparent alpha channel, zero alpha outside the wooden silhouette. No checkerboard pattern, no white/grey matte, no outside shadow. Return a real RGBA transparent-background image. Preserve the full board and original margin.",
-  "referenced_image_paths": [
-    "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-0174e7fd-ae86-4c24-8e47-c5bfeaa1c981.png"
-  ]
-}

@@ -1,7 +1,0 @@
-{
-  "id": "optics-iron-top-alpha",
-  "prompt": "Edit this exact photograph. Preserve the cast-iron rectangle, material, fine pits, perimeter bevel, lighting, size and camera angle exactly. Remove ALL of the grey-and-white checkerboard surrounding it. That checkerboard was accidentally painted into the image; it is not transparency. Replace the entire outside background with genuine transparent pixels, alpha zero, no matte or grid, no shadows outside the metal silhouette. Output a real RGBA image with transparent background. Do not paint a transparency pattern. Do not change the object or crop any part of it.",
-  "referenced_image_paths": [
-    "C:\\Users\\kawau\\.codex\\generated_images\\01a0bf35-baaf-7793-9b29-9304a06463db\\exec-4c64cb53-f69f-4f17-9413-7a0dd09e8533.png"
-  ]
-}

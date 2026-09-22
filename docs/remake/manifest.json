@@ -570,56 +570,6 @@
     "master": "scenes/proof/north.png"
   },
   {
-    "id": "west",
-    "group": "scenes/proof",
-    "path": "remake/scenes/proof/west.webp",
-    "width": 1672,
-    "height": 941,
-    "alpha": false,
-    "bytes": 233222,
-    "source": "exec-3199d1fc-ab67-4792-8693-122345c8ce7b.png",
-    "master": "scenes/proof/west.png"
-  },
-  {
-    "id": "p05-close",
-    "group": "closeups",
-    "path": "remake/closeups/p05-close.webp",
-    "width": 1672,
-    "height": 941,
-    "alpha": false,
-    "bytes": 338854,
-    "source": "exec-0d71e6ba-1eb8-4111-ab45-a444dc816f51.png",
-    "master": "closeups/p05-close.png"
-  },
-  {
-    "id": "p06-close",
-    "group": "closeups",
-    "path": "remake/closeups/p06-close.webp",
-    "width": 1672,
-    "height": 941,
-    "alpha": false,
-    "bytes": 197274,
-    "source": "exec-0f10238e-f60e-42cc-a97b-ee81f064a63b.png",
-    "master": "closeups/p06-close.png"
-  },
-  {
-    "id": "keyparts",
-    "group": "items",
-    "path": "remake/items/keyparts.webp",
-    "width": 1774,
-    "height": 887,
-    "alpha": true,
-    "bytes": 230400,
-    "source": "exec-265eb763-34ac-4775-a0ee-3ef59392a970.png",
-    "master": "items/keyparts.png",
-    "bounds": [
-      29,
-      125,
-      1717,
-      628
-    ]
-  },
-  {
     "id": "knife",
     "group": "items",
     "path": "remake/items/knife.webp",
@@ -989,28 +939,6 @@
     ]
   },
   {
-    "id": "p27-close",
-    "group": "closeups",
-    "path": "remake/closeups/p27-close.webp",
-    "width": 1671,
-    "height": 941,
-    "alpha": false,
-    "bytes": 312704,
-    "source": "exec-1149e846-8e1f-4357-af5b-cffa06751581.png",
-    "master": "closeups/p27-close.png"
-  },
-  {
-    "id": "p27-open",
-    "group": "closeups",
-    "path": "remake/closeups/p27-open.webp",
-    "width": 1671,
-    "height": 941,
-    "alpha": false,
-    "bytes": 285338,
-    "source": "exec-f75dd58c-51f7-4b03-95d8-0c42b1369e80.png",
-    "master": "closeups/p27-open.png"
-  },
-  {
     "id": "east",
     "group": "scenes/proof",
     "path": "remake/scenes/proof/east.webp",
@@ -1020,17 +948,6 @@
     "bytes": 208522,
     "source": "exec-0b4ed22c-8320-4771-8b19-485e7bd9d824.png",
     "master": "scenes/proof/east.png"
-  },
-  {
-    "id": "p22-cradle",
-    "group": "closeups",
-    "path": "remake/closeups/p22-cradle.webp",
-    "width": 1672,
-    "height": 941,
-    "alpha": false,
-    "bytes": 261558,
-    "source": "exec-a9798213-b336-49a0-8925-76ddda44db8e.png",
-    "master": "closeups/p22-cradle.png"
   },
   {
     "id": "book-edge-closed",
@@ -1324,23 +1241,6 @@
     "master": "closeups/p10-open-3.png"
   },
   {
-    "id": "plate-metal",
-    "group": "parts",
-    "path": "remake/parts/plate-metal.webp",
-    "width": 1671,
-    "height": 941,
-    "alpha": true,
-    "bytes": 439208,
-    "source": "exec-cb3f1e44-1afc-49b5-847e-ca703177c826.png",
-    "master": "parts/plate-metal.png",
-    "bounds": [
-      33,
-      102,
-      1607,
-      735
-    ]
-  },
-  {
     "id": "plate-0",
     "group": "parts",
     "path": "remake/parts/plate-0.webp",
@@ -1513,17 +1413,6 @@
     "bytes": 210082,
     "source": "exec-907dca4a-16f5-4579-8989-d9b2ebdb1fc3.png",
     "master": "scenes/press/north.png"
-  },
-  {
-    "id": "east",
-    "group": "scenes/binding",
-    "path": "remake/scenes/binding/east.webp",
-    "width": 1672,
-    "height": 941,
-    "alpha": false,
-    "bytes": 247532,
-    "source": "exec-115ff1e5-47aa-430d-827e-dd681e925461.png",
-    "master": "scenes/binding/east.png"
   },
   {
     "id": "p13-front",
@@ -1956,23 +1845,6 @@
     "master": "scenes/type/north-door-open.png"
   },
   {
-    "id": "keeper-pin-loose",
-    "group": "parts",
-    "path": "remake/parts/keeper-pin-loose.webp",
-    "width": 1254,
-    "height": 1254,
-    "alpha": true,
-    "bytes": 331934,
-    "source": "exec-9558cceb-8767-4d61-81b2-05648ae201dc.png",
-    "master": "parts/keeper-pin-loose.png",
-    "bounds": [
-      120,
-      127,
-      1054,
-      939
-    ]
-  },
-  {
     "id": "p15-keeper-open",
     "group": "closeups",
     "path": "remake/closeups/p15-keeper-open.webp",
@@ -2149,17 +2021,6 @@
     "bytes": 245010,
     "source": "exec-d2713470-32dc-46ff-b46f-3f8c1bc3b60b.png",
     "master": "scenes/archive-east/wall-west.png"
-  },
-  {
-    "id": "floor",
-    "group": "scenes/archive-east",
-    "path": "remake/scenes/archive-east/floor.webp",
-    "width": 1127,
-    "height": 1396,
-    "alpha": false,
-    "bytes": 358534,
-    "source": "exec-2a0fd99b-a3fb-49ff-8fb3-132de0a37738.png",
-    "master": "scenes/archive-east/floor.png"
   },
   {
     "id": "ceiling",

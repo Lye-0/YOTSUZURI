@@ -70,16 +70,6 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       410
     ]
   },
-  "items/keyparts": {
-    "width": 1774,
-    "height": 887,
-    "bounds": [
-      29,
-      125,
-      1717,
-      628
-    ]
-  },
   "items/knife": {
     "width": 1942,
     "height": 809,
@@ -300,16 +290,6 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       1424
     ]
   },
-  "parts/plate-metal": {
-    "width": 1671,
-    "height": 941,
-    "bounds": [
-      33,
-      102,
-      1607,
-      735
-    ]
-  },
   "parts/plate-0": {
     "width": 2098,
     "height": 749,
@@ -508,16 +488,6 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       106,
       901,
       1025
-    ]
-  },
-  "parts/keeper-pin-loose": {
-    "width": 1254,
-    "height": 1254,
-    "bounds": [
-      120,
-      127,
-      1054,
-      939
     ]
   },
   "parts/trimming-paper": {
