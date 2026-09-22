@@ -3,6 +3,11 @@ import {apply,initial,readSave,type World,type Action} from './campaign';
 const run=(s:World,...a:Action[])=>a.reduce((g,a)=>apply(g,a).world,s);
 const ready=():World=>({...initial(),room:4,facing:0,focus:'object:12',placed:{12:['plates','pin','weights','register']},values:{12:[0,0,0,1]},itemValues:{plates:[0,3]}});
 describe('刷った紙の保存と交換',()=>{
+ it('裏面に完成済みの旧セーブも取得時に認め、刷った面を手元で見せる',()=>{
+  const g=ready();g.values[12]=[0,0,1,1];g.print.layers=[{plate:0,rotation:0,face:1,offset:1},{plate:3,rotation:0,face:1,offset:1}];
+  const result=run(readSave(JSON.stringify(g))!,{type:'p-take-print',id:12});
+  expect(result.solved).toContain(12);expect(result.flags['view:proof']).toBe(true);expect(result.itemValues.proof).toEqual([0,0,1,1,3,0,1,1]);
+ });
  it('版を動かした後も前の刷り跡を保持して二度目を重ねる',()=>{
   let g=run(ready(),{type:'p-press-paper',id:12},{type:'p-print',id:12},{type:'p-press-paper',id:12},{type:'p-set',id:12,values:[2,0,0,1]});
   g=readSave(JSON.stringify(g))!;

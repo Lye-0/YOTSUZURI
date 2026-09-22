@@ -48,3 +48,5 @@
 原版の凹凸と試し押しの比較は [修正記録](remake/47_PLATE_INSPECTION.md) を参照。
 
 刷り機の完成見本は [修正記録](remake/48_PRESS_REFERENCE.md) を参照。
+
+刷り機の統合操作と表裏判定は [修正記録](remake/50_PRESS_WORKSPACE.md) を参照。

@@ -10,6 +10,11 @@ const focus=(g:World,id:number):World=>({...g,room:objectById(id)!.room,facing:o
 const text=(g:World)=>campaignHints(g).join('\n');
 const office=():World=>({...initial(),started:true,keyTaken:true,cardTaken:true,doorUnlocked:true,doorOpen:true,keyInserted:true,room:1,visited:[0,1],inventory:['card','card-diamond','card-moon'],collected:['card-diamond','card-moon']});
 describe('現在の状態から案内を選ぶ',()=>{
+ it('同じ裏面へ完成した二重刷りにはやり直しを指示しない',()=>{
+  const g=focus({...initial(),placed:{12:['plates','pin','weights','register']},print:{slot:0,layers:[{plate:0,rotation:0,face:1,offset:1},{plate:3,rotation:0,face:1,offset:1}]}},12);
+  expect(text(g)).toContain('手元へ取る');expect(text(g)).not.toContain('やり直');
+  const mixed=structuredClone(g);mixed.print.layers[1].face=0;expect(text(mixed)).toContain('やり直');
+ });
  it('全部屋の初期・終盤の全景と接写で、空の案内や循環を返さない',()=>{for(const seed of[initial(),completed()]){for(let room=0;room<11;room++){const g={...seed,room,focus:'room' as const};expect(campaignHints(g).every(s=>typeof s==='string'&&s.length>0)).toBe(true)}for(const o of objects)expect(campaignHints(focus(seed,o.id)).length).toBeGreaterThan(0)}});
  it('戸を開いた後に受渡口へ戻っても、初期の鍵の説明へ戻らない',()=>{const g={...office(),room:0};expect(nextHintGoal(g)).toBe(2);expect(text(g)).toContain('帳場');expect(text(g)).not.toContain('小箱')});
  it('数字を合わせる・収納を開く・残った物を拾うを区別する',()=>{let g=focus(office(),2);g=apply(g,{type:'p-set',id:2,values:[6,8,4]}).world;expect(text(g)).toContain('取っ手');expect(text(g)).not.toContain('684');g=apply(g,{type:'p-open',id:2}).world;expect(text(g)).toContain('複写控えが残');g=apply(g,{type:'p-take',id:2,item:'receipts'}).world;expect(text(g)).not.toContain('複写控えが残');expect(nextHintGoal(g)).toBe(3)});

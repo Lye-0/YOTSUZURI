@@ -152,3 +152,17 @@ button,[role=button],.r-paper-hit{-webkit-tap-highlight-color:transparent}.r-loa
 .r-press-reference-view{position:absolute;inset:0;background:#151a12;display:flex;align-items:center;justify-content:center;padding:60px 5%;box-sizing:border-box}.r-press-reference-view>svg{width:100%;height:auto;max-height:100%}
 
 .r-stage.r-press-reference-reading{width:min(1200px,96vw);height:calc(100svh - 150px);aspect-ratio:auto}
+
+.r-stage.r-press-work{width:min(1500px,98vw);height:calc(100svh - 150px);aspect-ratio:auto;background:#151a12}
+.r-press-work>.r-photo{visibility:hidden}
+.r-press-workspace{position:absolute;inset:65px 0 170px}
+.r-press-taskbar{position:absolute;bottom:65px;left:2%;right:2%;color:#e1d3ac;text-align:center}
+.r-press-taskbar p{margin:0 0 12px;font-size:14px}
+.r-press-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.r-press-actions button{min-height:44px;padding:9px 14px;color:#e9ddb9;background:#252b1d;border:1px solid #a48c57;font:inherit;cursor:pointer}
+.r-press-actions button:disabled{opacity:.35;cursor:default}
+.r-press-actions .r-press-print{background:#544729;border-color:#dec28a}
+.r-press-motion>foreignObject>div>div{transition:transform .4s ease}
+.still .r-press-motion>foreignObject>div>div{transition:none}
+@media(prefers-reduced-motion:reduce){.r-press-motion>foreignObject>div>div{transition:none}}
+@media(max-width:650px){.r-press-workspace{inset:65px 0 250px;overflow:auto}.r-press-workspace>.r-press-world{width:850px;max-width:none;position:relative;height:100%}.r-press-taskbar{bottom:60px}.r-press-actions{gap:6px}.r-press-actions button{font-size:13px;padding:8px}.r-press-taskbar p{font-size:12px}}

@@ -18,6 +18,8 @@ export function applyPress(s:World,a:PressAction):{world:World;message?:string}{
  if(a.type==='p-take-print'){
   if(!g.print.layers.length)return {world:s};
   const previous=g.inventory.includes('proof')?decodePrint(g.itemValues.proof):[];
+  if(sameImpression(g.print.layers)&&!g.solved.includes(12))g.solved.push(12);
+  g.flags['view:proof']=g.print.layers[0].face===1;
   g.itemValues.proof=encodePrint(g.print.layers);if(!g.inventory.includes('proof'))g.inventory.push('proof');if(!g.collected.includes('proof'))g.collected.push('proof');g.print.layers=previous;return {world:g};
  }
  if(!['plates','pin','weights','register'].every(n=>g.placed[12]?.some(x=>x===n)))return {world:s,message:'版を置き、紙を留める部品が要る。'};

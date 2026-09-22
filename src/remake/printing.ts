@@ -17,7 +17,8 @@ export function inkAt(layer:Impression,x:number,y:number){
 }
 export const targetImpressions:Impression[]=[0,3].map(plate=>({plate,rotation:0,face:0,offset:1}));
 export function sameImpression(layers:Impression[]){
- if(layers.length!==2)return false;
- for(let y=5;y<400;y+=10)for(let x=5;x<900;x+=10)if(layers.some(l=>inkAt(l,x,y))!==targetImpressions.some(l=>inkAt(l,x,y)))return false;
+ if(layers.length!==2||layers[0].face!==layers[1].face)return false;
+ const visible=layers.map(l=>({...l,face:0}));
+ for(let y=5;y<400;y+=10)for(let x=5;x<900;x+=10)if(visible.some(l=>inkAt(l,x,y))!==targetImpressions.some(l=>inkAt(l,x,y)))return false;
  return true;
 }
