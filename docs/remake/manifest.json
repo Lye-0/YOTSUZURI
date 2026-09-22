@@ -1233,17 +1233,17 @@
     "id": "plate-0",
     "group": "parts",
     "path": "remake/parts/plate-0.webp",
-    "width": 2098,
+    "width": 2100,
     "height": 749,
     "alpha": true,
-    "bytes": 437346,
-    "source": "exec-9d79dbb3-74c8-4fe7-ae4c-167d6a6e8d0d.png",
+    "bytes": 459250,
+    "source": "exec-6d328729-399c-44f5-b4dc-36bf62ea99ce.png",
     "master": "parts/plate-0.png",
     "bounds": [
-      209,
+      183,
       0,
-      1680,
-      744
+      1732,
+      749
     ]
   },
   {

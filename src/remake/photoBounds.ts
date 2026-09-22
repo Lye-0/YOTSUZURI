@@ -291,13 +291,13 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
     ]
   },
   "parts/plate-0": {
-    "width": 2098,
+    "width": 2100,
     "height": 749,
     "bounds": [
-      209,
+      183,
       0,
-      1680,
-      744
+      1732,
+      749
     ]
   },
   "parts/plate-1": {
