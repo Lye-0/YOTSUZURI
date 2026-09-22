@@ -166,3 +166,10 @@ button,[role=button],.r-paper-hit{-webkit-tap-highlight-color:transparent}.r-loa
 .still .r-press-motion>foreignObject>div>div{transition:none}
 @media(prefers-reduced-motion:reduce){.r-press-motion>foreignObject>div>div{transition:none}}
 @media(max-width:650px){.r-press-workspace{inset:65px 0 250px;overflow:auto}.r-press-workspace>.r-press-world{width:850px;max-width:none;position:relative;height:100%}.r-press-taskbar{bottom:60px}.r-press-actions{gap:6px}.r-press-actions button{font-size:13px;padding:8px}.r-press-taskbar p{font-size:12px}}
+
+.r-press-paper-turn{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .4s ease;pointer-events:none}
+.r-press-paper-front,.r-press-paper-back{position:absolute;inset:0;backface-visibility:hidden}
+.r-press-paper-back{transform:rotateY(180deg)}
+.r-press-paper-hit{position:absolute;inset:0}
+.still .r-press-paper-turn{transition:none}
+@media(prefers-reduced-motion:reduce){.r-press-paper-turn{transition:none}}
