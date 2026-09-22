@@ -118,3 +118,5 @@ button,[role=button],.r-paper-hit{-webkit-tap-highlight-color:transparent}.r-loa
 .cutaway-carriage{transition:transform .5s ease-in-out}.cutaway-lift{transition:transform .28s ease-in-out}.cutaway-blocked{animation:cutaway-stop .38s ease-out}@keyframes cutaway-stop{0%,100%{transform:translateX(0)}30%{transform:translateX(5px)}48%{transform:translateX(2px)}65%{transform:translateX(4px)}}
 
 @media(prefers-reduced-motion:reduce){.cutaway-blocked{animation:none}}
+
+.joinery-rail-hit{touch-action:none;cursor:grab}.joinery-rail-hit:active{cursor:grabbing}
