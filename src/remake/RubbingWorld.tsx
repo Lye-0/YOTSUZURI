@@ -12,5 +12,5 @@ export function RubbingWorld({g}:{g:World}){const v=rubbingValues(g),front=v[0]=
  </div></div>
  <Face x={.28} y={.405} z={.830} width={.06} height={.02} tilt={90} resolution={10}><Photograph id="rubbing-charcoal" group="parts/rubbing"/></Face>
  <Face x={.40} y={.40} z={.830} width={.04} height={.03} tilt={90} resolution={10}><Photograph id="rubbing-eraser" group="parts/rubbing"/></Face>
- {g.placed[25]?.includes('tissue')?<Face x={paper.x} y={paper.y} z={paper.z} width={paper.width} height={paper.depth} tilt={90} resolution={16}><RubbingPaper g={g}/></Face>:null}
+ {g.placed[25]?.includes('tissue')?<div className="rubbing-moving-paper" style={{...joinerySpace,transform:`translate3d(${paper.x*500}px,${-paper.z*500}px,${paper.y*500}px)`,transition:g.reducedMotion?'none':undefined}}><Face x={0} y={0} z={0} width={paper.width} height={paper.depth} tilt={90} resolution={16}><RubbingPaper g={g}/></Face></div>:null}
  </div></>;}
