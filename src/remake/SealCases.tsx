@@ -1,4 +1,4 @@
-import {useId,useState,useEffect} from 'react';
+import {useId} from 'react';
 import {PhotoSprite} from './PhotoSprite';
 import {PhotoControl} from './PhotoControl';
 import {SealGlyph} from './SealGlyph';
@@ -9,10 +9,9 @@ export type SealView='all'|'lock'|'contents'|`trace:${number}`|`fragment:${numbe
 const centers=[239,649,1034,1435],wheels=[1373,1414,1454,1495];
 export function sealFrame(view:SealView):[number,number,number,number]{if(view==='lock')return [1290,465,300,170];if(view==='contents')return [1200,285,425,340];if(view.startsWith('trace:'))return [centers[+view.slice(6)]-125,340,250,265];return [0,0,1672,941];}
 export function SealCases({g,act,wide=false,enabled=true,view='all',onView}:{g:World;act:(a:Action)=>void;wide?:boolean;enabled?:boolean;view?:SealView;onView?:(v:SealView)=>void}){
- const uid=useId().replace(/:/g,''),open=g.opened.includes(9),values=value(g,9),base=import.meta.env.BASE_URL+'remake/',[back,setBack]=useState(false);
- useEffect(()=>setBack(false),[view]);
- const fragment=view.startsWith('fragment:')?+view.slice(9):null;
- if(fragment!==null&&!wide)return <><div className="r-seal-fragment"><svg viewBox="0 0 800 1000" width="100%" height="100%"><PhotoSprite name={back?`seal-back-${sealFragments[fragment].chip}`:`seal-front-${fragment}`} x={90} y={40} width={620} height={900}/></svg></div><button className="r-thread-flip" aria-label="封印の断片を裏返す" aria-pressed={back} disabled={!enabled} onClick={()=>setBack(v=>!v)}><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M7 10A11 11 0 0 1 26 14M25 6l1 8-8-1M25 22A11 11 0 0 1 6 18M7 26l-1-8 8 1"/></svg></button></>;
+ const uid=useId().replace(/:/g,''),open=g.opened.includes(9),values=value(g,9),base=import.meta.env.BASE_URL+'remake/';
+ const fragment=view.startsWith('fragment:')?+view.slice(9):null,back=fragment!==null&&!!g.flags['seal:back:'+fragment];
+ if(fragment!==null&&!wide)return <><div className="r-seal-fragment"><svg viewBox="0 0 800 1000" width="100%" height="100%"><PhotoSprite name={back?`seal-back-${sealFragments[fragment].chip}`:`seal-front-${fragment}`} x={90} y={40} width={620} height={900}/></svg></div><button className="r-thread-flip" aria-label="封印の断片を裏返す" aria-pressed={back} disabled={!enabled} onClick={()=>act({type:'p-seal-flip',id:9,index:fragment})}><svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M7 10A11 11 0 0 1 26 14M25 6l1 8-8-1M25 22A11 11 0 0 1 6 18M7 26l-1-8 8 1"/></svg></button></>;
  return <svg className="r-seal-cases" viewBox={(wide?[0,0,1672,941]:sealFrame(view)).join(' ')} preserveAspectRatio="none" role="group" aria-label="封印の残る四つの箱">
  <defs><clipPath id={uid+'boxes'}><path d={open?'M65 414L178 301L1146 301L1202 402L1223 113L1564 113L1540 359L1609 465L1603 591L65 591Z':'M65 414L178 301L1534 303L1609 416L1603 591L65 591Z'}/></clipPath><clipPath id={uid+'lid'}><rect x="1200" y="95" width="425" height="393"/></clipPath></defs>
  <g transform={wide?'translate(468 385) scale(.25 .21)':undefined}>

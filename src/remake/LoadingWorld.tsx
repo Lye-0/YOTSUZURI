@@ -42,7 +42,7 @@ export function LoadingWorld({g,eye,hideEntry=false,pixelScale=1}:{g:World;eye:A
  <LoadingWalls eye={eye}/>{!hideEntry&&archiveProjectEye([0,3.345,1],eye)[2]>.1?<LoadingEntryLeaf open={!!g.flags['loading:entry']}/>:null}{archiveProjectEye([-4.2,1.425,1],eye)[2]>.1?<ExitLeaf g={g} eye={eye} pixelScale={pixelScale}/>:null}
  {boxInFront(eye,[-2.85,.13,0],[-1.20,.78,.85])?<MasterWorld g={g}/>:null}
  {boxInFront(eye,[-4.1,2.5,0],[-3.72,3.5,1.9])?<><Face x={-3.73} y={3.5} z={1.9} width={.9} height={1.9} turn={90}><Photograph id="loaded-shelf" group="parts/loading"/></Face><PhotoCuboid x={-4.07} y={2.57} z={0} width={.34} depth={.06} height={1.9} texture={trim}/><PhotoCuboid x={-4.07} y={3.44} z={0} width={.34} depth={.06} height={1.9} texture={trim}/></>:null}
- {boxInFront(eye,[-4.08,.15,0],[-3.05,.82,1.5])?<><Crate eye={eye} pixelScale={pixelScale} x={-4.08} y={.15} width={.67} depth={.67} height={.85}/><BookWorkspaceWorld g={g}/></>:null}
+ {boxInFront(eye,[-4.08,.15,0],[-3.05,.82,1.5])?<><Crate eye={eye} pixelScale={pixelScale} x={-4.08} y={.15} width={.67} depth={.67} height={.85}/><BookWorkspaceWorld g={g} eye={eye} pixelScale={pixelScale}/></>:null}
  {boxInFront(eye,[-3.7,2.1,0],[-3.15,2.7,.62])?<Crate eye={eye} pixelScale={pixelScale} x={-3.7} y={2.1} width={.55} depth={.55}/>:null}
  {boxInFront(eye,[-3.7,2.85,0],[-3.05,3.5,.43])?<Crate eye={eye} pixelScale={pixelScale} x={-3.65} y={2.85} height={.43}/>:null}
  </div>;}

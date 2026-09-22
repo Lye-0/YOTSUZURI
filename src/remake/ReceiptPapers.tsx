@@ -3,12 +3,12 @@ import type {World,Action} from './campaign';
 const correct=[0,2,1];
 const rows=[{name:'受付',digits:['4','27','0'],dy:-34},{name:'作業',digits:['2','63','5'],dy:34},{name:'返却',digits:['9','18','6'],dy:0}];
 /** Copies move physically; reading them never unlocks or gates the cabinet. */
-export function ReceiptPapers({g,act}:{g:World;act:(a:Action)=>void}){
+export function ReceiptPapers({g,act,interactive=true}:{g:World;act:(a:Action)=>void;interactive?:boolean}){
 const drag=useRef<{index:number;y:number}|null>(null),steps=g.itemValues.receipts??[0,0,0];
 const change=(i:number,delta:number)=>{const values=[...steps];values[i]=(values[i]+delta+3)%3;act({type:'item-arrange',item:'receipts',values})};
 return <svg className="r-receipt-papers" viewBox="0 0 1040 430" aria-label="三枚の複写控え" role="group">{steps.map((n,i)=>{
 const x=10+i*330,y=85+n*26,base=175-correct[i]*26;
-return <g key={i} transform={`translate(${x} ${y})`} role="button" tabIndex={0} aria-label={`${i+1}枚目の控えをずらす`} className="r-paper-grab"
+return <g key={i} transform={`translate(${x} ${y})`} role={interactive?'button':undefined} tabIndex={interactive?0:-1} aria-label={`${i+1}枚目の控えをずらす`} className="r-paper-grab"
 onPointerDown={e=>{drag.current={index:i,y:e.clientY};e.currentTarget.setPointerCapture(e.pointerId)}}
 onPointerUp={e=>{if(drag.current?.index===i){change(i,e.clientY-drag.current.y< -10?-1:1);drag.current=null}}}
 onPointerCancel={()=>{drag.current=null}}

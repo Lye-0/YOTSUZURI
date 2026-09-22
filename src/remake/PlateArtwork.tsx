@@ -9,7 +9,7 @@ export function PlateArtwork({index,impression=false}:{index:number;impression?:
  return <svg viewBox="0 0 900 400" width="100%" height="100%" aria-hidden="true">
  <defs>
  <mask id={uid+'window'}><rect width="900" height="400" fill="white"/><path d={windowContour} fill="black"/></mask>
- <clipPath id={uid+'region'}><polygon points={triangle}/></clipPath>
+ <clipPath id={uid+'region'}><polygon points={triangle} shapeRendering="crispEdges"/></clipPath>
  <mask id={uid+'contact'}><rect width="900" height="400" fill={raised?'black':'white'}/><g clipPath={`url(#${uid}region)`} mask={`url(#${uid}window)`}><rect width="900" height="400" fill={raised?'white':'black'}/></g></mask>
  </defs>
  <rect width="900" height="400" fill="#252620" mask={`url(#${uid}contact)`}/>

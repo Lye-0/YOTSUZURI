@@ -18,7 +18,7 @@ export function BlankFold({x,y,z}:{x:number;y:number;z:number}){return <>
  <Face x={x+.20} y={y+.15} z={z+BOOK_UNIT} width={.15} height={BOOK_UNIT} turn={90} resolution={12}><Photograph id="blank-fold-edge" group="parts/book"/></Face>
  <Face x={x} y={y} z={z+BOOK_UNIT} width={.15} height={BOOK_UNIT} turn={-90} resolution={12}><Photograph id="blank-fold-edge" group="parts/book"/></Face>
  </>;}
-export function FinalBookBody({g}:{g:World}){const groups=finalGroups(g),height=groups[0].top,back=g.book.side===0,resolution=g.selected==='lens'?24:12;return <>
+export function FinalBookBody({g,resolution=12}:{g:World;resolution?:number}){const groups=finalGroups(g),height=groups[0].top,back=g.book.side===0;return <>
  {groups.map(row=><div key={row.slot} style={{...joinerySpace,transform:`translate3d(0,${-row.bottom*500}px,${row.shift*500}px)`}}>
  <Face x={0} y={.15} z={row.height} width={.20} height={row.height} resolution={resolution}><Edge {...row} back={back}/></Face>
  <Face x={.20} y={0} z={row.height} width={.20} height={row.height} turn={180} resolution={resolution}><Edge {...row} back={back} solid/></Face>

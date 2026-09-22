@@ -3788,5 +3788,16 @@
       2069,
       110
     ]
+  },
+  {
+    "id": "south-case-open",
+    "group": "scenes/office",
+    "path": "remake/scenes/office/south-case-open.webp",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "bytes": 206116,
+    "source": "exec-b9f8fd5d-8afc-4a79-8fb3-c3a455a2e8a1.png",
+    "master": "scenes/office/south-case-open.png"
   }
 ]
