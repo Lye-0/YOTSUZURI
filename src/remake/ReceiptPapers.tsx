@@ -18,5 +18,5 @@ onKeyDown={e=>{if(['Enter',' ','ArrowUp','ArrowDown'].includes(e.key)){e.prevent
 <path d="M 18 0 H 73 M 102 0 H 182 M 236 0 H 361" fill="none" stroke="#564839" strokeWidth={k===2?1.8:1}/>
 {i===0?<text x="40" y="-9" fontSize="14">{r.name}</text>:null}<text x="145" y="-8" fontSize="25" letterSpacing="25">{r.digits[i]}</text>
 <path d={i===0?'M 325 -5 l 10 5 l -10 5':i===2?'M 30 -5 l 10 5 l -10 5':'M 30 -5 l 10 5 l -10 5 M 325 -5 l 10 5 l -10 5'} fill="none" stroke="#564839" strokeWidth="1.4"/>
-</g>)}</g></g>})}</svg>;
+</g>)}</g>{interactive?<rect className="r-paper-hit" width="380" height="250"/>:null}</g>})}</svg>;
 }

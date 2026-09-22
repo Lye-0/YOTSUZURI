@@ -38,7 +38,7 @@ if(id===13)return close(threadPhoto(g));
 if(id===12)return close('p12-base');
 if(id===10)return close('p10-closed');
 if(id===8)return close('p08-base');
-return close(id===4?open?'p04-open-empty':'p04-base':id===5?'p05-base':id===6?'p06-empty':`${p}-close`);
+return close(id===4?open?'p04-open-empty':'p04-base':id===5?'p05-empty-strip':id===6?'p06-empty':`${p}-close`);
 }
 /** Decode every photographic layer before presenting a new frame. */
 export function sceneFiles(g:World):string[]{
@@ -78,7 +78,7 @@ if(g.facing===2&&(g.focus==='room'||g.focus==='object:1')){add('p01-empty');for(
 }
 if(g.room===1){if(g.focus==='room'){if(g.facing===2&&g.opened.includes(26))add('south-case-open','scenes/office');if(g.facing===1&&g.opened.includes(26))for(const n of ['key-shaft','key-tooth','key-blade'])add(n,'parts');if(g.facing===1){if(g.opened.includes(2)){add('east-drawer-open','scenes/office');add('receipts','items')}if(g.opened.includes(26))add('east-case-open','scenes/office')}if(g.facing===0&&g.opened.includes(3)){add('north-open','scenes/office');add('folios','items')}}if(g.focus==='object:26'&&g.opened.includes(26))for(const n of ['key-shaft','key-tooth','key-blade'])add(n,'parts')}
 if(g.room===2){if(g.facing===0){if(g.focus==='room'||g.focus==='object:4'){add('ring-outer','parts');add('ring-inner','parts');if(g.opened.includes(4)){add('p04-open-full');if(g.focus==='room'){add('north-box-open','scenes/proof');add('knife','items');add('lens','items')}}}if(g.focus==='room'&&g.opened.includes(7))add('north-door-open','scenes/proof')}
-if(g.focus==='object:5'||g.focus==='room'&&g.facing===1){add('paper-strip','items');if(g.focus==='object:5'&&g.flags['cut:5'])add('p05-empty-strip')}
+if(g.focus==='object:5'||g.focus==='room'&&g.facing===1){add('paper-strip','items');if(g.focus==='object:5')add('p05-base')}
 if(g.focus==='object:6'||g.facing===3&&g.focus==='room')add('p06-loose');
 }
 return [...new Set(files)];

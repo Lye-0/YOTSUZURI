@@ -30,3 +30,5 @@
 札入れの重なりと引き手の追加修正は [個別修正記録](remake/28_TICKET_SLATS_REVIEW.md) を参照。
 
 進行に応じたヒントの追加確認は [ヒント修正記録](remake/29_PROGRESS_HINTS.md) を参照。
+
+切断位置と操作枠の追加確認は [修正記録](remake/30_MEASURE_AND_TARGETS.md) を参照。
