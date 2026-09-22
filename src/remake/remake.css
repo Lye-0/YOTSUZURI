@@ -122,3 +122,5 @@ button,[role=button],.r-paper-hit{-webkit-tap-highlight-color:transparent}.r-loa
 .joinery-rail-hit{touch-action:none;cursor:grab}.joinery-rail-hit:active{cursor:grabbing}
 
 .r-maintenance-plate{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;filter:brightness(var(--light))}
+
+.joinery-hit-outline{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.joinery-hit-outline polygon{fill:transparent;stroke:none;vector-effect:non-scaling-stroke}.outlines .joinery-hit-outline polygon{stroke:#e9cf73;stroke-width:2}.joinery-rail-hit.selected .joinery-hit-outline polygon{stroke:#ffe4a0;stroke-width:3;fill:#e9cf7318}.r-stage:has([aria-label="四片の継ぎ枠"]) .r-message{top:72px;bottom:auto}
