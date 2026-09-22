@@ -1249,5 +1249,45 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       1386,
       1029
     ]
+  },
+  "parts/rubbing/mould-working": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      72,
+      54,
+      1395,
+      900
+    ]
+  },
+  "parts/rubbing/rubbing-charcoal": {
+    "width": 1774,
+    "height": 887,
+    "bounds": [
+      64,
+      206,
+      1661,
+      486
+    ]
+  },
+  "parts/rubbing/rubbing-eraser": {
+    "width": 1448,
+    "height": 1086,
+    "bounds": [
+      134,
+      183,
+      1188,
+      742
+    ]
+  },
+  "parts/rubbing/mould-back": {
+    "width": 1536,
+    "height": 1024,
+    "bounds": [
+      75,
+      56,
+      1385,
+      901
+    ]
   }
 };

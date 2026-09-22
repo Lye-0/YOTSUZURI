@@ -1,3 +1,4 @@
+import {RubbingWorld} from './RubbingWorld';
 import {CutawayWorld} from './CutawayWorld';
 import {JoineryWorld} from './JoineryWorld';
 import {RepairPortals,type RepairTravelPresentation} from './RepairPortals';
@@ -105,7 +106,7 @@ export function ArchiveScene({values,facing,room=6,doorOpen=false,camera,selecte
  {shelfSpecs.map((_,i)=><Shelving key={i} index={i} values={values} envelope={envelope} onSelect={busy?undefined:onSelect}/>)}
  </>;
  return <div ref={host} onClick={e=>{if(!(e.target instanceof Element)||e.target.closest('button'))return;const box=host.current!.getBoundingClientRect(),x=(e.clientX-box.left)/scale,y=(e.clientY-box.top)/scale,hit=archivePickShelf(values,x,y,eye);if(hit>=0){if(!busy)onSelect?.(hit,false);return;}if(!onTrace)return;const point=archiveFloorPoint(x,y,eye);if(!point)return;const index=archiveOldPlan.findIndex((s,i)=>{if(s.room!==room)return false;const r=oldFootprint(i),x=point[0]+(room===7?4.2:0);return x>=r.x-.1&&x<=r.x+r.width+.1&&point[1]>=r.y-.1&&point[1]<=r.y+r.depth+.1;});if(index>=0)onTrace(index);}} className="archive-view" role="group" aria-label={room===6?'東書庫':room===7?'西書庫':'修復室'}>{room===8?<>
- {repair?.g.flags.secret&&vaultClip?<WorldCamera eye={eye} frame={frame} scale={scale} clip={vaultClip}><VaultShell eye={eye}/><BlankStudyWorld g={repair.g}/><JoineryWorld g={repair.g}/><CutawayWorld g={repair.g} eye={eye} pixelScale={scale}/></WorldCamera>:null}
+ {repair?.g.flags.secret&&vaultClip?<WorldCamera eye={eye} frame={frame} scale={scale} clip={vaultClip}><VaultShell eye={eye}/><RubbingWorld g={repair.g}/><BlankStudyWorld g={repair.g}/><JoineryWorld g={repair.g}/><CutawayWorld g={repair.g} eye={eye} pixelScale={scale}/></WorldCamera>:null}
  {portalClip?<WorldCamera eye={eye} frame={frame} scale={scale} clip={portalClip}>{archiveWorld}</WorldCamera>:null}
  <WorldCamera eye={eye} frame={frame} scale={scale}>{repair?<RepairWorld g={repair.g} eye={eye} pixelScale={scale}/>:null}<ArchiveRepairDoor open={doorOpen}/></WorldCamera>
  </>:<>

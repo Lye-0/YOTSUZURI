@@ -3410,5 +3410,73 @@
       1386,
       1029
     ]
+  },
+  {
+    "id": "mould-working",
+    "group": "parts/rubbing",
+    "path": "remake/parts/rubbing/mould-working.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": true,
+    "bytes": 601084,
+    "source": "exec-57f57f7d-e1ac-4380-828a-f683673fc1fd.png",
+    "master": "parts/rubbing/mould-working.png",
+    "bounds": [
+      72,
+      54,
+      1395,
+      900
+    ]
+  },
+  {
+    "id": "rubbing-charcoal",
+    "group": "parts/rubbing",
+    "path": "remake/parts/rubbing/rubbing-charcoal.webp",
+    "width": 1774,
+    "height": 887,
+    "alpha": true,
+    "bytes": 355612,
+    "source": "exec-9ed28f23-f68c-45de-9b47-2068ef214b30.png",
+    "master": "parts/rubbing/rubbing-charcoal.png",
+    "bounds": [
+      64,
+      206,
+      1661,
+      486
+    ]
+  },
+  {
+    "id": "rubbing-eraser",
+    "group": "parts/rubbing",
+    "path": "remake/parts/rubbing/rubbing-eraser.webp",
+    "width": 1448,
+    "height": 1086,
+    "alpha": true,
+    "bytes": 181408,
+    "source": "exec-5480042d-e82a-4bad-8bac-72d25dfd6925.png",
+    "master": "parts/rubbing/rubbing-eraser.png",
+    "bounds": [
+      134,
+      183,
+      1188,
+      742
+    ]
+  },
+  {
+    "id": "mould-back",
+    "group": "parts/rubbing",
+    "path": "remake/parts/rubbing/mould-back.webp",
+    "width": 1536,
+    "height": 1024,
+    "alpha": true,
+    "bytes": 665532,
+    "source": "exec-c36956fc-68dd-40ef-ad9e-e1949e4bc49d.png",
+    "master": "parts/rubbing/mould-back.png",
+    "bounds": [
+      75,
+      56,
+      1385,
+      901
+    ]
   }
 ]
