@@ -1409,5 +1409,55 @@ export const photoBounds:Record<string,{width:number;height:number;bounds:[numbe
       2069,
       110
     ]
+  },
+  "parts/ticket/slat-0": {
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      25,
+      247,
+      2123,
+      214
+    ]
+  },
+  "parts/ticket/slat-1": {
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      44,
+      239,
+      2085,
+      225
+    ]
+  },
+  "parts/ticket/slat-2": {
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      40,
+      258,
+      2097,
+      203
+    ]
+  },
+  "parts/ticket/slat-3": {
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      32,
+      266,
+      2108,
+      198
+    ]
+  },
+  "parts/ticket/keeper": {
+    "width": 1024,
+    "height": 1536,
+    "bounds": [
+      314,
+      71,
+      397,
+      1397
+    ]
   }
 };

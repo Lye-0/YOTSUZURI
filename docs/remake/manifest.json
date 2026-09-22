@@ -793,17 +793,6 @@
     ]
   },
   {
-    "id": "p01-case",
-    "group": "closeups",
-    "path": "remake/closeups/p01-case.webp",
-    "width": 1672,
-    "height": 941,
-    "alpha": false,
-    "bytes": 331902,
-    "source": "exec-f313a89f-db78-4c9e-9752-6f6a5ccee079.png",
-    "master": "closeups/p01-case.png"
-  },
-  {
     "id": "card-diamond",
     "group": "items",
     "path": "remake/items/card-diamond.webp",
@@ -3660,5 +3649,90 @@
     "bytes": 206116,
     "source": "exec-b9f8fd5d-8afc-4a79-8fb3-c3a455a2e8a1.png",
     "master": "scenes/office/south-case-open.png"
+  },
+  {
+    "id": "slat-0",
+    "group": "parts/ticket",
+    "path": "remake/parts/ticket/slat-0.webp",
+    "width": 2172,
+    "height": 724,
+    "alpha": true,
+    "bytes": 156730,
+    "source": "exec-bd7e3ce7-b1c4-416c-84e3-c4cfb2da9bdc.png",
+    "master": "parts/ticket/slat-0.png",
+    "bounds": [
+      25,
+      247,
+      2123,
+      214
+    ]
+  },
+  {
+    "id": "slat-1",
+    "group": "parts/ticket",
+    "path": "remake/parts/ticket/slat-1.webp",
+    "width": 2172,
+    "height": 724,
+    "alpha": true,
+    "bytes": 159314,
+    "source": "exec-e2961b25-6ded-4cf7-8cc3-3198f97c0955.png",
+    "master": "parts/ticket/slat-1.png",
+    "bounds": [
+      44,
+      239,
+      2085,
+      225
+    ]
+  },
+  {
+    "id": "slat-2",
+    "group": "parts/ticket",
+    "path": "remake/parts/ticket/slat-2.webp",
+    "width": 2172,
+    "height": 724,
+    "alpha": true,
+    "bytes": 135248,
+    "source": "exec-9fb4ca4b-acb0-43e3-b01f-4382f45b6e20.png",
+    "master": "parts/ticket/slat-2.png",
+    "bounds": [
+      40,
+      258,
+      2097,
+      203
+    ]
+  },
+  {
+    "id": "slat-3",
+    "group": "parts/ticket",
+    "path": "remake/parts/ticket/slat-3.webp",
+    "width": 2172,
+    "height": 724,
+    "alpha": true,
+    "bytes": 154748,
+    "source": "exec-c84070d3-75d4-4605-a282-74295c6d4c74.png",
+    "master": "parts/ticket/slat-3.png",
+    "bounds": [
+      32,
+      266,
+      2108,
+      198
+    ]
+  },
+  {
+    "id": "keeper",
+    "group": "parts/ticket",
+    "path": "remake/parts/ticket/keeper.webp",
+    "width": 1024,
+    "height": 1536,
+    "alpha": true,
+    "bytes": 250922,
+    "source": "exec-7391807c-fa6b-4970-8b18-5e850842c9b4.png",
+    "master": "parts/ticket/keeper.png",
+    "bounds": [
+      314,
+      71,
+      397,
+      1397
+    ]
   }
 ]

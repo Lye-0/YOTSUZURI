@@ -77,3 +77,5 @@ button,[role=button],.r-paper-hit{-webkit-tap-highlight-color:transparent}.r-loa
 .r-record-picture .r-stage{width:min(94vw,calc((100svh - 190px)*var(--record-ratio)));height:auto;max-height:none}.r-snapshot:has(.item-view)>.r-stage{display:none}
 
 .r-item .r-folio-papers,.r-item .r-receipt-papers{width:100%;height:100%;max-width:100%;max-height:100%}
+
+.ticket-slat-lifting,.ticket-slat-blocked{transform-box:fill-box;transform-origin:center}.ticket-slat-lifting{animation:ticket-lift .30s ease-in forwards;pointer-events:none}.ticket-slat-blocked{animation:ticket-catch .28s ease-out}@keyframes ticket-lift{0%{transform:scale(1);opacity:1}55%{transform:translateY(10px) scale(1.07);opacity:1}100%{transform:translateY(38px) scale(1.13);opacity:0}}@keyframes ticket-catch{0%,100%{transform:translateY(0)}25%,65%{transform:translateY(3px)}45%,80%{transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.ticket-slat-lifting,.ticket-slat-blocked{animation:none}}
