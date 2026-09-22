@@ -1,7 +1,8 @@
+import {progressHints} from './progressHints';
 import type {World} from './campaign';
 import {BOOK_ORDER} from './book';
 import {gatheringSources} from './gatherings';
-export function campaignHints(g:World):string[]|null{
+function baseHints(g:World):string[]|null{
 if(g.room===10){
  if(g.focus==='object:30')return ['手元の材料を選んで作業台へ置く。置いた物に触れると、観察・載せ替え・回収ができる。','枠と束を締め具へ載せる。先に脇へ置いた物は、載せ替えの印で移せる。','六つの束の順は、小口の像をつないだ順を使う。白紙は原型庫の標本と同じ位置の束の中へ入る。','束に近づき、二つへ順に触れると交換できる。白紙を入れる印を選んでから、入れる束へ触れる。白紙は束と一緒に移動する。','束を閉じ、押さえ板を下ろす。針と糸で綴じれば、押さえを解いても本は閉じたまま残る。間違えた本は針でほどける。','搬出間の原型に描かれた角切りと、本の角切りを合わせて読む。','六つの厚みは上から 1、3、4、2、4、1。断面の模型で見た、上下を足して同じ高さにする関係を使う。','歯は左から 4、2、1、3、1、4 段。調整した鍵を鞄の印で取り出し、扉で使う。'];
  if(g.focus==='object:29')return ['似た二つの原型には、角切り・二つの穴・補修の位置が違う。','原型庫で取った写しを、まず現在の搬出口の金具と合わせる。','同じ紙をこちらの原型に重ね、表裏と向きを直して比べられる。','右の原型が、現在の金具と一致する。その脇の小さな図は、本の角切りと読む側を示している。'];
@@ -55,3 +56,5 @@ return ['折り紙は手元で観察できる。校正室にも、紙と印の�
 }
 return null;
 }
+
+export function campaignHints(g:World,context?:'exit'|'secret'):string[]{return progressHints(g,baseHints,context);}
