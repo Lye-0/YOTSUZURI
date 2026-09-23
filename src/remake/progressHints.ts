@@ -66,7 +66,7 @@ export function nextHintGoal(g:World):Goal{
   if(!has(g,'needle')||!has(g,'thread'))return 13;
   if(!g.visited.includes(8)&&(!has(g,'oldplan')||!trimFits(g.itemValues.oldplan??[])))return 14;
   if(!g.opened.includes(15))return 15;
-  if(!has(g,'tissue')||!has(g,'blanks'))return 18;
+  if(!has(g,'blanks'))return 18;
   if(!gatheringsTaken(g)||!originalPaper(g))return 17;
   if(!cradleTaken(g)&&!has(g,'wedge'))return 19;
   if(!g.visited.includes(8)&&(!archivePassable(value(g,16))||!g.flags['archive:door']))return 16;
@@ -76,15 +76,12 @@ export function nextHintGoal(g:World):Goal{
   return'secret';
  }
  if(!has(g,'needle')||!has(g,'thread'))return 13;
- if(!has(g,'tissue')||!has(g,'blanks'))return 18;
+ if(!has(g,'blanks'))return 18;
  if(!gatheringsTaken(g)||!originalPaper(g))return 17;
  if(!frameTaken(g)||!has(g,'returnrecord'))return 24;
  if(!has(g,'keyparts'))return 26;
  if(!clampTaken(g))return 28;
  if(!g.solved.includes(27))return 27;
- if(!traceReady(g))return 25;
- if(!g.solved.includes(25))return'exit';
- if(!g.solved.includes(29))return 29;
  return 30;
 }
 
@@ -105,7 +102,7 @@ export function progressHints(g:World,base:Base,context?:'exit'|'secret'):string
  const box=():string[]=>{if(!g.boxOpen)return !g.latchUp?['受渡台の小箱は、留め金が蓋を押さえている。','金具を上げてから、蓋の手前を持ち上げる。']:['留め金は外れている。次は小箱の蓋を持ち上げる。'];const left=[!g.keyTaken?'真鍮の鍵':null,!g.cardTaken?'丸印の札':null].filter(Boolean);return left.length?[`開いた小箱に${left.join('と')}が残っている。写真の物に触れて取る。`]:['小箱の中身は回収済み。',...global(nextHintGoal(g))];};
  const door=():string[]=>g.doorOpen?['帳場への戸が開いている。戸口に触れて入れる。']:g.doorUnlocked?['錠は外れている。戸の取っ手を回して開く。']:g.keyInserted?['鍵は差してある。差した鍵を回す。']:g.inventory.includes('key')?['手元の真鍮の鍵を選び、受渡口の東側の鍵穴へ差す。']:box();
  const secret=():string[]=>g.flags.secret?['修復室の北に開いた戸がある。戸口から原型庫へ進む。']:g.flags['repair:trim:1']?(!g.flags['repair:released']&&!lockMatches(g.flags,'repair:setting:1',panelLockCode)?['覆いの内側に六段の留めがある。小口の絵の六段の位置を写し、取っ手を回す。']:['六段を合わせたら丸い取っ手を回す。']):g.visited.includes(9)?['以前通った中央の木板が閉じている。','紙ナイフで取っ手の覆いを外し、取っ手を回す。']:!g.solved.includes(22)?['北の板を選ぶ手掛かりは、南の小口の像にある。',...object(22)]:['小口の像と、北の三枚の板の割れ目・補修金具を比べる。','右上が割れ、右の金具が二つの板。紙ナイフを選び、小さな覆いの縁へ使う。'];
- const exitSteps=():string[]=>{if(g.finished)return['外へ出られた。'];if(g.flags.exitOpen)return['搬出口は開いている。開いた戸口から外へ進む。'];if(g.flags.exitUnlocked)return[g.flags.exitKey?'錠は外れている。鍵を抜いてから、戸の取っ手を回す。':'錠は外れている。搬出口の取っ手を回して戸を開く。'];if(g.flags.exitKey&&!g.flags['key:fixed'])return['差した鍵は歯が未固定。いったん抜き、綴じた本と一緒に製本台の受け台へ置く。'];if(g.flags.exitKey)return keyOpens(currentKey(g))?['差した鍵の形が合っている。鍵を回す。']:['差した鍵は、まだ回らない。いったん抜いて歯を調整する。','作業台の本の厚みと、断面模型の上下を足す関係を比べる。'];if(paperOnExit(g))return !traceReady(g)?['この紙は、金具の縁をまだ写し切れていない。紙を回収して原型庫の作業台で写し直す。']:paperMatchesExit(g)?['角・二穴・縁が重なっている。紙を回収し、北の二つの原型と比べる。']:['扉に当てた紙の表裏と向きを変え、角と二つの穴を合わせる。','交差線の有無ではなく、欠けた角と二つの穴が重なる向きを探す。'];if(has(g,'keyparts')&&g.flags['key:fixed']&&keyOpens(currentKey(g)))return g.inventory.includes('keyparts')?['六枚歯の保守鍵を選んで、搬出口の鍵穴へ差す。']:need('keyparts',30,'扉の鍵穴');if(!traceReady(g))return ['扉の金具には、角切りと二つの穴がある。写しを合わせると向きを比べられる。',...(has(g,'tissue')?object(25):need('tissue',25,'原型'))];if(!g.solved.includes(25))return need('tissue',25,'搬出口の金具');if(!g.solved.includes(29))return['金具の写しを、搬出間の北の二つの原型と比べる。'];return object(30);};
+ const exitSteps=():string[]=>{if(g.finished)return['外へ出られた。'];if(g.flags.exitOpen)return['搬出口は開いている。開いた戸口から外へ進む。'];if(g.flags.exitUnlocked)return[g.flags.exitKey?'錠は外れている。鍵を抜いてから、戸の取っ手を回す。':'錠は外れている。搬出口の取っ手を回して戸を開く。'];if(g.flags.exitKey&&!g.flags['key:fixed'])return['差した鍵は歯が未固定。いったん抜き、綴じた本と一緒に製本台の受け台へ置く。'];if(g.flags.exitKey)return keyOpens(currentKey(g))?['差した鍵の形が合っている。鍵を回す。']:['差した鍵は、まだ回らない。いったん抜いて歯を調整する。','作業台の本の厚みと、断面模型の上下を足す関係を比べる。'];if(paperOnExit(g)&&has(g,'keyparts')&&g.flags['key:fixed']&&keyOpens(currentKey(g)))return['扉の紙を持ち帰り、空いた鍵穴へ保守鍵を差す。'];if(paperOnExit(g))return !traceReady(g)?['この紙は、金具の縁をまだ写し切れていない。紙を回収して原型庫の作業台で写し直す。']:paperMatchesExit(g)?['角・二穴・縁が重なっている。紙を回収し、北の二つの原型と比べる。']:['扉に当てた紙の表裏と向きを変え、角と二つの穴を合わせる。','交差線の有無ではなく、欠けた角と二つの穴が重なる向きを探す。'];if(has(g,'keyparts')&&g.flags['key:fixed']&&keyOpens(currentKey(g)))return g.inventory.includes('keyparts')?['六枚歯の保守鍵を選んで、搬出口の鍵穴へ差す。']:need('keyparts',30,'扉の鍵穴');return object(30);};
  const exit=():string[]=>[...(g.room!==10&&!g.finished?[g.flags['loading:entry']?'受渡口の西にある搬出間へ戻る。':'受渡口の西側の戸を開き、搬出間へ入る。']:[]),...exitSteps()];
 
  function object(id:number):string[]{
@@ -140,7 +137,7 @@ export function progressHints(g:World,base:Base,context?:'exit'|'secret'):string
   case 26:if(matchesNumeric(g,26))return['返却年の数字が合っている。ケースの蓋を開く。'];if(!has(g,'returnrecord'))return need('returnrecord',26,'保守ケースの年の読解');return fallback(26);
   case 27:return cutawayOpen(g)?finished(27,'模型の軸は引けている。上下の金属片の合計が同じ高さになる関係を、保守鍵にも使える。'):cutawayAligned(g)?['金属片の境目が一本に揃っている。右の取っ手を引く。']:fallback(27);
   case 28:if(clampTaken(g))return finished(28,'締め具は持ち出せている。');if(!clampValues(g)[3])return['押さえ板が下りている。いったん上げれば、枠の回収やカムの調整ができる。'];if(!at(g,28,'frame'))return g.solved.includes(28)?['枠は取り出せている。鞄の印で締め具を持ち上げる。']:need('frame',28,'締め具の台');if(clampFits(clampValues(g)))return g.solved.includes(28)?['押さえ板は枠に合っている。枠を取り出してから、締め具を持ち上げる。']:['押さえ板が枠の内側に合っている。下ろして接触を確かめる。'];return fallback(28).slice(0,4);
-  case 29:if(g.solved.includes(29)&&!at(g,29,'tissue'))return finished(29,'現在の金具と一致する原型を比べられた。脇の図が本を読む面を示している。');if(!traceReady(g))return['原型に比べるための写しを、原型庫の作業台で作る。',...object(25)];if(!g.solved.includes(25))return['先に写しを現在の搬出口の金具に重ね、接触する面を合わせる。'];if(!at(g,29,'tissue'))return need('tissue',29,'比べる原型');if(value(g,29)[0]!==1)return['こちらの原型は現在の金具と角・穴・補修の位置が違う。紙をもう一方へ移して比べる。'];return paperMatchesExit(g)?['角と二穴の位置が一致している。脇の本の図を確かめ、写しを回収する。']:['原型へ当てた紙の表裏と向きを、扉に重なった向きへ直して比べる。'];
+  case 29:if(!at(g,29,'tissue'))return ['二つの原型は、本を読む向きを比べるための資料。欠けた角と穴を、実際の扉の金具と見比べる。','写しを使って比較するときは、手元の保護紙を選んで原型に重ねる。'];if(!traceReady(g))return['原型に比べるための写しを、原型庫の作業台で作る。',...object(25)];if(value(g,29)[0]!==1)return['こちらの原型は現在の金具と角・穴・補修の位置が違う。紙をもう一方へ移して比べる。'];return paperMatchesExit(g)?['角と二穴の位置が一致している。脇の本の図を確かめ、写しを回収する。']:['原型へ当てた紙の表裏と向きを、扉に重なった向きへ直して比べる。'];
   case 30:{const b=g.book;if(b.sewn&&b.closed&&reconstructedBook(b,gatheringSources(g))&&!g.flags['key:fixed']&&has(g,'keyparts'))return b.clamped?['押さえ板を上げてから、綴じた本を手前へ移す。']:bookAtPress(g)?['綴じた本を手前の受け台へ移し、鍵の歯を本の段差に合わせて固定する。']:['鍵部品を製本台に置き、比較画面で「本の段差で歯を合わせて固定する」を使う。'];if(g.flags.exitKey||has(g,'keyparts')&&g.flags['key:fixed']&&keyOpens(currentKey(g)))return exit();if(b.sewn&&!reconstructedBook(b,gatheringSources(g)))return b.clamped?['綴じた本の順・白紙の位置・表裏を直すには、まず押さえ板を上げる。']:b.side===0?['綴じた本が裏向きになっている。束全体を裏返して、原型の図の角切りと合わせる。']:['綴じた束の順か白紙の位置が違う。針を使って糸をほどくと、材料を失わず組み直せる。'];if(b.sewn){if(b.clamped)return['糸で綴じられた。押さえ板を上げると、閉じたまま本を動かせる。'];if(bookAtPress(g))return['綴じた本を選び、台の手前へ移して小口を読む。'];if(!at(g,30,'keyparts'))return need('keyparts',30,'製本の作業台');return fallback(30).slice(5);}
    for(const item of ['clamp','frame','gatherings','blanks','thread'] as const)if(!at(g,30,item))return need(item,30,'製本の作業台');if(!clampValues(g)[3]&&!b.clamped)return['押さえ板を上げると、脇の枠や紙束を載せ替えられる。'];if(!frameAtPress(g))return['枠は脇に置かれている。枠を選び、締め具の台へ載せる。'];if(!bookAtPress(g))return['紙束は脇に置かれている。紙束を選び、枠の中へ載せる。'];if(b.clamped&&(!correctBookOrder(b.order,gatheringSources(g))||b.blanks.length!==2||!missingLeaves.every(i=>b.blanks.includes(i))||b.side!==1))return['押さえた束の順・白紙・読む面が、まだ揃っていない。押さえ板を上げて組み直す。'];if(b.clamped)return has(g,'needle')?['束を押さえられている。綴じ針を選び、束を糸で綴じる。']:need('needle',30,'押さえた束');if(!originalPaper(g))return['原紙と違う紙が混じっている。紙束を回収し、西書庫の整理布で選び直す。'];if(!correctBookOrder(b.order,gatheringSources(g)))return['小口の像をつないだ順と、現在の束の順が違う。「順序を直す」を開き、束をドラッグして戻す。'];if(!missingLeaves.every(i=>b.blanks.includes(i))||b.blanks.length!==2)return['白紙を、原型庫で欠落していた葉と同じ位置の束の中へ入れる。','丸と三角の印の束へ一つずつ。違う束へ入れた白紙は、その束を選んで抜ける。'];if(!b.side)return['本の角切りを原型の図と比べる。束全体を裏返して、読む面を合わせる。'];if(!b.closed)return['順と白紙は揃っている。束を閉じる。'];if(!clampFits(clampValues(g)))return['押さえ板の受け座がずれている。上からカムを見て、板が枠に収まる位置へ直す。'];return['束は閉じている。押さえ板を下ろして固定する。'];}
   }

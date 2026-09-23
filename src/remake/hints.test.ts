@@ -37,3 +37,5 @@ it('共通の横ずれだけなら台上・手元とも完成と案内する',()
 
 it('標本への白紙の仮置きを要求せず、製本台から取り戻させない',()=>{const g=focus({...completed(),placed:{30:['blanks']},solved:[],itemValues:{},flags:{}},23);expect(text(g)).toContain('標本');expect(text(g)).toContain('製本台で');expect(text(g)).not.toContain('取り戻して');expect(text(g)).not.toContain('仮置き');});
 it('未仮置きの標本を必須の次工程として案内しない',()=>{const g=completed();g.solved=g.solved.filter(id=>id!==23);g.flags={...g.flags,exitKey:false,exitOpen:false,exitUnlocked:false,'key:fixed':false};g.finished=false;expect(nextHintGoal(g)).not.toBe(23);});
+
+it('型の写しを未取得・未作成・未照合でも製本へ案内する',()=>{const g=completed();g.finished=false;g.flags={...g.flags,exitKey:false,exitOpen:false,exitUnlocked:false,'key:fixed':false};g.solved=g.solved.filter(id=>![25,29].includes(id));g.inventory=g.inventory.filter(x=>x!=='tissue');for(const id in g.placed)g.placed[id]=g.placed[id].filter(x=>x!=='tissue');delete g.itemValues.tissue;expect(nextHintGoal(g)).toBe(30);const view=focus(g,29);expect(text(view)).toContain('比較するとき');expect(text(view)).not.toContain('先に写し');});
