@@ -34,3 +34,6 @@ describe('現在の状態から案内を選ぶ',()=>{
 });
 
 it('共通の横ずれだけなら台上・手元とも完成と案内する',()=>{for(const offset of [0,1,2])for(const face of [0,1]){const layers=[0,3].map(plate=>({plate,rotation:0,face,offset}));const g=focus({...initial(),print:{slot:0,layers}},12);expect(text(g)).toContain('台上の紙は完成');const held={...g,inventory:['proof'] as World['inventory'],itemValues:{proof:layers.flatMap(l=>[l.plate,l.rotation,l.face,l.offset])},print:{slot:0 as const,layers:[]}};expect(text(held)).toContain('手元の二重刷りの紙は完成');}});
+
+it('標本への白紙の仮置きを要求せず、製本台から取り戻させない',()=>{const g=focus({...completed(),placed:{30:['blanks']},solved:[],itemValues:{},flags:{}},23);expect(text(g)).toContain('標本');expect(text(g)).toContain('製本台で');expect(text(g)).not.toContain('取り戻して');expect(text(g)).not.toContain('仮置き');});
+it('未仮置きの標本を必須の次工程として案内しない',()=>{const g=completed();g.solved=g.solved.filter(id=>id!==23);g.flags={...g.flags,exitKey:false,exitOpen:false,exitUnlocked:false,'key:fixed':false};g.finished=false;expect(nextHintGoal(g)).not.toBe(23);});

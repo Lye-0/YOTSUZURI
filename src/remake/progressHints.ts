@@ -18,7 +18,7 @@ import {traceLight,opticsValues} from './optics';
 import {cradleTaken,cradleReady,cradleValues} from './cradle';
 import {correctBookOrder,reconstructedBook} from './book';
 import {foreedgeMounted,foreedgeView} from './foreedge';
-import {blankStudyValues,missingLeaves} from './blankStudy';
+import {missingLeaves} from './blankStudy';
 import {frameTaken,joineryReady,joineryValues} from './joinery';
 import {tissueTrace,tissueOnMould,rubbingValues} from './rubbing';
 import {paperMatchesExit,paperOnExit} from './exitReference';
@@ -78,7 +78,6 @@ export function nextHintGoal(g:World):Goal{
  if(!has(g,'needle')||!has(g,'thread'))return 13;
  if(!has(g,'tissue')||!has(g,'blanks'))return 18;
  if(!gatheringsTaken(g)||!originalPaper(g))return 17;
- if(!g.solved.includes(23))return 23;
  if(!frameTaken(g)||!has(g,'returnrecord'))return 24;
  if(!has(g,'keyparts'))return 26;
  if(!clampTaken(g))return 28;
@@ -135,7 +134,7 @@ export function progressHints(g:World,base:Base,context?:'exit'|'secret'):string
   case 20:if(g.flags['optics:guard'])return finished(20,'留め棒は開いている。見本台を使える。');return traceLight(opticsValues(g)).lit?['光が受光部へ届いている。受光部に近づき、留め棒を持ち上げる。']:fallback(20);
   case 21:if(cradleTaken(g))return finished(21,'支持具は組み上げて持ち出せている。');for(const item of ['corner','wedge'] as const)if(!at(g,21,item))return cradleValues(g)[0]?need(item,21,'二枚板の内側'):['上の板を起こしてから、部品を内側へ置く。'];if(cradleReady(g))return cradleValues(g)[0]?['斜面と角当ては合っている。上の板を下ろして支えを確かめる。']:['板が斜面で支えられている。支持具を持ち上げて運べる。'];return cradleValues(g)[0]?fallback(21).slice(1):['いったん上の板を起こすと、角当てと木片を動かせる。',...fallback(21).slice(1,4)];
   case 22:if(!at(g,22,'gatherings')&&g.solved.includes(22))return finished(22,'小口の像は一度つながっている。並べた順は紙束へ引き継いでいる。');if(!g.flags['optics:guard'])return['留め棒が見本台を塞いでいる。まず隣の反射片と光を調べる。',...object(20)];if(!at(g,22,'cradle'))return need('cradle',22,'南の見本台');if(!at(g,22,'gatherings'))return need('gatherings',22,'支持具');if(!originalPaper(g))return['この束には、原紙と違う紙が混じっている。紙束を回収し、西書庫の整理布へ戻して交換する。'];if(!correctBookOrder(g.book.order,gatheringSources(g)))return fallback(22).slice(1,6);return foreedgeView(g)===2?['小口の線と像がつながっている。割れ目の側と補修金具の数を、北の三枚の板と比べる。']:['束の順は合っている。右へ傾けると、小口に描かれた像を読める。'];
-  case 23:if(g.solved.includes(23)&&!at(g,23,'blanks'))return finished(23,'白紙を補う二か所は見つかっている。白紙の束へ引き継いである。');if(!at(g,23,'blanks'))return need('blanks',23,'標本の作業台');if(missingLeaves.every(i=>blankStudyValues(g).includes(i)))return['欠けた葉の二か所へ白紙を置けている。白紙二枚をまとめて持ち帰る。'];return fallback(23);
+  case 23:return [...fallback(23),...(at(g,23,'blanks')?['この台に置いた補充用の白紙は、製本台へ持ち帰って使える。']:[])];
   case 24:if(!has(g,'returnrecord')&&frameTaken(g))return['組み枠は持ち出せているが、壁の返却記録がまだ残っている。記録を取って観察する。'];if(frameTaken(g))return finished(24,'組み枠と返却記録は回収済み。');if(joineryReady(g))return['四隅が重なって枠が組み上がった。枠を持ち上げて取る。'];return joineryValues(g).slice(0,4).every(n=>n<0)?['まず四本の長さと、受け台の縦横の溝の長さを比べる。','木片を選び、同じ長さの溝へ向きを合わせて置く。',...fallback(24).slice(0,3)]:[`今は${joineryValues(g).slice(0,4).filter(n=>n>=0).length}片が溝に入っている。隣り合う端の段差が補い合うか比べる。`,...fallback(24).slice(0,3)];
   case 25:{const t=tissueTrace(g);if(traceReady(g))return at(g,25,'tissue')?['縁と二穴を写し切れている。保護紙を持ち帰り、搬出間の扉に重ねて比べる。']:finished(25,'金具の縁を写した保護紙は持ち出せている。');if(!at(g,25,'tissue'))return need('tissue',25,'原型');if(g.flags['rubbing:inspection'])return['写しを続けるには、脇の紙を原型へ戻す。外周・欠けた角・二つの穴を写す。'];if(t[2]&&(t[0]!==rubbingValues(g)[0]||t[1]!==rubbingValues(g)[1]))return['紙には、いまの原型の向きと異なる写しが残っている。','練り消しで前の写しを消してから、黒鉛で写し直す。'];return t[2]?['写しは途中までできている。黒鉛を選び、まだ写っていない縁と二穴の周りを擦る。']:['黒鉛を選び、原型に重ねた保護紙の縁と穴の周りを擦る。'];}
   case 26:if(matchesNumeric(g,26))return['返却年の数字が合っている。ケースの蓋を開く。'];if(!has(g,'returnrecord'))return need('returnrecord',26,'保守ケースの年の読解');return fallback(26);
