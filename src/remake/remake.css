@@ -184,3 +184,6 @@ button,[role=button],.r-paper-hit{-webkit-tap-highlight-color:transparent}.r-loa
 @media(max-width:600px){.r-stage.r-binding-book{width:96vw;aspect-ratio:1000/1600}.book-blank-source{bottom:160px;left:12px;width:155px}.book-blank-source>svg{width:100px;height:45px}.book-blank-source span{display:block;font-size:12px}.book-work-instruction{top:62px;font-size:12px}}
 
 .book-command.book-command-secondary{background:transparent;border-color:transparent;font-size:13px;color:#cabc9a;text-decoration:underline;text-underline-offset:4px}
+
+.repair-setting-stop[aria-pressed=true]{box-shadow:inset 0 0 0 2px #e5c679;background:#e5c67918}.repair-setting-stop:focus-visible{outline:2px solid #f9e5ae}
+.r-repair-panel .r-message{top:60px;bottom:auto;left:5%;width:90%;max-width:none;transform:none;box-sizing:border-box}

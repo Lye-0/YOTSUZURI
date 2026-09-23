@@ -13,3 +13,4 @@ describe('補修した木板の実物の覆い',()=>{
   expect(applyRepairNorth({...start(),selected:null},{type:'repair-trim',index:1}).world.flags).toEqual(initial().flags);
  });
 });
+it('指定した目盛りへ直接動かし、同じ位置を押しても進まない',()=>{let g=applyRepairNorth(start(),{type:'repair-trim',index:1}).world;g=applyRepairNorth(g,{type:'repair-setting',index:1,row:2,position:2}).world;expect(g.flags['repair:setting:1:2:2']).toBe(true);g=applyRepairNorth(g,{type:'repair-setting',index:1,row:2,position:2}).world;expect(g.flags['repair:setting:1:2:2']).toBe(true);expect(applyRepairNorth(g,{type:'repair-setting',index:1,row:2,position:4}).world).toBe(g);});
