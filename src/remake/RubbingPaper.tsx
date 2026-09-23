@@ -1,3 +1,4 @@
+import {rubbingOutlinePath,rubbingHolePath} from './rubbingShape';
 import {useId} from 'react';
 import type {World,Action} from './campaign';
 import {PhotoSprite} from './PhotoSprite';
@@ -8,7 +9,7 @@ export function RubbingPaper({g}:{g:World}){const t=tissueTrace(g),id=useId(),od
  <g transform={`rotate(${t[4]*90} 75 47.5) ${t[3]?'translate(150 0) scale(-1 1)':''}`}>
  <PhotoSprite name="tissue" group="items" x={0} y={0} width={150} height={95}/>
  <g mask={`url(#${id}zones)`} opacity={t[3]?.64:.84} style={{mixBlendMode:'multiply'}} filter={`url(#${id}grain)`}><g transform={`rotate(${t[1]*90} 75 47.5) translate(15 7.5) ${t[0]===0?'translate(120 0) scale(-1 1)':''}`}>
- <path fill="#34312b" fillRule="evenodd" d={t[0]===1?'M0 20.8L19.4 0H120V80H0ZM5.5 23.8V74.5H114.5V5.5H22Z M118.9 17.8a1.7 1.7 0 1 0-3.4 0a1.7 1.7 0 1 0 3.4 0 M118.9 61.6a1.7 1.7 0 1 0-3.4 0a1.7 1.7 0 1 0 3.4 0':'M0 20.8L19.4 0H120V80H0ZM3 22V77H117V3H21Z M118.9 17.8a1.7 1.7 0 1 0-3.4 0a1.7 1.7 0 1 0 3.4 0 M118.9 61.6a1.7 1.7 0 1 0-3.4 0a1.7 1.7 0 1 0 3.4 0'}/>
+ <path fill="#34312b" fillRule="evenodd" d={`${rubbingOutlinePath}${t[0]===1?'M5.5 23.8V74.5H114.5V5.5H22Z':'M3 22V77H117V3H21Z'} ${rubbingHolePath}`}/>
  {t[0]===0?<path d="M10 15L108 68M17 67L107 12" stroke="#34312b" strokeWidth="5" fill="none"/>:null}
  </g></g></g>
  </svg>;}

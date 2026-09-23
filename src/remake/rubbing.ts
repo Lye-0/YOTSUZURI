@@ -1,4 +1,4 @@
-import {paperOnExit,paperMatchesExit} from './exitReference';
+import {paperOnExit,paperMatchesExit,paperAlignmentMessage} from './exitReference';
 import type {World} from './campaign';
 import type {CampaignItem} from './catalog';
 export const initialRubbing=()=>[0,0];
@@ -14,7 +14,7 @@ export function applyRubbing(s:World,a:RubbingAction|{type:'p-place';id:number;t
  const active=s.room===9&&s.facing===0&&s.focus==='object:25',onBench=s.placed[25]?.includes('tissue');
  if(a.type==='p-rubbing-view'){
   if(!s.inventory.includes('tissue')&&!(s.room===10&&s.facing===3&&paperOnExit(s))&&!(s.room===10&&s.facing===0&&s.focus==='object:29'&&s.placed[29]?.includes('tissue'))&&!(active&&onBench&&s.flags['rubbing:inspection']))return{world:s};
-  const g=structuredClone(s),t=[...tissueTrace(g)],i=a.flip?3:4;t[i]=(t[i]+1)%(a.flip?2:4);g.itemValues.tissue=t;if(paperOnExit(g)&&paperMatchesExit(g)&&!g.solved.includes(25))g.solved.push(25);if(g.placed[29]?.includes('tissue')&&g.values[29]?.[0]===1&&paperMatchesExit(g)&&!g.solved.includes(29))g.solved.push(29);return{world:g};
+  const g=structuredClone(s),t=[...tissueTrace(g)],i=a.flip?3:4;t[i]=(t[i]+1)%(a.flip?2:4);g.itemValues.tissue=t;if(paperOnExit(g)&&paperMatchesExit(g)&&!g.solved.includes(25))g.solved.push(25);if(g.placed[29]?.includes('tissue')&&g.values[29]?.[0]===1&&paperMatchesExit(g)&&!g.solved.includes(29))g.solved.push(29);return{world:g,message:paperOnExit(g)?paperAlignmentMessage(g):undefined};
  }
  if(!active)return{world:s};const g=structuredClone(s),v=[...rubbingValues(g)],t=[...tissueTrace(g)];
  if(a.type==='p-mould-turn'){
