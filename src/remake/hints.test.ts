@@ -12,8 +12,8 @@ const office=():World=>({...initial(),started:true,keyTaken:true,cardTaken:true,
 describe('現在の状態から案内を選ぶ',()=>{
  it('同じ裏面へ完成した二重刷りにはやり直しを指示しない',()=>{
   const g=focus({...initial(),placed:{12:['plates','pin','weights','register']},print:{slot:0,layers:[{plate:0,rotation:0,face:1,offset:1},{plate:3,rotation:0,face:1,offset:1}]}},12);
-  expect(text(g)).toContain('手元へ取る');expect(text(g)).not.toContain('やり直');
-  const mixed=structuredClone(g);mixed.print.layers[1].face=0;expect(text(mixed)).toContain('やり直');
+  expect(text(g)).toContain('完成している');expect(text(g)).not.toContain('刷り直');
+  const mixed=structuredClone(g);mixed.print.layers[1].face=0;expect(text(mixed)).toContain('刷り直');
  });
  it('全部屋の初期・終盤の全景と接写で、空の案内や循環を返さない',()=>{for(const seed of[initial(),completed()]){for(let room=0;room<11;room++){const g={...seed,room,focus:'room' as const};expect(campaignHints(g).every(s=>typeof s==='string'&&s.length>0)).toBe(true)}for(const o of objects)expect(campaignHints(focus(seed,o.id)).length).toBeGreaterThan(0)}});
  it('戸を開いた後に受渡口へ戻っても、初期の鍵の説明へ戻らない',()=>{const g={...office(),room:0};expect(nextHintGoal(g)).toBe(2);expect(text(g)).toContain('帳場');expect(text(g)).not.toContain('小箱')});
@@ -32,3 +32,5 @@ describe('現在の状態から案内を選ぶ',()=>{
  it('途中保存を読み直してもヒントの段階は同じ',()=>{const g=focus({...office(),values:{1:[1,0,0,1]}},1);expect(campaignHints(readSave(JSON.stringify(g))!)).toEqual(campaignHints(g))});
  it('書架の到達可能な全配置から、現在動く一手で通路へ到達する',()=>{const all=[initialShelves()],seen=new Set([all[0].join()]);for(let k=0;k<all.length;k++)for(let i=0;i<4;i++)for(const d of[-1,1]){const v=all[k],n=[...v];n[i]+=d;if(canMoveShelf(v,i,n[i])&&!seen.has(n.join())){seen.add(n.join());all.push(n)}}for(const start of all){let v=[...start],steps=0;while(!archivePassable(v)&&steps++<64){const move=nextShelfHint(v);expect(move).not.toBeNull();expect(canMoveShelf(v,move!.index,move!.position)).toBe(true);v[move!.index]=move!.position}expect(archivePassable(v),start.join()).toBe(true)}expect(all.length).toBeGreaterThan(100)});
 });
+
+it('共通の横ずれだけなら台上・手元とも完成と案内する',()=>{for(const offset of [0,1,2])for(const face of [0,1]){const layers=[0,3].map(plate=>({plate,rotation:0,face,offset}));const g=focus({...initial(),print:{slot:0,layers}},12);expect(text(g)).toContain('台上の紙は完成');const held={...g,inventory:['proof'] as World['inventory'],itemValues:{proof:layers.flatMap(l=>[l.plate,l.rotation,l.face,l.offset])},print:{slot:0 as const,layers:[]}};expect(text(held)).toContain('手元の二重刷りの紙は完成');}});
