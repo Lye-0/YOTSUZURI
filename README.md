@@ -44,3 +44,19 @@ pnpm preview
 - `docs/remake/27_CAMPAIGN_WALKTHROUGH.md`：初期状態からの通し操作と、その確認範囲。
 
 11室・30の仕掛けを持ちます。4〜6時間は設計時の目標で、初見の実測値ではありません。作者の通し操作と自動テストを、初見の難易度や楽しさの保証とは扱いません。
+
+## GitHub Pagesへの公開
+
+`.github/workflows/pages.yml` は `remake` ブランチへのプッシュで実行します。テスト・素材チェック・ビルドがすべて成功した場合に `dist/` を公開します。
+
+初回のみ、GitHubの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** に設定してください。`github-pages` 環境にブランチ制限がある場合は `remake` を許可します。
+
+```powershell
+git push origin remake
+```
+
+公開予定URL：<https://lye-0.github.io/YOTSUZURI/>
+
+Nodeは `mise.toml` と同じ `24.19.0`、pnpmは `package.json` の `packageManager` を使用します。Viteの相対パス設定 `base: './'` により、ゲームと画像は `/YOTSUZURI/` 配下でも読み込めます。追加のデプロイ用シークレットは不要です。
+
+設定参考：[GitHub公式・カスタムワークフローによるPages公開](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
