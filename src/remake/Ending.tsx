@@ -1,0 +1,1 @@
+export function Ending({onRestart}:{onRestart:()=>void}){return <main className="r-ending" aria-label="脱出後の路地"><img src={import.meta.env.BASE_URL+'remake/scenes/loading/exterior.webp'} alt="雨上がりの路地が、明け方の通りへ続いている"/><div className="r-ending-caption"><h1>夜綴</h1><p>夜明け</p><button onClick={onRestart}>もう一度</button></div></main>}

@@ -1,0 +1,46 @@
+import {it,expect} from 'vitest';
+import {initial,apply,gateOpen,readSave,type Action} from './campaign';
+import {portals,objectById,type CampaignItem} from './catalog';
+import {printLockCode,panelLockCode} from './evidenceLocks';
+import {bookBands,bookMass} from './weighing';
+import {BOOK_ORDER} from './book';
+import {canMoveShelf,archivePassable} from './archiveSpace';
+it('新規状態から資料・実物を揃え、三つの新しい接続を通って本と鍵を完成する',()=>{
+ let g=initial();const act=(a:Action)=>{g=apply(g,a).world;};
+ const face=(n:number)=>{act({type:'back'});while(g.facing!==n)act({type:'turn',delta:1});};
+ const walk=(to:number)=>{act({type:'back'});const queue:{room:number;path:typeof portals}[]=[{room:g.room,path:[]}],seen=new Set([g.room]);let path:typeof portals|undefined;for(let i=0;i<queue.length;i++){const q=queue[i];if(q.room===to){path=q.path;break;}for(const p of portals.filter(p=>p.from===q.room&&gateOpen(g,p.gate)))if(!seen.has(p.to)){seen.add(p.to);queue.push({room:p.to,path:[...q.path,p]});}}expect(path,`route ${g.room}->${to}`).toBeDefined();for(const p of path!){face(p.facing);act({type:'go',room:p.to});expect(g.room).toBe(p.to);}};
+ const focus=(id:number)=>{const o=objectById(id)!;walk(o.room);face(o.facing);act({type:'focus',focus:`object:${id}`});};
+ const take=(id:number,item:CampaignItem)=>{act({type:'p-take',id,item});expect(g.inventory).toContain(item);};
+ const place=(id:number,item:CampaignItem)=>{act({type:'select',item});act({type:'p-place',id,target:item});expect(g.placed[id]).toContain(item);};
+ const code=(id:number,values:number[])=>{focus(id);act({type:'p-set',id,values});act({type:'p-open',id});expect(g.opened).toContain(id);};
+ act({type:'start'});act({type:'focus',focus:'box'});act({type:'latch'});act({type:'lid'});act({type:'take',item:'key'});act({type:'take',item:'card'});face(1);act({type:'focus',focus:'lock'});act({type:'select',item:'key'});act({type:'keyhole'});act({type:'turn-key'});act({type:'door'});
+ focus(1);for(const index of [0,1,3,2])act({type:'p-release',id:1,index});take(1,'card-diamond');take(1,'card-moon');
+ code(2,[6,8,4]);take(2,'receipts');code(3,[0,2,1,9,1,8,6]);take(3,'folios');code(4,[3,6]);take(4,'knife');take(4,'lens');
+ focus(5);act({type:'p-set',id:5,values:[6]});act({type:'select',item:'knife'});act({type:'p-cut',id:5});expect(g.inventory).toContain('register');
+ focus(7);for(const button of [2,0,3,1])act({type:'p-button',id:7,button});act({type:'p-open',id:7});
+ code(8,[1,1,2]);take(8,'weights');code(9,[2,0,3,1]);take(9,'corner');take(9,'threadchart');
+ focus(13);for(const station of [2,4,1,3,0])act({type:'p-thread-pull',id:13,station});take(13,'needle');take(13,'thread');
+ focus(14);act({type:'p-trim-place',id:14,index:2});act({type:'p-trim-rotate',id:14,index:2});act({type:'p-trim-take',id:14});expect(g.inventory).toContain('oldplan');
+ focus(10);for(const index of [0,3]){act({type:'p-drawer',id:10,index});act({type:'p-plate',id:10,index});}
+ focus(11);for(const index of [0,2,0,1,0])act({type:'p-loop',id:11,index});act({type:'p-open',id:11});take(11,'pin');
+ focus(12);for(const item of ['plates','pin','weights','register'] as const)place(12,item);act({type:'p-set',id:12,values:[0,0,0,1]});for(const slot of [0,1] as const){act({type:'p-press-select',id:12,slot});act({type:'p-press-paper',id:12});act({type:'p-print',id:12});act({type:'p-press-paper',id:12});}act({type:'p-take-print',id:12});expect(g.solved).toContain(12);
+ focus(15);for(let index=0;index<6;index++)for(let n=0;n<printLockCode[index];n++)act({type:'p-keeper-setting',id:15,index});act({type:'p-keeper-pull',id:15,index:1});for(const index of [0,2]){act({type:'p-keeper-slide',id:15,index,position:1});act({type:'p-keeper-pull',id:15,index});}act({type:'p-keeper-leaf',id:15});act({type:'p-open',id:15});expect(g.opened).toContain(15);
+ focus(18);act({type:'select',item:'knife'});act({type:'p-envelope-loosen',id:18});for(const index of [0,1,2])act({type:'p-envelope-flap',id:18,index});act({type:'p-envelope-slide',id:18,direction:-1});take(18,'blanks');
+ focus(17);[0,2,4].forEach((index,destination)=>act({type:'p-gathering-move',id:17,index,destination:destination as 0|1|2}));act({type:'p-gathering-take',id:17});expect(g.inventory).toContain('gatherings');
+ focus(19);for(const b of bookBands(g,2))act({type:'p-weigh-detach',id:19,index:b.index});act({type:'p-weigh-place',id:19,object:2});act({type:'p-weigh-rider',id:19,value:bookMass(g,2)});act({type:'p-weigh-place',id:19,object:-1});act({type:'p-weigh-spine',id:19,book:2});take(19,'wedge');
+ walk(6);face(1);const start=g.values[16]??[0,6,0,4],queue=[{v:start,moves:[] as {index:number;position:number}[]}],seen=new Set([start.join()]);let moves:{index:number;position:number}[]=[];for(let i=0;i<queue.length;i++){const q=queue[i];if(archivePassable(q.v)){moves=q.moves;break;}for(let index=0;index<4;index++)for(const delta of [-1,1]){const position=q.v[index]+delta;if(!canMoveShelf(q.v,index,position))continue;const v=q.v.map((n,j)=>index===j?position:n);if(!seen.has(v.join())){seen.add(v.join());queue.push({v,moves:[...q.moves,{index,position}]});}}}for(const m of moves)act({type:'p-slide',...m});act({type:'archive-door'});expect(g.flags['archive:door']).toBe(true);
+ focus(21);place(21,'corner');place(21,'wedge');for(let i=0;i<3;i++)act({type:'p-cradle-turn',id:21,item:'corner'});for(let i=0;i<2;i++)act({type:'p-cradle-turn',id:21,item:'wedge'});act({type:'p-cradle-slide',id:21,position:0});act({type:'p-cradle-board',id:21});act({type:'p-cradle-take',id:21});expect(g.inventory).toContain('cradle');
+ focus(20);act({type:'p-mirror-slide',id:20,index:0,position:3});act({type:'p-mirror-slide',id:20,index:1,position:3});act({type:'p-mirror-turn',id:20,index:0});act({type:'p-optical-guard',id:20});
+ focus(22);place(22,'cradle');place(22,'gatherings');act({type:'p-set',id:22,values:[...BOOK_ORDER,2]});expect(g.solved).toContain(22);act({type:'p-retrieve',id:22,item:'gatherings'});act({type:'p-retrieve',id:22,item:'cradle'});
+ face(0);act({type:'select',item:'knife'});act({type:'repair-trim',index:1});for(let row=0;row<6;row++)for(let n=0;n<panelLockCode[row];n++)act({type:'repair-setting',index:1,row});act({type:'repair-panel-door',index:1});expect(g.flags.secret).toBe(true);
+ // 標本は観察資料。白紙を台へ仮置きせず製本まで持っていく。
+
+ focus(24);for(const piece of [1,3])act({type:'p-frame-turn',id:24,piece,flip:true});for(let piece=0;piece<4;piece++){for(let i=0;i<piece;i++)act({type:'p-frame-turn',id:24,piece});act({type:'p-frame-place',id:24,piece,slot:piece});}act({type:'p-frame-take',id:24});expect(g.inventory).toContain('frame');take(24,'returnrecord');
+ // 型の写しは補助資料。取得・作成・照合せずに進む。
+
+ focus(27);for(let i=0;i<2;i++)act({type:'p-cutaway-screw',id:27,index:0});for(let i=0;i<3;i++)act({type:'p-cutaway-screw',id:27,index:1});act({type:'p-cutaway-bolt',id:27});expect(g.solved).toContain(27);
+ focus(28);place(28,'frame');for(let i=0;i<2;i++)act({type:'p-clamp-turn',id:28,index:0});for(let i=0;i<3;i++)act({type:'p-clamp-turn',id:28,index:2});act({type:'p-clamp-height',id:28});act({type:'p-clamp-height',id:28});act({type:'p-retrieve',id:28,item:'frame'});act({type:'p-clamp-take',id:28});expect(g.inventory).toContain('clamp');
+ code(26,[1,9,2,7]);take(26,'keyparts');walk(0);face(3);act({type:'loading-entry'});walk(10);
+ focus(30);for(const item of ['clamp','frame','gatherings','blanks','needle','thread','keyparts'] as const)place(30,item);for(const position of [1,4])act({type:'p-book-blank',id:30,position});act({type:'p-book-close',id:30});act({type:'p-book-clamp',id:30});act({type:'p-book-sew',id:30});expect(g.book.sewn).toBe(true);act({type:'p-book-clamp',id:30});act({type:'p-book-mount',id:30,item:'gatherings'});act({type:'p-book-key-fix',id:30});expect(g.flags['key:fixed']).toBe(true);act({type:'p-retrieve',id:30,item:'keyparts'});
+ g=readSave(JSON.stringify(g))!;act({type:'back'});act({type:'select',item:'keyparts'});act({type:'exit-insert'});act({type:'exit-turn'});act({type:'exit-open'});act({type:'finish'});expect(g.finished).toBe(true);for(const id of [23,25,29])expect(g.solved).not.toContain(id);expect(g.collected).not.toContain('tissue');expect(new Set(g.visited).size).toBe(11);
+});

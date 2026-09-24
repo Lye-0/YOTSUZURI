@@ -1,0 +1,1 @@
+export const clampFiles=['pressure-socket','cam-disc','base-top','platen-top','iron-arch','spindle','worktop'].map(id=>import.meta.env.BASE_URL+`remake/parts/clamp/${id}.webp`).concat(['frame-rail-face','frame-rail-side'].map(id=>import.meta.env.BASE_URL+`remake/parts/joinery/${id}.webp`));

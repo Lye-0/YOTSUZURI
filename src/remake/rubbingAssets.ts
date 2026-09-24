@@ -1,0 +1,1 @@
+export const rubbingFiles=['mould-working','mould-back','rubbing-charcoal','rubbing-eraser'].map(id=>import.meta.env.BASE_URL+`remake/parts/rubbing/${id}.webp`).concat([import.meta.env.BASE_URL+'remake/items/tissue.webp']);

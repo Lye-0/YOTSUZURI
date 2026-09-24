@@ -1,0 +1,4 @@
+import {BOOK_UNIT} from './book';
+export const KEY_PHOTO_SCALE=BOOK_UNIT/45;
+export const KEY_WIDTH=1774*KEY_PHOTO_SCALE,KEY_HEIGHT=887*KEY_PHOTO_SCALE;
+export const KEY_CENTRES=[1158,1248,1338,1428,1518,1608] as const;

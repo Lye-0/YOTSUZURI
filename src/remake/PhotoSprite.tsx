@@ -1,0 +1,2 @@
+import {photoBounds} from './photoBounds';
+export function PhotoSprite({name,group='parts',x,y,width,height}:{name:string;group?:string;x:number;y:number;width:number;height:number}){const part=photoBounds[`${group}/${name}`];if(!part)return null;return <svg x={x} y={y} width={width} height={height} viewBox={part.bounds.join(' ')} preserveAspectRatio="none" aria-hidden="true"><image href={import.meta.env.BASE_URL+`remake/${group}/${name}.webp`} width={part.width} height={part.height}/></svg>}

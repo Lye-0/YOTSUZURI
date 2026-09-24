@@ -1,0 +1,2 @@
+import {PrintedMark} from './PrintedMark';
+export function DoorMarks({wide=false}:{wide?:boolean}){const xs=wide?[26.72,28.13,29.54,30.98]:[39.7,46.75,53.7,60.65],y=wide?37.55:36.5;return <svg className="r-printed-ink" viewBox="0 0 1000 562.8" aria-hidden="true" preserveAspectRatio="none" style={{color:'#392d1d'}}>{xs.map((x,i)=><PrintedMark key={i} n={i} x={x*10} y={y*5.628} size={wide?5:22}/>)}</svg>}

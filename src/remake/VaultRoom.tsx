@@ -1,0 +1,41 @@
+import {RubbingWorld} from './RubbingWorld';
+import {RubbingScene} from './RubbingScene';
+import {rubbingPoint} from './rubbingGeometry';
+import {CutawayScene} from './CutawayScene';
+import {CutawayWorld} from './CutawayWorld';
+import {modelPixel} from './cutawayGeometry';
+import {JoineryScene} from './JoineryScene';
+import {JoineryWorld} from './JoineryWorld';
+import {joineryPoint} from './joineryGeometry';
+import {useRef,useState,useLayoutEffect,type CSSProperties} from 'react';
+import type {World,Action} from './campaign';
+import type {ArchiveDetail} from './ArchiveRoom';
+import {archiveEye,archiveProjectEye,type ShelfPoint} from './archiveSpace';
+import {WorldCamera} from './WorldCamera';
+import {VaultShell} from './VaultShell';
+import {RepairWorld} from './RepairWorld';
+import {BlankStudyWorld} from './BlankStudyWorld';
+import {BlankStudyScene} from './BlankStudyScene';
+import {studyPoint} from './studyGeometry';
+import {boxInFront} from './worldVisibility';
+export function VaultRoom({g,act,enabled,detail,onDetail}:{g:World;act:(a:Action)=>void;enabled:boolean;detail:ArchiveDetail;onDetail:(d:ArchiveDetail)=>void}){
+ const host=useRef<HTMLDivElement>(null),[scale,setScale]=useState(1),frame={width:1672,height:941},eye=archiveEye(g.facing,{x:6.3,y:-2.6,height:1.65,pitch:14,focal:650});
+ useLayoutEffect(()=>{if(!host.current)return;const update=()=>setScale(host.current!.clientWidth/frame.width);update();const r=new ResizeObserver(update);r.observe(host.current);return()=>r.disconnect()},[g.focus]);
+ if(g.focus==='object:25')return <RubbingScene g={g} act={enabled?act:undefined} view={detail?.kind==='rubbing'?detail.view:'all'} onView={view=>onDetail(view==='all'?null:{kind:'rubbing',view})}/>;
+ if(g.focus==='object:27')return <CutawayScene g={g} act={enabled?act:undefined}/>;
+ if(g.focus==='object:24')return <JoineryScene g={g} act={enabled?act:undefined} index={detail?.kind==='joinery-piece'?detail.index:undefined} onInspect={index=>onDetail({kind:'joinery-piece',index})}/>;
+ if(g.focus==='object:23')return <BlankStudyScene g={g} act={enabled?act:undefined} index={detail?.kind==='study-leaf'?detail.index:undefined} onInspect={index=>onDetail({kind:'study-leaf',index})}/>;
+ const ps=(points:readonly ShelfPoint[])=>points.map(p=>archiveProjectEye(p,eye));
+ const poly=(points:readonly ShelfPoint[]):CSSProperties=>{const a=ps(points),x=Math.min(...a.map(p=>p[0])),y=Math.min(...a.map(p=>p[1])),w=Math.max(...a.map(p=>p[0]))-x,h=Math.max(...a.map(p=>p[1]))-y;return{left:x*scale,top:y*scale,width:w*scale,height:h*scale,clipPath:`polygon(${a.map(p=>`${(p[0]-x)/w*100}% ${(p[1]-y)/h*100}%`).join(',')})`};};
+ const portal:readonly ShelfPoint[]=[[5.85,0,2.05],[6.77,0,2.05],[6.77,0,0],[5.85,0,0]],projected=ps(portal),clip=projected.every(p=>p[2]>.05)?`polygon(${projected.map(p=>`${p[0]/frame.width*100}% ${p[1]/frame.height*100}%`).join(',')})`:undefined;
+ return <div className="archive-view" ref={host} role="group" aria-label="原型庫">
+ {clip?<WorldCamera {...{eye,frame,scale,clip}}><RepairWorld g={g} eye={eye} pixelScale={scale}/></WorldCamera>:null}
+ <WorldCamera {...{eye,frame,scale}}><VaultShell eye={eye}/>{boxInFront(eye,[4.4,-5.05,0],[6.05,-4.4,.85])?<RubbingWorld g={g}/>:null}{boxInFront(eye,[6.55,-5.05,0],[8.2,-4.4,1.52])?<CutawayWorld g={g} eye={eye} pixelScale={scale}/>:null}{boxInFront(eye,[7.62,-4.2,0],[8.27,-2.55,1.60])?<JoineryWorld g={g}/>:null}{boxInFront(eye,[4.32,-3.8,0],[4.97,-2.15,.86])?<BlankStudyWorld g={g}/>:null}</WorldCamera>
+ {enabled&&g.facing===0?<button className="env-screen-hit" aria-label="原型の作業台を調べる" style={poly([[.03,.03,.84],[1.60,.03,.84],[1.60,.63,.84],[.03,.63,.84]].map(p=>rubbingPoint([p[0],p[1],p[2]])))} onClick={()=>{onDetail(null);act({type:'focus',focus:'object:25'})}}/>:null}
+ {enabled&&g.facing===0?<button className="env-screen-hit" aria-label="断面の錠を調べる" style={poly([[21,26],[1491,26],[1491,1055],[21,1055]].map(([x,y])=>modelPixel(x,y)))} onClick={()=>{onDetail(null);act({type:'focus',focus:'object:27'})}}/>:null}
+ {enabled&&g.facing===1?<button className="env-screen-hit" aria-label="四片の木枠を調べる" style={poly([[0,0,.84],[1.65,0,.84],[1.65,.65,.84],[0,.65,.84]].map(p=>joineryPoint([p[0],p[1],p[2]])))} onClick={()=>{onDetail(null);act({type:'focus',focus:'object:24'})}}/>:null}
+ {enabled&&g.facing===1&&!g.collected.includes('returnrecord')?<button className="env-screen-hit" aria-label="壁の記録へ近づく" style={poly([[.65,.002,1.30],[.93,.002,1.30],[.93,.002,1.10],[.65,.002,1.10]].map(p=>joineryPoint([p[0],p[1],p[2]])))} onClick={()=>{onDetail(null);act({type:'focus',focus:'object:24'})}}/>:null}
+ {enabled&&g.facing===3?<button className="env-screen-hit" aria-label="原型庫の紙標本を調べる" style={poly([[.03,.008,.84],[1.61,.008,.84],[1.61,.63,.84],[.03,.63,.84]].map(p=>studyPoint([p[0],p[1],p[2]])))} onClick={()=>{onDetail(null);act({type:'focus',focus:'object:23'})}}/>:null}
+ {enabled&&g.facing===2&&clip?<button className="env-screen-hit" aria-label="修復室へ戻る" style={poly(portal)} onClick={()=>act({type:'go',room:8})}/>:null}
+ </div>;
+}

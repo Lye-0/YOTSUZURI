@@ -1,0 +1,41 @@
+import {readFileSync} from 'node:fs';
+import {describe,it,expect} from 'vitest';
+import {initial,readSave,apply,type World} from './campaign';
+import {objects,objectById} from './catalog';
+import {campaignHints} from './hints';
+import {nextHintGoal,nextShelfHint} from './progressHints';
+import {initialShelves,canMoveShelf,archivePassable} from './archiveSpace';
+const completed=()=>readSave(readFileSync(new URL('./test-fixtures/completed-before-exit.json',import.meta.url),'utf8'))!;
+const focus=(g:World,id:number):World=>({...g,room:objectById(id)!.room,facing:objectById(id)!.facing,focus:`object:${id}`});
+const text=(g:World)=>campaignHints(g).join('\n');
+const office=():World=>({...initial(),started:true,keyTaken:true,cardTaken:true,doorUnlocked:true,doorOpen:true,keyInserted:true,room:1,visited:[0,1],inventory:['card','card-diamond','card-moon'],collected:['card-diamond','card-moon']});
+describe('現在の状態から案内を選ぶ',()=>{
+ it('同じ裏面へ完成した二重刷りにはやり直しを指示しない',()=>{
+  const g=focus({...initial(),placed:{12:['plates','pin','weights','register']},print:{slot:0,layers:[{plate:0,rotation:0,face:1,offset:1},{plate:3,rotation:0,face:1,offset:1}]}},12);
+  expect(text(g)).toContain('完成している');expect(text(g)).not.toContain('刷り直');
+  const mixed=structuredClone(g);mixed.print.layers[1].face=0;expect(text(mixed)).toContain('刷り直');
+ });
+ it('全部屋の初期・終盤の全景と接写で、空の案内や循環を返さない',()=>{for(const seed of[initial(),completed()]){for(let room=0;room<11;room++){const g={...seed,room,focus:'room' as const};expect(campaignHints(g).every(s=>typeof s==='string'&&s.length>0)).toBe(true)}for(const o of objects)expect(campaignHints(focus(seed,o.id)).length).toBeGreaterThan(0)}});
+ it('戸を開いた後に受渡口へ戻っても、初期の鍵の説明へ戻らない',()=>{const g={...office(),room:0};expect(nextHintGoal(g)).toBe(2);expect(text(g)).toContain('帳場');expect(text(g)).not.toContain('小箱')});
+ it('数字を合わせる・収納を開く・残った物を拾うを区別する',()=>{let g=focus(office(),2);g=apply(g,{type:'p-set',id:2,values:[6,8,4]}).world;expect(text(g)).toContain('取っ手');expect(text(g)).not.toContain('684');g=apply(g,{type:'p-open',id:2}).world;expect(text(g)).toContain('複写控えが残');g=apply(g,{type:'p-take',id:2,item:'receipts'}).world;expect(text(g)).not.toContain('複写控えが残');expect(nextHintGoal(g)).toBe(3)});
+ it('木板を外した途中では、現在外せる板だけを案内する',()=>{const g=focus({...initial(),values:{1:[1,1,0,0]}},1);expect(text(g)).toContain('今は一番下');expect(text(g)).not.toContain('今は一番上');const one=focus({...g,values:{1:[1,1,1,1]},collected:['card-diamond'],inventory:['card-diamond']},1);expect(text(one)).toContain('三日月');expect(text(one)).not.toContain('菱形')});
+ it('糸は途中の先を案内し、取得済みの針を再取得させない',()=>{const g=focus({...initial(),sequences:{13:[2,4]}},13);expect(text(g)).toContain('次は上から2段目');const after=focus({...g,solved:[13],inventory:['needle'],collected:['needle']},13);expect(text(after)).toContain('綴じ糸が残');expect(text(after)).not.toContain('綴じ針')});
+ it('置いた道具は元の発見場所ではなく現在の設置先を案内する',()=>{const g=focus({...completed(),placed:{...completed().placed,28:['frame'],30:completed().placed[30].filter(n=>n!=='frame')},itemValues:{...completed().itemValues,keyparts:[1,1,1,1,1,1]},book:{...completed().book,sewn:false}},30);expect(text(g)).toContain('製本室の束の締め具');expect(text(g)).not.toContain('四片の木枠を組')});
+ it('解錠履歴があっても、環やカムの現在の位置を見直す',()=>{const ring=focus({...initial(),solved:[4],values:{4:[0,0]}},4);expect(text(ring)).not.toContain('切れ目が金具の位置に合');const cam=focus({...initial(),solved:[28],placed:{28:['frame']},values:{28:[0,0,1,1]}},28);expect(text(cam)).toContain('回すと');expect(text(cam)).not.toContain('板は枠に合って')});
+ it('封筒の開いた折り返しを最初から開かせない',()=>{const g=focus({...initial(),values:{18:[0,1,3,0]}},18);expect(campaignHints(g)).toEqual(['上の折り返しを開く。']);expect(text(focus({...g,values:{18:[0,1,7,1]},collected:['tissue'],inventory:['tissue']},18))).toContain('白紙の束を近くで')});
+ it('光が届いた後は鏡の初期説明をせず、留め棒へ進める',()=>{const g=focus({...initial(),values:{20:[3,3,0,0]}},20);expect(text(g)).toContain('留め棒を持ち上げる');expect(text(g)).not.toContain('右端へ')});
+ it('製本の押さえ・縫合・解放・鍵回収を分ける',()=>{const base=completed();base.itemValues.keyparts=[1,1,1,1,1,1];let g=focus({...base,book:{...base.book,sewn:false,clamped:true},flags:{...base.flags,'book:papers-mounted':true},values:{...base.values,28:[2,0,2,0]}},30);expect(text(g)).toContain('束を糸で綴じる');g={...g,book:{...g.book,sewn:true}};expect(text(g)).toContain('押さえ板を上げ');g={...g,book:{...g.book,clamped:false}};expect(text(g)).toContain('手前');g={...g,flags:{...g.flags,'book:papers-mounted':false,'key:fixed':true},placed:{...g.placed,30:[...g.placed[30],'keyparts']},inventory:g.inventory.filter(n=>n!=='keyparts'),values:{...g.values,30:[4,2,1,3,1,4]}};expect(text(g)).toContain('製本台に置いてある');expect(text(g)).not.toContain('歯は左から')});
+ it('圧締した誤った束は、綴じる前に押さえを解く案内になる',()=>{const g=completed();g.itemValues.keyparts=[1,1,1,1,1,1];g.book={...g.book,sewn:false,clamped:true,blanks:[]};g.flags['book:papers-mounted']=true;g.values[28]=[2,0,2,0];expect(text(focus(g,30))).toContain('押さえ板を上げて組み直す')});
+ it('後半へ到達した人に、通過済みの序盤の資料を集め直させない',()=>{const g=completed();g.inventory=g.inventory.filter(n=>!['receipts','folios','card','card-diamond','card-moon','proof','oldplan'].includes(n));g.itemValues.keyparts=[1,1,1,1,1,1];expect(nextHintGoal(g)).toBe(30);expect(text({...g,room:0,focus:'room'})).not.toContain('複写控え')});
+ it('固定済みの鍵が合うなら出口へ案内する',()=>{const g:World={...initial(),inventory:['keyparts'],flags:{'key:fixed':true},itemValues:{keyparts:[4,2,1,3,1,4]}};expect(nextHintGoal(g)).toBe('exit');expect(text(g)).toContain('西側の戸を開き');expect(text(g)).not.toContain('原型庫')});
+ it('写しの不足・重ねた向きの不一致・両面の完成を区別する',()=>{const g=focus({...completed(),placed:{25:['tissue']},itemValues:{tissue:[1,0,7,0,0]},flags:{},values:{25:[1,0]}},25);expect(text(g)).toContain('途中');expect(text({...g,itemValues:{tissue:[0,0,63,0,0]}})).toContain('持ち帰り');expect(text({...g,itemValues:{tissue:[0,0,63,0,0]}})).not.toContain('裏返して');expect(text({...g,values:{25:[1,2]}})).toContain('練り消し');expect(text({...g,itemValues:{tissue:[1,0,63,0,0]}})).toContain('持ち帰り')});
+ it('途中保存を読み直してもヒントの段階は同じ',()=>{const g=focus({...office(),values:{1:[1,0,0,1]}},1);expect(campaignHints(readSave(JSON.stringify(g))!)).toEqual(campaignHints(g))});
+ it('書架の到達可能な全配置から、現在動く一手で通路へ到達する',()=>{const all=[initialShelves()],seen=new Set([all[0].join()]);for(let k=0;k<all.length;k++)for(let i=0;i<4;i++)for(const d of[-1,1]){const v=all[k],n=[...v];n[i]+=d;if(canMoveShelf(v,i,n[i])&&!seen.has(n.join())){seen.add(n.join());all.push(n)}}for(const start of all){let v=[...start],steps=0;while(!archivePassable(v)&&steps++<64){const move=nextShelfHint(v);expect(move).not.toBeNull();expect(canMoveShelf(v,move!.index,move!.position)).toBe(true);v[move!.index]=move!.position}expect(archivePassable(v),start.join()).toBe(true)}expect(all.length).toBeGreaterThan(100)});
+});
+
+it('共通の横ずれだけなら台上・手元とも完成と案内する',()=>{for(const offset of [0,1,2])for(const face of [0,1]){const layers=[0,3].map(plate=>({plate,rotation:0,face,offset}));const g=focus({...initial(),print:{slot:0,layers}},12);expect(text(g)).toContain('台上の紙は完成');const held={...g,inventory:['proof'] as World['inventory'],itemValues:{proof:layers.flatMap(l=>[l.plate,l.rotation,l.face,l.offset])},print:{slot:0 as const,layers:[]}};expect(text(held)).toContain('手元の二重刷りの紙は完成');}});
+
+it('標本への白紙の仮置きを要求せず、製本台から取り戻させない',()=>{const g=focus({...completed(),placed:{30:['blanks']},solved:[],itemValues:{},flags:{}},23);expect(text(g)).toContain('標本');expect(text(g)).toContain('製本台で');expect(text(g)).not.toContain('取り戻して');expect(text(g)).not.toContain('仮置き');});
+it('未仮置きの標本を必須の次工程として案内しない',()=>{const g=completed();g.solved=g.solved.filter(id=>id!==23);g.flags={...g.flags,exitKey:false,exitOpen:false,exitUnlocked:false,'key:fixed':false};g.finished=false;expect(nextHintGoal(g)).not.toBe(23);});
+
+it('型の写しを未取得・未作成・未照合でも製本へ案内する',()=>{const g=completed();g.finished=false;g.flags={...g.flags,exitKey:false,exitOpen:false,exitUnlocked:false,'key:fixed':false};g.solved=g.solved.filter(id=>![25,29].includes(id));g.inventory=g.inventory.filter(x=>x!=='tissue');for(const id in g.placed)g.placed[id]=g.placed[id].filter(x=>x!=='tissue');delete g.itemValues.tissue;expect(nextHintGoal(g)).toBe(30);const view=focus(g,29);expect(text(view)).toContain('比較するとき');expect(text(view)).not.toContain('先に写し');});

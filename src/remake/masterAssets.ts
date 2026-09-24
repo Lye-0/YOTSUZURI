@@ -1,0 +1,1 @@
+export const masterFiles=[...['current','obsolete'].map(n=>`parts/masters/${n}`),'parts/print-paper',...['bench-top','bench-front','bench-side'].map(n=>`parts/archive/${n}`)].map(path=>import.meta.env.BASE_URL+`remake/${path}.webp`);

@@ -1,0 +1,4 @@
+import {RasterDensity} from './ArchivePhotos';
+import type {ReactNode} from 'react';
+import type {ArchiveEye} from './archiveSpace';
+export function WorldCamera({eye,frame,scale,clip,children}:{eye:ArchiveEye;frame:{width:number;height:number};scale:number;clip?:string;children:ReactNode}){return <RasterDensity.Provider value={scale}><div style={{position:'absolute',inset:0,clipPath:clip,pointerEvents:'none'}}><div className="archive-scaled" style={{width:frame.width,height:frame.height,transform:`scale(${scale})`}}><div className="archive-perspective" style={{width:frame.width,height:frame.height,perspective:eye.focal,perspectiveOrigin:`${eye.centerX}px ${eye.centerY}px`}}><div className="archive-camera" style={{left:eye.centerX,top:eye.centerY,transform:`translateZ(${eye.focal}px) rotateX(${-eye.pitch}deg) rotateY(${eye.heading}deg) translate3d(${-eye.x*500}px,${eye.height*500}px,${-eye.y*500}px)`}}>{children}</div></div></div></div></RasterDensity.Provider>;}
