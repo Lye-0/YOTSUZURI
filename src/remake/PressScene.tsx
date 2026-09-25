@@ -17,6 +17,7 @@ export function PressScene({g,act,enabled=true,view='all',onView,showBack=true}:
  <p role="status">{sameImpression(g.print.layers)?'見本と同じ形に刷り上がった':down?'紙に触れると持ち上げる':'紙に触れると台へ重ねる · 予備の版に触れると交換'}　{g.print.layers.length} / 2 回刷り</p>
  <div className="r-press-actions">
  <button disabled={!enabled||!loaded||down} onClick={()=>change(g.print.slot,4)}>版を90°回す</button>
+ {loaded?<button disabled={!enabled||down} onClick={()=>act({type:'p-retrieve',id:12,item:'plates'})}>原版二枚を持ち帰る</button>:null}
  <button disabled={!enabled||down} onClick={()=>change(2,2)}>紙を裏返す</button>
  <button disabled={!enabled||down} onClick={()=>change(3,3)}>紙の位置：{['左','中央','右'][v[3]]}</button>
  <button className="r-press-print" disabled={!enabled||!down||g.print.layers.length>=2} onClick={()=>act({type:'p-print',id:12})}>取っ手を引いて刷る</button>
